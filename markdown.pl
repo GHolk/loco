@@ -1307,7 +1307,7 @@ sub _DoInlineQuote {
 sub _DoSpecialLink {
 	my $text = shift; 
 
-	$text =~ s{ \[\[ (:.+:)? ([^|]*?) (\|[^|]*?)? \]\] } {
+	$text =~ s{ \[\[ (:.+?:)? (.+?) (\|.+?)? \]\] } {
 		my ($lang, $article, $text) = ($1, $2, $3); 
 		$lang = $lang ? (substr($lang, 1, length($lang)-2) ) : "zh"; 
 		$text = $text ? (substr $text, 1 ) : $article ; 
