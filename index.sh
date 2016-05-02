@@ -7,6 +7,7 @@
 # g : do not treat `*.gif` as img; gif animated is large. 
 # o : xdg-open index.html after script. 
 # R : random sort the content of html. 
+# v : use less to open each index. 
 #
 
 for arg in $@
