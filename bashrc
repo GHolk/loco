@@ -14,6 +14,7 @@ alias rm=gvfs-trash
 alias octave="octave --no-gui"
 alias mv="mv -i"
 alias cp="cp -i"
+alias manen="man -L en"
 
 # add current dictionary into PATH
 #PATH=".:$PATH"
