@@ -9,60 +9,78 @@
 # R : random sort the content of html. 
 # v : use less to open each index. 
 # d : set the depth of search. if call -d without argument; 
-#     set 1. default set 0. 
+#     set depth to 1. default set no limit. 
 #
-
-for arg in $@
-do
-	if [[ $arg =~ ^-[^-] ]] 
-	then 
-		args="$args$arg"
-		shift
-	fi
-done
 
 # deside what sufix is images
 imgtype="gif|jpg|png"
 
-if [[ $args =~ g ]]
-then imgtype="jpg|png" 
-fi
-
-if [[ $args =~ R ]]
-then sortarg='-R'
-fi
-
-### argument for find
-if [ -z $@ ]
-then dirs="./"
-fi
-
-if [[ $args =~ d ]]
-then farg="$farg -maxdepth 1"
-fi
-
-for dir in $@ $dirs
+while true
 do
 
-	find $dir $farg -path '*/.*' -prune -o -print |\
-		sed -r -e 's/^\.\///g' \
+	# parse option
+	if [[ $1 =~ ^-[^-] ]] 
+	then 
+		if [[ $1 =~ g ]]
+		then imgtype="jpg|png"
+		fi
+
+		if [[ $1 =~ R ]]
+		then sortarg=" -R "
+		fi
+
+		if [[ $1 =~ v ]]
+		then see=1
+		fi
+
+		if [[ $1 =~ o ]]
+		then open="xdg-open"
+		fi
+
+		if [[ $1 =~ d ]]
+		then 
+			if [[ $2 =~ ^[0-9]$ ]]
+			then farg=" -maxdepth $2 "
+				shift
+			else farg=" -maxdepth 1 "
+			fi
+		fi
+
+		shift
+		continue
+
+	fi
+
+### argument for find
+
+	dir="${1%/}"
+	if [ "$dir" == "" ]
+	then dir="./"
+	fi
+
+	find "$dir" $farg -path '*/.*' -prune -o -printf "%P\n" |\
+		sed -r -e "s#^$dir##g" \
 			-e 's/"/%22/g' \
 			-e "s/.*($imgtype)$/<img src=\"&\" title=\"&\">/i" \
 			-e 's/^[^<].*[^>]$/<a href="&">&<\/a>/' |\
 		sort $sortarg |\
 		sed -e '1i<link rel="stylesheet" type="text/css" href="http://gholk.github.io/Documents/word.css">' \
-			-e '1i<meta charset="UTF-8">' >\
+			-e '1i<meta charset="UTF-8">' \
+			-e '1i<pre>' >\
 			"${dir}/index.html"
 	
-	if [[ $args =~ v ]]
+	if [ $see ]
 	then less "$dir/index.html"
 	fi
 	
-	if [[ $args =~ o ]]
+	if [ $open ]
 	then xdg-open "$dir/index.html"
 	fi
 
-done
+	if [ $2 ]
+	then shift
+	else exit 0
+	fi
 
-exit
+done
 
