@@ -8,6 +8,8 @@
 # o : xdg-open index.html after script. 
 # R : random sort the content of html. 
 # v : use less to open each index. 
+# d : set the depth of search. if call -d without argument; 
+#     set 1. default set 0. 
 #
 
 for arg in $@
@@ -30,14 +32,19 @@ if [[ $args =~ R ]]
 then sortarg='-R'
 fi
 
+### argument for find
 if [ -z $@ ]
 then dirs="./"
+fi
+
+if [[ $args =~ d ]]
+then farg="$farg -maxdepth 1"
 fi
 
 for dir in $@ $dirs
 do
 
-	find $dir -path '*/.*' -prune -o -print |\
+	find $dir $farg -path '*/.*' -prune -o -print |\
 		sed -r -e 's/^\.\///g' \
 			-e 's/"/%22/g' \
 			-e "s/.*($imgtype)$/<img src=\"&\" title=\"&\">/i" \

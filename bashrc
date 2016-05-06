@@ -21,44 +21,8 @@ alias manen="man -L en"
 myweb="myweb.ncku.edu.tw/~c34031328"
 export LANGUAGE="zh_TW:zh_CN:en"
 
-
-# febo with for. 
-#
-#function febo {
-#
-#sum=(0 1)
-#i=0
-#
-#while [ $i -lt $1 ]
-#do
-#	if (( i % 2 ))
-#	then
-#		echo $(( sum[0] += sum[1] ))
-#	else
-#		echo $(( sum[1] += sum[0] ))
-#	fi
-#	((i++))
-#done
-#
-#}
-
-
-# horible febo with recursive cause crash. 
-# indeed *fibo* ...
-#
-#febo(){
-#
-#i=$1
-#(( j = i-1 , k = i-2 ))
-#
-#if (( i <= 1 )) 
-#then 
-#	echo 1
-#else 
-#	echo $(expr `febo $j` + `febo $k` )
-#fi
-#
-#}
+# npm path #
+export PATH="~/node_modules/.bin:$PATH"
 
 # color man page from arch wiki
 #
