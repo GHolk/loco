@@ -24,6 +24,14 @@ export LANGUAGE="zh_TW:zh_CN:en"
 # npm path #
 export PATH="~/node_modules/.bin:$PATH"
 
+function pdfopt {
+
+gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dQUIET \
+	-dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen \
+	-sOutputFile="$2" "$1"
+
+}
+
 # color man page from arch wiki
 #
 #man() {
