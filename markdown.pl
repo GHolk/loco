@@ -1442,7 +1442,7 @@ sub _EncodeBackslashEscapes {
 sub _DoAutoLinks {
 	my $text = shift;
 
-	$text =~ s{<([^'"\s]*//[^'">\s]+)>}{<a href="$1">$1</a>}gi;
+	$text =~ s{<([a-z:]*//[^'">\s]+)>}{<a href="$1">$1</a>}gi;
 
 	# Email addresses: <address@domain.foo>
 	$text =~ s{
