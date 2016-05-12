@@ -1,6 +1,26 @@
+.\" Process this file with
+.\" groff -man -Tascii tanet.1
+.\"
+.TH HTML_CHARECTOR 7 "2016-04-01" HTML_CHARECTOR "HTML HACKER"
 
-    Name    Character         Description[c]
-  ----------------------------------------------------------------
+.SH NAME
+
+HTML-Charector \- HTML entity table. 
+
+
+.SH TABLE
+
+you can use like \fB&gt;\fP to display \fB>\fP in HTML. 
+
+.if t \{\
+.ft CW
+\}
+.TS
+
+    l           l         l.
+
+    Name    Character     Description[c]
+
     quot        "         quotation mark (APL quote)
     amp         &         ampersand
     apos        '         apostrophe (apostrophe-quote); 
@@ -290,10 +310,23 @@
     diams       ♦         black diamond suit[f]
 
 
- =================================================================
+.TE
+.if t \{\
+.in
+.ft P
+\}
 
-	    Unicode code                              Old ISO 
- Name      point (decimal)   Standard    DTD[a]      subset[b] 
+
+
+.if t \{\
+.ft CW
+\}
+.TS
+
+ l          l                 l          l             l.
+
+            Unicode code                              Old ISO 
+  Name      point (decimal)   Standard    DTD[a]      subset[b] 
 
   quot       U+0022 (34)      HTML 2.0   HTMLspecial   ISOnum 
   amp        U+0026 (38)      HTML 2.0   HTMLspecial   ISOnum 
@@ -548,5 +581,11 @@
   clubs      U+2663 (9827)    HTML 4.0   HTMLsymbol    ISOpub 
   hearts     U+2665 (9829)    HTML 4.0   HTMLsymbol    ISOpub 
   diams      U+2666 (9830)    HTML 4.0   HTMLsymbol    ISOpub 
+
+.TE
+.if t \{\
+.in
+.ft P
+\}
 
 

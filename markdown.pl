@@ -1021,7 +1021,7 @@ $text =~ s@\n
 	%{2,}(.+?)%*\n
 	@
 "<figure>\n" . _RunSpanGamut($1) . "\n<figcaption>" . _RunSpanGamut($2) . "</figcaption>
-</figure>" ; 
+</figure>\n" ; 
 @egx; 
 
 # add by gholk 2016-04-10
@@ -1442,7 +1442,7 @@ sub _EncodeBackslashEscapes {
 sub _DoAutoLinks {
 	my $text = shift;
 
-	$text =~ s{<([a-z:]*//[^'">\s]+)>}{<a href="$1">$1</a>}gi;
+	$text =~ s{<([a-z]*:?//[^'">\s]+)>}{<a href="$1">$1</a>}gi;
 
 	# Email addresses: <address@domain.foo>
 	$text =~ s{

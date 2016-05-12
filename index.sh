@@ -12,6 +12,16 @@
 #     set depth to 1. default set no limit. 
 #
 
+# define head of html
+
+head='\
+<meta charset="UTF-8">\
+<style>\
+img { max-width: 80%; }\
+a { display: block; }\
+</style>\
+'
+
 # deside what sufix is images
 imgtype="gif|jpg|png"
 
@@ -64,10 +74,7 @@ do
 			-e "s/.*($imgtype)$/<img src=\"&\" title=\"&\">/i" \
 			-e 's/^[^<].*[^>]$/<a href="&">&<\/a>/' |\
 		sort $sortarg |\
-		sed -e '1i<link rel="stylesheet" type="text/css" href="http://gholk.github.io/Documents/word.css">' \
-			-e '1i<meta charset="UTF-8">' \
-			-e '1i<pre>' >\
-			"${dir}/index.html"
+		sed -e "1i$head" > "${dir}/index.html"
 	
 	if [ $see ]
 	then less "$dir/index.html"

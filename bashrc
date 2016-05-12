@@ -24,12 +24,31 @@ export LANGUAGE="zh_TW:zh_CN:en"
 # npm path #
 export PATH="~/node_modules/.bin:$PATH"
 
+# too long option to remember. 
 function pdfopt {
-
 gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dQUIET \
 	-dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen \
 	-sOutputFile="$2" "$1"
+}
 
+# for convenient; translate escape charector
+function ee {
+
+	s=''
+	if [ "$1" ] && [ ${#1} -lt 2 ]
+	then 
+		if [ "$1" == "%" ]
+		then s="s/+/ /g; s/\\\\/\\\\x5C/g; s/%/\\\\x/g;" 
+		else s="s/$1/\\x/g; s/\\\\/\\\\x5C/g;" 
+		fi
+		
+		shift
+	fi
+
+	if [ "$1" ]
+	then echo "$1" | sed "$s" | xargs -0 echo -en
+	else sed "$s" | xargs -0 echo -en 
+	fi
 }
 
 # color man page from arch wiki
