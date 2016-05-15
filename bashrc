@@ -34,13 +34,28 @@ gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dQUIET \
 # for convenient; translate escape charector
 function ee {
 
-	s=''
-	if [ "$1" ] && [ ${#1} -lt 2 ]
+	local s
+
+	if [ "$1" ] && [ ${#1} -lt 3 ]
 	then 
-		if [ "$1" == "%" ]
-		then s="s/+/ /g; s/\\\\/\\\\x5C/g; s/%/\\\\x/g;" 
-		else s="s/$1/\\x/g; s/\\\\/\\\\x5C/g;" 
-		fi
+		case "$1" in
+		( "%" ) 
+			s="s/+/ /g; s/\\\\/\\\\x5C/g; s/%/\\\\x/g;" 
+		;;
+
+		( "&" ) 
+			s="s/&lt;/</g; s/&gt;/>/g; s/&amp;/\&/g;"
+		;;
+
+		( "r&" )
+			s="s/</\&lt;/g; s/>/\&gt;/g; s/&/\&amp;/g;"
+		;;
+
+		( * )
+			s="s/\\\\/\\\\x5C/g; s/$1/\\\\x/g;" 
+		;;
+
+		esac
 		
 		shift
 	fi
@@ -49,6 +64,7 @@ function ee {
 	then echo "$1" | sed "$s" | xargs -0 echo -en
 	else sed "$s" | xargs -0 echo -en 
 	fi
+
 }
 
 # color man page from arch wiki

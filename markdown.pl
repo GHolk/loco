@@ -449,11 +449,11 @@ sub _RunBlockGamut {
 
 	$text = _DoLists($text);
 
+	$text = _DoDefLists($text);
 	$text = _DoCodeBlocks($text);
 
 	$text = _DoBlockQuotes($text);
 
-	$text = _DoDefLists($text);
 	$text = _DoFigure($text); 
 	# add by gholk. 
 
@@ -1034,10 +1034,18 @@ sub _DoDefLists {
 my $text = shift; 
 
 $text =~ s{
-	(.+) \n 
-	: ((?:[\t ]+.+\n|\n)+) 
-	}{
-	"<dl>\n<dt>" . _RunSpanGamut($1) . "</dt><dd>" . _RunBlockGamut($2) . "</dd>\n</dl>\n\n"; 
+	(.+) (\n+)
+	: ((?:(?:\t|\ {1,2}).*\n|\s*\n)+) 
+}{
+	my ($title,$newline,$text) = ($1,$2,$3);
+	
+	$title = _RunSpanGamut($title);
+	$text =~ s/^ {2,4}//mg;
+	if ($newline =~ m/\n\n/)
+	{ $text = _RunBlockGamut($text); }
+	else 
+	{ $text = _RunSpanGamut($text); }
+	"<dl>\n<dt>" . $title . "</dt>\n\n<dd>" . $text . "</dd>\n</dl>\n\n"; 
 }emgx; 
 
 $text =~ s{</dl>\s*<dl>}{}gx;
