@@ -24,6 +24,7 @@ a { display: block; }\
 
 # deside what sufix is images
 imgtype="gif|jpg|png"
+out=" >index.html "
 
 while true
 do
@@ -31,30 +32,31 @@ do
 	# parse option
 	if [[ $1 =~ ^-[^-] ]] 
 	then 
-		if [[ $1 =~ g ]]
-		then imgtype="jpg|png"
-		fi
+		case $1 in
+		( *g* ) imgtype="jpg|png"
+		;;&
 
-		if [[ $1 =~ R ]]
-		then sortarg=" -R "
-		fi
+		( *R* ) sortarg=" -R "
+		;;&
 
-		if [[ $1 =~ v ]]
-		then see=1
-		fi
+		( *v* ) see=1
+		;;&
 
-		if [[ $1 =~ o ]]
-		then open="xdg-open"
-		fi
+		( *o* ) open="xdg-open"
+		;;&
 
-		if [[ $1 =~ d ]]
-		then 
+		( *d* )
 			if [[ $2 =~ ^[0-9]$ ]]
 			then farg=" -maxdepth $2 "
 				shift
 			else farg=" -maxdepth 1 "
 			fi
-		fi
+		;;&
+
+		( *V* ) out=
+		;;&
+		esac
+
 
 		shift
 		continue
@@ -63,23 +65,24 @@ do
 
 ### argument for find
 
-	dir="${1%/}"
-	if [ "$dir" == "" ]
-	then dir="./"
+	if [ "$1" ]
+	then dir="${1%/}"
+	else dir="."
 	fi
 
-	find "$dir" $farg -path '*/.*' -prune -o -printf "%P\n" |\
-		sed -r -e "s#^$dir##g" \
-			-e 's/"/%22/g' \
-			-e "s/.*($imgtype)$/<img src=\"&\" title=\"&\">/i" \
-			-e 's/^[^<].*[^>]$/<a href="&">&<\/a>/' |\
+	if [ "$out" ] 
+	then out=" >\"$dir/index.html\" "
+	fi
+
+	find "$dir" $farg -path '*/.*' -prune -o -print |\
+		sed -r -e "s/'/%27/g; s/.*($imgtype)$/<img src='&' title='&'>/i; s/^[^<].*[^>]$/<a href='&'>&<\\/a>/" |\
 		sort $sortarg |\
-		sed -e "1i$head" > "${dir}/index.html"
+		eval sed -e '"1i$head"' $out
 	
 	if [ $see ]
 	then less "$dir/index.html"
 	fi
-	
+
 	if [ $open ]
 	then xdg-open "$dir/index.html"
 	fi

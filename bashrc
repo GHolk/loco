@@ -16,13 +16,17 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias manen="man -L en"
 
+alias xm=xmms2
+
 # add current dictionary into PATH
 #PATH=".:$PATH"
 myweb="myweb.ncku.edu.tw/~c34031328"
 export LANGUAGE="zh_TW:zh_CN:en"
+export HISTTIMEFORMAT="%F %T "
 
 # npm path #
 export PATH="~/node_modules/.bin:$PATH"
+
 
 # too long option to remember. 
 function pdfopt {
@@ -62,7 +66,10 @@ function ee {
 
 	if [ "$1" ]
 	then echo "$1" | sed "$s" | xargs -0 echo -en
+	# this kind of code bash only. 
+	#then eval echo "$'$1'"
 	else sed "$s" | xargs -0 echo -en 
+	#else eval echo "$'$(sed \"$s\"
 	fi
 
 }

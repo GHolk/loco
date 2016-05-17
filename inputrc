@@ -1,0 +1,7 @@
+
+# 2016-05-17 
+# creat by c34031328@ncku.edu.tw
+
+# bind Control-w to smarter delete last word. 
+Control-w:"\e\C-h"
+#"\C-o":" | less\n"
