@@ -48,7 +48,9 @@ export LANGUAGE="zh_TW:zh_CN:en"
 export HISTTIMEFORMAT="%F %T "
 
 # npm path #
-export PATH="~/node_modules/.bin:$PATH"
+# these should inside .profile or .bash_profile
+#PATH="$HOME/node_modules/.bin:$PATH"
+#CDPATH="$HOME:$HOME/web/escape:$HOME/Documents"
 
 
 # too long option to remember. 
