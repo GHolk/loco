@@ -1,0 +1,13 @@
+
+keyword start "#"
+
+vardef KEYWORD = '\[(..*)\]\[\]'
+vardef KEYWORD = '\[..*\]\[(..*)\]'
+preproc = $KEYWORD
+
+string delim "<" ">"
+comment delim "`" "`"
+symbol = "*|**|***|`|/|-|+"
+keyword = '&[[:word:]];'
+
+

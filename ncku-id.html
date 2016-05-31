@@ -1,0 +1,925 @@
+
+<!DOCTYPE HTML>
+
+<html lang="zh-TW">
+
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="date" content="2016-05-22">
+<meta name="author" content="c34031328">
+
+<meta name="copyright" content="Common Creative">
+
+<meta name="generator" content="vim, markdown">
+
+<meta name="distribution" content="taiwan">
+
+<meta name="keywords" content="ncku, student id, verify, 學號, 成大, 成功大學, hack, man-pages, 驗證碼, ">
+
+<meta name="discription" content="解釋成功大學學號的意義">
+
+<link rel="next" type="text/html" href="cksh-id.md">
+<link rel="prev" type="text/html" href="tanet.md">
+
+<link rel="icon" type="image/png" href="icon.png">
+
+<link rel="stylesheet" type="text/css" href="//gholk.github.io/gholk/Documents/word.css">
+
+<title> 成功大學學號 </title>
+
+</head>
+<body>
+<main>
+
+
+<h1> 成功大學學號 </h1>
+
+<p>成功大學學號可以分成6大部份：（以下簡稱成大。）
+資料來源為 <a href="https://www.ptt.cc/bbs/NCKU_RehLab/M.1228973045.A.485.html" title="作者： guis (搖滾波斯貓)">PTT 一篇文章</a> ，
+作者為  <u>guis</u>  (搖滾波斯貓) 。 </p>
+
+<dl>
+<dt> 系所代號 </dt>
+
+<dd>  一個英文字母加上一個數字或兩個英文字母，
+參見 <a href="#department">系所代號</a> 。
+
+
+ </dd>
+
+<dt> 就讀部門 </dt>
+
+<dd><dl lang="en" class="inline">
+<dt> 4</dt> <dd>大學日間部 </dd>
+<dt> 5</dt> <dd>大學夜間部 </dd>
+<dt> 6</dt> <dd>碩士班 </dd>
+<dt> 7</dt> <dd>在職專班 </dd>
+<dt> 8</dt> <dd>博士班 </dd>
+</dl></dd>
+
+<dt> 入學年度 </dt>
+
+<dd>  第4,5碼為入學年度，年號為民國的學年。
+像104學年從104年9月開始，到105年6月結束。
+
+
+ </dd>
+
+<dt> 入學方式 </dt>
+
+<dd><p>第6碼為入學方式。
+看來有些已廢除，不知道未來會怎麼處理。 </p>
+
+<dl class="inline">
+<dt> 0</dt> <dd>體資生。 </dd>
+<dt> 1</dt> <dd>考試入學且系所不分班或甲班。 </dd>
+<dt> 2</dt> <dd>乙班。 </dd>
+<dt> 3</dt> <dd>丙班。 </dd>
+<dt> 4</dt> <dd>推甄入學。 </dd>
+<dt> 5</dt> <dd>僑生。 </dd>
+<dt> 6</dt> <dd>申請入學。 </dd>
+<dt> 7</dt> <dd>外籍生。 </dd>
+<dt> 8</dt> <dd>交換學生。 </dd>
+<dt> 9</dt> <dd>轉學生。 </dd>
+</dl></dd>
+
+<dt> 流水號 </dt>
+
+<dd>  第7,8碼是座號，也就是流水號。
+依照不同系所有不同的編排方式。
+參見 <a href="#serial">流水號</a>
+
+
+ </dd>
+
+<dt> 驗證碼 </dt>
+
+<dd>  第9碼用來驗證是不是有效的學號，
+和台灣的身份證字號同目的；
+原理見驗證碼一章。
+
+
+
+ </dd>
+</dl>
+
+<h2 id="department"> 系所編碼 </h2>
+
+<p>注意英文 <em>絕大多數情況下大寫</em>  。
+關於此一 <em>愚蠢的問題</em>  可以參閱 <a href="#case">大寫與小寫</a> 一節。
+從前第一碼英文是 <strong>學院代號</strong> ，
+但後來由於學院的分家，又沒有更新，就沒用了。
+以下表格來自成大校方 <a href="http://class-qry.acad.ncku.edu.tw/qry/index.php">課程查詢系統</a> 。 </p>
+
+<table>
+<caption>成大系所代號表格。</caption>
+
+<tr><th>其他
+<tr>    <td>A2  <td>體育室   <td>OPE
+<tr>    <td>A3  <td>軍訓室   <td>MT
+<tr>    <td>A4  <td>師培中心    <td>CTE
+<tr>    <td>A5  <td>計網中心    <td>CN
+<tr>    <td>A6  <td>服務學習    <td>SS
+<tr>    <td>AA  <td>共同英授
+<tr>    <td>AH  <td>華語中心    <td>CLC
+
+<tr><th>不分學院
+<tr>    <td>AN  <td>不分系學程 <td>CCEP
+<tr>    <td>C0  <td>科學班
+
+<tr><th>通識課程
+<tr>    <td>A1  <td>外國語言    <td>FLL
+<tr>    <td>A7  <td>基礎國文    <td>CL
+<tr>    <td>A9  <td>通識中心    <td>GE
+<tr>    <td>AG  <td>公民歷史
+
+<tr><th>文學院
+<tr>    <td>B1  <td>中文系   <td>CL
+<tr>    <td>K1  <td>中文所   <td>CL
+<tr>    <td>B2  <td>外文系   <td>FLL
+<tr>    <td>K2  <td>外文所   <td>FLL
+<tr>    <td>B3  <td>歷史系   <td>HIS
+<tr>    <td>K3  <td>歷史所   <td>HIS
+<tr>    <td>B5  <td>台文系   <td>TWL
+<tr>    <td>K5  <td>台文所   <td>TWL
+<tr>    <td>K4  <td>藝術所   <td>AS
+<tr>    <td>K7  <td>考古所   <td>Arxe
+
+<tr><th>理學院
+<tr>    <td>C1  <td>數學系   <td>MATH
+<tr>    <td>L1  <td>應數所   <td>MATH
+<tr>    <td>C2  <td>物理系   <td>PHYS
+<tr>    <td>L2  <td>物理所   <td>PHYS
+<tr>    <td>C3  <td>化學系   <td>CHEM
+<tr>    <td>L3  <td>化學所   <td>CHEM
+<tr>    <td>C4  <td>地科系   <td>EARS
+<tr>    <td>L4  <td>地科所   <td>EARS
+<tr>    <td>F8  <td>光電系   <td>DPS
+<tr>    <td>L7  <td>光電所   <td>DPS
+<tr>    <td>LA  <td>電漿所   <td>SAPS
+<tr>    <td>VF  <td>發光二極
+
+<tr><th>工學院
+<tr>    <td>E0  <td>工學院   <td>COE
+<tr>    <td>E1  <td>機械系   <td>ME
+<tr>    <td>N1  <td>機械所   <td>ME
+<tr>    <td>E3  <td>化工系   <td>CHE
+<tr>    <td>N3  <td>化工所   <td>CHE
+<tr>    <td>E4  <td>資源系   <td>RE
+<tr>    <td>N4  <td>資源所   <td>RE
+<tr>    <td>E5  <td>材料系   <td>MSE
+<tr>    <td>N5  <td>材料所   <td>MSE
+<tr>    <td>E6  <td>土木系   <td>CE
+<tr>    <td>N6  <td>土木所   <td>CE
+<tr>    <td>E8  <td>水利系   <td>HOE
+<tr>    <td>N8  <td>水利所   <td>HOE
+<tr>    <td>E9  <td>工科系   <td>ES
+<tr>    <td>N9  <td>工科所   <td>ES
+<tr>    <td>F0  <td>能源學程    <td>IBPE
+<tr>    <td>F1  <td>系統系   <td>SNME
+<tr>    <td>P1  <td>系統所   <td>SYS
+<tr>    <td>F4  <td>航太系   <td>AA
+<tr>    <td>P4  <td>航太所   <td>AA
+<tr>    <td>F5  <td>環工系   <td>EV
+<tr>    <td>P5  <td>環工所   <td>EV
+<tr>    <td>F6  <td>測量系   <td>GM
+<tr>    <td>P6  <td>測量所   <td>GM
+<tr>    <td>F9  <td>醫工系   <td>BME
+<tr>    <td>P8  <td>醫工所   <td>BME
+<tr>    <td>N0  <td>工程管理    <td>EM
+<tr>    <td>NA  <td>海事所   <td>OTMA
+<tr>    <td>NB  <td>尖端所   <td>icam
+<tr>    <td>NC  <td>自災所   <td>iNHM
+<tr>    <td>Q4  <td>民航所   <td>CA
+
+<tr><th>管理學院
+<tr>    <td>H1  <td>會計系   <td>ACC
+<tr>    <td>R1  <td>會計所   <td>ACC
+<tr>    <td>H2  <td>統計系   <td>STAT
+<tr>    <td>R2  <td>統計所   <td>STAT
+<tr>    <td>H3  <td>工資系   <td>IIM
+<tr>    <td>R3  <td>工資所   <td>IIM
+<tr>    <td>H4  <td>企管系   <td>BA
+<tr>    <td>R4  <td>企管所   <td>BA
+<tr>    <td>H5  <td>交管系   <td>TCM
+<tr>    <td>R5  <td>交管所   <td>TCM
+<tr>    <td>R0  <td>ＥＭＢＡ    <td>EMBA
+<tr>    <td>R6  <td>國企所   <td>IB
+<tr>    <td>R7  <td>資管所   <td>IM
+<tr>    <td>R8  <td>財金所   <td>FIN
+<tr>    <td>R9  <td>電管所   <td>TM
+<tr>    <td>RA  <td>IIMBA   <td>IMBA
+<tr>    <td>RB  <td>體健所   <td>PEHL
+<tr>    <td>RD  <td>AMBA    <td>AMBA
+<tr>    <td>RZ  <td>管理學院    <td>COM
+
+<tr><th>醫學院
+<tr>    <td>I2  <td>護理系   <td>NURS
+<tr>    <td>T2  <td>護理所   <td>NURS
+<tr>    <td>I3  <td>醫技系   <td>MLSB
+<tr>    <td>T3  <td>醫技所   <td>MLSB
+<tr>    <td>I5  <td>醫學系   <td>MED
+<tr>    <td>I6  <td>物治系   <td>PT
+<tr>    <td>T6  <td>物治所   <td>PT
+<tr>    <td>I7  <td>職治系   <td>OT
+<tr>    <td>T7  <td>職治所   <td>OT
+<tr>    <td>I8  <td>藥學系   <td>DOPA
+<tr>    <td>S0  <td>醫學院
+<tr>    <td>S1  <td>生化所   <td>BIMB
+<tr>    <td>S2  <td>藥理所   <td>PHAR
+<tr>    <td>S3  <td>生理所   <td>PHSL
+<tr>    <td>S4  <td>微免所   <td>MI
+<tr>    <td>S5  <td>基醫所   <td>BMS
+<tr>    <td>S6  <td>臨藥科技    <td>CPPS
+<tr>    <td>S7  <td>環醫所   <td>EOH
+<tr>    <td>S8  <td>行醫所   <td>BM
+<tr>    <td>S9  <td>臨醫所   <td>CM
+<tr>    <td>SA  <td>神經學程    <td>TIGP
+<tr>    <td>SB  <td>公衛在職    <td>MPH
+<tr>    <td>T1  <td>分醫所   <td>IMM
+<tr>    <td>T4  <td>口醫所   <td>IOM
+<tr>    <td>T8  <td>公衛所   <td>PH
+<tr>    <td>T9  <td>細胞所   <td>CBA
+<tr>    <td>TA  <td>健照所   <td>AHS
+<tr>    <td>TC  <td>老年所   <td>GERO
+
+<tr><th>社會科學院
+<tr>    <td>D2  <td>法律系   <td>LAW
+<tr>    <td>U2  <td>法律所   <td>LAW
+<tr>    <td>U6  <td>科法所   <td>LAWS
+<tr>    <td>D4  <td>政治系   <td>PS
+<tr>    <td>D5  <td>經濟系   <td>ECON
+<tr>    <td>U5  <td>經濟所   <td>ECON
+<tr>    <td>D8  <td>心理系   <td>PSY
+<tr>    <td>U7  <td>心理所   <td>CS
+<tr>    <td>U1  <td>政經所   <td>PE
+<tr>    <td>U3  <td>教育所   <td>EDU
+
+<tr><th>電機資訊學院
+<tr>    <td>E2  <td>電機系   <td>EE
+<tr>    <td>N2  <td>電機所   <td>EE
+<tr>    <td>F7  <td>資訊系   <td>CSIE
+<tr>    <td>P7  <td>資訊所   <td>CSIE
+<tr>    <td>ND  <td>多媒學程
+<tr>    <td>P9  <td>製造所   <td>IMIS
+<tr>    <td>Q1  <td>微電所   <td>IME
+<tr>    <td>Q3  <td>電通所   <td>CCE
+<tr>    <td>Q5  <td>醫資所   <td>IMI
+<tr>    <td>Q6  <td>南科專
+<tr>    <td>Q7  <td>奈積學程    <td>NICE
+<tr>    <td>V6  <td>電力產專    <td>MPPE
+<tr>    <td>V8  <td>微波材料
+<tr>    <td>V9  <td>電子材料
+<tr>    <td>VA  <td>電機產業
+<tr>    <td>VB  <td>光材產專
+<tr>    <td>VC  <td>光產產專
+<tr>    <td>VD  <td>微波元件
+<tr>    <td>VE  <td>電子產專    <td>MPPE
+<tr>    <td>VG  <td>靜電保護
+<tr>    <td>VH  <td>磁性材料
+<tr>    <td>VJ  <td>電子材料　
+<tr>    <td>VK  <td>電機驅動
+<tr>    <td>VL  <td>微波電子
+
+<tr><th>規劃與設計學院
+<tr>    <td>E7  <td>建築系   <td>ARCH
+<tr>    <td>N7  <td>建築所   <td>ARCH
+<tr>    <td>F2  <td>都計系   <td>UP
+<tr>    <td>P2  <td>都計所   <td>UP
+<tr>    <td>F3  <td>工設系   <td>ID
+<tr>    <td>P3  <td>工設所   <td>ID
+<tr>    <td>PA  <td>創意所   <td>ICID
+<tr>    <td>PB  <td>科藝學程    <td>TART
+
+<tr><th>生物科學與科技學院
+<tr>    <td>C5  <td>生科系   <td>LS
+<tr>    <td>L5  <td>生命所   <td>LS
+<tr>    <td>C6  <td>生技系   <td>BBS
+<tr>    <td>L6  <td>生科所   <td>BIOT
+<tr>    <td>Z0  <td>生科學院    <td>BB
+<tr>    <td>Z2  <td>生訊所   <td>BIOI
+<tr>    <td>Z3  <td>熱植所   <td>TPS
+</table>
+
+<h2 id="serial"> 流水號 </h2>
+
+<p>第7、8碼是座號，各系有不同的排法。
+以下照抄 <a href="https://www.ptt.cc/bbs/NCKU_RehLab/M.1228973045.A.485.html" title="作者： guis (搖滾波斯貓)">PTT 的文章</a> 。 </p>
+
+<p>大學部指考入學是按照准考證號碼順序，
+但是有些系是依照 <em>聯考成績</em>  排序或是用 <em>地區</em>  排序。
+(地區應該跟准考證號碼有關。) </p>
+
+<p>大學部推甄、申請，研究所推甄則是按照正取排名；
+備取生看遞補哪個正取的就用那個學號。 </p>
+
+<p>研究所考試則看各系而定。
+若分組則是只有甲組是照排名順序,乙組排甲組後面....blabla。
+若沒分組就是跟推甄一樣照排名。
+備取則是看備哪一個正取生(所以備取生的學號與排名無關)。 </p>
+
+<h2 id="verify"> 驗證碼 </h2>
+
+<p>一個學生證是不是有效的，可以靠計算得知。
+驗證的方式為將最後一位數字 &times;1 ，
+最後第二位 &times;2 ……，以此類推。
+全部加起來應該要能被十整除。
+此即驗證碼的功能；讓學號相加結果為 0 。
+如果是英文字母，則應參照下表轉成數字再作運算。
+如果是二個英文字母，
+應對應二字母的表格轉換，不必再乘位數。 </p>
+
+<ul>
+<li> <code class="math">C34031328 = <mark>2&times;9</mark> +
+3&times;8 + 4&times;7 + 0&times;6 + 
+3&times;5 + 1&times;4 + 3&times;3 + 2&times;2 +
+8&times;1 = 110</code> </li>
+<li> <code class="math">VL6021023 = <mark>7</mark> + 6&times;7 + 
+0&times;6 + 2&times;5 + 1&times;4 + 0&times;3 + 
+2&times;2 + 3&times;1 = 70</code> </li>
+</ul>
+
+<table>
+<caption>單字母、數字對照表。</caption>
+<tr><th>字母  <th>數字     
+<tr><td>A     <td>0        
+<tr><td>B     <td>1        
+<tr><td>C     <td>2        
+<tr><td>D     <td>3        
+<tr><td>E     <td>4        
+<tr><td>F     <td>4        
+<tr><td>H     <td>6        
+<tr><td>I     <td>7        
+<tr><td>J     <td>8        
+<tr><td>K     <td>9        
+<tr><td>L     <td>0    
+<tr><td>N     <td>2    
+<tr><td>P     <td>3    
+<tr><td>Q     <td>4    
+<tr><td>R     <td>5    
+<tr><td>S     <td>6    
+<tr><td>T     <td>7    
+<tr><td>U     <td>8    
+<tr><td>V     <td>9    
+<tr><td>Z     <td>2    
+</table>
+
+<table>
+<caption>雙字母、數字對照表。</caption>
+<tr><th>雙字母  <th>數字  
+<tr><td>AN      <td>2     
+<tr><td>LA      <td>8     
+<tr><td>NA      <td>6     
+<tr><td>NB      <td>4     
+<tr><td>NC      <td>2     
+<tr><td>ND      <td>0     
+<tr><td>PA      <td>5     
+<tr><td>PB      <td>3     
+<tr><td>RA      <td>3     
+<tr><td>RB      <td>1     
+<tr><td>SA      <td>2     
+<tr><td>SB      <td>0     
+<tr><td>TA      <td>1
+<tr><td>TB      <td>9
+<tr><td>TC      <td>7
+<tr><td>VC      <td>5
+<tr><td>VD      <td>3
+<tr><td>VE      <td>1
+<tr><td>VF      <td>9
+<tr><td>VG      <td>7
+<tr><td>VH      <td>5
+<tr><td>VJ      <td>1
+<tr><td>VK      <td>9
+<tr><td>VL      <td>7
+</table>
+
+<p>其中有些雙字母有缺，
+且我也無法歸納出雙字母的規律。
+此驗證碼表格及驗證方式為作者自行自全校學號中歸納出，
+不代表校方，亦不為正確性負任何責任。 </p>
+
+<h2 id="account"> e-mail 與 myweb 個人網站 </h2>
+
+<p>成大的學號被使用在e-mail和個人網站上。
+成大學生會分配到一個e-mail信箱：
+ <code>學號@mail.ncku.edu.tw</code> 。個人網站網址是
+ <code>http://myweb.ncku.edu.tw/~學號/</code> 。
+<em>注意，此時學號第一個英文字母皆為小寫。</em>  </p>
+
+<h3> e-mail </h3>
+
+<p>e-mail 可以用 client 端軟體訪問，
+像  <a href="http://zh.wikipedia.org/wiki/mutt">mutt</a>  、  <a href="http://zh.wikipedia.org/wiki/Mozilla_Thunderbird">Thunderbird</a>  
+或  <a href="http://zh.wikipedia.org/wiki/Micorsoft_Outlook">Micorsoft Outlook</a>  。
+也有提供web介面，網址是：
+<a href="http://mail.ncku.edu.tw/">http://mail.ncku.edu.tw/</a> 。
+帳號是學號，密碼是預設的密碼。 </p>
+
+<h3> myweb </h3>
+
+<p>myweb 是成大的個人網頁空間，可以用 ftp 連進去管理。
+<a href="ftp://myweb.ncku.edu.tw">ftp://myweb.ncku.edu.tw</a> ；帳號為學號，密碼是預設的密碼。
+<a href="http://myweb.ncku.edu.tw">http://myweb.ncku.edu.tw</a> 有一些教學。 </p>
+
+<h2 id="password"> 密碼 </h2>
+
+<p>很多情況下一些服務的帳號是直接用學號，而有帳號就一定有密碼。
+預設的密碼是 <code>身份證字號末4碼 出生月日</code> 。
+像是 <code>A123456789</code> 在<code>1999-09-09</code> 出生，那密碼就是 <code>67890909</code> 。 </p>
+
+<h2 id="case"> 大小寫問題 </h2>
+
+<p>為什麼學號要採用大寫呢？而 e-mail 和個人網頁又是小寫？
+我想就就和身份證字號要用大寫一樣，
+而 e-mail 和個人網頁都是架在計中server上的服務；
+也就是是用  <a href="http://zh.wikipedia.org/wiki/BSD">BSD</a>  或其它  <a href="http://zh.wikipedia.org/wiki/類unix系統">UN*X</a>  跑的服務。
+在 unix 中習慣以小寫字母命名；且大小寫在 unix 中是不同的。
+（和 windows 不同。）所以我猜計中才會以小寫命名。 </p>
+
+<h2 id="modify"> 學號的異動 </h2>
+
+<h3> 畢業 </h3>
+
+<p>畢業後 e-mail 會被保留一段時間，
+然後刪除。網頁空間應該相同。
+ <a href="http://cc.ncku.edu.tw/files/15-1255-119460,c3357-1.php">計中表示</a> ：
+第1學期畢業者(即8月~隔年1月)隔年8月1日停用，
+第2學期畢業者(即2月~7月)隔年2月1日停用。 </p>
+
+<p>如果畢業後繼續唸研究所， <a href="https://www.ptt.cc/bbs/NCKU_ME98C/M.1251710107.A.571.html">學號末碼會被拿掉作為新的學號</a> ？
+（也就是不能驗證了。） </p>
+
+<h3> 轉系 </h3>
+
+<p>如果轉系，學號中的系所代不會改，還是入學時的系所代碼。
+而轉校中轉入成大則是取得轉入系所的代碼；轉出不確定。 </p>
+
+</main>
+
+
+<pre class="markdown">
+
+# 成功大學學號 #
+
+成功大學學號可以分成6大部份：（以下簡稱成大。）
+資料來源為 [PTT 一篇文章][ncku_id_ptt] ，
+作者為 _guis_ (搖滾波斯貓) 。
+
+[ncku_id_ptt]: https://www.ptt.cc/bbs/NCKU_RehLab/M.1228973045.A.485.html &quot;作者： guis (搖滾波斯貓)&quot;
+
+系所代號
+:	一個英文字母加上一個數字或兩個英文字母，
+	參見 [系所代號](#department) 。
+
+
+就讀部門
+:
+	 - 4: 大學日間部
+	 - 5: 大學夜間部
+	 - 6: 碩士班
+	 - 7: 在職專班
+	 - 8: 博士班
+
+
+入學年度
+:	第4,5碼為入學年度，年號為民國的學年。
+	像104學年從104年9月開始，到105年6月結束。
+
+
+入學方式
+:
+
+	第6碼為入學方式。
+	看來有些已廢除，不知道未來會怎麼處理。
+
+	 - 0：體資生。
+	 - 1：考試入學且系所不分班或甲班。
+	 - 2：乙班。
+	 - 3：丙班。
+	 - 4：推甄入學。
+	 - 5：僑生。
+	 - 6：申請入學。
+	 - 7：外籍生。
+	 - 8：交換學生。
+	 - 9：轉學生。
+
+流水號
+:	第7,8碼是座號，也就是流水號。
+	依照不同系所有不同的編排方式。
+	參見 [流水號](#serial)
+
+
+驗證碼
+:	第9碼用來驗證是不是有效的學號，
+	和台灣的身份證字號同目的；
+	原理見驗證碼一章。
+
+
+
+## 系所編碼 %department% ##
+
+注意英文 *絕大多數情況下大寫* 。
+關於此一 *愚蠢的問題* 可以參閱 [大寫與小寫](#case) 一節。
+從前第一碼英文是 **學院代號** ，
+但後來由於學院的分家，又沒有更新，就沒用了。
+以下表格來自成大校方 [課程查詢系統]
+(http://class-qry.acad.ncku.edu.tw/qry/index.php) 。
+
+
+&lt;table&gt;
+&lt;caption&gt;成大系所代號表格。&lt;/caption&gt;
+
+&lt;tr&gt;&lt;th&gt;其他
+&lt;tr&gt;	&lt;td&gt;A2	&lt;td&gt;體育室	&lt;td&gt;OPE
+&lt;tr&gt;	&lt;td&gt;A3	&lt;td&gt;軍訓室	&lt;td&gt;MT
+&lt;tr&gt;	&lt;td&gt;A4	&lt;td&gt;師培中心	&lt;td&gt;CTE
+&lt;tr&gt;	&lt;td&gt;A5	&lt;td&gt;計網中心	&lt;td&gt;CN
+&lt;tr&gt;	&lt;td&gt;A6	&lt;td&gt;服務學習	&lt;td&gt;SS
+&lt;tr&gt;	&lt;td&gt;AA	&lt;td&gt;共同英授
+&lt;tr&gt;	&lt;td&gt;AH	&lt;td&gt;華語中心	&lt;td&gt;CLC
+
+&lt;tr&gt;&lt;th&gt;不分學院
+&lt;tr&gt;	&lt;td&gt;AN	&lt;td&gt;不分系學程	&lt;td&gt;CCEP
+&lt;tr&gt;	&lt;td&gt;C0	&lt;td&gt;科學班
+
+&lt;tr&gt;&lt;th&gt;通識課程
+&lt;tr&gt;	&lt;td&gt;A1	&lt;td&gt;外國語言	&lt;td&gt;FLL
+&lt;tr&gt;	&lt;td&gt;A7	&lt;td&gt;基礎國文	&lt;td&gt;CL
+&lt;tr&gt;	&lt;td&gt;A9	&lt;td&gt;通識中心	&lt;td&gt;GE
+&lt;tr&gt;	&lt;td&gt;AG	&lt;td&gt;公民歷史
+
+&lt;tr&gt;&lt;th&gt;文學院
+&lt;tr&gt;	&lt;td&gt;B1	&lt;td&gt;中文系	&lt;td&gt;CL
+&lt;tr&gt;	&lt;td&gt;K1	&lt;td&gt;中文所	&lt;td&gt;CL
+&lt;tr&gt;	&lt;td&gt;B2	&lt;td&gt;外文系	&lt;td&gt;FLL
+&lt;tr&gt;	&lt;td&gt;K2	&lt;td&gt;外文所	&lt;td&gt;FLL
+&lt;tr&gt;	&lt;td&gt;B3	&lt;td&gt;歷史系	&lt;td&gt;HIS
+&lt;tr&gt;	&lt;td&gt;K3	&lt;td&gt;歷史所	&lt;td&gt;HIS
+&lt;tr&gt;	&lt;td&gt;B5	&lt;td&gt;台文系	&lt;td&gt;TWL
+&lt;tr&gt;	&lt;td&gt;K5	&lt;td&gt;台文所	&lt;td&gt;TWL
+&lt;tr&gt;	&lt;td&gt;K4	&lt;td&gt;藝術所	&lt;td&gt;AS
+&lt;tr&gt;	&lt;td&gt;K7	&lt;td&gt;考古所	&lt;td&gt;Arxe
+
+&lt;tr&gt;&lt;th&gt;理學院
+&lt;tr&gt;	&lt;td&gt;C1	&lt;td&gt;數學系	&lt;td&gt;MATH
+&lt;tr&gt;	&lt;td&gt;L1	&lt;td&gt;應數所	&lt;td&gt;MATH
+&lt;tr&gt;	&lt;td&gt;C2	&lt;td&gt;物理系	&lt;td&gt;PHYS
+&lt;tr&gt;	&lt;td&gt;L2	&lt;td&gt;物理所	&lt;td&gt;PHYS
+&lt;tr&gt;	&lt;td&gt;C3	&lt;td&gt;化學系	&lt;td&gt;CHEM
+&lt;tr&gt;	&lt;td&gt;L3	&lt;td&gt;化學所	&lt;td&gt;CHEM
+&lt;tr&gt;	&lt;td&gt;C4	&lt;td&gt;地科系	&lt;td&gt;EARS
+&lt;tr&gt;	&lt;td&gt;L4	&lt;td&gt;地科所	&lt;td&gt;EARS
+&lt;tr&gt;	&lt;td&gt;F8	&lt;td&gt;光電系	&lt;td&gt;DPS
+&lt;tr&gt;	&lt;td&gt;L7	&lt;td&gt;光電所	&lt;td&gt;DPS
+&lt;tr&gt;	&lt;td&gt;LA	&lt;td&gt;電漿所	&lt;td&gt;SAPS
+&lt;tr&gt;	&lt;td&gt;VF	&lt;td&gt;發光二極
+
+&lt;tr&gt;&lt;th&gt;工學院
+&lt;tr&gt;	&lt;td&gt;E0	&lt;td&gt;工學院	&lt;td&gt;COE
+&lt;tr&gt;	&lt;td&gt;E1	&lt;td&gt;機械系	&lt;td&gt;ME
+&lt;tr&gt;	&lt;td&gt;N1	&lt;td&gt;機械所	&lt;td&gt;ME
+&lt;tr&gt;	&lt;td&gt;E3	&lt;td&gt;化工系	&lt;td&gt;CHE
+&lt;tr&gt;	&lt;td&gt;N3	&lt;td&gt;化工所	&lt;td&gt;CHE
+&lt;tr&gt;	&lt;td&gt;E4	&lt;td&gt;資源系	&lt;td&gt;RE
+&lt;tr&gt;	&lt;td&gt;N4	&lt;td&gt;資源所	&lt;td&gt;RE
+&lt;tr&gt;	&lt;td&gt;E5	&lt;td&gt;材料系	&lt;td&gt;MSE
+&lt;tr&gt;	&lt;td&gt;N5	&lt;td&gt;材料所	&lt;td&gt;MSE
+&lt;tr&gt;	&lt;td&gt;E6	&lt;td&gt;土木系	&lt;td&gt;CE
+&lt;tr&gt;	&lt;td&gt;N6	&lt;td&gt;土木所	&lt;td&gt;CE
+&lt;tr&gt;	&lt;td&gt;E8	&lt;td&gt;水利系	&lt;td&gt;HOE
+&lt;tr&gt;	&lt;td&gt;N8	&lt;td&gt;水利所	&lt;td&gt;HOE
+&lt;tr&gt;	&lt;td&gt;E9	&lt;td&gt;工科系	&lt;td&gt;ES
+&lt;tr&gt;	&lt;td&gt;N9	&lt;td&gt;工科所	&lt;td&gt;ES
+&lt;tr&gt;	&lt;td&gt;F0	&lt;td&gt;能源學程	&lt;td&gt;IBPE
+&lt;tr&gt;	&lt;td&gt;F1	&lt;td&gt;系統系	&lt;td&gt;SNME
+&lt;tr&gt;	&lt;td&gt;P1	&lt;td&gt;系統所	&lt;td&gt;SYS
+&lt;tr&gt;	&lt;td&gt;F4	&lt;td&gt;航太系	&lt;td&gt;AA
+&lt;tr&gt;	&lt;td&gt;P4	&lt;td&gt;航太所	&lt;td&gt;AA
+&lt;tr&gt;	&lt;td&gt;F5	&lt;td&gt;環工系	&lt;td&gt;EV
+&lt;tr&gt;	&lt;td&gt;P5	&lt;td&gt;環工所	&lt;td&gt;EV
+&lt;tr&gt;	&lt;td&gt;F6	&lt;td&gt;測量系	&lt;td&gt;GM
+&lt;tr&gt;	&lt;td&gt;P6	&lt;td&gt;測量所	&lt;td&gt;GM
+&lt;tr&gt;	&lt;td&gt;F9	&lt;td&gt;醫工系	&lt;td&gt;BME
+&lt;tr&gt;	&lt;td&gt;P8	&lt;td&gt;醫工所	&lt;td&gt;BME
+&lt;tr&gt;	&lt;td&gt;N0	&lt;td&gt;工程管理	&lt;td&gt;EM
+&lt;tr&gt;	&lt;td&gt;NA	&lt;td&gt;海事所	&lt;td&gt;OTMA
+&lt;tr&gt;	&lt;td&gt;NB	&lt;td&gt;尖端所	&lt;td&gt;icam
+&lt;tr&gt;	&lt;td&gt;NC	&lt;td&gt;自災所	&lt;td&gt;iNHM
+&lt;tr&gt;	&lt;td&gt;Q4	&lt;td&gt;民航所	&lt;td&gt;CA
+
+&lt;tr&gt;&lt;th&gt;管理學院
+&lt;tr&gt;	&lt;td&gt;H1	&lt;td&gt;會計系	&lt;td&gt;ACC
+&lt;tr&gt;	&lt;td&gt;R1	&lt;td&gt;會計所	&lt;td&gt;ACC
+&lt;tr&gt;	&lt;td&gt;H2	&lt;td&gt;統計系	&lt;td&gt;STAT
+&lt;tr&gt;	&lt;td&gt;R2	&lt;td&gt;統計所	&lt;td&gt;STAT
+&lt;tr&gt;	&lt;td&gt;H3	&lt;td&gt;工資系	&lt;td&gt;IIM
+&lt;tr&gt;	&lt;td&gt;R3	&lt;td&gt;工資所	&lt;td&gt;IIM
+&lt;tr&gt;	&lt;td&gt;H4	&lt;td&gt;企管系	&lt;td&gt;BA
+&lt;tr&gt;	&lt;td&gt;R4	&lt;td&gt;企管所	&lt;td&gt;BA
+&lt;tr&gt;	&lt;td&gt;H5	&lt;td&gt;交管系	&lt;td&gt;TCM
+&lt;tr&gt;	&lt;td&gt;R5	&lt;td&gt;交管所	&lt;td&gt;TCM
+&lt;tr&gt;	&lt;td&gt;R0	&lt;td&gt;ＥＭＢＡ	&lt;td&gt;EMBA
+&lt;tr&gt;	&lt;td&gt;R6	&lt;td&gt;國企所	&lt;td&gt;IB
+&lt;tr&gt;	&lt;td&gt;R7	&lt;td&gt;資管所	&lt;td&gt;IM
+&lt;tr&gt;	&lt;td&gt;R8	&lt;td&gt;財金所	&lt;td&gt;FIN
+&lt;tr&gt;	&lt;td&gt;R9	&lt;td&gt;電管所	&lt;td&gt;TM
+&lt;tr&gt;	&lt;td&gt;RA	&lt;td&gt;IIMBA	&lt;td&gt;IMBA
+&lt;tr&gt;	&lt;td&gt;RB	&lt;td&gt;體健所	&lt;td&gt;PEHL
+&lt;tr&gt;	&lt;td&gt;RD	&lt;td&gt;AMBA	&lt;td&gt;AMBA
+&lt;tr&gt;	&lt;td&gt;RZ	&lt;td&gt;管理學院	&lt;td&gt;COM
+
+&lt;tr&gt;&lt;th&gt;醫學院
+&lt;tr&gt;	&lt;td&gt;I2	&lt;td&gt;護理系	&lt;td&gt;NURS
+&lt;tr&gt;	&lt;td&gt;T2	&lt;td&gt;護理所	&lt;td&gt;NURS
+&lt;tr&gt;	&lt;td&gt;I3	&lt;td&gt;醫技系	&lt;td&gt;MLSB
+&lt;tr&gt;	&lt;td&gt;T3	&lt;td&gt;醫技所	&lt;td&gt;MLSB
+&lt;tr&gt;	&lt;td&gt;I5	&lt;td&gt;醫學系	&lt;td&gt;MED
+&lt;tr&gt;	&lt;td&gt;I6	&lt;td&gt;物治系	&lt;td&gt;PT
+&lt;tr&gt;	&lt;td&gt;T6	&lt;td&gt;物治所	&lt;td&gt;PT
+&lt;tr&gt;	&lt;td&gt;I7	&lt;td&gt;職治系	&lt;td&gt;OT
+&lt;tr&gt;	&lt;td&gt;T7	&lt;td&gt;職治所	&lt;td&gt;OT
+&lt;tr&gt;	&lt;td&gt;I8	&lt;td&gt;藥學系	&lt;td&gt;DOPA
+&lt;tr&gt;	&lt;td&gt;S0	&lt;td&gt;醫學院
+&lt;tr&gt;	&lt;td&gt;S1	&lt;td&gt;生化所	&lt;td&gt;BIMB
+&lt;tr&gt;	&lt;td&gt;S2	&lt;td&gt;藥理所	&lt;td&gt;PHAR
+&lt;tr&gt;	&lt;td&gt;S3	&lt;td&gt;生理所	&lt;td&gt;PHSL
+&lt;tr&gt;	&lt;td&gt;S4	&lt;td&gt;微免所	&lt;td&gt;MI
+&lt;tr&gt;	&lt;td&gt;S5	&lt;td&gt;基醫所	&lt;td&gt;BMS
+&lt;tr&gt;	&lt;td&gt;S6	&lt;td&gt;臨藥科技	&lt;td&gt;CPPS
+&lt;tr&gt;	&lt;td&gt;S7	&lt;td&gt;環醫所	&lt;td&gt;EOH
+&lt;tr&gt;	&lt;td&gt;S8	&lt;td&gt;行醫所	&lt;td&gt;BM
+&lt;tr&gt;	&lt;td&gt;S9	&lt;td&gt;臨醫所	&lt;td&gt;CM
+&lt;tr&gt;	&lt;td&gt;SA	&lt;td&gt;神經學程	&lt;td&gt;TIGP
+&lt;tr&gt;	&lt;td&gt;SB	&lt;td&gt;公衛在職	&lt;td&gt;MPH
+&lt;tr&gt;	&lt;td&gt;T1	&lt;td&gt;分醫所	&lt;td&gt;IMM
+&lt;tr&gt;	&lt;td&gt;T4	&lt;td&gt;口醫所	&lt;td&gt;IOM
+&lt;tr&gt;	&lt;td&gt;T8	&lt;td&gt;公衛所	&lt;td&gt;PH
+&lt;tr&gt;	&lt;td&gt;T9	&lt;td&gt;細胞所	&lt;td&gt;CBA
+&lt;tr&gt;	&lt;td&gt;TA	&lt;td&gt;健照所	&lt;td&gt;AHS
+&lt;tr&gt;	&lt;td&gt;TC	&lt;td&gt;老年所	&lt;td&gt;GERO
+
+&lt;tr&gt;&lt;th&gt;社會科學院
+&lt;tr&gt;	&lt;td&gt;D2	&lt;td&gt;法律系	&lt;td&gt;LAW
+&lt;tr&gt;	&lt;td&gt;U2	&lt;td&gt;法律所	&lt;td&gt;LAW
+&lt;tr&gt;	&lt;td&gt;U6	&lt;td&gt;科法所	&lt;td&gt;LAWS
+&lt;tr&gt;	&lt;td&gt;D4	&lt;td&gt;政治系	&lt;td&gt;PS
+&lt;tr&gt;	&lt;td&gt;D5	&lt;td&gt;經濟系	&lt;td&gt;ECON
+&lt;tr&gt;	&lt;td&gt;U5	&lt;td&gt;經濟所	&lt;td&gt;ECON
+&lt;tr&gt;	&lt;td&gt;D8	&lt;td&gt;心理系	&lt;td&gt;PSY
+&lt;tr&gt;	&lt;td&gt;U7	&lt;td&gt;心理所	&lt;td&gt;CS
+&lt;tr&gt;	&lt;td&gt;U1	&lt;td&gt;政經所	&lt;td&gt;PE
+&lt;tr&gt;	&lt;td&gt;U3	&lt;td&gt;教育所	&lt;td&gt;EDU
+
+&lt;tr&gt;&lt;th&gt;電機資訊學院
+&lt;tr&gt;	&lt;td&gt;E2	&lt;td&gt;電機系	&lt;td&gt;EE
+&lt;tr&gt;	&lt;td&gt;N2	&lt;td&gt;電機所	&lt;td&gt;EE
+&lt;tr&gt;	&lt;td&gt;F7	&lt;td&gt;資訊系	&lt;td&gt;CSIE
+&lt;tr&gt;	&lt;td&gt;P7	&lt;td&gt;資訊所	&lt;td&gt;CSIE
+&lt;tr&gt;	&lt;td&gt;ND	&lt;td&gt;多媒學程
+&lt;tr&gt;	&lt;td&gt;P9	&lt;td&gt;製造所	&lt;td&gt;IMIS
+&lt;tr&gt;	&lt;td&gt;Q1	&lt;td&gt;微電所	&lt;td&gt;IME
+&lt;tr&gt;	&lt;td&gt;Q3	&lt;td&gt;電通所	&lt;td&gt;CCE
+&lt;tr&gt;	&lt;td&gt;Q5	&lt;td&gt;醫資所	&lt;td&gt;IMI
+&lt;tr&gt;	&lt;td&gt;Q6	&lt;td&gt;南科專
+&lt;tr&gt;	&lt;td&gt;Q7	&lt;td&gt;奈積學程	&lt;td&gt;NICE
+&lt;tr&gt;	&lt;td&gt;V6	&lt;td&gt;電力產專	&lt;td&gt;MPPE
+&lt;tr&gt;	&lt;td&gt;V8	&lt;td&gt;微波材料
+&lt;tr&gt;	&lt;td&gt;V9	&lt;td&gt;電子材料
+&lt;tr&gt;	&lt;td&gt;VA	&lt;td&gt;電機產業
+&lt;tr&gt;	&lt;td&gt;VB	&lt;td&gt;光材產專
+&lt;tr&gt;	&lt;td&gt;VC	&lt;td&gt;光產產專
+&lt;tr&gt;	&lt;td&gt;VD	&lt;td&gt;微波元件
+&lt;tr&gt;	&lt;td&gt;VE	&lt;td&gt;電子產專	&lt;td&gt;MPPE
+&lt;tr&gt;	&lt;td&gt;VG	&lt;td&gt;靜電保護
+&lt;tr&gt;	&lt;td&gt;VH	&lt;td&gt;磁性材料
+&lt;tr&gt;	&lt;td&gt;VJ	&lt;td&gt;電子材料　
+&lt;tr&gt;	&lt;td&gt;VK	&lt;td&gt;電機驅動
+&lt;tr&gt;	&lt;td&gt;VL	&lt;td&gt;微波電子
+
+&lt;tr&gt;&lt;th&gt;規劃與設計學院
+&lt;tr&gt;	&lt;td&gt;E7	&lt;td&gt;建築系	&lt;td&gt;ARCH
+&lt;tr&gt;	&lt;td&gt;N7	&lt;td&gt;建築所	&lt;td&gt;ARCH
+&lt;tr&gt;	&lt;td&gt;F2	&lt;td&gt;都計系	&lt;td&gt;UP
+&lt;tr&gt;	&lt;td&gt;P2	&lt;td&gt;都計所	&lt;td&gt;UP
+&lt;tr&gt;	&lt;td&gt;F3	&lt;td&gt;工設系	&lt;td&gt;ID
+&lt;tr&gt;	&lt;td&gt;P3	&lt;td&gt;工設所	&lt;td&gt;ID
+&lt;tr&gt;	&lt;td&gt;PA	&lt;td&gt;創意所	&lt;td&gt;ICID
+&lt;tr&gt;	&lt;td&gt;PB	&lt;td&gt;科藝學程	&lt;td&gt;TART
+
+&lt;tr&gt;&lt;th&gt;生物科學與科技學院
+&lt;tr&gt;	&lt;td&gt;C5	&lt;td&gt;生科系	&lt;td&gt;LS
+&lt;tr&gt;	&lt;td&gt;L5	&lt;td&gt;生命所	&lt;td&gt;LS
+&lt;tr&gt;	&lt;td&gt;C6	&lt;td&gt;生技系	&lt;td&gt;BBS
+&lt;tr&gt;	&lt;td&gt;L6	&lt;td&gt;生科所	&lt;td&gt;BIOT
+&lt;tr&gt;	&lt;td&gt;Z0	&lt;td&gt;生科學院	&lt;td&gt;BB
+&lt;tr&gt;	&lt;td&gt;Z2	&lt;td&gt;生訊所	&lt;td&gt;BIOI
+&lt;tr&gt;	&lt;td&gt;Z3	&lt;td&gt;熱植所	&lt;td&gt;TPS
+&lt;/table&gt;
+
+
+## 流水號 %serial% ##
+
+第7、8碼是座號，各系有不同的排法。
+以下照抄 [PTT 的文章][ncku_id_ptt] 。
+
+大學部指考入學是按照准考證號碼順序，
+但是有些系是依照 *聯考成績* 排序或是用 *地區* 排序。
+(地區應該跟准考證號碼有關。)
+
+大學部推甄、申請，研究所推甄則是按照正取排名；
+備取生看遞補哪個正取的就用那個學號。
+
+研究所考試則看各系而定。
+若分組則是只有甲組是照排名順序,乙組排甲組後面....blabla。
+若沒分組就是跟推甄一樣照排名。
+備取則是看備哪一個正取生(所以備取生的學號與排名無關)。
+
+
+## 驗證碼 %verify% ##
+
+一個學生證是不是有效的，可以靠計算得知。
+驗證的方式為將最後一位數字 &amp;times;1 ，
+最後第二位 &amp;times;2 ……，以此類推。
+全部加起來應該要能被十整除。
+此即驗證碼的功能；讓學號相加結果為 0 。
+如果是英文字母，則應參照下表轉成數字再作運算。
+如果是二個英文字母，
+應對應二字母的表格轉換，不必再乘位數。
+
+ - $`C34031328 = &lt;mark&gt;2&amp;times;9&lt;/mark&gt; +
+   3&amp;times;8 + 4&amp;times;7 + 0&amp;times;6 + 
+   3&amp;times;5 + 1&amp;times;4 + 3&amp;times;3 + 2&amp;times;2 +
+   8&amp;times;1 = 110`
+ - $`VL6021023 = &lt;mark&gt;7&lt;/mark&gt; + 6&amp;times;7 + 
+    0&amp;times;6 + 2&amp;times;5 + 1&amp;times;4 + 0&amp;times;3 + 
+    2&amp;times;2 + 3&amp;times;1 = 70`
+
+&lt;table&gt;
+&lt;caption&gt;雙字母、數字對照表。&lt;/caption&gt;
+&lt;tr&gt;&lt;th&gt;字母  &lt;th&gt;數字     
+&lt;tr&gt;&lt;td&gt;A     &lt;td&gt;0        
+&lt;tr&gt;&lt;td&gt;B     &lt;td&gt;1        
+&lt;tr&gt;&lt;td&gt;C     &lt;td&gt;2        
+&lt;tr&gt;&lt;td&gt;D     &lt;td&gt;3        
+&lt;tr&gt;&lt;td&gt;E     &lt;td&gt;4        
+&lt;tr&gt;&lt;td&gt;F     &lt;td&gt;4        
+&lt;tr&gt;&lt;td&gt;H     &lt;td&gt;6        
+&lt;tr&gt;&lt;td&gt;I     &lt;td&gt;7        
+&lt;tr&gt;&lt;td&gt;J     &lt;td&gt;8        
+&lt;tr&gt;&lt;td&gt;K     &lt;td&gt;9        
+&lt;tr&gt;&lt;td&gt;L     &lt;td&gt;0    
+&lt;tr&gt;&lt;td&gt;N     &lt;td&gt;2    
+&lt;tr&gt;&lt;td&gt;P     &lt;td&gt;3    
+&lt;tr&gt;&lt;td&gt;Q     &lt;td&gt;4    
+&lt;tr&gt;&lt;td&gt;R     &lt;td&gt;5    
+&lt;tr&gt;&lt;td&gt;S     &lt;td&gt;6    
+&lt;tr&gt;&lt;td&gt;T     &lt;td&gt;7    
+&lt;tr&gt;&lt;td&gt;U     &lt;td&gt;8    
+&lt;tr&gt;&lt;td&gt;V     &lt;td&gt;9    
+&lt;tr&gt;&lt;td&gt;Z     &lt;td&gt;2    
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;caption&gt;單字母、數字對照表。&lt;/caption&gt;
+&lt;tr&gt;&lt;th&gt;雙字母  &lt;th&gt;數字  
+&lt;tr&gt;&lt;td&gt;AN      &lt;td&gt;2     
+&lt;tr&gt;&lt;td&gt;LA      &lt;td&gt;8     
+&lt;tr&gt;&lt;td&gt;NA      &lt;td&gt;6     
+&lt;tr&gt;&lt;td&gt;NB      &lt;td&gt;4     
+&lt;tr&gt;&lt;td&gt;NC      &lt;td&gt;2     
+&lt;tr&gt;&lt;td&gt;ND      &lt;td&gt;0     
+&lt;tr&gt;&lt;td&gt;PA      &lt;td&gt;5     
+&lt;tr&gt;&lt;td&gt;PB      &lt;td&gt;3     
+&lt;tr&gt;&lt;td&gt;RA      &lt;td&gt;3     
+&lt;tr&gt;&lt;td&gt;RB      &lt;td&gt;1     
+&lt;tr&gt;&lt;td&gt;SA      &lt;td&gt;2     
+&lt;tr&gt;&lt;td&gt;SB      &lt;td&gt;0     
+&lt;tr&gt;&lt;td&gt;TA      &lt;td&gt;1
+&lt;tr&gt;&lt;td&gt;TB      &lt;td&gt;9
+&lt;tr&gt;&lt;td&gt;TC      &lt;td&gt;7
+&lt;tr&gt;&lt;td&gt;VC      &lt;td&gt;5
+&lt;tr&gt;&lt;td&gt;VD      &lt;td&gt;3
+&lt;tr&gt;&lt;td&gt;VE      &lt;td&gt;1
+&lt;tr&gt;&lt;td&gt;VF      &lt;td&gt;9
+&lt;tr&gt;&lt;td&gt;VG      &lt;td&gt;7
+&lt;tr&gt;&lt;td&gt;VH      &lt;td&gt;5
+&lt;tr&gt;&lt;td&gt;VJ      &lt;td&gt;1
+&lt;tr&gt;&lt;td&gt;VK      &lt;td&gt;9
+&lt;tr&gt;&lt;td&gt;VL      &lt;td&gt;7
+&lt;/table&gt;
+
+其中有些雙字母有缺，
+且我也無法歸納出雙字母的規律。
+此驗證碼表格及驗證方式為作者自行自全校學號中歸納出，
+不代表校方，亦不為正確性負任何責任。
+
+&lt;ins cite=&quot;http://cc.ncku.edu.tw/files/11-1255-14655.php?Lang=zh-tw&quot; datetime=&quot;2016-05-30&quot;&gt;
+發現教職員工也有一組像是學號的東西，
+是用 z 開頭，加上員工編號。
+&lt;/ins&gt;
+
+
+## &lt;del datetime=&quot;2016-05-30&quot;&gt;e-mail 與 myweb 個人網站&lt;/del&gt; %account% ##
+
+## &lt;ins datetime=&quot;2016-05-30&quot;&gt;PISA 個人帳號&lt;/ins&gt; %pisa% ##
+
+&lt;del datetime=&quot;2016-05-30&quot;&gt;
+成大的學號被使用在e-mail和個人網站上。
+成大學生會分配到一個e-mail信箱：
+ `學號@mail.ncku.edu.tw` 。個人網站網址是
+ `http://myweb.ncku.edu.tw/~學號/` 。
+*注意，此時學號第一個英文字母皆為小寫。*
+&lt;/del&gt;
+
+&lt;ins&gt;
+成大的多個服務主要有兩個系統，
+分別是 [成功入口][i_ncku] 和 **PISA** 。
+成功入口可能是近幾年新建的，
+有一堆 -沒人在用- 基於 web 的嶄新服務。
+像是 [導生 e 點通][e_class] 、 
+用表單推動的 [教學評量系統][e_course] 、
+投學生會長的 [線上投票系統][e_vote] 。
+&lt;/ins&gt;
+
+&lt;ins&gt;
+PISA 是一些 **實用** 的老服務的整合登入系統；
+包含： [myweb][] 、 [email][ncku_mail] 、 
+[tcf 雲端計算服務][tcf] 、 [wifi][] 、 [vpn][] 。
+&lt;/ins&gt;
+
+%%%%%%%%%%%%%%
+
+&lt;flickr&gt;
+
+%%%% PISA 的說明，來源是成大計中。 %%%%%
+
+[i_ncku]: https://i.ncku.edu.tw
+[myweb]: http://myweb.ncku.edu.tw 
+[tcf]: telnet://tcf.ncku.edu.tw &quot;請用 telnet 登入&quot;
+[wifi]: http://www.cc.ncku.edu.tw/wireless/ &quot;恐怖連結，內有 flash 。&quot;
+[vpn]: http://cc.ncku.edu.tw/files/11-1255-7637.php &quot;使用說明&quot;
+
+### e-mail ###
+e-mail 可以用 client 端軟體訪問，
+像 [[mutt]] 、 [[Mozilla_Thunderbird|Thunderbird]] 
+或 [[Micorsoft_Outlook]] 。
+也有提供web介面，網址是：
+&lt;http://mail.ncku.edu.tw/&gt; 。
+帳號是學號，密碼是預設的密碼。
+
+也有提供 ftp 登入，是作為 [open web mail] 的後台。
+可以用 [[SMTP]] 寄信，用 [[郵局協定|POP]] 收信。
+[都可以用 telnet 辦到。][telnet_mail]
+
+[telnet]: http://myweb.ncku.edu.tw/~c34031328/diary/telnet_mail.html
+
+### myweb ###
+ myweb 是成大的個人網頁空間，可以用 ftp 連進去管理。
+&lt;ftp://myweb.ncku.edu.tw&gt; ；帳號為學號，密碼是預設的密碼。
+&lt;http://myweb.ncku.edu.tw&gt; 有一些教學。
+
+
+
+## 密碼 %password% ##
+
+很多情況下一些服務的帳號是直接用學號，而有帳號就一定有密碼。
+預設的密碼是 `身份證字號末4碼 出生月日` 。
+像是 `A123456789` 在`1999-09-09` 出生，那密碼就是 `67890909` 。
+
+
+## 大小寫問題 %case% ##
+
+為什麼學號要採用大寫呢？而 e-mail 和個人網頁又是小寫？
+我想就就和身份證字號要用大寫一樣，
+而 e-mail 和個人網頁都是架在計中server上的服務；
+也就是是用 [[BSD]] 或其它 [[類unix系統|UN*X]] 跑的服務。
+在 unix 中習慣以小寫字母命名；且大小寫在 unix 中是不同的。
+（和 windows 不同。）所以我猜計中才會以小寫命名。
+
+
+
+## 學號的異動 %modify% ##
+
+### 畢業 ###
+畢業後 e-mail 會被保留一段時間，
+然後刪除。網頁空間應該相同。
+ [計中表示](http://cc.ncku.edu.tw/files/15-1255-119460,c3357-1.php) ：
+第1學期畢業者(即8月~隔年1月)隔年8月1日停用，
+第2學期畢業者(即2月~7月)隔年2月1日停用。
+
+如果畢業後繼續唸研究所， [學號末碼會被拿掉作為新的學號]
+(https://www.ptt.cc/bbs/NCKU_ME98C/M.1251710107.A.571.html) ？
+（也就是不能驗證了。）
+
+### 轉系 ###
+如果轉系，學號中的系所代不會改，還是入學時的系所代碼。
+而轉校中轉入成大則是取得轉入系所的代碼；轉出不確定。
+
+
+</pre>
+
+</body>
+</html>

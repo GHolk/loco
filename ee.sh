@@ -15,6 +15,10 @@ then
 		s="s/</\&lt;/g; s/>/\&gt;/g; s/&/\&amp;/g;"
 	;;
 
+	( "*" )
+		s="s/\\*/\\\\e/g;"
+	;;
+
 	( * )
 		s="s/\\\\/\\\\x5C/g; s/$1/\\\\x/g;" 
 	;;
@@ -24,11 +28,14 @@ then
 	shift
 fi
 
-if [ "$1" ]
-then echo "$1" | sed "$s" | xargs -0 echo -en
+if [ -f "$1" ]
+then sed "$s" "$1" | xargs -0 echo -en
 # this kind of code bash only. 
 #then eval echo "$'$1'"
-else sed "$s" | xargs -0 echo -en 
+elif [ "$1" ]
+then echo "$1" | sed "$s" | xargs -0 echo -en
+else
+sed "$s" | xargs -0 echo -en 
 #else eval echo "$'$(sed \"$s\"
 fi
 

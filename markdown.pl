@@ -567,8 +567,9 @@ sub _DoAnchors {
 		  \]
 
 		  [ ]?				# one optional space
-		  #(?:\n[ ]*)?		# one optional newline followed by spaces
+		  (?:\n[ ]*)?		# one optional newline followed by spaces
 		# gholk dont think there should be a newline
+		# gholk change his mind. 
 
 		  (?:\[ (.*?) \])?		# id = $3
 						# add optional end []
@@ -616,6 +617,7 @@ sub _DoAnchors {
 		  \[
 		    ($g_nested_brackets)	# link text = $2
 		  \]
+		  \n?
 		  \(			# literal paren
 		  	[ \t]*
 			<?(.*?)>?	# href = $3
@@ -1034,14 +1036,14 @@ sub _DoDefLists {
 my $text = shift; 
 
 $text =~ s{
-	(.+) (\n+)
-	: ((?:(?:\t|\ {1,2}).*\n|\s*\n)+) 
+	(^[^:].+?)\n
+	((?::.*\n)+)
 }{
-	my ($title,$newline,$text) = ($1,$2,$3);
+	my ($title,$text) = ($1,$2);
 	
 	$title = _RunSpanGamut($title);
-	$text =~ s/^ {2,4}//mg;
-	if ($newline =~ m/\n\n/)
+	$text =~ s/^: {0,4}//mg;
+	if ( $text =~ m/^\s*$/m )
 	{ $text = _RunBlockGamut($text); }
 	else 
 	{ $text = _RunSpanGamut($text); }
