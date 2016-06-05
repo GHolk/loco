@@ -61961,9 +61961,9 @@ stvi 𧔡
 stwi 𠥙
 stwk 㞟
 stymu 𪚁
-su 己
-su 已
-su 㔾
+#su 己
+#su 已
+#su 㔾
 sua 𡲉
 sub 𡲊
 subd 𨤔
@@ -86551,8 +86551,17 @@ syt 羿
 # 2016-05-24
 hwsyy 翻
 
+# 2016-06-05
+# change order of 己 已
+su 已
+su 己
+su 㔾
+husu 自己
+suvm 已經
 
-
+\p %
+\p ‰
+\p ‱
 
 
 

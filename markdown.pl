@@ -1036,14 +1036,19 @@ sub _DoDefLists {
 my $text = shift; 
 
 $text =~ s{
-	(^[^:].+?)\n
-	((?::.*\n)+)
+	(^[^:].+?)\n+
+	(
+		(?::(?:\s*\n+|.+\n)
+			(?:.+\n)*
+		\n+
+		)+
+	)
 }{
 	my ($title,$text) = ($1,$2);
 	
 	$title = _RunSpanGamut($title);
-	$text =~ s/^: {0,4}//mg;
-	if ( $text =~ m/^\s*$/m )
+	$text =~ s/^[: ] {0,3}//mg;
+	if ( $text =~ m/\A\s*\n/ )
 	{ $text = _RunBlockGamut($text); }
 	else 
 	{ $text = _RunSpanGamut($text); }
@@ -1305,10 +1310,12 @@ sub _InflateSpace {
 sub _DoInlineQuote {
 	my $text = shift; 
 
-	$text =~ s{""((?:.|\n)+?)""}{
-		my $text = $1; 
-		my $lang = ( $text =~ m/。|，|？|！/ ) ? '' : ' lang="en"' ;
-		"<q$lang>$text<\/q>"; 
+	$text =~ s{(""|'')((?:.|\n)+?)\1}{
+		my ($quote,$text) = ($1,$2) ; 
+		my ($lang,$role) = ('','') ; 
+		$lang = ' lang="en"' if ($text !~ m/。|，|？|！/) ; 
+		$role = ' class="me"' if ($quote eq "''") ;
+		"<q${lang}${role}>$text<\/q>"; 
 		}egx; 
 
 	return $text; 
