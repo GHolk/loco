@@ -57,7 +57,7 @@ export HISTTIMEFORMAT="%F %T "
 # these should inside .profile or .bash_profile
 #PATH="$HOME/node_modules/.bin:$PATH"
 #CDPATH=".:$HOME:$HOME/web/escape:$HOME/Documents"
-alias cd="cd >/dev/null"
+#alias cd="cd >/dev/null"
 # because cdpath, cd will print if in cdpath. 
 
 

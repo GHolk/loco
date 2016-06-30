@@ -510,7 +510,7 @@ sub _RunSpanGamut {
 	$text = _DoItalicsAndBold($text);
 
 	# Do hard breaks:
-	$text =~ s/ {3,}\n/ <br$g_empty_element_suffix\n/g;
+	$text =~ s/ {2,}\n/ <br$g_empty_element_suffix\n/g;
 
 	return $text;
 }
@@ -1022,7 +1022,7 @@ $text =~ s@\n
 	((?:.|\n)*?)\n
 	%{2,}(.+?)%*\n
 	@
-"<figure>\n" . _RunSpanGamut($1) . "\n<figcaption>" . _RunSpanGamut($2) . "</figcaption>
+"\n<figure>\n" . _RunSpanGamut($1) . "\n<figcaption>" . _RunSpanGamut($2) . "</figcaption>
 </figure>\n" ; 
 @egx; 
 
@@ -1058,18 +1058,26 @@ $text =~ s{
 $text =~ s{</dl>\s*<dl>}{}gx;
 
 # add ul to dl inline. 
-$text =~ s{<ul>\n
+$text =~ s{
+	<ul>\n
 	(
-	<li>[^:：]+[^ ](：|(?::\s)).+</li>\n
+	<li>[^:：]+?[^ ](：|(?::\s)).+</li>\n
 	(?:.|\n)*?
 	)
-	</ul>}{
-	my $li = $1; 
-	my $colon = $2; 
-	$li =~ s!<li>(.+?)$colon!<dt>$1</dt> <dd>!g ; 
-	$li =~ s!</li>!</dd>!g;
-	my $lang = ( $colon eq ': ' ) ? ' lang="en"' : '' ; 
-	"<dl$lang class=\"inline\">\n$li</dl>"; 
+	</ul>
+	}{
+	my ($li,$colon) = ($1,$2);
+	$colon = ':' if ($colon eq ': ');
+	if ( $li =~ "<ul>" ) { "<ul>\n$li</ul>" ; }
+	else {
+		#$li =~ s!<li>(.+)$colon\s*</li>!<dt>$1</dt>!g; 
+		#$li =~ s!<li>\s*$colon\s*(.*)</li>!<dd>$1</dd>!g;
+		$li =~ s!<li>(.+?)$colon!<dt>$1</dt> <dd>!g ; 
+		$li =~ s!</li>!</dd>!g;
+		my $lang = '';
+		$lang = ' lang="en"' if ( $colon eq ': ' );
+		"<dl$lang class=\"inline\">\n$li</dl>"; 
+	}
 	}egx; 
 
 
@@ -1108,7 +1116,7 @@ sub _DoCodeBlocks {
 			$codeblock =~ s/\A\n+//; # trim leading newlines
 			$codeblock =~ s/\s+\z//; # trim trailing whitespace
 
-			$result = "\n\n<pre><code>" . $codeblock . "\n</code></pre>\n\n";
+			$result = "\n\n<pre><code>\n" . $codeblock . "\n</code></pre>\n\n";
 
 			$result;
 		}egmx;

@@ -23,4 +23,9 @@
 #define CONCEAL "\x1b[8m" // i dont understand. 
 #define CLEAR   "\x1b[2J"
 
-
+void swap(void* a, void* b)
+{
+	void* t=a;
+	a=b;
+	b=t;
+}

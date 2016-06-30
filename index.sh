@@ -15,6 +15,7 @@
 # define head of html
 
 head='\
+<html>\
 <meta charset="UTF-8">\
 <style>\
 img { max-width: 80%; }\

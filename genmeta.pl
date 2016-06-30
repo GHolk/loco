@@ -3,37 +3,68 @@
 use HTML::Parser() ;
 use feature "switch";
 
-my $p = HTML::Parser->new( api_version => 3,
+my $flag_title = 0;
+
+my $p = HTML::Parser->new
+( 
+	api_version => 3,
 	start_h => [\&start, "tagname, attr"],
+	text_h => [\&text, "text"],
 	#end_h   => [\&end,   "tagname"],
 	#marked_sections => 1,
 );
 
-$p->parse_file("ncku-id.html");
 
 sub start 
 {
 	my ($tagname, $attr) = @_ ;
 
-	given($tagname)
+	if ($tagname eq 'meta')
 	{
-		when( 'meta')
+		if ($attr->{name} eq 'author')
 		{
-		given($attr->{name})
-		{
-			when( 'author')
-			{
 			print "author: $attr->{content}\n";
-			}
+		} 
 
-			when( 'date')
-			{
+		elsif ($attr->{name} eq 'date')
+		{
 			print "date: $attr->{content}\n";
-			}
 		}
+
+		elsif ($attr->{name} eq 'discription')
+		{
+			print "discription: $attr->{content}\n\n";
 		}
+
+	}
+
+	elsif ($tagname eq 'title')
+	{
+		$flag_title = 1;
 	}
 
 }
 
+
+sub text
+{
+	my $text = shift;
+
+	if($flag_title == 1)
+	{
+		print "title: $text\n";
+		$flag_title = 0;
+	}
+
+}
+
+
+foreach my $file (@ARGV)
+{
+	print "file: $file\n";
+	$p->parse_file($file);
+}
+
 exit
+
+
