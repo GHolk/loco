@@ -1,50 +1,35 @@
-
 <!DOCTYPE HTML>
-
 <html lang="zh-TW">
-
-
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <meta name="date" content="2016-05-22">
 <meta name="author" content="c34031328">
-
 <meta name="copyright" content="Common Creative">
-
 <meta name="generator" content="vim, markdown">
-
 <meta name="distribution" content="taiwan">
-
 <meta name="keywords" content="ncku, student id, verify, 學號, 成大, 成功大學, hack, man-pages, 驗證碼, ">
-
-<meta name="discription" content="解釋成功大學學號的意義">
-
+<meta name="discription" content="解釋成功大學學號的編碼規則">
 <link rel="next" type="text/html" href="cksh-id.md">
 <link rel="prev" type="text/html" href="tanet.md">
-
 <link rel="icon" type="image/png" href="icon.png">
-
-<link rel="stylesheet" type="text/css" href="//gholk.github.io/gholk/Documents/word.css">
-
+<link rel="stylesheet" type="text/css" href="http://gholk.github.io/Documents/word.css">
 <title> 成功大學學號 </title>
-
 </head>
 <body>
 <main>
 
-
 <h1> 成功大學學號 </h1>
 
 <p>成功大學學號可以分成6大部份：（以下簡稱成大。）
-資料來源為 <a href="https://www.ptt.cc/bbs/NCKU_RehLab/M.1228973045.A.485.html" title="作者： guis (搖滾波斯貓)">PTT 一篇文章</a> ，
+資料來源為 <a href="//gholk.github.io/ptt/M.1228973045.A.485.html" title="作者： guis (搖滾波斯貓)">PTT 一篇文章</a> ，
 作者為  <u>guis</u>  (搖滾波斯貓) 。 </p>
 
 <dl>
-<dt> 系所代號 </dt>
+<dt> 
+系所代號 </dt>
 
-<dd>  一個英文字母加上一個數字或兩個英文字母，
+<dd> 一個英文字母加上一個數字或兩個英文字母，
 參見 <a href="#department">系所代號</a> 。
 
 
@@ -52,17 +37,17 @@
 
 <dt> 就讀部門 </dt>
 
-<dd><dl lang="en" class="inline">
-<dt> 4</dt> <dd>大學日間部 </dd>
-<dt> 5</dt> <dd>大學夜間部 </dd>
-<dt> 6</dt> <dd>碩士班 </dd>
-<dt> 7</dt> <dd>在職專班 </dd>
-<dt> 8</dt> <dd>博士班 </dd>
+<dd><dl class="inline">
+<dt> 4</dt> <dd> 大學日間部 </dd>
+<dt> 5</dt> <dd> 大學夜間部 </dd>
+<dt> 6</dt> <dd> 碩士班 </dd>
+<dt> 7</dt> <dd> 在職專班 </dd>
+<dt> 8</dt> <dd> 博士班 </dd>
 </dl></dd>
 
 <dt> 入學年度 </dt>
 
-<dd>  第4,5碼為入學年度，年號為民國的學年。
+<dd> 第4,5碼為入學年度，年號為民國的學年。
 像104學年從104年9月開始，到105年6月結束。
 
 
@@ -88,7 +73,7 @@
 
 <dt> 流水號 </dt>
 
-<dd>  第7,8碼是座號，也就是流水號。
+<dd> 第7,8碼是座號，也就是流水號。
 依照不同系所有不同的編排方式。
 參見 <a href="#serial">流水號</a>
 
@@ -97,7 +82,7 @@
 
 <dt> 驗證碼 </dt>
 
-<dd>  第9碼用來驗證是不是有效的學號，
+<dd> 第9碼用來驗證是不是有效的學號，
 和台灣的身份證字號同目的；
 原理見驗證碼一章。
 
@@ -307,7 +292,7 @@
 <h2 id="serial"> 流水號 </h2>
 
 <p>第7、8碼是座號，各系有不同的排法。
-以下照抄 <a href="https://www.ptt.cc/bbs/NCKU_RehLab/M.1228973045.A.485.html" title="作者： guis (搖滾波斯貓)">PTT 的文章</a> 。 </p>
+以下照抄 <a href="//gholk.github.io/ptt/M.1228973045.A.485.html" title="作者： guis (搖滾波斯貓)">PTT 的文章</a> 。 </p>
 
 <p>大學部指考入學是按照准考證號碼順序，
 但是有些系是依照 <em>聯考成績</em>  排序或是用 <em>地區</em>  排序。
@@ -343,7 +328,7 @@
 </ul>
 
 <table>
-<caption>單字母、數字對照表。</caption>
+<caption>雙字母、數字對照表。</caption>
 <tr><th>字母  <th>數字     
 <tr><td>A     <td>0        
 <tr><td>B     <td>1        
@@ -368,7 +353,7 @@
 </table>
 
 <table>
-<caption>雙字母、數字對照表。</caption>
+<caption>單字母、數字對照表。</caption>
 <tr><th>雙字母  <th>數字  
 <tr><td>AN      <td>2     
 <tr><td>LA      <td>8     
@@ -401,22 +386,60 @@
 此驗證碼表格及驗證方式為作者自行自全校學號中歸納出，
 不代表校方，亦不為正確性負任何責任。 </p>
 
-<h2 id="account"> e-mail 與 myweb 個人網站 </h2>
+<p><ins cite="http://cc.ncku.edu.tw/files/11-1255-14655.php?Lang=zh-tw" datetime="2016-05-30">
+發現教職員工也有一組像是學號的東西，
+是用 z 開頭，加上員工編號。
+</ins> </p>
 
-<p>成大的學號被使用在e-mail和個人網站上。
+
+<h2 id="pisa"> <ins datetime="2016-05-30">PISA 個人帳號</ins> </h2>
+
+<p>
+成大的學號被使用在e-mail和個人網站上。
 成大學生會分配到一個e-mail信箱：
  <code>學號@mail.ncku.edu.tw</code> 。個人網站網址是
  <code>http://myweb.ncku.edu.tw/~學號/</code> 。
-<em>注意，此時學號第一個英文字母皆為小寫。</em>  </p>
+<em>注意，此時學號第一個英文字母皆為小寫。</em> 
+ </p>
+
+<p><ins>
+成大的多個服務主要有兩個系統，
+分別是 <a href="https://i.ncku.edu.tw">成功入口</a> 和 <strong>PISA</strong> 。
+成功入口可能是近幾年新建的，
+有一堆  <s>沒人在用</s>  基於 web 的嶄新服務。
+像是 <a href="http://campus1.sso2.ncku.edu.tw/~sukin/index.php">導生 e 點通</a> 、 
+用表單推動的 <a href="http://campus4.sso2.ncku.edu.tw/wwwmenu/program/tre/">教學評量系統</a> 、
+投學生會長的 <a href="http://ivote.sso2.ncku.edu.tw">線上投票系統</a> 。
+</ins> </p>
+
+<p><ins>
+PISA 是一些 <strong>實用</strong> 的老服務的整合登入系統；
+包含： <a href="http://myweb.ncku.edu.tw">myweb</a> 、 <a href="http://mail.ncku.edu.tw" title="此為網頁版，也可以用 mail client 登入。">email</a> 、 
+<a href="telnet://tcf.ncku.edu.tw" title="請用 telnet 登入">tcf 雲端計算服務</a> 、 <a href="http://www.cc.ncku.edu.tw/wireless/" title="恐怖連結，內有 flash 。">wifi</a> 、 <a href="http://cc.ncku.edu.tw/files/11-1255-7637.php" title="使用說明">vpn</a> 。
+<ins datetime="2016-07-01" cite="ncku_pisa.html">
+詳見 <a href="ncku_pisa.html">成大 PISA 服務</a> 。
+</ins>
+</ins> </p>
+
+<figure>
+ 
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/135370742@N08/27665002385/in/album-72157667085559263/" title="PISA-1030621"><img src="https://c2.staticflickr.com/8/7438/27665002385_3bdb8a78f0.jpg" width="370" height="500" alt="PISA-1030621"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+ 
+<figcaption>  PISA 的說明，來源是成大計中。  </figcaption>
+</figure>
 
 <h3> e-mail </h3>
 
 <p>e-mail 可以用 client 端軟體訪問，
-像  <a href="http://zh.wikipedia.org/wiki/mutt">mutt</a>  、  <a href="http://zh.wikipedia.org/wiki/Mozilla_Thunderbird">Thunderbird</a>  
+像  <a href="http://zh.wikipedia.org/wiki/mutt">mutt</a>  、  <a href="http://zh.wikipedia.org/wiki/Mozilla_Thunderbird">Thunderbird</a> <br />
 或  <a href="http://zh.wikipedia.org/wiki/Micorsoft_Outlook">Micorsoft Outlook</a>  。
 也有提供web介面，網址是：
 <a href="http://mail.ncku.edu.tw/">http://mail.ncku.edu.tw/</a> 。
 帳號是學號，密碼是預設的密碼。 </p>
+
+<p>也有提供 ftp 登入，是作為 [open web mail] 的後台。
+可以用  <a href="http://zh.wikipedia.org/wiki/SMTP">SMTP</a>  寄信，用  <a href="http://zh.wikipedia.org/wiki/郵局協定">POP</a>  收信。
+<a href="telnet_mail.html">都可以用 telnet 辦到。</a> </p>
 
 <h3> myweb </h3>
 
@@ -456,7 +479,6 @@
 
 <p>如果轉系，學號中的系所代不會改，還是入學時的系所代碼。
 而轉校中轉入成大則是取得轉入系所的代碼；轉出不確定。 </p>
-
 </main>
 
 
@@ -468,7 +490,7 @@
 資料來源為 [PTT 一篇文章][ncku_id_ptt] ，
 作者為 _guis_ (搖滾波斯貓) 。
 
-[ncku_id_ptt]: https://www.ptt.cc/bbs/NCKU_RehLab/M.1228973045.A.485.html "作者： guis (搖滾波斯貓)"
+[ncku_id_ptt]: //gholk.github.io/ptt/M.1228973045.A.485.html "作者： guis (搖滾波斯貓)"
 
 系所代號
 :	一個英文字母加上一個數字或兩個英文字母，
@@ -843,19 +865,27 @@
 投學生會長的 [線上投票系統][e_vote] 。
 </ins>
 
+[e_class]: http://campus1.sso2.ncku.edu.tw/~sukin/index.php
+[e_vote]: http://ivote.sso2.ncku.edu.tw
+[e_course]: http://campus4.sso2.ncku.edu.tw/wwwmenu/program/tre/
+
 <ins>
 PISA 是一些 **實用** 的老服務的整合登入系統；
 包含： [myweb][] 、 [email][ncku_mail] 、 
 [tcf 雲端計算服務][tcf] 、 [wifi][] 、 [vpn][] 。
+<ins datetime="2016-07-01" cite="ncku_pisa.html">
+詳見 [成大 PISA 服務](ncku_pisa.html) 。
+</ins>
 </ins>
 
 %%%%%%%%%%%%%%
 
-<flickr>
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/135370742@N08/27665002385/in/album-72157667085559263/" title="PISA-1030621"><img src="https://c2.staticflickr.com/8/7438/27665002385_3bdb8a78f0.jpg" width="370" height="500" alt="PISA-1030621"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
 %%%% PISA 的說明，來源是成大計中。 %%%%%
 
 [i_ncku]: https://i.ncku.edu.tw
+[ncku_mail]: http://mail.ncku.edu.tw "此為網頁版，也可以用 mail client 登入。"
 [myweb]: http://myweb.ncku.edu.tw 
 [tcf]: telnet://tcf.ncku.edu.tw "請用 telnet 登入"
 [wifi]: http://www.cc.ncku.edu.tw/wireless/ "恐怖連結，內有 flash 。"
@@ -871,7 +901,7 @@ e-mail 可以用 client 端軟體訪問，
 
 也有提供 ftp 登入，是作為 [open web mail] 的後台。
 可以用 [[SMTP]] 寄信，用 [[郵局協定|POP]] 收信。
-[都可以用 telnet 辦到。][telnet_mail]
+[都可以用 telnet 辦到。](telnet_mail.html)
 
 [telnet]: http://myweb.ncku.edu.tw/~c34031328/diary/telnet_mail.html
 

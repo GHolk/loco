@@ -3,8 +3,6 @@
 use HTML::Parser() ;
 use feature "switch";
 
-my $flag_title = 0;
-
 my $p = HTML::Parser->new
 ( 
 	api_version => 3,
@@ -23,17 +21,17 @@ sub start
 	{
 		if ($attr->{name} eq 'author')
 		{
-			print "author: $attr->{content}\n";
+			$meta{author} = $attr->{content};
 		} 
 
 		elsif ($attr->{name} eq 'date')
 		{
-			print "date: $attr->{content}\n";
+			$meta{date} = $attr->{content};
 		}
 
 		elsif ($attr->{name} eq 'discription')
 		{
-			print "discription: $attr->{content}\n\n";
+			$meta{discription} = $attr->{content};
 		}
 
 	}
@@ -52,7 +50,7 @@ sub text
 
 	if($flag_title == 1)
 	{
-		print "title: $text\n";
+		$meta{title} = $text;
 		$flag_title = 0;
 	}
 
@@ -61,8 +59,31 @@ sub text
 
 foreach my $file (@ARGV)
 {
-	print "file: $file\n";
+
+	my $flag_title = 0;
+	local %meta ;
+
 	$p->parse_file($file);
+
+	print <<SECT;
+
+<h2>
+<a href="$file">
+$meta{title}
+</a></h2>
+
+<small>
+<u>$meta{author}</u>
+@
+$meta{date}
+</small>
+
+<p>
+$meta{discription}
+</p>
+
+SECT
+
 }
 
 exit

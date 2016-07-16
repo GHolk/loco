@@ -12,7 +12,13 @@
 #     set depth to 1. default set no limit. 
 #
 
+# find ./index.sh
+#if [ -s index.sh ]
+#then sh index.sh 
+#else 
+
 # define head of html
+
 
 head='\
 <html>\
