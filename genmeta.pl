@@ -8,10 +8,18 @@ my $p = HTML::Parser->new
 	api_version => 3,
 	start_h => [\&start, "tagname, attr"],
 	text_h => [\&text, "text"],
-	#end_h   => [\&end,   "tagname"],
+	end_h => [\&end,   "tagname"],
 	#marked_sections => 1,
 );
 
+
+sub end
+{
+	my $tagname = shift;
+	if($tagname eq 'p' && $flag{p} == 1){
+		$flag{p} = 2 ;
+	}
+}
 
 sub start 
 {
@@ -38,7 +46,12 @@ sub start
 
 	elsif ($tagname eq 'title')
 	{
-		$flag_title = 1;
+		$flag{title} = 1;
+	}
+	
+	elsif ($tagname eq 'p' && $flag{p} == 0)
+	{
+		$flag{p} = 1;
 	}
 
 }
@@ -48,11 +61,15 @@ sub text
 {
 	my $text = shift;
 
-	if($flag_title == 1)
+	if($flag{title} == 1)
 	{
 		$meta{title} = $text;
-		$flag_title = 0;
+		$flag{title} = 0;
+	}elsif($flag{p} == 1)
+	{
+		$meta{p} .= $text;
 	}
+
 
 }
 
@@ -61,14 +78,17 @@ my $format;
 foreach my $argv (@ARGV)
 {
 
-	my $flag_title = 0;
-	local %meta ;
-
-
 	if ($argv eq '-l') {
 		$format = "list";
 		next;
+	} elsif ($argv eq '-w') {
+		$format = "web";
+		next;
 	}
+
+	local (%meta, %flag) ;
+	$flag{title} = 0;
+	$flag{p} = 0;
 
 	my $file = $argv;
 	$p->parse_file($file);
@@ -84,6 +104,28 @@ $meta{title}
 </li>
 
 LIST
+
+	} elsif ($format eq 'web'){
+
+		print <<WEB;
+
+<h2 title="$meta{discription}">
+<a href="$file">
+$meta{title}
+</a></h2>
+
+<small>
+<u>$meta{author}</u>
+@ $meta{date}
+</small>
+
+<p>
+$meta{p}
+</p>
+
+<hr />
+
+WEB
 
 	} else {
 		print <<SECT;
