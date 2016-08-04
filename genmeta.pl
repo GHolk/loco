@@ -16,8 +16,10 @@ my $p = HTML::Parser->new
 sub end
 {
 	my $tagname = shift;
-	if($tagname eq 'p' && $flag{p} == 1){
-		$flag{p} = 2 ;
+	if($tagname eq 'p' && $flag{t} == 1){
+		$flag{t} = 2 ;
+	} elsif ($tagname eq 'h1'){
+		$meta{t} = "";
 	}
 }
 
@@ -49,9 +51,9 @@ sub start
 		$flag{title} = 1;
 	}
 	
-	elsif ($tagname eq 'p' && $flag{p} == 0)
+	elsif ($tagname eq 'main' && $flag{t} == 0)
 	{
-		$flag{p} = 1;
+		$flag{t} = 1;
 	}
 
 }
@@ -65,9 +67,13 @@ sub text
 	{
 		$meta{title} = $text;
 		$flag{title} = 0;
-	}elsif($flag{p} == 1)
+	}elsif($flag{t} == 1)
 	{
-		$meta{p} .= $text;
+		$meta{t} .= $text;
+		if( length $meta{t} > 300 ) {
+			$meta{t} = substr $meta{t}, 0, 300;
+			$flag{t} = 2;
+		}
 	}
 
 
@@ -88,7 +94,7 @@ foreach my $argv (@ARGV)
 
 	local (%meta, %flag) ;
 	$flag{title} = 0;
-	$flag{p} = 0;
+	$flag{t} = 0;
 
 	my $file = $argv;
 	$p->parse_file($file);
@@ -120,7 +126,7 @@ $meta{title}
 </small>
 
 <p>
-$meta{p}
+$meta{t}
 </p>
 
 <hr />
