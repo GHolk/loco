@@ -5,5 +5,5 @@
 # bind Control-w to smarter delete last word. 
 Control-w:"\e\C-h"
 #"\C-o":" | less\n"
-"\C-a":"\C-x\C-x"
+#"\C-a":"\C-x\C-x"
 "\e\n":" | less "

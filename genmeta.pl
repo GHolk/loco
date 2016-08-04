@@ -56,16 +56,37 @@ sub text
 
 }
 
+my $format;
 
-foreach my $file (@ARGV)
+foreach my $argv (@ARGV)
 {
 
 	my $flag_title = 0;
 	local %meta ;
 
+
+	if ($argv eq '-l') {
+		$format = "list";
+		next;
+	}
+
+	my $file = $argv;
 	$p->parse_file($file);
 
-	print <<SECT;
+	if ($format eq "list"){
+		print <<LIST;
+
+<li>
+<a href="$file" title="$meta{discription}">
+$meta{title}
+</a>
+<small>$meta{date}</small>
+</li>
+
+LIST
+
+	} else {
+		print <<SECT;
 
 <h2>
 <a href="$file">
@@ -82,7 +103,11 @@ $meta{date}
 $meta{discription}
 </p>
 
+<hr />
+
 SECT
+
+	}
 
 }
 

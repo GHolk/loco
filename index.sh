@@ -1,24 +1,30 @@
 #!/usr/bin/bash
 
-# deal with short arguments, store in `$args` . 
+if [ -d "$1" ]
+then
+	cd "$1" || ( echo "can not cd $1 !">&2 ; exit 1 )
+	shift
+fi
 
-## option ##
-#
-# g : do not treat `*.gif` as img; gif animated is large. 
-# o : xdg-open index.html after script. 
-# R : random sort the content of html. 
-# v : use less to open each index. 
-# d : set the depth of search. if call -d without argument; 
-#     set depth to 1. default set no limit. 
-#
 
-# find ./index.sh
-#if [ -s index.sh ]
-#then sh index.sh 
-#else 
+if [ -s index.html ] 
+then 
+	mv index.html index_old.html || \
+	( echo "cant overwrite index_old.html">&2 ;  exit 10 )
+fi
+
+# 重導向 stdout 到 index.html ，
+# 並保存 stdout 到 &6 。
+# 在 */index.sh 中可以用 >&6 來訪問 stdout ，
+# 預設則輸出到 index.html. 
+exec 6>&1
+exec >./index.html
+
+if [ -s index.sh ] && [ -x index.sh ]
+then exec ./index.sh $@
+else
 
 # define head of html
-
 
 head='\
 <html>\
@@ -31,73 +37,19 @@ a { display: block; }\
 
 # deside what sufix is images
 imgtype="gif|jpg|png"
-out=" >index.html "
 
-while true
-do
+find . -not -path '*/.*' |\
+	sed -r -e "s/'/%27/g; s/.*($imgtype)$/<img src='&' title='&'>/i; s/^[^<].*[^>]$/<a href='&'>&<\\/a>/" |\
+	#sort $sortarg |\
+	sed -e "1i$head" 
 
-	# parse option
-	if [[ $1 =~ ^-[^-] ]] 
-	then 
-		case $1 in
-		( *g* ) imgtype="jpg|png"
-		;;&
+fi
 
-		( *R* ) sortarg=" -R "
-		;;&
+if [ -n "$see" ]
+then less "$dir/index.html"
+fi
 
-		( *v* ) see=1
-		;;&
-
-		( *o* ) open="xdg-open"
-		;;&
-
-		( *d* )
-			if [[ $2 =~ ^[0-9]$ ]]
-			then farg=" -maxdepth $2 "
-				shift
-			else farg=" -maxdepth 1 "
-			fi
-		;;&
-
-		( *V* ) out=
-		;;&
-		esac
-
-
-		shift
-		continue
-
-	fi
-
-### argument for find
-
-	if [ "$1" ]
-	then dir="${1%/}"
-	else dir="."
-	fi
-
-	if [ "$out" ] 
-	then out=" >\"$dir/index.html\" "
-	fi
-
-	find "$dir" $farg -path '*/.*' -prune -o -print |\
-		sed -r -e "s/'/%27/g; s/.*($imgtype)$/<img src='&' title='&'>/i; s/^[^<].*[^>]$/<a href='&'>&<\\/a>/" |\
-		sort $sortarg |\
-		eval sed -e '"1i$head"' $out
-	
-	if [ $see ]
-	then less "$dir/index.html"
-	fi
-
-	if [ $open ]
-	then xdg-open "$dir/index.html"
-	fi
-
-	if [ $2 ]
-	then shift
-	else exit 0
-	fi
-
-done
+if [ -n "$open" ]
+then xdg-open "$dir/index.html"
+fi
 
