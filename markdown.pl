@@ -1332,13 +1332,18 @@ sub _DoInlineQuote {
 sub _DoSpecialLink {
 	my $text = shift; 
 
-	$text =~ s{ \[\[ (:.+?:)? (.+?) (\|.+?)? \]\] } {
+	$text =~ s{ \[\[ (?:(.+?):)? (.+?) (\|.+?)? \]\] } {
 		my ($lang, $article, $text) = ($1, $2, $3); 
-		$lang = $lang ? (substr($lang, 1, length($lang)-2) ) : "zh"; 
+		$lang = "zh" if(!$lang);
 		$text = $text ? (substr $text, 1 ) : $article ; 
 		$text =~ s/_/ /g ; 
+
+		if($lang eq 'ptt'){
+			" <a href=\"http://zh.pttpedia.wikia.com/wiki/$article\">$text</a>";
+		} else {
 		" <a href=\"http://$lang.wikipedia.org/wiki/$article\">$text</a> "; 
-		}egsx; 
+		}
+	}egsx; 
 
 	return $text; 
 	}

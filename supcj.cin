@@ -53116,8 +53116,8 @@ qhli 蛪
 qhlii 𧑨
 qhll 𢭣
 qhlmi 蛪
-qhlo 掀
-qhlo 抓
+#qhlo 掀
+#qhlo 抓
 qhlq 𢴩
 qhlx 𢹱
 qhma 𢹽
@@ -86563,7 +86563,12 @@ suvm 已經
 \p ‰
 \p ‱
 
-
+# 2016-08-11 #
+# change order of 掀抓 苗曲
+qhlo 抓
+qhlo 掀
+tw 曲
+tw 苗
 
 
 %chardef end
