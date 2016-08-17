@@ -1,38 +1,73 @@
 
-# my script and man-page #
+# loco: 我的 linux 配置 #
 
-these files should be inside my home directory. 
+這個 git 是我的 linux 使用 CLI 時的設定檔，
+像 bashrc 、 vimrc 、 inputrc ；
+另外還有一些小腳本和 man page 。
 
-
-
-## supcj.cin ##
-
-this is a enhenced * **倉頡** 輸入法 * (cang-jia) input method table. 
-many input method software in Taiwan support 
-sepacify by this kind of formats. 
-
-this table can input japenese, greece, 
-and so do chinese. support many math symbol. 
-i use gcin with this table. 
-
-I'm Taiwanese! 
-Taiwan is not a part of china! 
-we are independent republic! 
+基本上看到就知道怎麼處理了 (x　
+像 rc 們就加上點丟到家目錄，
+腳本就看要把 loco 加入 PATH 或 ln 到 `~/.local/bin` 。
+man page 就複製放到 mappath 。
 
 
-## excutable scripts ##
+## 上標倉頡 supcj ##
 
-those files are excutable. you can 
- `ln filename ~/.local/bin/` to excute them. 
+這是我自己客製化的倉頡，從 [泰瑞倉頡][terry] 改來的，
+泰瑞倉頡又是從 [亂倉打鳥][newcj] 改來的。
+我也自己取了個名字，雖然我後來覺得有點太自大了；
+因為和泰倉比起我改的很少。
+
+幾乎所有的改動都是用註解達成，也都會說明；
+所以從底部看上去就是一次次的改動記錄。
 
 
-### markdown.pl ###
+### 關於 cin 格式 ###
 
-An enhanced version modify from John Grubber's version. 
-with many ugly perl code ;}
+我是使用 `*.cin` 格式，這是台灣之前一次輸入法開發者聚會後，
+討論出來的共通格式。
+因為台灣的輸入法曾經很活躍，之間需要一個共通的格式交流。
+港澳人太少，中國當時尚為蠻荒之地。
 
-you can `ln markdown.pl ~/.local/bin/markdown` 
-to use it. 
+ - 以 `#` 開頭的行是註釋。
+ - 以 `%` 開頭的行的指令。
+ - 其它行是字符對應。由一串字元、空白鍵、再一串字元組成。
+
+
+字符對應是輸入法最要的部份。
+輸入開頭的一串字元，再按空白鍵，就會輸出後面的一串字元。
+有些軟體空白後只能接受一個字元，不是一串。這點沒有規定。
+其實我也沒有看過討論結果，這些都是猜的。
+我只有看過 cin 檔 XD　
+如果有誰看過，歡迎通知；我也很好奇。
+
+接受 cin 格式的輸入法不少。
+其中，我也不是特別喜歡 [gcin][] ，只是她在 linux 上普及度不錯，
+開發者也很認真。（一人開發 XD ）
+
+[gcin]: http://hyperrate.com/dir.php?eid=67
+
+
+ - 奇摩輸入法：windows 下的軟體。這傢伙幾乎被放生了，但蠻多人喜歡用的。
+ - 香草輸入法：macOS 的中文輸入法，也有 fork 到 windows 。
+ - gcin：我正在用。
+ - PIME：不確定……，應該可以吧？有泰瑞倉頡。 P is for python. 
+
+
+以 gcin 來說，要使用 cin 要用 gcin 內的工具：
+gcin2tab 把 cin 檔轉換成 gcin 內部的格式，
+生出一個 supcj.gtab 檔，把她放到 
+`/usr/share/gcin/table` 下就好了。
+
+
+## markdown 客制化版本 ##
+
+這是所有腳本中最大的一個，
+由 John Gurber 的原始版本 perl markdown 改來的。
+加了許多我自己需要的功能。
+但我其實對 perl 也沒有很在行，
+原始版本的也沒有全部看懂，就隨便亂改。
+所以產生了一些 bug 。
 
 
 ### obml-parser.pl ###
