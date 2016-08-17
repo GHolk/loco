@@ -21,6 +21,8 @@ man page 就複製放到 mappath 。
 幾乎所有的改動都是用註解達成，也都會說明；
 所以從底部看上去就是一次次的改動記錄。
 
+[terry]: http://terryhung.pixnet.net/blog/post/25102388 "泰瑞的部落格"
+[newcj]: http://hyperrate.com/thread.php?tid=5775 "目前寄居在 gcin 的論壇裡"
 
 ### 關於 cin 格式 ###
 
@@ -70,28 +72,29 @@ gcin2tab 把 cin 檔轉換成 gcin 內部的格式，
 所以產生了一些 bug 。
 
 
-### obml-parser.pl ###
+### obml-parser.py ###
 
-from [someone][] . 
-maybe I will not use opera mini anymore, 
-because it was bought from china. 
-`ln obml-parser.pl ~/.local/bin/obml-parser` . 
+這個 python 腳本可以將 opera mini 
+內部的格式： *obml* 轉換成 html 。
+是來複製自 [grawity][] 的 [obml-parser.py][] . 
+詳細可以參考我寫的 [obml-parser 使用方法][obml_man] 。
+
+[grawity]: http://github.com/grawity/
+[obml-parser.py]: https://github.com/grawity/hacks/blob/master/hacks/Text/obml-parser
+[obml_man]: https://github.com/GHolk/escape/blob/master/diary/obml.markdown
 
 
 ### index.sh ###
 
-this script will generate an index.html fast. 
-now it can only reconize image files. 
-other will be display as href. 
-`ln index.sh ~/.local/bin/index` . 
+這個 shell 腳本可以產生 index.html ，
+大略讓你可以用瀏覽器，知道現在目錄下有什麼。
 
+ 1. 一開始是只有一個，會把圖檔自動轉成 `<img>` 標籤，
+    其它轉成超連結。
 
-## manual page ##
+ 2. 現在是會先去找該目錄下的 `index.sh` ，
+    如果有就用，然後把結果輸出到 `index.html` 。
 
-those files are man page, some plain text. 
-i thought usefull. you can 
- `ln man-page ~/.local/man/man7/` 
-to accesse eazily. 
 
 
 ### groff charactor ###
