@@ -2,7 +2,7 @@
 
 OPTIND=1
 
-while getopts 'vo' a
+while getopts 'volp' a
 do
 	case $a in
 	( v )

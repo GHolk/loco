@@ -10216,8 +10216,9 @@ dtma 𣟞
 dtmb 𣗊
 dtmb 𣠝
 dtmbc 𩓋
-dtmc 棋
-dtmc 橫
+# 2016-08-31
+#dtmc 棋
+#dtmc 橫
 dtmcw 𨡶
 dtmd 楳
 dtme 𣞞
@@ -86574,6 +86575,14 @@ tw 苗
 # 奇怪的取碼邏輯 
 nlvmb 陋
 
+# 2016-08-31 #
+# 改順序
+dtmc 橫
+dtmc 棋
+
+# 2016-08-31 #
+# 加入 `肉` `⺼`
+bim ⺼
 
 %chardef end
 
