@@ -43,7 +43,7 @@ a { display: block; }\
 '
 
 # deside what sufix is images
-imgtype="gif|jpg|png"
+imgtype="gif|jpe?g|png"
 
 find . -not -path '*/.*' |\
 	sed -r -e "s/'/%27/g; s/.*($imgtype)$/<img src='&' title='&'>/i; s/^[^<].*[^>]$/<a href='&'>&<\\/a>/" |\

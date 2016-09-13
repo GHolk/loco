@@ -39,9 +39,9 @@ sub start
 			$meta{date} = $attr->{content};
 		}
 
-		elsif ($attr->{name} eq 'discription')
+		elsif ($attr->{name} eq 'description')
 		{
-			$meta{discription} = $attr->{content};
+			$meta{description} = $attr->{content};
 		}
 
 	}
@@ -103,7 +103,7 @@ foreach my $argv (@ARGV)
 		print <<LIST;
 
 <li>
-<a href="$file" title="$meta{discription}">
+<a href="$file" title="$meta{description}">
 $meta{title}
 </a>
 <small>$meta{date}</small>
@@ -115,7 +115,7 @@ LIST
 
 		print <<WEB;
 
-<h2 title="$meta{discription}">
+<h2 title="$meta{description}">
 <a href="$file">
 $meta{title}
 </a></h2>
@@ -148,7 +148,7 @@ $meta{date}
 </small>
 
 <p>
-$meta{discription}
+$meta{description}
 </p>
 
 <hr />
