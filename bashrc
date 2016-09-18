@@ -14,7 +14,7 @@ fi
 
 # User specific aliases and functions
 
-export PS1="\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
+PS1="\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
 #PS1="`a=$?;if [ $a -ne 0 ]; then a=" "$a; echo -ne "\[\e[s\e[1A\e[$((COLUMNS-2))G\e[31m\e[1;41m${a:(-3)}\e[u\]\[\e[0m\e[7m\e[2m\]"; fi`\[\e[1;32m\]\u@\h:\[\e[0m\e[1;34m\]\W\[\e[1;34m\]\$ \[\e[0m\]"
 
 ## change and option ##

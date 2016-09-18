@@ -4,6 +4,7 @@
 :nmap cc c^
 
 :set tabstop=4
+:set expandtab
 
 " use abbr for my site "
 :abbr myweb~ myweb.ncku.edu.tw/~c34031328/ 

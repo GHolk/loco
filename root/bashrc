@@ -1,0 +1,15 @@
+# .bashrc
+
+PS1="\[\e[33m\]\w:\[\e[1;31m\]# \[\e[0m\]"
+
+
+# User specific aliases and functions
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
