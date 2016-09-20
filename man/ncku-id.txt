@@ -1,0 +1,317 @@
+.\" Process this file with
+.\" groff -man -Tascii tanet.1
+.\"
+.TH NCKU_ID 7 "2016-05-19" 學號編碼 "PTT 鄉民手冊"
+
+.SH NAME
+
+NCKU_ID \- 國立台南成功大學學號。
+
+
+.SH DESCRTPTION
+
+成功大學學號可以分成6大部份：（以下簡稱成大。）
+
+.TP 10
+.B 系所代號
+第1,2碼為系所的代號，
+一個\fI英文字母\fR加上一個\fI數字\fR或兩個英文字母。
+參見\fB系所編碼\fR。
+
+.TP 10
+.B 就讀部門
+第3碼為一碼\fI數字\fR代表學生的就讀部門。
+
+.RS
+.IP 4 3
+大學日間部
+.IP 5 3
+大學夜間部
+.IP 6  3
+碩士班
+.IP 7 3
+在職專班
+.IP 8  3
+博士班
+.RE
+
+
+.TP 10
+.B 入學年度
+第4,5碼為入學年度，年號為民國的學年。
+像104學年從104年9月開始，到105年6月結束。
+
+
+.TP 10
+.B 入學方式
+第6碼為入學方式。
+
+.RS
+.IP 0 
+體資生
+.IP 1 
+考試入學且系所不分班或甲班
+.IP 2 
+乙班
+.IP 3 
+丙班
+.IP 4 
+推甄入學
+.IP 5 
+僑生
+.IP 6 
+申請入學
+.IP 7 
+外籍生
+.IP 8 
+交換學生
+.IP 9 
+轉學生
+.RE
+
+
+.TP 10
+.B 流水號
+第7,8碼是座號，也就是流水號。依照不同系所有不同的編排方式。
+參見\fB流水號\fR。
+
+
+.TP 10
+.B 驗證碼
+
+第9碼用來驗證是不是有效的學號，
+和台灣的身份證字號同目的；原理見驗證碼一章。
+
+
+.SH 系所編碼
+
+注意英文\fI絕大多數情況下大寫\fR。
+關於此一\fI愚蠢的問題\fR可以參閱
+.B 大寫與小寫 
+一節。
+從前第一碼英文是\fI學院代號\fR，
+但後來由於學院的分家，又沒有更新，就沒用了。
+
+
+.if t \{\
+.ft CW
+\}
+.TS
+ l   l          l          l   l          l.
+
+
+.B " 其他                      文學院"
+ A2  體育室     OPE        B1  中文系     CL
+ A3  軍訓室     MT         K1  中文所     CL
+ A4  師培中心   CTE        B2  外文系     FLL
+ A5  計網中心   CN         K2  外文所     FLL
+ A6  服務學習   SS         B3  歷史系     HIS
+ AA  共同英授              K3  歷史所     HIS
+ AH  華語中心   CLC        B5  台文系     TWL
+                           K5  台文所     TWL
+ \fB不分學院\fR                  K4  藝術所     AS
+ AN  不分系學程 CCEP       K7  考古所     Arxe
+ C0  科學班
+                           \fB理學院\fR
+ \fB通識課程\fR                  C1  數學系     MATH
+ A1  外國語言   FLL        L1  應數所     MATH
+ A7  基礎國文   CL         C2  物理系     PHYS
+ A9  通識中心   GE         L2  物理所     PHYS
+ AG  公民歷史              C3  化學系     CHEM
+                           L3  化學所     CHEM
+ \fB工學院\fR                    C4  地科系     EARS
+ E0  工學院     COE        L4  地科所     EARS
+ E1  機械系     ME         F8  光電系     DPS
+ N1  機械所     ME         L7  光電所     DPS
+ E3  化工系     CHE        LA  電漿所     SAPS
+ N3  化工所     CHE        VF  發光二極
+ E4  資源系     RE      
+ N4  資源所     RE         \fB管理學院\fR
+ E5  材料系     MSE        H1  會計系     ACC
+ N5  材料所     MSE        R1  會計所     ACC
+ E6  土木系     CE         H2  統計系     STAT
+ N6  土木所     CE         R2  統計所     STAT
+ E8  水利系     HOE        H3  工資系     IIM
+ N8  水利所     HOE        R3  工資所     IIM
+ E9  工科系     ES         H4  企管系     BA
+ N9  工科所     ES         R4  企管所     BA
+ F0  能源學程   IBPE       H5  交管系     TCM
+ F1  系統系     SNME       R5  交管所     TCM
+ P1  系統所     SYS        R0  ＥＭＢＡ   EMBA
+ F4  航太系     AA         R6  國企所     IB
+ P4  航太所     AA         R7  資管所     IM
+ F5  環工系     EV         R8  財金所     FIN
+ P5  環工所     EV         R9  電管所     TM
+ F6  測量系     GM         RA  IIMBA      IMBA
+ P6  測量所     GM         RB  體健所     PEHL
+ F9  醫工系     BME        RD  AMBA       AMBA
+ P8  醫工所     BME        RZ  管理學院   COM
+ N0  工程管理   EM      
+ NA  海事所     OTMA       \fB社會科學院\fR
+ NB  尖端所     icam       D2  法律系     LAW
+ NC  自災所     iNHM       U2  法律所     LAW
+ Q4  民航所     CA         U6  科法所     LAWS
+ D5  經濟系     ECON       D4  政治系     PS
+ U5  經濟所     ECON    
+ D8  心理系     PSY        \fB電機資訊學院\fR
+ U7  心理所     CS         E2  電機系     EE
+ U1  政經所     PE         N2  電機所     EE
+ U3  教育所     EDU        F7  資訊系     CSIE
+                           P7  資訊所     CSIE
+ \fB醫學院\fR                    ND  多媒學程
+ I2  護理系     NURS       P9  製造所     IMIS
+ T2  護理所     NURS       Q1  微電所     IME
+ I3  醫技系     MLSB       Q3  電通所     CCE
+ T3  醫技所     MLSB       Q5  醫資所     IMI
+ I5  醫學系     MED        Q6  南科專
+ I6  物治系     PT         Q7  奈積學程   NICE
+ T6  物治所     PT         V6  電力產專   MPPE
+ I7  職治系     OT         V8  微波材料
+ T7  職治所     OT         V9  電子材料
+ I8  藥學系     DOPA       VA  電機產業
+ S0  醫學院     MED        VB  光材產專
+ S1  生化所     BIMB       VC  光產產專
+ S2  藥理所     PHAR       VD  微波元件
+ S3  生理所     PHSL       VE  電子產專   MPPE
+ S4  微免所     MI         VG  靜電保護
+ S5  基醫所     BMS        VH  磁性材料
+ S6  臨藥科技   CPPS       VJ  電子材料　
+ S7  環醫所     EOH        VK  電機驅動
+ S8  行醫所     BM         VL  微波電子
+ S9  臨醫所     CM      
+ SA  神經學程   TIGP       \fB規劃與設計學院\fR
+ SB  公衛在職   MPH        E7  建築系     ARCH
+ T1  分醫所     IMM        N7  建築所     ARCH
+ T4  口醫所     IOM        F2  都計系     UP
+ T8  公衛所     PH         P2  都計所     UP
+ T9  細胞所     CBA        F3  工設系     ID
+ TA  健照所     AHS        P3  工設所     ID
+ TC  老年所     GERO       PA  創意所     ICID
+                           PB  科藝學程   TART
+ \fB生物科學與科技學院\fR      
+ C5  生科系     LS         L6  生科所     BIOT
+ L5  生命所     LS         Z0  生科學院   BB
+ C6  生技系     BBS        Z2  生訊所     BIOI
+ Z3  熱植所     TPS
+
+.TE
+.if t \{\
+.in
+.ft P
+\}
+
+
+.SH 流水號
+
+第7、8碼是座號  大學部指考入學是按照准考證號碼順序
+但是有些系是依照"聯考成績"排序或是用"地區"排序
+(地區應該跟准考證號碼有關)
+
+大學部推甄、申請  研究所推甄則是按照正取排名
+備取生看遞補哪個正取的就用那個學號
+
+研究所考試則看各系而定
+若分組則是只有甲組是照排名順序,乙組排甲組後面....blabla
+若沒分組就是跟推甄一樣照排名
+備取則是看備哪一個正取生(所以備取生的學號與排名無關)
+
+
+.SH 驗證碼
+
+一個學生證是不是有效的，可以靠計算得知。
+驗證的方式為將最後一位數字\(mu1，最後第二位\(mu2……，以此類推。
+全部加起來應該要能被十整除。此即驗證碼的功能；讓學號相加結果為0。
+如果是英文字母，則應參照下表轉成數字再作運算。
+如果是二個英文字母，應對應二字母的表格轉換，不必再乘位數。
+
+.B C34031328
+= 
+.I 2\(mu9 
++ 3\(mu8 + 4\(mu7 + 0\(mu6 + 3\(mu5 +
+1\(mu4 + 3\(mu3 + 2\(mu2 + 8\(mu1 = 110 
+
+.B VL6021023
+= 
+.I 7 
++ 6\(mu7 + 0\(mu6 + 2\(mu5 + 1\(mu4 + 0\(mu3 + 
+2\(mu2 + 3\(mu1 = 70 
+
+.if t \{\
+.ft CW
+\}
+.TS
+l     l       l     l        l       l       l       l.
+
+.B "字母  數字    字母  數字     雙字母  數字    雙字母  數字"
+
+A     0       L     0        AN      2       TA      1
+B     1       N     2        LA      8       TB      9
+C     2       P     3        NA      6       TC      7
+D     3       Q     4        NB      4       VC      5
+E     4       R     5        NC      2       VD      3
+F     4       S     6        ND      0       VE      1
+H     6       T     7        PA      5       VF      9
+I     7       U     8        PB      3       VG      7
+J     8       V     9        RA      3       VH      5
+K     9       Z     2        RB      1       VJ      1
+                             SA      2       VK      9
+                             SB      0       VL      7
+
+
+.TE
+.if t \{\
+.in
+.ft P
+\}
+
+此驗證碼表格及驗證方式為作者自行自全校學號中歸納出，
+不代表校方，亦不為正確性負任何責任。
+
+.SH e-mail 與 myweb 個人網站
+
+成大的學號被使用在e-mail和個人網站上。
+成大學生會分配到一個e-mail信箱：
+.IR 學號@mail.ncku.edu.tw 。個人網站網址是
+.IR http://myweb.ncku.edu.tw/~學號/ 。
+.B 注意，此時學號第一個英文字母皆為小寫。
+
+.SS e-mail
+e-mail可以用client端軟體訪問，像mutt,thunderbird或outlook。
+也有提供web介面，網址是：
+.IR http://mail.ncku.edu.tw/ 。
+帳號是學號，密碼是預設的密碼。
+
+.SS myweb
+myweb是成大的個人網頁空間，可以用ftp連進去管理。
+.IR ftp://myweb.ncku.edu.tw ；帳號為學號，密碼是預設的密碼。
+
+
+.SH 密碼
+
+很多情況下一些服務的帳號是直接用學號，而有帳號就一定有密碼。
+預設的密碼是
+.IR "身份證字號末4碼 出生月日" 。
+像是\fIA123456789\fR在\fI1999-09-09\fR出生，那密碼就是\fI67890909\fR。
+
+
+.SH 大小寫問題
+
+為什麼學號要採用大寫呢？而e-mail和個人網頁又是小寫？
+我想就就和身份證字號要用大寫一樣，
+而e-mail和個人網頁都是架在計中server上的服務；
+也就是是用BSD或其它UN*X跑的服務。
+在unix中習慣以小寫字母命名；且大小寫在unix中是不同的。
+（和windows不同。）所以我猜計中才會以小寫命名。
+
+
+.SH 畢業
+
+畢業後e-mail會被保留一段時間，然後刪除。網頁空間應該相同。
+第1學期畢業者(即8月~隔年1月)隔年8月1日停用，
+第2學期畢業者(即2月~7月)隔年2月1日停用。
+.RI 計中 http://cc.ncku.edu.tw/files/15-1255-119460,c3357-1.php
+
+如果畢業後繼續唸研究所，學號末碼會被拿掉作為新的學號。
+（也就是不能驗證了。）
+
+
