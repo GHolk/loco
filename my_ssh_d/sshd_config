@@ -1,0 +1,8 @@
+# this is create by c34031328 with: 
+# <https://wenchiching.wordpress.com/2009/08/30/ssh-tunnel/>
+
+port 38763
+HostKey /home/users1/c34031328/.ssh/ssh_host_key
+HostKey /home/users1/c34031328/.ssh/ssh_host_rsa_key
+HostKey /home/users1/c34031328/.ssh/ssh_host_dsa_key
+GatewayPorts clientspecified

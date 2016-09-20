@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/usr/local/sbin/sshd -f ~/.ssh/sshd_config \
+  || echo "sshd not start! ">&2
+
