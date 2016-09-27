@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+TRASH="$HOME/.trash"
+
+for file in $@ ; do
+
+	new_name="$file"
+
+	while [ -a "$TRASH/$new_name" ] ; do
+		new_name="${new_name}_"
+	done
+
+	mv "$file" "$TRASH/$new_name"
+
+done
+
