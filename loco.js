@@ -4,34 +4,27 @@ var loco = {
     /** input a table element, output a array. **/
     parseTable: function (table) {
 
-        function parseTableRow(tr) {
-            var i, l, tableRowArray=[];
-            for(i=0,l=tr.children.length; i<l; i++)
-                tableRowArray.push(tr.children[i].textContent.trim());
-            return tableRowArray;
+        var rows = Array.prototype.slice.call(table.rows,0),
+            tableArray = [], 
+            cellElements, 
+            rowArray, i, j;
+
+        for(i=0; i<rows.length; i++) {
+
+            cellElements = Array.prototype.slice.call(rows[i].cells,0),
+            rowArray = [];
+
+            for(j=0; j<cellElements.length; j++)
+                rowArray.push(cellElements[j].textContent.trim());
+
+            tableArray.push(rowArray);
         }
-
-
-        var tableArray = [];
-
-        (function findTableRow(tableElement,tableArray) {
-            var i,l,tableChild;
-            for(i=0, l=tableElement.children.length; i<l; i++) {
-                tableChild = tableElement.children[i];
-
-                if(tableChild.nodeName.toLowerCase() == 'tr')
-                    tableArray.push( parseTableRow(tableChild) );
-                else
-                    findTableRow(tableChild,tableArray);
-            }
-        })(table,tableArray);
 
         return tableArray;
     },
 
-
     /** input a text or element, output a element. **/
-    autolink: function (t,tagName){
+    autoLink: function (t,tagName) {
 
         function cu(u){
         // create url element and return. 
@@ -82,3 +75,4 @@ var loco = {
         return nt;
     }
 };
+
