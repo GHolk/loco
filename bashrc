@@ -37,14 +37,12 @@ alias ...="cd - "
 # not use usually
 
 
-function mcd 
-{ 
+function mcd() { 
 	mkdir $@
 	cd $1
 }
 
-function cls
-{
+function cls() {
 	cd $1
 	ls
 }
