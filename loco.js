@@ -1,6 +1,21 @@
 
 var loco = {
 
+    parseQueryString: function (queryString) {
+
+        if (queryString.charAt(0) == '?')
+            queryString = queryString.substr(1);
+
+        var keyValueArray = queryString.split(/&|=/),
+            keyValues = {};
+
+        for (var i=0; i<keyValueArray.length; i+=2)
+            keyValues[  decodeURIComponent( keyValueArray[i] )  ]
+                = decodeURIComponent( keyValueArray[i+1] );
+
+        return keyValues;
+    },
+
     /** input a table element, output a array. **/
     parseTable: function (table) {
 
@@ -29,23 +44,24 @@ var loco = {
         function cu(u){
         // create url element and return. 
     
-            var t = 'url', e;
+            var t = 'url', e, img;
             // t = type of url,
             // e = html element.
     
-            if( /\.(jpe?g|gif|png)\?.*$/.test(u) ) t = 'img';
-        
-            switch(t){
+            if( /\.(jpe?g|gif|png)(\?.*)?$/i.test(u) ) t = 'img';
+
+            e = document.createElement('a');
+            e.href = u;
+
+            switch (t) {
             case 'url':
-                e = document.createElement('a');
-                e.href = u;
                 e.textContent = u;
                 break;
-        
+
             case 'img':
-                e = document.createElement('img');
-                e.src = u;
-                e.title = u;
+                img = document.createElement('img');
+                img.src = u;
+                e.appendChild(img);
                 break;
             }
             return e;
@@ -57,7 +73,7 @@ var loco = {
         var nt = document.createElement(tagName || 'div');
         // nt: new text. 
 
-        var u = new RegExp('https?://[^<>" ]+','gi');
+        var u = /https?:\/\/[^<>" \n]+/gi;
         // regexp within `/`, use '' dont need escape `/`. 
         var at = t.split(u); // at: anchor text. 
         var au = t.match(u); // au: anchor url.

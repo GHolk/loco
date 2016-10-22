@@ -1469,7 +1469,7 @@ sub _EncodeBackslashEscapes {
 sub _DoAutoLinks {
 	my $text = shift;
 
-	$text =~ s{<([a-z]*:?//[^'">\s]+)>}{<a href="$1">$1</a>}gi;
+	#$text =~ s{<([a-z]*:?//[^'">\s]+)>}{<a href="$1">$1</a>}gi;
 
 	# Email addresses: <address@domain.foo>
 	$text =~ s{
@@ -1484,6 +1484,9 @@ sub _DoAutoLinks {
 	}{
 		_EncodeEmailAddress( _UnescapeSpecialChars($1) );
 	}egix;
+
+    # add by gholk, enhence auto link. 
+	$text =~ s{<([^<>"'\s]*\.[^<>"'\s]*)>}{<a href="$1">$1</a>}gi;
 
 	return $text;
 }

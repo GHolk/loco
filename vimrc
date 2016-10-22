@@ -3,6 +3,13 @@
 :nmap Y y$
 :nmap cc c^
 
+:imap <C-B> <Left>
+:imap <C-F> <Right>
+:imap <C-e> <End>
+:imap <C-a> <Home>
+
+
+" use space instead tab
 :set tabstop=4
 :set expandtab
 

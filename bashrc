@@ -20,11 +20,14 @@ PS1="\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
 ## change and option ##
 alias vi=vim
 alias rm=gvfs-trash
-alias octave="octave --no-gui"
 alias mv="mv -i"
 alias cp="cp -i"
-alias manen="man -L en"
+alias men="man -L en"
 alias df="df -h"
+
+alias octave="octave --no-gui"
+alias emacs="emacs -nw"
+
 export GREP_COLORS=auto
 
 
@@ -52,6 +55,7 @@ function cls() {
 #PATH=".:$PATH"
 myweb="myweb.ncku.edu.tw/~c34031328"
 diy="574730f77628e1670d000056@diy-locoescp.rhcloud.com"
+ncku="ncku.edu.tw"
 export LANGUAGE="zh_TW:zh_CN:en"
 export HISTTIMEFORMAT="%F %T "
 
@@ -64,9 +68,15 @@ export HISTTIMEFORMAT="%F %T "
 
 
 # too long option to remember. 
-function pdfopt {
+pdfopt() {
 gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dQUIET \
 	-dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen \
 	-sOutputFile="$2" "$1"
 }
 
+clp() {
+        echo -e "\n********\n"
+        cat
+}
+
+echo "use 'flickr' to get fun! "
