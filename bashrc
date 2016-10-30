@@ -24,6 +24,8 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias men="man -L en"
 alias df="df -h"
+alias ls="ls -CF --color=auto"
+alias ll="ls -l"
 
 alias octave="octave --no-gui"
 alias emacs="emacs -nw"
@@ -75,7 +77,7 @@ gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dQUIET \
 }
 
 clp() {
-        echo -e "\n********\n"
+        echo -ne "\n\n********\n\n"
         cat
 }
 

@@ -1,15 +1,14 @@
 #!/bin/sh
 
 
+flickr_url_file="$HOME/Pictures/flickr_2015_url"
+
 if [ -z "$1" ]
 then
-
-    flickr_url_file="$HOME/Pictures/flickr_2015_url"
-
     ed -s "$flickr_url_file" <<EDSCRIPT
-1p
-1m\$
-\$s/^/#/
+/^http/m\$
+\$p
+s/^/! /
 wq
 EDSCRIPT
 

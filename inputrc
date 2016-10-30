@@ -3,7 +3,10 @@
 # creat by c34031328@ncku.edu.tw
 
 # bind Control-w to smarter delete last word. 
-Control-w:"\e\C-h"
+# Control-w:"\e\C-h"
 #"\C-o":" | less\n"
 #"\C-a":"\C-x\C-x"
 "\e\n":" | less "
+
+set bell-style visible
+set completion-ignore-case On
