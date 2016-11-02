@@ -1,12 +1,16 @@
 " gholk's vim rc
-:imap zx <Esc>
+
+:set nocp
+:set nu
+
 :nmap Y y$
 :nmap cc c^
+:map! zx <Esc>
 
-:imap <C-B> <Left>
-:imap <C-F> <Right>
-:imap <C-e> <End>
-:imap <C-a> <Home>
+:map! <C-B> <Left>
+:map! <C-F> <Right>
+:map! <C-e> <End>
+:map! <C-a> <Home>
 
 
 " use space instead tab
