@@ -17,8 +17,24 @@ fi
 PS1="\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
 #PS1="`a=$?;if [ $a -ne 0 ]; then a=" "$a; echo -ne "\[\e[s\e[1A\e[$((COLUMNS-2))G\e[31m\e[1;41m${a:(-3)}\e[u\]\[\e[0m\e[7m\e[2m\]"; fi`\[\e[1;32m\]\u@\h:\[\e[0m\e[1;34m\]\W\[\e[1;34m\]\$ \[\e[0m\]"
 
+# add current dictionary into PATH
+#PATH=".:$PATH"
+myweb="myweb.ncku.edu.tw/~c34031328"
+diy="574730f77628e1670d000056@diy-locoescp.rhcloud.com"
+ncku="ncku.edu.tw"
+export LANGUAGE="zh_TW:zh_CN:en" HISTTIMEFORMAT="%F %T " MAKEFILES="$HOME/.Makefile"
+export EDITOR=vim
+
+# npm path #
+# these should inside .profile or .bash_profile
+#PATH="$HOME/node_modules/.bin:$PATH"
+#CDPATH=".:$HOME:$HOME/web/escape:$HOME/Documents"
+#alias cd="cd >/dev/null"
+# because cdpath, cd will print if in cdpath. 
+
+
 ## change and option ##
-alias vi=vim
+#alias vi=vim
 alias rm=gvfs-trash
 alias mv="mv -i"
 alias cp="cp -i"
@@ -26,9 +42,11 @@ alias men="man -L en"
 alias df="df -h"
 alias ls="ls -CF --color=auto"
 alias ll="ls -l"
+alias telnet="telnet -E"
 
 alias octave="octave --no-gui"
 alias emacs="emacs -nw"
+#alias tmux="tmux new-session telnet tcf.$ncku"
 
 export GREP_COLORS=auto
 
@@ -51,22 +69,6 @@ function cls() {
 	cd $1
 	ls
 }
-
-
-# add current dictionary into PATH
-#PATH=".:$PATH"
-myweb="myweb.ncku.edu.tw/~c34031328"
-diy="574730f77628e1670d000056@diy-locoescp.rhcloud.com"
-ncku="ncku.edu.tw"
-export LANGUAGE="zh_TW:zh_CN:en"
-export HISTTIMEFORMAT="%F %T "
-
-# npm path #
-# these should inside .profile or .bash_profile
-#PATH="$HOME/node_modules/.bin:$PATH"
-#CDPATH=".:$HOME:$HOME/web/escape:$HOME/Documents"
-#alias cd="cd >/dev/null"
-# because cdpath, cd will print if in cdpath. 
 
 
 # too long option to remember. 

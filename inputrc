@@ -10,3 +10,6 @@
 
 set bell-style visible
 set completion-ignore-case On
+
+Control-u: universal-argument
+

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+eval `printf 'url="%s" action_code="%s" option="%s"' $1`
+
+case "$action_code" in
+    "") action="xdg-open" ;;
+    "b") action="pttbackup" ;;
+esac
+
+$action $option "$url"
+
+exit
+
+## below was deprecate because slow ##############
+
+spopt() {
+    url="$1" shift
+
+    case "$1" in
+        "") action="firefox" ;;
+        "b") action="pttbackup" shift ;;
+    esac
+
+    $action $* "$url" &
+}
+
+spopt $1
+

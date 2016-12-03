@@ -1,5 +1,8 @@
 " gholk's vim rc
 
+" highlight style
+:colorscheme evening
+
 :set nocp
 :set nu
 
