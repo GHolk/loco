@@ -1,0 +1,5 @@
+#!/bin/sed -f
+s/&gt;/>/g
+s/&lt;/</g
+s/&quot;/"/g
+s/&amp;/\&/g

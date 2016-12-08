@@ -1,0 +1,7 @@
+#!/bin/sh
+# create by c34031328 2016-12-06
+# usage: 
+#   echo hello | wallb
+
+wall "`figlet $* | unix2dos`"
+

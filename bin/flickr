@@ -5,12 +5,12 @@ flickr_url_file="$HOME/Pictures/flickr_2015_url"
 
 if [ -z "$1" ]
 then
-    ed -s "$flickr_url_file" <<EDSCRIPT
+    ex -s "$flickr_url_file" <<EXSCRIPT
 /^http/m\$
 \$p
 s/^/! /
 wq
-EDSCRIPT
+EXSCRIPT
 
     exit 0
 fi

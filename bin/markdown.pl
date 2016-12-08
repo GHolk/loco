@@ -1061,8 +1061,8 @@ $text =~ s{</dl>\s*<dl>}{}gx;
 $text =~ s{
 	<ul>\s*
 	(
-	<li>.+?[^ ](：|(?::\s)).+</li>
-	(?:.|\n)*?
+	<li>[^\n]+?[^ ](：|(?::\s)).+?</li>
+	.*?
 	)
 	</ul>
 }{
@@ -1075,7 +1075,7 @@ $text =~ s{
 		$lang = ' lang="en"' if ( $colon eq ': ' );
 		"<dl$lang class=\"inline\">\n$li</dl>"; 
 	}
-}egx; 
+}egxs; 
 
 
 # add gholk inline dl 
