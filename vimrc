@@ -1,7 +1,7 @@
 " gholk's vim rc
 
 " highlight style
-:colorscheme evening
+:colorscheme desert
 
 :set nocp
 :set nu
