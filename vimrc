@@ -29,7 +29,7 @@
 ":nmap \m :!markdown
 
 " use clipit "
-:map "* :r!clipit -c<CR>
+:map "* :r !xsel -ob<CR>
 
 :set autoindent
 
