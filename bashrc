@@ -19,11 +19,12 @@ PS1="\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
 
 ## change and option ##
 alias vi=vim
-alias rm=gvfs-trash
+#alias rm=gvfs-trash
 alias mv="mv -i"
 alias cp="cp -i"
 alias men="man -L en"
 alias df="df -h"
+alias ll="ls -l"
 
 alias octave="octave --no-gui"
 alias emacs="emacs -nw"
