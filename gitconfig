@@ -1,5 +1,7 @@
 [alias]
 	ss = status
+    ck = checkout
+    bh = branch
 [color]
 	ui = true
 [user]

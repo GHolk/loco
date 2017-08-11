@@ -8,7 +8,6 @@
 
 :nmap Y y$
 :nmap cc c^
-:map! zx <Esc>
 
 :map! <C-B> <Left>
 :map! <C-F> <Right>
@@ -32,6 +31,8 @@
 :map "* :r !xsel -ob<CR>
 
 :set autoindent
+:set tabstop=4
+:set shiftwidth=4
 
 
 " ez HTML sup sub
@@ -50,4 +51,10 @@
 "qq:!tr -d '\t' | eqn -T MathML
 "q
 
+" use pathogen for coffee script
+"call pathogen#infect()
+"syntax enable
+"filetype plugin indent on
+" use easy zip archive from vim.org instead.
+" https://github.com/kchmck/vim-coffee-script#install-from-a-zip-file
 
