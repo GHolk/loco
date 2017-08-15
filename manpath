@@ -1,0 +1,2 @@
+MANDATORY_MANPATH /home/gholk/.local/share/man
+MANPATH_MAP /home/gholk/.local/bin /home/gholk/.local/share/man
