@@ -1,0 +1,18 @@
+# global setting
+ServerAliveInterval 180
+ServerAliveCountMax 10
+Compression yes
+
+Host ptt.cc
+User bbsu
+
+Host diy.openshift
+HostName aq-locoescp.rhcloud.com
+User 598bf64e2d5271cef0000043
+
+Host node.openshift
+HostName quizbe-locoescp.rhcloud.com
+User 59967bfd0c1e66efd60000b1
+
+Host gisweb.ml
+User root
