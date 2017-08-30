@@ -10,7 +10,7 @@ Host diy-openshift
 HostName aq-locoescp.rhcloud.com
 User 598bf64e2d5271cef0000043
 
-Host node-openshift
+Host quiz-openshift
 HostName quizbe-locoescp.rhcloud.com
 User 59967bfd0c1e66efd60000b1
 
