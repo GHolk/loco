@@ -24,6 +24,7 @@ export \
     HISTTIMEFORMAT="%F %T " \
     MAKEFILES="$HOME/.Makefile" \
     EDITOR=vi \
+    GOPATH=$HOME/.local/share/go \
     PATH="$HOME/.local/bin:$PATH"
 
 if [ -z $NODE_PATH ]

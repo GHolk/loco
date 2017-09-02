@@ -50,6 +50,8 @@
                             evil-overriding-maps))
                    (evil-define-key 'motion Info-mode-map
                      (kbd "RET") 'Info-follow-nearest-node)
+                   (evil-define-key 'motion Info-mode-map
+                     (kbd "TAB") 'Info-next-reference-or-link)
                    (evil-mode 1)))
    (:name evil-surround
           :after (global-evil-surround-mode 1))
