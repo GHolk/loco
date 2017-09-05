@@ -1,4 +1,3 @@
-
 ;; create by c34031328
 ;; 2016-12-10
 
@@ -52,16 +51,34 @@
                      (kbd "RET") 'Info-follow-nearest-node)
                    (evil-define-key 'motion Info-mode-map
                      (kbd "TAB") 'Info-next-reference-or-link)
+                   (evil-ex-define-cmd "q[uit]" 'evil-delete-buffer)
+
+                   (evil-define-command
+                     evil-save-and-delete-buffer (file &optional bang)
+                     "Saves the current buffer and only delete buffer."
+                     :repeat nil
+                     (interactive "<f><!>")
+                     (evil-write nil nil nil file bang)
+                     (evil-delete-buffer (current-buffer)))
+                   (evil-ex-define-cmd "wq" 'evil-save-and-delete-buffer)
+
+                   (define-key evil-ex-completion-map
+                     (kbd "C-b") 'backward-char)
+                   (define-key evil-ex-completion-map
+                     (kbd "C-a") 'move-beginning-of-line)
+                   (define-key evil-ex-completion-map
+                     (kbd "C-k") 'kill-line)
                    (evil-mode 1)))
+   
    (:name evil-surround
           :after (global-evil-surround-mode 1))
     ))
 
-(setq my:el-get-packages
+(setq el-get-packages
       '(el-get smex markdown-mode pangu-spacing mediawiki js2-mode
                evil evil-surround))
 
-(el-get nil my:el-get-packages)
+(el-get nil el-get-packages)
 
 (require 'package)
 (package-initialize)

@@ -1,10 +1,16 @@
 # global setting
+
+# keep connection 30m
 ServerAliveInterval 180
 ServerAliveCountMax 10
 Compression yes
 
 Host ptt.cc
 User bbsu
+
+
+# openshift2 in redhat, use random username
+# alias in dash
 
 Host diy-openshift
 HostName aq-locoescp.rhcloud.com
@@ -14,5 +20,12 @@ Host quiz-openshift
 HostName quizbe-locoescp.rhcloud.com
 User 59967bfd0c1e66efd60000b1
 
+
+# geomatics synology server, nas host webserver.
 Host gisweb.ml
 User root
+
+# 張霽的 Raspberry Pi
+Host cchi.tw
+User gold740767
+Port 1122
