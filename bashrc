@@ -10,15 +10,11 @@ set completion-ignore-case On
 set completion-map-case On
 
 
-myweb="myweb.ncku.edu.tw/~c34031328"
-ncku="ncku.edu.tw"
-
 alias rm=gvfs-trash
 alias mv="mv -i"
 alias cp="cp -i"
 alias men="man -L en"
 alias df="df -h"
-alias ls="ls -F"
 alias ll="ls -la"
 
 alias octave="octave --no-gui"
@@ -29,12 +25,18 @@ alias ap=apropos
 alias ..="cd .. ; "
 alias ...="cd - "
 
+
+alias grep="grep --color"
+alias ls="ls -F --color=auto"
+
 # set colorful output
-GREP_COLORS=auto
-if command -v dircolors
+if command -v dircolors >/dev/null
 then eval `dircolors`
 fi
 
+
+myweb="myweb.ncku.edu.tw/~c34031328"
+ncku="ncku.edu.tw"
 
 mcd() { 
     mkdir $@
