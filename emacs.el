@@ -49,10 +49,15 @@
                             evil-overriding-maps))
                    (evil-define-key 'motion Info-mode-map
                      (kbd "RET") 'Info-follow-nearest-node)
-                   (evil-define-key 'motion Info-mode-map
-                     (kbd "TAB") 'Info-next-reference-or-link)
-                   (evil-ex-define-cmd "q[uit]" 'evil-delete-buffer)
+                   (define-key evil-motion-state-map
+                     (kbd "TAB") nil)
 
+                   (define-key evil-motion-state-map
+                     (kbd "SPC") 'evil-scroll-page-down)
+                   (define-key evil-motion-state-map 
+                     (kbd "m") 'evil-set-marker)
+                   
+                   (evil-ex-define-cmd "q[uit]" 'evil-delete-buffer)
                    (evil-define-command
                      evil-save-and-delete-buffer (file &optional bang)
                      "Saves the current buffer and only delete buffer."
@@ -87,10 +92,18 @@
         ("marmalade" . "http://marmalade-repo.org/packages/")
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
+
 (require 'ido)
 (ido-mode t)
+(defun my-ido-bind-key ()
+  "ido key binding need add as hook, accroding to
+<https://emacs.stackexchange.com/questions/3729/how-do-i-bind-keys-in-ido>"
+  (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)
+  (define-key ido-completion-map (kbd "C-n") 'ido-next-match))
+(add-hook 'ido-setup-hook 'my-ido-bind-key)
 (global-set-key (kbd "C-x f") 'ido-find-file)
 
+ 
 ;;;; about Emacs itself
 ;; emacs has no user-agent default??
 (customize-set-variable 'url-user-agent "Emacs25")
@@ -106,3 +119,10 @@
 
 (load "~/.emacs.d/sdcv.el")
 (global-set-key (kbd "C-c d") 'kid-sdcv-to-buffer)
+
+(define-key emacs-lisp-mode-map
+  (kbd "TAB") 'completion-at-point)
+
+(show-paren-mode 1)
+
+;(define-key inferior-scheme-mode-map (kbd "TAB") 'dabbrev-expand)

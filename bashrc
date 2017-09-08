@@ -25,6 +25,7 @@ export \
     MAKEFILES="$HOME/.Makefile" \
     EDITOR=vi \
     GOPATH=$HOME/.local/share/go \
+    INFOPATH=/usr/share/info:$HOME/.local/share/info \
     PATH="$HOME/.local/bin:$PATH"
 
 if [ -z $NODE_PATH ]
