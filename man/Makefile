@@ -1,14 +1,11 @@
 
 md2man = marked-man
+md2man_flag = --manual='NCKU CCNS' --version=
 
-default: ncku-ip.7 html-char.7 ntu-ip.7
+all: ncku-ip.7 html-char.7 ntu-ip.7
 
-ncku-ip.7: ncku-ip.md
-	$(md2man) $(md2man_flag) --version=v3 --manual='Taiwan Collage' $< >$@
+%.7: %.md Makefile
+	$(md2man) -o $@ $(md2man_flag) $<
 
-html-char.7: html-char.md
-	$(md2man) $(md2man_flag) --version=v3 --manual='Cheat Sheet' $< >$@
-
-ntu-ip.7: ntu-ip.md
-	$(md2man) $(md2man_flag) --version=v1 --manual='Taiwan Collage' $< >$@
-
+npm:
+	./link-npm-man

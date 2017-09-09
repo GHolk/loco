@@ -1,0 +1,52 @@
+#!/bin/sh
+
+lib_path="$1"
+man_path="$2"
+
+link_to_man() {
+    # $1 is target directory, for -t option
+    # else is path to link
+    ln -st "$@"
+}
+
+is_man_sub_dir() {
+    man_dir="$1"
+    if [ -z "`find "$man_dir" -maxdepth 1 -type d -name 'man?'`" ]
+    then return 1
+    else return 0
+    fi
+}
+
+link_man_sub_dir() {
+    man_dir="$1"
+    (
+        cd "$man_dir"
+        for man_n in man?
+        do
+            link_to_man "$man_path/$man_n" "$PWD/$man_n/"*
+        done
+    )
+}
+
+get_section() {
+    echo "$1" | sed -r 's/^[^.]*?\.([1-7]).*$/\1/'
+}
+
+link_man_by_suffix() {
+    man_file=$1
+    section=$(get_section $man_file)
+    link_to_man "$man_path"/man$section $man_file
+}
+
+for man_dir in "$lib_path"/*/man
+do
+    if is_man_sub_dir "$man_dir"
+    then
+        link_man_sub_dir "$man_dir"
+    else
+        for man in "$man_dir"/*.?
+        do
+            link_man_by_suffix "$man"
+        done
+    fi
+done
