@@ -52,11 +52,17 @@
                    (define-key evil-motion-state-map
                      (kbd "TAB") nil)
 
+                   (let ((key (kbd "0")))
+                     (define-key evil-outer-text-objects-map
+                       key 'evil-a-paren)
+                     (define-key evil-inner-text-objects-map
+                       key 'evil-inner-paren))
+
                    (define-key evil-motion-state-map
                      (kbd "SPC") 'evil-scroll-page-down)
                    (define-key evil-motion-state-map 
                      (kbd "m") 'evil-set-marker)
-                   
+
                    (evil-ex-define-cmd "q[uit]" 'evil-delete-buffer)
                    (evil-define-command
                      evil-save-and-delete-buffer (file &optional bang)
@@ -77,13 +83,21 @@
    
    (:name evil-surround
           :after (global-evil-surround-mode 1))
+   (:name rainbow-delimiters
+          :after (progn
+                   (add-hook 'prog-mode-hook
+                             'nice-bracket-highligh)))
     ))
+
+(defun nice-bracket-highligh ()
+  (rainbow-delimiters-mode t)
+  (show-paren-mode t))
 
 (setq el-get-packages
       '(el-get smex markdown-mode pangu-spacing mediawiki js2-mode
-               evil evil-surround))
+               evil evil-surround rainbow-delimiters))
 
-(el-get nil el-get-packages)
+(el-get 'sync el-get-packages)
 
 (require 'package)
 (package-initialize)
@@ -122,7 +136,3 @@
 
 (define-key emacs-lisp-mode-map
   (kbd "TAB") 'completion-at-point)
-
-(show-paren-mode 1)
-
-;(define-key inferior-scheme-mode-map (kbd "TAB") 'dabbrev-expand)

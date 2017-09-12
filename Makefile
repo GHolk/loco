@@ -1,12 +1,13 @@
 
-all: config # manual binary
+.PHONY: all \
+	config man bin \
+	bash tmux git manpath_file vim ssh
+
+all: config man # binary
 
 define symbol_link  # (source name, destination path)
 	ln -s "$(PWD)/$(1)" "$(2)"
 endef
-
-.PHONY: all config binary manual \
-	bash tmux git manpath_file vim ssh
 
 config: bash tmux git manpath_file vim ssh
 
@@ -22,6 +23,12 @@ $(HOME)/.ssh/config: ssh_config
 
 $(HOME)/.%: %
 	$(call symbol_link,$<,$@)
+
+man: man/Makefile
+	$(MAKE) -C $@
+
+bin:
+	$(MAKE) -C $@
 
 supcj.gtab: supcj.cin
 	gcin2tab supcj.cin

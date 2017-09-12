@@ -1,6 +1,6 @@
 
 md2man = marked-man
-md2man_flag = --manual='NCKU CCNS' --version=
+md2man_flag = --manual='NCKU CCNS'
 
 all: ncku-ip.7 html-char.7 ntu-ip.7
 

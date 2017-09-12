@@ -5,11 +5,6 @@
 
 PS1="\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
 
-# ignore case, not distinct `_` `-`
-set completion-ignore-case On
-set completion-map-case On
-
-
 alias rm=gvfs-trash
 alias mv="mv -i"
 alias cp="cp -i"
