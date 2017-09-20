@@ -50,3 +50,7 @@ err() {
 gvfs() {
     gvfs-$*
 }
+
+less-big5() {
+    iconv -f big5 "$@" | less
+}
