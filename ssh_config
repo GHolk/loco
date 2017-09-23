@@ -31,7 +31,7 @@ User gold740767
 Port 1122
 
 # ccns chatbot server
-Host chatbot-ccns
+Host quiz-ccns
 #HostName 192.168.1.109
 HostName 140.116.252.156
 User ccns
