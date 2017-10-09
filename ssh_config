@@ -5,7 +5,11 @@ ServerAliveInterval 180
 ServerAliveCountMax 10
 Compression yes
 
+# login bbs by `ssh bbsu@domain.name`
 Host ptt.cc
+User bbsu
+
+Host clam.ml
 User bbsu
 
 
@@ -35,4 +39,5 @@ Host quiz-ccns
 #HostName 192.168.1.109
 HostName 140.116.252.156
 User ccns
+
 
