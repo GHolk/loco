@@ -13,7 +13,8 @@ alias df="df -h"
 alias ll="ls -la"
 
 alias octave="octave --no-gui"
-alias emacs="emacs -nw"
+# alias emacs="emacs -nw"
+alias ec="emacsclient -nw -c"
 
 alias xm=xmms2
 alias ap=apropos
