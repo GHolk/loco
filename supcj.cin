@@ -1,5 +1,5 @@
 ## 2015-12-15 ##
-## 標準化開頭flag. 
+## 標準化開頭 flag. 
 %ename supcj
 #%gen_inp
 %cname 上標倉頡
@@ -47,7 +47,7 @@ z 重
 ` `
 %keyname end
 %chardef begin
-## 泰瑞倉頡輸入法對照表（中日韓統一表意文字、擴展A區、擴展B區）：
+## 泰瑞倉頡輸入法對照表（中日韓統一表意文字、擴展 A 區、擴展 B 區）：
 a 日
 a 曰
 aa 昌
@@ -79072,7 +79072,7 @@ yywu 𨙃
 yywv 𠘠
 yyyib 𣫺
 z 重
-## 泰瑞倉頡輸入法對照表（擴展C區、擴展D區）：
+## 泰瑞倉頡輸入法對照表（擴展 C 區、擴展 D 區）：
 aaaa 𪱈
 aaf 𪹕
 aaf 𪹶
@@ -83446,15 +83446,15 @@ yybs 𫐼
 yysb 𫑉
 ## 傳統倉頡輸入法符號對照表：
 zxaa 　
-zxab ，
-zxac 、
-zxad 。
+zxab，
+zxac、
+zxad。
 zxae ．
 zxaf ‧
-zxag ；
-zxah ：
-zxai ？
-zxaj ！
+zxag；
+zxah：
+zxai？
+zxaj！
 zxak ︰
 zxal …
 zxam ‥
@@ -83474,8 +83474,8 @@ zxba ︳
 zxbb ╴
 zxbc ︴
 zxbd ﹏
-zxbe （
-zxbf ）
+zxbe（
+zxbf）
 zxbg ︵
 zxbh ︶
 zxbi ｛
@@ -83498,8 +83498,8 @@ zxby 〈
 zxca 〉
 zxcb ︿
 zxcc ﹀
-zxcd 「
-zxce 」
+zxcd「
+zxce」
 zxcf ﹁
 zxcg ﹂
 zxch 『
@@ -83554,16 +83554,16 @@ xxh ╨
 xch ╜
 xl ║
 xm ═
-yyyaa 「
-yyyab 」
+yyyaa「
+yyyab」
 yyyac 『
 yyyad 』
 yyyae 〈
 yyyaf 〉
 yyyag 《
 yyyah 》
-yyyai （
-yyyaj ）
+yyyai（
+yyyaj）
 yyyak 〖
 yyyal 〗
 yyyam 【
@@ -83612,7 +83612,7 @@ yyyce ℃
 yyycf ℉
 yyycg °
 yyych …
-yyyco 。
+yyyco。
 yyyda ÷
 yyydb ±
 yyydc ≦
@@ -83716,8 +83716,8 @@ za 〉
 za 《
 za 》
 za …
-za 「
-za 」
+za「
+za」
 za 『
 za 』
 za 〖
@@ -86037,9 +86037,9 @@ x/ ✘
 ##以下字區用到小小輸入法內部變數，暫不使用。
 
 #### 直通車對照表：
-##.date $mon月$day日 $mon月$day日（星期$WEEK） $MON月$DAY日 農曆$RIQI
-##.ymd $yyyy年$mon月$day日 $yyyy年$mon月$day日（星期$WEEK） $YYYY0年$MON月$DAY日 農曆$RIQI
-##.time $hour:$min $hour時$min分 $HOUR點$MIN分
+##.date $mon 月$day 日 $mon 月$day 日（星期$WEEK） $MON 月$DAY 日 農曆$RIQI
+##.ymd $yyyy 年$mon 月$day 日 $yyyy 年$mon 月$day 日（星期$WEEK） $YYYY0 年$MON 月$DAY 日 農曆$RIQI
+##.time $hour:$min $hour 時$min 分 $HOUR 點$MIN 分
 ##.exp $GO(檔案總管,explorer.exe)
 ##.note $GO(記事本,notepad.exe)
 ##.word $GO(文字編輯器,wordpad.exe)
@@ -86135,7 +86135,7 @@ onbuc 貪
 ##取消修改 2015-10-27
 
 ## 2015-10-27 ##
-##取消修改2015-10-27
+##取消修改 2015-10-27
 ##重置半形符號輸入規則：
 
 #\/ / ## 重置半形符號輸入規則
@@ -86279,7 +86279,7 @@ i' Ï
 o' ð
 ## 幹這什麼鳥？
 th' ð
-## 在kk音標英文是th的一種發音，偏/f/
+## 在 kk 音標英文是 th 的一種發音，偏/f/
 d' Ð
 ## 這又是啥小？
 o' Ð
@@ -86585,6 +86585,17 @@ dtmc 棋
 # 2016-08-31 #
 # 加入 `肉` `⺼`
 bim ⺼
+
+# 2017-10-21 #
+# 加入新的半形跳脫
+.\ .
+,\ ,
+'\ '
+;\ ;
+\\ \
+[\ [
+]\ ]
+/\ /
 
 %chardef end
 
