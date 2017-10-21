@@ -14,7 +14,9 @@ alias ll="ls -la"
 
 alias octave="octave --no-gui"
 # alias emacs="emacs -nw"
+# use emacs server
 alias ec="emacsclient -nw -c"
+alias userctl="systemctl --user"
 
 alias xm=xmms2
 alias ap=apropos
