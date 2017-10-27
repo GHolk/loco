@@ -113,10 +113,14 @@ if (option.l) {
 }
 else if (pathList.length > 0) {
 
-    const photoOption = {}
+    const photoOption = {
+        tags: ['assocr']
+    }
 
     if (option.t) {
-        photoOption.tags = option.t.split(/,/g)
+        option.t.split(/,/g).forEach(
+            (tag) => photoOption.tags.push(tag)
+        )
     }
 
     const photoList = pathList.map((path) => new Photo(path, photoOption))
@@ -152,6 +156,7 @@ else if (pathList.length > 0) {
                 (info) => EmbedInfo.fromInfo(info.photo)
             )
             logJson(embedInfos)
+            process.exit()
         })
 }
 else {
