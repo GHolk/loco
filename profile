@@ -1,7 +1,6 @@
 #!/bin/sh
 
 export LANGUAGE="zh_TW:zh_CN:en"
-export HISTTIMEFORMAT="%F %T "
 export EDITOR=vi
 export GOPATH=$HOME/.local/share/go
 export PATH="$HOME/.local/bin:$PATH"
