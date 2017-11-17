@@ -5,6 +5,19 @@
 
 PS1="\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
 
+# bash history control
+HISTTIMEFORMAT="%F %T "
+HISTCONTROL=ignoreboth
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+shopt -s checkwinsize
+shopt -s globstar  # dobule star ** match attributial depth dir
+
+# friend less
+eval "$(SHELL=/bin/sh lesspipe)"
+
+
 alias rm=gvfs-trash
 alias mv="mv -i"
 alias cp="cp -i"
@@ -25,15 +38,14 @@ alias ...="cd - "
 
 
 alias grep="grep --color"
+alias egrep="egrep --color"
+alias fgrep="fgrep --color"
 alias ls="ls -F --color=auto"
 
 # set colorful output
-if command -v dircolors >/dev/null
-then eval `dircolors`
-fi
+eval `dircolors`
 
 
-myweb="myweb.ncku.edu.tw/~c34031328"
 ncku="ncku.edu.tw"
 
 mcd() { 
