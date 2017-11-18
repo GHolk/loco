@@ -1,0 +1,21 @@
+# this file should run at start of X session
+# like put in /etc/X11/Xsession.d/96dt13-xinput
+# to run touchpad and trackpoint speed
+
+max_speed=1.0
+
+
+touchpad=13
+
+tap=295
+xinput --set-prop $touchpad $tap 1
+
+speed=302
+xinput --set-prop $touchpad $speed $max_speed
+
+
+trackpoint=14
+
+speed=277
+xinput --set-prop $trackpoint $speed $max_speed
+
