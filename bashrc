@@ -3,6 +3,9 @@
 # If not running interactively, do not do anything
 [[ $- != *i* ]] && return
 
+export GPG_TTY=$(tty)
+# gpg-connect-agent updatestartuptty /bye >/dev/null
+
 PS1="\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
 
 # bash history control
