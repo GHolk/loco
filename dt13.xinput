@@ -6,16 +6,13 @@ max_speed=1.0
 
 
 touchpad=13
-
 tap=295
 xinput --set-prop $touchpad $tap 1
 
-speed=302
+speed=277
 xinput --set-prop $touchpad $speed $max_speed
 
 
 trackpoint=14
-
-speed=277
 xinput --set-prop $trackpoint $speed $max_speed
 
