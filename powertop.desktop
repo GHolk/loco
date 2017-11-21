@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=powertop
+Comment=a power consumption and power management diagnosis tool.
+Exec=sudo powertop --auto-tune
+Icon=xfpm-ac-adapter
+Type=Application
+Terminal=true
+Categories=System;
+Keywords=Battery;Power;
