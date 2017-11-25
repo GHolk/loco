@@ -1,0 +1,10 @@
+partial
+xkb_types "super_level2" {
+    Virtual_modifiers Super;
+    type "SUPER_LEVEL2" {
+        modifiers= Super;
+        map[Super]= Level2;
+        level_name[Level1]= "Base";
+        level_name[Level2]= "Super";
+    };
+};

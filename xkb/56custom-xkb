@@ -1,0 +1,10 @@
+# this script set user xkb config,
+# config is: ~/.xkb/default.xkm
+#
+# you can put this file in /etc/Xsession.d/
+
+xkm=$HOME/.xkb/default.xkm
+
+if [ -f $xkm ]
+then xkbcomp $xkm $DISPLAY
+fi

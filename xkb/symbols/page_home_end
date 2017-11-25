@@ -1,0 +1,11 @@
+partial modifier_keys
+xkb_symbols "super_page_home_end" {
+    key <PGUP>  {
+        type[Group1] = "SUPER_LEVEL2",
+        symbols[Group1] = [    Prior,   Home      ]
+    };
+    key <PGDN>  {
+        type[Group1] = "SUPER_LEVEL2",
+        symbols[Group1] = [    Next,  End       ]
+    };
+};
