@@ -5,5 +5,5 @@
 qemu-system-x86_64 -enable-kvm -snapshot \
                    -m 1G \
                    -hda /dev/sda \
-                   -drive if=pflash,format=raw,file=/usr/share/ovmf/OVMF.fd \
+                   -pflash /usr/share/ovmf/OVMF.fd \
                    -net none
