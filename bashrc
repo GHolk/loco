@@ -62,18 +62,30 @@ cls() {
 }
 
 err() {
-    echo $* >&2
+    echo "$@" >&2
 }
 
 gvfs() {
     gvfs-$*
 }
 
-less-big5() {
-    iconv -f big5 "$@" | less
+big5() {
+    luit -encoding big5 "$@"
 }
 
 value() {
-    eval "$@"
+    case "$1" in
+        -q )
+            shift
+            eval "$@" >/dev/null
+            ;;
+        -Q )
+            shift
+            eval "$@" >/dev/null 2>&1
+            ;;
+        * )
+            eval eval "$@"
+            ;;
+    esac
     echo $?
 }
