@@ -3,8 +3,11 @@
 #
 # you can put this file in /etc/Xsession.d/
 
-xkm=$HOME/.xkb/default.xkm
+# run in sub shell, prevent variable pollute
+(
+    xkm=$HOME/.xkb/default.xkm
 
-if [ -f $xkm ]
-then xkbcomp $xkm $DISPLAY
-fi
+    if [ -f $xkm ]
+    then xkbcomp $xkm $DISPLAY
+    fi
+)
