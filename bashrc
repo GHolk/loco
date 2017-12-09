@@ -51,6 +51,8 @@ eval `dircolors`
 
 ncku="ncku.edu.tw"
 
+# function
+## chain command
 mcd() { 
     mkdir $@
     cd $1
@@ -69,23 +71,35 @@ gvfs() {
     gvfs-$*
 }
 
+## change and execute command
 big5() {
     luit -encoding big5 "$@"
 }
-
 value() {
+    local exit_state
     case "$1" in
         -q )
             shift
-            eval "$@" >/dev/null
+            quiet "$@"
             ;;
         -Q )
             shift
-            eval "$@" >/dev/null 2>&1
+            quiet -Q "$@"
             ;;
         * )
-            eval eval "$@"
+            "$@"
             ;;
     esac
-    echo $?
+    exit_state=$?
+    echo $exit_state
+    return $exit_state
+}
+quiet() {
+    if [ "$1" = -Q ]
+    then
+        shift
+        "$@" >/dev/null 2>&1
+    else
+        "$@" >/dev/null
+    fi
 }
