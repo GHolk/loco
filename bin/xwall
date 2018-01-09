@@ -1,0 +1,9 @@
+#!/bin/sh
+
+header='X Wall'
+
+for display in $(w --no-header | awk '$3 ~ /^.*:[[:digit:]]+$/ {print $3}')
+do
+    env DISPLAY=$display notify-send "$header" "$*"
+done
+
