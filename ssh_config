@@ -46,7 +46,7 @@ User ccns
 # ccns web server
 Host web.ccns
 HostName web.ccns.ncku.edu.tw
-User ccns
+User gholk
 
 # ccns domain name server
 Host ns.ccns

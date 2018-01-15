@@ -10,7 +10,6 @@ PS1="\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
 
 # bash history control
 HISTTIMEFORMAT="%F %T "
-HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
 
