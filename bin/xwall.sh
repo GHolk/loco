@@ -7,7 +7,13 @@ notify_wall() {
 }
 
 zenity_wall() {
-    zenity --info --title "$header" --text "$*"
+    {
+        sleep 1s
+        wmctrl -F -a "$header" -b add,above
+    } &
+    zenity --info \
+           --title "$header" \
+           --text "$*"
 }
 
 
