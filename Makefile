@@ -32,3 +32,6 @@ bin:
 
 supcj.gtab: supcj.cin
 	gcin2tab supcj.cin
+
+supcj.scim: supcj.cin
+	ex -S cin2scim.ex supcj.scim
