@@ -30,8 +30,12 @@ man: man/Makefile
 bin:
 	$(MAKE) -C $@
 
+ime: supcj.scim supcj-cn.scim
 supcj.gtab: supcj.cin
 	gcin2tab supcj.cin
 
 supcj.scim: supcj.cin
 	ex -S cin2scim.ex supcj.scim
+
+supcj-cn.%: supcj.%
+	cconv -f UTF8-TW -t UTF8-CN -o $@ $<
