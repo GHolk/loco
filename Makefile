@@ -38,4 +38,6 @@ supcj.scim: supcj.cin
 	ex -S cin2scim.ex supcj.scim
 
 supcj-cn.%: supcj.%
-	cconv -f UTF8-TW -t UTF8-CN -o $@ $<
+	sed -i '/BEGIN_TABLE/,$$d' $@
+	sed -n '/BEGIN_TABLE/,$$p' $< | cconv -f UTF8-TW -t UTF8-CN >>$@ 
+
