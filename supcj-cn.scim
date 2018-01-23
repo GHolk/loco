@@ -4,7 +4,7 @@ VERSION_1_0
 BEGIN_DEFINITION
 UUID = 1807537d-5dd4-f567-7875-e9845a373f23
 SERIAL_NUMBER = 20170730
-ICON = /home/gholk/.scim/user-tables/supcj.png
+ICON = /home/gholk/.scim/user-tables/supcj-cn.png
 NAME = supcj
 NAME.zh_CN = 上标仓颉
 NAME.zh_HK = 上标仓颉
