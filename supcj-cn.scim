@@ -9,7 +9,7 @@ NAME = supcj
 NAME.zh_CN = 上标仓颉
 NAME.zh_HK = 上标仓颉
 NAME.zh_TW = 上标仓颉
-LANGUAGES = zh_TW,zh_HK,zh_CN,zh_SG
+LANGUAGES = zh_CN,zh_HK,zh_SG
 AUTHOR = gholk
 STATUS_PROMPT = 枪
 KEYBOARD_LAYOUT = US_Default
@@ -40407,7 +40407,6 @@ mniku	𣧗
 mnilr	𤮂
 mnimn	𤬯
 mnimo	𣧸
-mnip	𣧆
 mniq	残
 mnir	殆
 mnirm	𣨤
@@ -86372,4 +86371,5 @@ ok	👌
 ok	👌🏼
 huwml	鼻
 mnip	恐
+mnip	𣧆
 END_TABLE
