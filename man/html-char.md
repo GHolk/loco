@@ -1,5 +1,5 @@
 
-HTML-CHAR(7) -- HTML entity table
+html-char(7) -- HTML entity table
 =================================
 
 TABLE
