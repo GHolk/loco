@@ -1,317 +1,1733 @@
-.\" Process this file with
-.\" groff -man -Tascii tanet.1
-.\"
-.TH NCKU_ID 7 "2016-05-19" 學號編碼 "PTT 鄉民手冊"
-
-.SH NAME
-
-NCKU_ID \- 國立台南成功大學學號。
-
-
+.mso zh.tmac
+.TH "NCKU\-ID" "7" "January 2018" "" "NCKU CCNS"
+.SH "NAME"
+\fBncku-id\fR \- 國立台南成功大學學號
 .SH DESCRTPTION
-
-成功大學學號可以分成6大部份：（以下簡稱成大。）
-
-.TP 10
-.B 系所代號
-第1,2碼為系所的代號，
-一個\fI英文字母\fR加上一個\fI數字\fR或兩個英文字母。
-參見\fB系所編碼\fR。
-
-.TP 10
-.B 就讀部門
-第3碼為一碼\fI數字\fR代表學生的就讀部門。
-
-.RS
-.IP 4 3
-大學日間部
-.IP 5 3
-大學夜間部
-.IP 6  3
-碩士班
-.IP 7 3
-在職專班
-.IP 8  3
-博士班
-.RE
-
-
-.TP 10
-.B 入學年度
-第4,5碼為入學年度，年號為民國的學年。
-像104學年從104年9月開始，到105年6月結束。
-
-
-.TP 10
-.B 入學方式
-第6碼為入學方式。
-
-.RS
-.IP 0 
-體資生
-.IP 1 
-考試入學且系所不分班或甲班
-.IP 2 
-乙班
-.IP 3 
-丙班
-.IP 4 
-推甄入學
-.IP 5 
-僑生
-.IP 6 
-申請入學
-.IP 7 
-外籍生
-.IP 8 
-交換學生
-.IP 9 
-轉學生
-.RE
-
-
-.TP 10
-.B 流水號
-第7,8碼是座號，也就是流水號。依照不同系所有不同的編排方式。
-參見\fB流水號\fR。
-
-
-.TP 10
-.B 驗證碼
-
-第9碼用來驗證是不是有效的學號，
-和台灣的身份證字號同目的；原理見驗證碼一章。
-
-
-.SH 系所編碼
-
-注意英文\fI絕大多數情況下大寫\fR。
-關於此一\fI愚蠢的問題\fR可以參閱
-.B 大寫與小寫 
-一節。
-從前第一碼英文是\fI學院代號\fR，
-但後來由於學院的分家，又沒有更新，就沒用了。
-
-
-.if t \{\
-.ft CW
-\}
+.P
+成功大學學號可以分成 6 大部份：（以下簡稱成大。）
+.SS 系所代號
+.P
+第 1,2 碼為系所的代號，
+一個英文字母加上一個數字，
+或兩個英文字母。
+參見 \fB系所編碼\fR 。
+.SS 就讀部門
+.P
+第 3 碼為一碼數字，代表學生的就讀部門。
 .TS
- l   l          l          l   l          l.
-
-
-.B " 其他                      文學院"
- A2  體育室     OPE        B1  中文系     CL
- A3  軍訓室     MT         K1  中文所     CL
- A4  師培中心   CTE        B2  外文系     FLL
- A5  計網中心   CN         K2  外文所     FLL
- A6  服務學習   SS         B3  歷史系     HIS
- AA  共同英授              K3  歷史所     HIS
- AH  華語中心   CLC        B5  台文系     TWL
-                           K5  台文所     TWL
- \fB不分學院\fR                  K4  藝術所     AS
- AN  不分系學程 CCEP       K7  考古所     Arxe
- C0  科學班
-                           \fB理學院\fR
- \fB通識課程\fR                  C1  數學系     MATH
- A1  外國語言   FLL        L1  應數所     MATH
- A7  基礎國文   CL         C2  物理系     PHYS
- A9  通識中心   GE         L2  物理所     PHYS
- AG  公民歷史              C3  化學系     CHEM
-                           L3  化學所     CHEM
- \fB工學院\fR                    C4  地科系     EARS
- E0  工學院     COE        L4  地科所     EARS
- E1  機械系     ME         F8  光電系     DPS
- N1  機械所     ME         L7  光電所     DPS
- E3  化工系     CHE        LA  電漿所     SAPS
- N3  化工所     CHE        VF  發光二極
- E4  資源系     RE      
- N4  資源所     RE         \fB管理學院\fR
- E5  材料系     MSE        H1  會計系     ACC
- N5  材料所     MSE        R1  會計所     ACC
- E6  土木系     CE         H2  統計系     STAT
- N6  土木所     CE         R2  統計所     STAT
- E8  水利系     HOE        H3  工資系     IIM
- N8  水利所     HOE        R3  工資所     IIM
- E9  工科系     ES         H4  企管系     BA
- N9  工科所     ES         R4  企管所     BA
- F0  能源學程   IBPE       H5  交管系     TCM
- F1  系統系     SNME       R5  交管所     TCM
- P1  系統所     SYS        R0  ＥＭＢＡ   EMBA
- F4  航太系     AA         R6  國企所     IB
- P4  航太所     AA         R7  資管所     IM
- F5  環工系     EV         R8  財金所     FIN
- P5  環工所     EV         R9  電管所     TM
- F6  測量系     GM         RA  IIMBA      IMBA
- P6  測量所     GM         RB  體健所     PEHL
- F9  醫工系     BME        RD  AMBA       AMBA
- P8  醫工所     BME        RZ  管理學院   COM
- N0  工程管理   EM      
- NA  海事所     OTMA       \fB社會科學院\fR
- NB  尖端所     icam       D2  法律系     LAW
- NC  自災所     iNHM       U2  法律所     LAW
- Q4  民航所     CA         U6  科法所     LAWS
- D5  經濟系     ECON       D4  政治系     PS
- U5  經濟所     ECON    
- D8  心理系     PSY        \fB電機資訊學院\fR
- U7  心理所     CS         E2  電機系     EE
- U1  政經所     PE         N2  電機所     EE
- U3  教育所     EDU        F7  資訊系     CSIE
-                           P7  資訊所     CSIE
- \fB醫學院\fR                    ND  多媒學程
- I2  護理系     NURS       P9  製造所     IMIS
- T2  護理所     NURS       Q1  微電所     IME
- I3  醫技系     MLSB       Q3  電通所     CCE
- T3  醫技所     MLSB       Q5  醫資所     IMI
- I5  醫學系     MED        Q6  南科專
- I6  物治系     PT         Q7  奈積學程   NICE
- T6  物治所     PT         V6  電力產專   MPPE
- I7  職治系     OT         V8  微波材料
- T7  職治所     OT         V9  電子材料
- I8  藥學系     DOPA       VA  電機產業
- S0  醫學院     MED        VB  光材產專
- S1  生化所     BIMB       VC  光產產專
- S2  藥理所     PHAR       VD  微波元件
- S3  生理所     PHSL       VE  電子產專   MPPE
- S4  微免所     MI         VG  靜電保護
- S5  基醫所     BMS        VH  磁性材料
- S6  臨藥科技   CPPS       VJ  電子材料　
- S7  環醫所     EOH        VK  電機驅動
- S8  行醫所     BM         VL  微波電子
- S9  臨醫所     CM      
- SA  神經學程   TIGP       \fB規劃與設計學院\fR
- SB  公衛在職   MPH        E7  建築系     ARCH
- T1  分醫所     IMM        N7  建築所     ARCH
- T4  口醫所     IOM        F2  都計系     UP
- T8  公衛所     PH         P2  都計所     UP
- T9  細胞所     CBA        F3  工設系     ID
- TA  健照所     AHS        P3  工設所     ID
- TC  老年所     GERO       PA  創意所     ICID
-                           PB  科藝學程   TART
- \fB生物科學與科技學院\fR      
- C5  生科系     LS         L6  生科所     BIOT
- L5  生命所     LS         Z0  生科學院   BB
- C6  生技系     BBS        Z2  生訊所     BIOI
- Z3  熱植所     TPS
-
+tab(|) expand nowarn box;
+ l l.
+T{
+數字
+T}|T{
+部門
+T}
+_
+T{
+4
+T}|T{
+大學日間部
+T}
+T{
+5
+T}|T{
+大學夜間部
+T}
+T{
+6
+T}|T{
+碩士班
+T}
+T{
+7
+T}|T{
+在職專班
+T}
+T{
+8
+T}|T{
+博士班
+T}
 .TE
-.if t \{\
-.in
-.ft P
-\}
+.SS 入學年度
+.P
+第 4,5 碼為入學年度，年號為民國的學年。
+像 104 學年從 104 年 9 月開始，到 105 年 6 月結束。
+.SS 入學方式
+.P
+第 6 碼為入學方式。
+.TS
+tab(|) expand nowarn box;
+ l l.
+T{
+數字
+T}|T{
+入學方弍
+T}
+_
+T{
+0
+T}|T{
+體資生
+T}
+T{
+1
+T}|T{
+考試入學且系所不分班或甲班
+T}
+T{
+2
+T}|T{
+乙班
+T}
+T{
+3
+T}|T{
+丙班
+T}
+T{
+4
+T}|T{
+推甄入學
+T}
+T{
+5
+T}|T{
+僑生
+T}
+T{
+6
+T}|T{
+申請入學
+T}
+T{
+7
+T}|T{
+外籍生
+T}
+T{
+8
+T}|T{
+交換學生
+T}
+T{
+9
+T}|T{
+轉學生
+T}
+.TE
+.SS 流水號
+.P
+第 7,8 碼是座號，也就是流水號。依照不同系所有不同的編排方式。
+參見 \fI流水號\fR 。
+.SS 驗證碼
+.P
+第 9 碼用來驗證是不是有效的學號，
+和台灣的身份證字號同目的；原理見驗證碼一章。
+.SH 系所編碼
+.P
+注意英文絕大多數情況下大寫。
+可以參閱 \fI大寫與小寫\fR 一節。
+從前第一碼英文是 \fB學院代號\fR ，
+但後來由於學院的分家，又沒有更新，就沒用了。
+.SS 其他
+.TS
+tab(|) expand nowarn box;
+ l l l.
+T{
+代號
+T}|T{
+單位
+T}|T{
+英文簡寫
+T}
+_
+T{
+A2
+T}|T{
+體育室
+T}|T{
+OPE
+T}
+T{
+A3
+T}|T{
+軍訓室
+T}|T{
+MT
+T}
+T{
+A4
+T}|T{
+師培中心
+T}|T{
+CTE
+T}
+T{
+A5
+T}|T{
+計網中心
+T}|T{
+CN
+T}
+T{
+A6
+T}|T{
+服務學習
+T}|T{
+SS
+T}
+T{
+AA
+T}|T{
+共同英授
+T}|T{
 
+T}
+T{
+AH
+T}|T{
+華語中心
+T}|T{
+CLC
+T}
+.TE
+.SS 不分學院
+.TS
+tab(|) expand nowarn box;
+ l l l.
+T{
+代號
+T}|T{
+單位
+T}|T{
+英文簡寫
+T}
+_
+T{
+AN
+T}|T{
+不分系學程
+T}|T{
+CCEP
+T}
+T{
+C0
+T}|T{
+科學班
+T}|T{
 
+T}
+.TE
+.SS 通識課程
+.TS
+tab(|) expand nowarn box;
+ l l l.
+T{
+代號
+T}|T{
+單位
+T}|T{
+英文簡寫
+T}
+_
+T{
+A1
+T}|T{
+外國語言
+T}|T{
+FLL
+T}
+T{
+A7
+T}|T{
+基礎國文
+T}|T{
+CL
+T}
+T{
+A9
+T}|T{
+通識中心
+T}|T{
+GE
+T}
+T{
+AG
+T}|T{
+公民歷史
+T}|T{
+
+T}
+.TE
+.SS 工學院
+.TS
+tab(|) expand nowarn box;
+ l l l.
+T{
+代號
+T}|T{
+單位
+T}|T{
+英文簡寫
+T}
+_
+T{
+E0
+T}|T{
+工學院
+T}|T{
+COE
+T}
+T{
+E1
+T}|T{
+機械系
+T}|T{
+ME
+T}
+T{
+N1
+T}|T{
+機械所
+T}|T{
+ME
+T}
+T{
+E3
+T}|T{
+化工系
+T}|T{
+CHE
+T}
+T{
+N3
+T}|T{
+化工所
+T}|T{
+CHE
+T}
+T{
+E4
+T}|T{
+資源系
+T}|T{
+RE
+T}
+T{
+N4
+T}|T{
+資源所
+T}|T{
+RE
+T}
+T{
+E5
+T}|T{
+材料系
+T}|T{
+MSE
+T}
+T{
+N5
+T}|T{
+材料所
+T}|T{
+MSE
+T}
+T{
+E6
+T}|T{
+土木系
+T}|T{
+CE
+T}
+T{
+N6
+T}|T{
+土木所
+T}|T{
+CE
+T}
+T{
+E8
+T}|T{
+水利系
+T}|T{
+HOE
+T}
+T{
+N8
+T}|T{
+水利所
+T}|T{
+HOE
+T}
+T{
+E9
+T}|T{
+工科系
+T}|T{
+ES
+T}
+T{
+N9
+T}|T{
+工科所
+T}|T{
+ES
+T}
+T{
+F0
+T}|T{
+能源學程
+T}|T{
+IBPE
+T}
+T{
+F1
+T}|T{
+系統系
+T}|T{
+SNME
+T}
+T{
+P1
+T}|T{
+系統所
+T}|T{
+SYS
+T}
+T{
+F4
+T}|T{
+航太系
+T}|T{
+AA
+T}
+T{
+P4
+T}|T{
+航太所
+T}|T{
+AA
+T}
+T{
+F5
+T}|T{
+環工系
+T}|T{
+EV
+T}
+T{
+P5
+T}|T{
+環工所
+T}|T{
+EV
+T}
+T{
+F6
+T}|T{
+測量系
+T}|T{
+GM
+T}
+T{
+P6
+T}|T{
+測量所
+T}|T{
+GM
+T}
+T{
+F9
+T}|T{
+醫工系
+T}|T{
+BME
+T}
+T{
+P8
+T}|T{
+醫工所
+T}|T{
+BME
+T}
+T{
+N0
+T}|T{
+工程管理
+T}|T{
+EM
+T}
+T{
+NA
+T}|T{
+海事所
+T}|T{
+OTMA
+T}
+T{
+NB
+T}|T{
+尖端所
+T}|T{
+icam
+T}
+T{
+NC
+T}|T{
+自災所
+T}|T{
+iNHM
+T}
+T{
+Q4
+T}|T{
+民航所
+T}|T{
+CA
+T}
+T{
+D5
+T}|T{
+經濟系
+T}|T{
+ECON
+T}
+T{
+U5
+T}|T{
+經濟所
+T}|T{
+ECON
+T}
+T{
+D8
+T}|T{
+心理系
+T}|T{
+PSY
+T}
+T{
+U7
+T}|T{
+心理所
+T}|T{
+CS
+T}
+T{
+U1
+T}|T{
+政經所
+T}|T{
+PE
+T}
+T{
+U3
+T}|T{
+教育所
+T}|T{
+EDU
+T}
+.TE
+.SS 醫學院
+.TS
+tab(|) expand nowarn box;
+ l l l.
+T{
+代號
+T}|T{
+單位
+T}|T{
+英文簡寫
+T}
+_
+T{
+I2
+T}|T{
+護理系
+T}|T{
+NURS
+T}
+T{
+T2
+T}|T{
+護理所
+T}|T{
+NURS
+T}
+T{
+I3
+T}|T{
+醫技系
+T}|T{
+MLSB
+T}
+T{
+T3
+T}|T{
+醫技所
+T}|T{
+MLSB
+T}
+T{
+I5
+T}|T{
+醫學系
+T}|T{
+MED
+T}
+T{
+I6
+T}|T{
+物治系
+T}|T{
+PT
+T}
+T{
+T6
+T}|T{
+物治所
+T}|T{
+PT
+T}
+T{
+I7
+T}|T{
+職治系
+T}|T{
+OT
+T}
+T{
+T7
+T}|T{
+職治所
+T}|T{
+OT
+T}
+T{
+I8
+T}|T{
+藥學系
+T}|T{
+DOPA
+T}
+T{
+S0
+T}|T{
+醫學院
+T}|T{
+MED
+T}
+T{
+S1
+T}|T{
+生化所
+T}|T{
+BIMB
+T}
+T{
+S2
+T}|T{
+藥理所
+T}|T{
+PHAR
+T}
+T{
+S3
+T}|T{
+生理所
+T}|T{
+PHSL
+T}
+T{
+S4
+T}|T{
+微免所
+T}|T{
+MI
+T}
+T{
+S5
+T}|T{
+基醫所
+T}|T{
+BMS
+T}
+T{
+S6
+T}|T{
+臨藥科技
+T}|T{
+CPPS
+T}
+T{
+S7
+T}|T{
+環醫所
+T}|T{
+EOH
+T}
+T{
+S8
+T}|T{
+行醫所
+T}|T{
+BM
+T}
+T{
+S9
+T}|T{
+臨醫所
+T}|T{
+CM
+T}
+T{
+SA
+T}|T{
+神經學程
+T}|T{
+TIGP
+T}
+T{
+SB
+T}|T{
+公衛在職
+T}|T{
+MPH
+T}
+T{
+T1
+T}|T{
+分醫所
+T}|T{
+IMM
+T}
+T{
+T4
+T}|T{
+口醫所
+T}|T{
+IOM
+T}
+T{
+T8
+T}|T{
+公衛所
+T}|T{
+PH
+T}
+T{
+T9
+T}|T{
+細胞所
+T}|T{
+CBA
+T}
+T{
+TA
+T}|T{
+健照所
+T}|T{
+AHS
+T}
+T{
+TC
+T}|T{
+老年所
+T}|T{
+GERO
+T}
+.TE
+.SS 生物科學與科技學院
+.TS
+tab(|) expand nowarn box;
+ l l l.
+T{
+代號
+T}|T{
+單位
+T}|T{
+英文簡寫
+T}
+_
+T{
+C5
+T}|T{
+生科系
+T}|T{
+LS
+T}
+T{
+L5
+T}|T{
+生命所
+T}|T{
+LS
+T}
+T{
+C6
+T}|T{
+生技系
+T}|T{
+BBS
+T}
+T{
+Z3
+T}|T{
+熱植所
+T}|T{
+TPS
+T}
+T{
+L6
+T}|T{
+生科所
+T}|T{
+BIOT
+T}
+T{
+Z0
+T}|T{
+生科學院
+T}|T{
+BB
+T}
+T{
+Z2
+T}|T{
+生訊所
+T}|T{
+BIOI
+T}
+.TE
+.SS 文學院
+.TS
+tab(|) expand nowarn box;
+ l l l.
+T{
+代號
+T}|T{
+單位
+T}|T{
+英文簡寫
+T}
+_
+T{
+B1
+T}|T{
+中文系
+T}|T{
+CL
+T}
+T{
+K1
+T}|T{
+中文所
+T}|T{
+CL
+T}
+T{
+B2
+T}|T{
+外文系
+T}|T{
+FLL
+T}
+T{
+K2
+T}|T{
+外文所
+T}|T{
+FLL
+T}
+T{
+B3
+T}|T{
+歷史系
+T}|T{
+HIS
+T}
+T{
+K3
+T}|T{
+歷史所
+T}|T{
+HIS
+T}
+T{
+B5
+T}|T{
+台文系
+T}|T{
+TWL
+T}
+T{
+K5
+T}|T{
+台文所
+T}|T{
+TWL
+T}
+T{
+K4
+T}|T{
+藝術所
+T}|T{
+AS
+T}
+T{
+K7
+T}|T{
+考古所
+T}|T{
+Arxe
+T}
+.TE
+.SS 理學院
+.TS
+tab(|) expand nowarn box;
+ l l l.
+T{
+代號
+T}|T{
+單位
+T}|T{
+英文簡寫
+T}
+_
+T{
+C1
+T}|T{
+數學系
+T}|T{
+MATH
+T}
+T{
+L1
+T}|T{
+應數所
+T}|T{
+MATH
+T}
+T{
+C2
+T}|T{
+物理系
+T}|T{
+PHYS
+T}
+T{
+L2
+T}|T{
+物理所
+T}|T{
+PHYS
+T}
+T{
+C3
+T}|T{
+化學系
+T}|T{
+CHEM
+T}
+T{
+L3
+T}|T{
+化學所
+T}|T{
+CHEM
+T}
+T{
+C4
+T}|T{
+地科系
+T}|T{
+EARS
+T}
+T{
+L4
+T}|T{
+地科所
+T}|T{
+EARS
+T}
+T{
+F8
+T}|T{
+光電系
+T}|T{
+DPS
+T}
+T{
+L7
+T}|T{
+光電所
+T}|T{
+DPS
+T}
+T{
+LA
+T}|T{
+電漿所
+T}|T{
+SAPS
+T}
+T{
+VF
+T}|T{
+發光二極
+T}|T{
+
+T}
+.TE
+.SS 管理學院
+.TS
+tab(|) expand nowarn box;
+ l l l.
+T{
+代號
+T}|T{
+單位
+T}|T{
+英文簡寫
+T}
+_
+T{
+H1
+T}|T{
+會計系
+T}|T{
+ACC
+T}
+T{
+R1
+T}|T{
+會計所
+T}|T{
+ACC
+T}
+T{
+H2
+T}|T{
+統計系
+T}|T{
+STAT
+T}
+T{
+R2
+T}|T{
+統計所
+T}|T{
+STAT
+T}
+T{
+H3
+T}|T{
+工資系
+T}|T{
+IIM
+T}
+T{
+R3
+T}|T{
+工資所
+T}|T{
+IIM
+T}
+T{
+H4
+T}|T{
+企管系
+T}|T{
+BA
+T}
+T{
+R4
+T}|T{
+企管所
+T}|T{
+BA
+T}
+T{
+H5
+T}|T{
+交管系
+T}|T{
+TCM
+T}
+T{
+R5
+T}|T{
+交管所
+T}|T{
+TCM
+T}
+T{
+R0
+T}|T{
+ＥＭＢＡ
+T}|T{
+EMBA
+T}
+T{
+R6
+T}|T{
+國企所
+T}|T{
+IB
+T}
+T{
+R7
+T}|T{
+資管所
+T}|T{
+IM
+T}
+T{
+R8
+T}|T{
+財金所
+T}|T{
+FIN
+T}
+T{
+R9
+T}|T{
+電管所
+T}|T{
+TM
+T}
+T{
+RA
+T}|T{
+IIMBA
+T}|T{
+IMBA
+T}
+T{
+RB
+T}|T{
+體健所
+T}|T{
+PEHL
+T}
+T{
+RD
+T}|T{
+AMBA
+T}|T{
+AMBA
+T}
+T{
+RZ
+T}|T{
+管理學院
+T}|T{
+COM
+T}
+.TE
+.SS 社會科學院
+.TS
+tab(|) expand nowarn box;
+ l l l.
+T{
+代號
+T}|T{
+單位
+T}|T{
+英文簡寫
+T}
+_
+T{
+D2
+T}|T{
+法律系
+T}|T{
+LAW
+T}
+T{
+U2
+T}|T{
+法律所
+T}|T{
+LAW
+T}
+T{
+U6
+T}|T{
+科法所
+T}|T{
+LAWS
+T}
+T{
+D4
+T}|T{
+政治系
+T}|T{
+PS
+T}
+.TE
+.SS 電機資訊學院
+.TS
+tab(|) expand nowarn box;
+ l l l.
+T{
+代號
+T}|T{
+單位
+T}|T{
+英文簡寫
+T}
+_
+T{
+E2
+T}|T{
+電機系
+T}|T{
+EE
+T}
+T{
+N2
+T}|T{
+電機所
+T}|T{
+EE
+T}
+T{
+F7
+T}|T{
+資訊系
+T}|T{
+CSIE
+T}
+T{
+P7
+T}|T{
+資訊所
+T}|T{
+CSIE
+T}
+T{
+ND
+T}|T{
+多媒學程
+T}|T{
+
+T}
+T{
+P9
+T}|T{
+製造所
+T}|T{
+IMIS
+T}
+T{
+Q1
+T}|T{
+微電所
+T}|T{
+IME
+T}
+T{
+Q3
+T}|T{
+電通所
+T}|T{
+CCE
+T}
+T{
+Q5
+T}|T{
+醫資所
+T}|T{
+IMI
+T}
+T{
+Q6
+T}|T{
+南科專
+T}|T{
+
+T}
+T{
+Q7
+T}|T{
+奈積學程
+T}|T{
+NICE
+T}
+T{
+V6
+T}|T{
+電力產專
+T}|T{
+MPPE
+T}
+T{
+V8
+T}|T{
+微波材料
+T}|T{
+
+T}
+T{
+V9
+T}|T{
+電子材料
+T}|T{
+
+T}
+T{
+VA
+T}|T{
+電機產業
+T}|T{
+
+T}
+T{
+VB
+T}|T{
+光材產專
+T}|T{
+
+T}
+T{
+VC
+T}|T{
+光產產專
+T}|T{
+
+T}
+T{
+VD
+T}|T{
+微波元件
+T}|T{
+
+T}
+T{
+VE
+T}|T{
+電子產專
+T}|T{
+MPPE
+T}
+T{
+VG
+T}|T{
+靜電保護
+T}|T{
+
+T}
+T{
+VH
+T}|T{
+磁性材料
+T}|T{
+
+T}
+T{
+VJ
+T}|T{
+電子材料　
+T}|T{
+
+T}
+T{
+VK
+T}|T{
+電機驅動
+T}|T{
+
+T}
+T{
+VL
+T}|T{
+微波電子
+T}|T{
+
+T}
+.TE
+.SS 規劃與設計學院
+.TS
+tab(|) expand nowarn box;
+ l l l.
+T{
+代號
+T}|T{
+單位
+T}|T{
+英文簡寫
+T}
+_
+T{
+E7
+T}|T{
+建築系
+T}|T{
+ARCH
+T}
+T{
+N7
+T}|T{
+建築所
+T}|T{
+ARCH
+T}
+T{
+F2
+T}|T{
+都計系
+T}|T{
+UP
+T}
+T{
+P2
+T}|T{
+都計所
+T}|T{
+UP
+T}
+T{
+F3
+T}|T{
+工設系
+T}|T{
+ID
+T}
+T{
+P3
+T}|T{
+工設所
+T}|T{
+ID
+T}
+T{
+PA
+T}|T{
+創意所
+T}|T{
+ICID
+T}
+T{
+PB
+T}|T{
+科藝學程
+T}|T{
+TART
+T}
+.TE
 .SH 流水號
-
-第7、8碼是座號  大學部指考入學是按照准考證號碼順序
-但是有些系是依照"聯考成績"排序或是用"地區"排序
-(地區應該跟准考證號碼有關)
-
-大學部推甄、申請  研究所推甄則是按照正取排名
-備取生看遞補哪個正取的就用那個學號
-
-研究所考試則看各系而定
-若分組則是只有甲組是照排名順序,乙組排甲組後面....blabla
-若沒分組就是跟推甄一樣照排名
-備取則是看備哪一個正取生(所以備取生的學號與排名無關)
-
-
+.P
+第 7、8 碼是座號。
+大學部指考入學是按照准考證號碼順序，
+但是有些系是依照聯考成績排序或是用地區排序。
+（地區應該跟准考證號碼有關。）
+.P
+大學部推甄、申請、研究所推甄則是按照正取排名，
+備取生看遞補哪個正取的就用那個學號。
+.P
+研究所考試則看各系而定。
+若分組則是只有甲組是照排名順序，乙組排甲組後面。
+若沒分組就是跟推甄一樣照排名，
+備取則是看備哪一個正取生。（所以備取生的學號與排名無關。）
 .SH 驗證碼
-
+.P
 一個學生證是不是有效的，可以靠計算得知。
-驗證的方式為將最後一位數字\(mu1，最後第二位\(mu2……，以此類推。
-全部加起來應該要能被十整除。此即驗證碼的功能；讓學號相加結果為0。
+驗證的方式為將最後一位數字 \fI 1，最後第二位 \fR 2，以此類推。
+全部加起來應該要能被十整除。此即驗證碼的功能；讓學號相加結果為 0。
 如果是英文字母，則應參照下表轉成數字再作運算。
 如果是二個英文字母，應對應二字母的表格轉換，不必再乘位數。
-
-.B C34031328
-= 
-.I 2\(mu9 
-+ 3\(mu8 + 4\(mu7 + 0\(mu6 + 3\(mu5 +
-1\(mu4 + 3\(mu3 + 2\(mu2 + 8\(mu1 = 110 
-
-.B VL6021023
-= 
-.I 7 
-+ 6\(mu7 + 0\(mu6 + 2\(mu5 + 1\(mu4 + 0\(mu3 + 
-2\(mu2 + 3\(mu1 = 70 
-
-.if t \{\
-.ft CW
-\}
+.P
+.RS 2
+.nf
+C34031328 = 2*9 + 3*8 + 4*7 + 0*6 + 3*5 + 1*4 + 3*3 + 2*2 + 8*1 = 110
+VL6021023 = 7 + 6*7 + 0*6 + 2*5 + 1*4 + 0*3 + 2*2 + 3*1 = 70
+.fi
+.RE
 .TS
-l     l       l     l        l       l       l       l.
-
-.B "字母  數字    字母  數字     雙字母  數字    雙字母  數字"
-
-A     0       L     0        AN      2       TA      1
-B     1       N     2        LA      8       TB      9
-C     2       P     3        NA      6       TC      7
-D     3       Q     4        NB      4       VC      5
-E     4       R     5        NC      2       VD      3
-F     4       S     6        ND      0       VE      1
-H     6       T     7        PA      5       VF      9
-I     7       U     8        PB      3       VG      7
-J     8       V     9        RA      3       VH      5
-K     9       Z     2        RB      1       VJ      1
-                             SA      2       VK      9
-                             SB      0       VL      7
-
-
+tab(|) expand nowarn box;
+ l l.
+T{
+字母
+T}|T{
+數字
+T}
+_
+T{
+A
+T}|T{
+0
+T}
+T{
+B
+T}|T{
+1
+T}
+T{
+C
+T}|T{
+2
+T}
+T{
+D
+T}|T{
+3
+T}
+T{
+E
+T}|T{
+4
+T}
+T{
+F
+T}|T{
+4
+T}
+T{
+H
+T}|T{
+6
+T}
+T{
+I
+T}|T{
+7
+T}
+T{
+J
+T}|T{
+8
+T}
+T{
+K
+T}|T{
+9
+T}
+T{
+L
+T}|T{
+0
+T}
+T{
+N
+T}|T{
+2
+T}
+T{
+P
+T}|T{
+3
+T}
+T{
+Q
+T}|T{
+4
+T}
+T{
+R
+T}|T{
+5
+T}
+T{
+S
+T}|T{
+6
+T}
+T{
+T
+T}|T{
+7
+T}
+T{
+U
+T}|T{
+8
+T}
+T{
+V
+T}|T{
+9
+T}
+T{
+Z
+T}|T{
+2
+T}
 .TE
-.if t \{\
-.in
-.ft P
-\}
-
+.TS
+tab(|) expand nowarn box;
+ l l.
+T{
+雙字母
+T}|T{
+數字
+T}
+_
+T{
+ND
+T}|T{
+0
+T}
+T{
+SB
+T}|T{
+0
+T}
+T{
+RB
+T}|T{
+1
+T}
+T{
+TA
+T}|T{
+1
+T}
+T{
+VE
+T}|T{
+1
+T}
+T{
+VJ
+T}|T{
+1
+T}
+T{
+AN
+T}|T{
+2
+T}
+T{
+NC
+T}|T{
+2
+T}
+T{
+SA
+T}|T{
+2
+T}
+T{
+PB
+T}|T{
+3
+T}
+T{
+RA
+T}|T{
+3
+T}
+T{
+VD
+T}|T{
+3
+T}
+T{
+NB
+T}|T{
+4
+T}
+T{
+PA
+T}|T{
+5
+T}
+T{
+VC
+T}|T{
+5
+T}
+T{
+VH
+T}|T{
+5
+T}
+T{
+NA
+T}|T{
+6
+T}
+T{
+TC
+T}|T{
+7
+T}
+T{
+VG
+T}|T{
+7
+T}
+T{
+VL
+T}|T{
+7
+T}
+T{
+LA
+T}|T{
+8
+T}
+T{
+TB
+T}|T{
+9
+T}
+T{
+VF
+T}|T{
+9
+T}
+T{
+VK
+T}|T{
+9
+T}
+.TE
+.P
 此驗證碼表格及驗證方式為作者自行自全校學號中歸納出，
 不代表校方，亦不為正確性負任何責任。
-
-.SH e-mail 與 myweb 個人網站
-
-成大的學號被使用在e-mail和個人網站上。
-成大學生會分配到一個e-mail信箱：
-.IR 學號@mail.ncku.edu.tw 。個人網站網址是
-.IR http://myweb.ncku.edu.tw/~學號/ 。
-.B 注意，此時學號第一個英文字母皆為小寫。
-
-.SS e-mail
-e-mail可以用client端軟體訪問，像mutt,thunderbird或outlook。
-也有提供web介面，網址是：
-.IR http://mail.ncku.edu.tw/ 。
+.SH e\-mail 與 myweb 個人網站
+.P
+成大的學號被使用在 e\-mail 和個人網站上。
+成大學生會分配到一個 e\-mail 信箱：
+學號@mail\.ncku\.edu\.tw 。
+個人網站網址是：
+http://myweb\.ncku\.edu\.tw/~學號/ 。
+\fI注意，此時學號第一個英文字母皆為小寫。\fR
+.SS e\-mail
+.P
+e\-mail 可以用 client 端軟體訪問，像 mutt,thunderbird 或 outlook。
+也有提供 web 介面，網址是： http://mail\.ncku\.edu\.tw/ 。
 帳號是學號，密碼是預設的密碼。
-
 .SS myweb
-myweb是成大的個人網頁空間，可以用ftp連進去管理。
-.IR ftp://myweb.ncku.edu.tw ；帳號為學號，密碼是預設的密碼。
-
-
-.SH 密碼
-
+.P
+myweb 是成大的個人網頁空間，可以用 ftp 連進去管理。
+ftp://myweb\.ncku\.edu\.tw ；帳號為學號，密碼是預設的密碼。
+.SS 密碼
+.P
 很多情況下一些服務的帳號是直接用學號，而有帳號就一定有密碼。
 預設的密碼是
-.IR "身份證字號末4碼 出生月日" 。
-像是\fIA123456789\fR在\fI1999-09-09\fR出生，那密碼就是\fI67890909\fR。
-
-
+\fI身份證字號末 4 碼 出生月日\fR 。
+像是 \fIA123456789\fR 在 \fI1999\-09\-09\fR 出生，那密碼就是 \fI67890909\fR 。
 .SH 大小寫問題
-
-為什麼學號要採用大寫呢？而e-mail和個人網頁又是小寫？
+.P
+為什麼學號要採用大寫呢？而 e\-mail 和個人網頁又是小寫？
 我想就就和身份證字號要用大寫一樣，
-而e-mail和個人網頁都是架在計中server上的服務；
-也就是是用BSD或其它UN*X跑的服務。
-在unix中習慣以小寫字母命名；且大小寫在unix中是不同的。
-（和windows不同。）所以我猜計中才會以小寫命名。
-
-
+而 e\-mail 和個人網頁都是架在計中 server 上的服務；
+也就是是用 BSD 或其它 UN*X 跑的服務。
+在 unix 中習慣以小寫字母命名；且大小寫在 unix 中是不同的。
+（和 windows 不同。）所以我猜計中才會以小寫命名。
 .SH 畢業
-
-畢業後e-mail會被保留一段時間，然後刪除。網頁空間應該相同。
-第1學期畢業者(即8月~隔年1月)隔年8月1日停用，
-第2學期畢業者(即2月~7月)隔年2月1日停用。
-.RI 計中 http://cc.ncku.edu.tw/files/15-1255-119460,c3357-1.php
-
+.P
+畢業後 e\-mail 會被保留一段時間，然後刪除。網頁空間應該相同。
+第 1 學期畢業者(即 8 月~隔年 1 月)隔年 8 月 1 日停用，
+第 2 學期畢業者(即 2 月~7 月)隔年 2 月 1 日停用。
+根據計中： http://cc\.ncku\.edu\.tw/files/15\-1255\-119460,c3357\-1\.php
+.P
 如果畢業後繼續唸研究所，學號末碼會被拿掉作為新的學號。
 （也就是不能驗證了。）
-
-
