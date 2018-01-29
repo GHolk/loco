@@ -48253,8 +48253,8 @@ oiywm 饘
 oiywv 𩟮
 oiyx 䭣
 oiyy 飰
-oj 什
-oj 午
+# oj 什
+# oj 午
 oj 仐
 oj 𠓝
 oja 𣉻
@@ -86608,6 +86608,12 @@ huwml 鼻
 # 把恐放到另一個不知道什麼字前面
 mnip 恐
 mnip 𣧆
+
+# 簡寫區分什午哈啥
+ojidi 什麼
+oj 午
+oj 什
+romjr 啥
 
 %chardef end
 
