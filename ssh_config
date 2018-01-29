@@ -48,6 +48,10 @@ Host web.ccns
 HostName web.ccns.ncku.edu.tw
 User gholk
 
+Host www.ccns
+HostName www.ccns.ncku.edu.tw
+User gholk
+
 # ccns domain name server
 Host ns.ccns
 Port 1222

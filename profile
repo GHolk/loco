@@ -6,13 +6,14 @@ export GOPATH=$HOME/.local/share/go
 export PATH="$HOME/.local/bin:$PATH"
 export INFOPATH=/usr/share/info:$HOME/.local/share/info
 
-if [ -n "$SSH_AUTH_SOCK" ] && \
-   ( gpgconf --list-options gpg-agent | \
-        grep -q '^enable-ssh-support.*1$' )
-then
-    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-    unset SSH_AGENT_PID
-fi
+export $(
+    . /etc/X11/Xsession.d/90gpg-agent
+    echo SSH_AUTH_SOCK=$SSH_AUTH_SOCK
+    echo GPG_AGENT_INFO=$GPG_AGENT_INFO
+)
+
+# unset SSH_AGENT_PID
+# unset GPG_AGENT
 
 
 # config by ~/.manpath
