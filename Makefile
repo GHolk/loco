@@ -3,7 +3,7 @@
 	config man bin \
 	bash tmux git manpath_file vim ssh
 
-all: config man # binary
+all: config man ime # binary
 
 define symbol_link  # (source name, destination path)
 	ln -s "$(PWD)/$(1)" "$(2)"
@@ -11,7 +11,7 @@ endef
 
 config: bash tmux git manpath_file vim ssh
 
-bash: $(HOME)/.bashrc $(HOME)/.bash_profile
+bash: $(HOME)/.bashrc $(HOME)/.profile
 tmux: $(HOME)/.tmux.conf
 git: $(HOME)/.gitconfig
 manpath_file: $(HOME)/.manpath
