@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 const marked = require('marked')
 const fs = require('fs')
