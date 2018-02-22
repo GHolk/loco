@@ -2,6 +2,7 @@
 
 const child_process = require('child_process')
 const getTokenCommand = 'pass show application/assocr'
+const flickrDataDirectory = '/home/gholk/Pictures'
 
 const apiOption = {
     api_key: 'e6fd511f93fccd0f7c34a54055e41214',
@@ -113,6 +114,7 @@ if (option.l) {
 }
 else if (pathList.length > 0) {
 
+    process.chdir(flickrDataDirectory)
     const photoOption = {
         tags: ['assocr']
     }
