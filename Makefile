@@ -41,3 +41,5 @@ supcj-cn.%: supcj.%
 	sed -i '/BEGIN_TABLE/,$$d' $@
 	sed -n '/BEGIN_TABLE/,$$p' $< | cconv -f UTF8-TW -t UTF8-CN >>$@ 
 
+/etc/X11/xorg.conf.d/56evdev-trackpoint-gholk.conf: evdev-trackpoint-gholk.conf
+	ln -s `realpath $<` $@
