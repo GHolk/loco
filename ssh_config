@@ -58,8 +58,7 @@ Port 1222
 HostName ns.ccns.ncku.edu.tw
 
 # ccns router
-Host router-ccns
-#HostName 140.116.250.61
-HostName 192.168.1.1
+Host openwrt.lan router-ccns
+HostName openwrt.lan
 User root
 
