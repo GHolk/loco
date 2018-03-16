@@ -62,3 +62,5 @@ Host openwrt.lan router-ccns
 HostName openwrt.lan
 User root
 
+Host radio.ccns
+User ccns
