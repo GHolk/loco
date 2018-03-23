@@ -1,0 +1,6 @@
+
+%sudo	ALL=(ALL:ALL) NOPASSWD:/sbin/shutdown
+%sudo	ALL=(ALL:ALL) NOPASSWD:/usr/sbin/powertop
+%sudo	ALL=(ALL:ALL) NOPASSWD:/usr/bin/apt
+%sudo	ALL=(ALL:ALL) NOPASSWD:/usr/bin/nmcli
+

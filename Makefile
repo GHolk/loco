@@ -43,3 +43,7 @@ supcj-cn.%: supcj.%
 
 /etc/X11/xorg.conf.d/56evdev-trackpoint-gholk.conf: evdev-trackpoint-gholk.conf
 	ln -s `realpath $<` $@
+
+/etc/sudoers.d/gholk-csa-sudo-conf: gholk-csa-sudo-conf
+	cp $< $@
+	chmod 0440 $@
