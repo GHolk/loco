@@ -2,6 +2,12 @@
 
 wifi=wdt13d
 
-nmcli connection down $wifi
-nmcli connection up $wifi
+sudo=""
+if [ "$1" = "-s" ]
+then
+    sudo=sudo
+fi
+
+$sudo nmcli connection down $wifi
+$sudo nmcli connection up $wifi
 
