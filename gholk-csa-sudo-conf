@@ -3,4 +3,5 @@
 %sudo	ALL=(ALL:ALL) NOPASSWD:/usr/sbin/powertop
 %sudo	ALL=(ALL:ALL) NOPASSWD:/usr/bin/apt
 %sudo	ALL=(ALL:ALL) NOPASSWD:/usr/bin/nmcli
-
+%sudo	ALL=(ALL:ALL) NOPASSWD:/usr/sbin/iotop
+%sudo	ALL=(ALL:ALL) NOPASSWD:/usr/sbin/iftop
