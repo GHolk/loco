@@ -68,3 +68,13 @@ User root
 
 Host radio.ccns
 User ccns
+
+# meich wifi router
+# prompt setting command after login,
+# type `sh` command to get shell
+Host meich DSL-6641K
+HostName 192.168.1.1
+User cht
+KexAlgorithms +diffie-hellman-group1-sha1
+Ciphers +3des-cbc
+
