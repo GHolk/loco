@@ -21,3 +21,4 @@
 # 
 # m h  dom mon dow   command
  11,31,51 * * *  *    /home/gholk/.local/bin/xwall "二十分鐘，眼睛該休息囉！"
+ 22 *   *   *   *    anacron -t ~/.local/share/anacron/anacrontab -S ~/.local/share/anacron
