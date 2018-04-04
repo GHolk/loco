@@ -1,7 +1,8 @@
 
 .PHONY: all \
 	config man bin \
-	bash tmux git manpath_file vim ssh
+	bash tmux git manpath_file vim ssh \
+        cron
 
 all: config man ime # binary
 
@@ -47,3 +48,10 @@ supcj-cn.%: supcj.%
 /etc/sudoers.d/gholk-csa-sudo-conf: gholk-csa-sudo-conf
 	cp $< $@
 	chmod 0440 $@
+
+$(HOME)/.local/share/anacron/anacrontab: anacrontab
+	ln -s `realpath $<` $@
+
+cron: crontab
+	crontab < $<
+
