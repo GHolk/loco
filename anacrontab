@@ -11,5 +11,5 @@ LOGNAME=gholk
 # 1	5	cron.daily	run-parts --report /etc/cron.daily
 # 7	10	cron.weekly	run-parts --report /etc/cron.weekly
 # @monthly	15	cron.monthly	run-parts --report /etc/cron.monthly
-7      10      backup-firefox backup-firefox-history.sh
+@monthly      15      backup-firefox backup-firefox-history.sh
 
