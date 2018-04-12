@@ -3,13 +3,19 @@
 if [ $# -lt 3 ]
 then
     cat >&2 <<USAGE
-usage:
+## usage
         `basename $0` lyric.srt background.jpg music.mp3 mv.mpg
 
+## description
+combine music, background image, lyric into music video.
+
+## input
 * lyric.srt only accept srt format.
 * background.jpg can be other common image format.
 * music.mp3 can be other common music format.
-* mv.mpg can be other common video format.
+
+## output
+* mv.mpg can be other common video format by assign other suffix.
 
 USAGE
 exit 22
@@ -23,5 +29,5 @@ mv="$4"
 ffmpeg -loop 1 \
        -i "$image" \
        -i "$music" \
-       -vf subtitles="f=$lyric:force_style='FontName=宋體,FontSize=16'" \
+       -vf subtitles="f=$lyric:force_style='FontSize=16'" \
        -shortest "$mv"
