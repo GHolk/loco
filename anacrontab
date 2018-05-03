@@ -12,5 +12,5 @@ LOGNAME=gholk
 # 7	10	cron.weekly	run-parts --report /etc/cron.weekly
 # @monthly	15	cron.monthly	run-parts --report /etc/cron.monthly
 @monthly      15      backup-firefox backup-firefox-history.sh
-1              3      update-feed    /home/gholk/code/feed/script/update-feed.sh
+1              3      update-feed    /home/gholk/web/feed/script/update-feed.sh
 
