@@ -78,3 +78,7 @@ User cht
 KexAlgorithms +diffie-hellman-group1-sha1
 Ciphers +3des-cbc
 
+Host hackmd.ccns
+HostName hackmd.ccns.ncku.edu.tw
+Port 1926
+User gholk
