@@ -86622,5 +86622,37 @@ check ✓
 ;v ✓
 yvbbn 贏
 
+# 全形符號
+,ss 　
+,s 　
+,'' ＂
+,ee ＃
+,rr ＄
+,tt ％
+,uu ＆
+,' ＇
+,oo（
+,pp）
+,ii ＊
+,]] ＋
+,[[ －
+,. ．
+,/ ／
+,\ ＼
+,pp ０
+,qq １
+,ww ２
+,ee ３
+,rr ４
+,tt ５
+,yy ６
+,uu ７
+,ii ８
+,oo ９
+,,, ＜
+,]] ＝
+,.. ＞
+,ww ＠
+
 %chardef end
 
