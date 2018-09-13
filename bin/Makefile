@@ -1,7 +1,9 @@
 
 t = ~/.local/bin
 
-all: $t/clipboard $t/selection $t/xwall $t/xop $t/chromium-app
+all: $t/xwall $t/xop $t/chromium-app \
+     $t/clipboard $t/selection \
+     $t/pactl-mute $t/pactl-unmute
 
 $t/clipboard: aclp.sh
 	ln -s `realpath $<` $@
@@ -16,6 +18,11 @@ $t/xop: /usr/bin/xdg-open
 	ln -s `realpath $<` $@
 
 $t/chromium-app: chromium-app.sh
+	ln -s `realpath $<` $@
+
+$t/pactl-mute: pactl-mute.sh
+	ln -s `realpath $<` $@
+$t/pactl-unmute: pactl-mute.sh
 	ln -s `realpath $<` $@
 
 .PHONY: all
