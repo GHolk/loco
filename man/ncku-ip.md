@@ -239,8 +239,9 @@ TABLE
 | 140.116.242.0/24     | ATM 網路                          |
 | 140.116.246.0/24     | 資工系(暫借用於新系館)           |
 | 140.116.249.0/24     | 成大 FDDI                         |
-| 140.116.250.0/24     | CCNS 暫借用                       |
+| 140.116.250.16-21    | CCNS 社辦                       |
 | 140.116.251.0/24     | 電算中心網管機器                 |
+| 140.116.252.148-158  | CCNS 機房                 |
 | 140.116.253.0/24     | 成大醫院 FDDI 網路                 |
 | 140.116.254.0/24     | 成大 FDDI RING                    |
 
@@ -251,6 +252,7 @@ VERSION
   1. put to wikia, <http://zh.pttpedia.wikia.com/wiki/%E6%88%90%E5%8A%9F%E5%A4%A7%E5%AD%B8ip> .
   2. use troff format. 
   3. use markdown. 
+  4. 詳細 ccns ip 位址。
 
 
 SEE ALSO
