@@ -29,5 +29,7 @@ $t/pactl-unmute: pactl-mute.sh
 
 $t/urlencode: urlencode.js
 	ln -s `realpath $<` $@
+$t/umount-vg: umount-vg.sh
+	ln -s `realpath $<` $@
 
 .PHONY: all
