@@ -27,9 +27,7 @@ alias men="man -L en"
 alias df="df -h"
 alias ll="ls -la"
 
-alias octave="octave --no-gui"
-# alias emacs="emacs -nw"
-# use emacs server
+alias octave=octave-cli
 alias ec="emacsclient -nw -c"
 alias userctl="systemctl --user"
 
