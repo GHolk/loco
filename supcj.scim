@@ -2,16 +2,21 @@ SCIM_Generic_Table_Phrase_Library_TEXT
 VERSION_1_0
 ### Begin Table definition.
 BEGIN_DEFINITION
+LICENSE = LGPL
 UUID = b1c97690-e247-cf19-37ba-6a2b59721d9c
-SERIAL_NUMBER = 20170730
+SERIAL_NUMBER = 20181009
 ICON = /home/gholk/.scim/user-tables/supcj.png
+SYMBOL = 槍
 NAME = supcj
 NAME.zh_CN = 上標倉頡
 NAME.zh_HK = 上標倉頡
 NAME.zh_TW = 上標倉頡
+
+DESCRIPTION = patch terry cangjie
 LANGUAGES = zh_TW,zh_HK,zh_CN,zh_SG
 AUTHOR = gholk
 STATUS_PROMPT = 槍
+LAYOUT = us
 KEYBOARD_LAYOUT = US_Default
 VALID_INPUT_CHARS = ',./;[\]abcdefghijklmnopqrstuvwxyz
 ### KEY_END_CHARS =
