@@ -18,6 +18,7 @@
 ## @deftypefnx {Function File} {@var{dfdx} =} derive (@var{f}, @var{dx})
 ##   compute the derive by (f(x+dx) - f(x-dx)) / 2 ,
 ##   return a high order function.
+##   default interval is 0.005 .
 ## @end deftypefn
 
 ## Author: gold holk <gholk@dt13>
