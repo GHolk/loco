@@ -20,7 +20,7 @@ shopt -s globstar  # dobule star ** match attributial depth dir
 eval "$(SHELL=/bin/sh lesspipe)"
 
 
-alias rm=gvfs-trash
+alias rm='gio trash'
 alias mv="mv -i"
 alias cp="cp -i"
 alias men="man -L en"
