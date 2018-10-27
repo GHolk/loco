@@ -78,3 +78,9 @@ Host hackmd.ccns
 HostName hackmd.ccns.ncku.edu.tw
 Port 1926
 User gholk
+
+# Atom bkr
+Host atom-bkr
+HostName 10.42.0.14
+Port 2222
+User rant
