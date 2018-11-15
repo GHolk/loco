@@ -14,26 +14,14 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## -*- texinfo -*- 
-## @deftypefn {Function File} {@var{dfdx} =} derive_nth_at (@var{f}, @var{n}, @var{argument})
-## @deftypefnx {Function File} {@var{dfdx} =} derive_nth_at (@var{f}, @var{n}, @var{argument}, @var{dx})
-##   compute the derive at function nth argument.
-##   @var{argument} is vector contain argument for function @var{f} .
-##   return a slope of f for nth argument .
-##   default interval is 0.005 .
+## @deftypefn {Function File} {@var{result} =} apply_vector (@var{f}, @var{v})
+##   apply each element of vector @var{v} as argument to function @var{f} .
 ## @end deftypefn
 
 ## Author: gold holk <gholk@dt13>
 ## Created: 2018-10-15
 
-function dfdx = derive_nth_at (f, n, argument, dx = 0.005)
-
-  argument_after = argument;
-  argument_after(n) += dx;
-  f_after = apply_vector(f, argument_after);
-
-  argument_before = argument;
-  argument_before(n) -= dx;
-  f_before = apply_vector(f, argument_before);
-
-  dfdx = (f_after - f_before) / (dx * 2);
+function result = apply_vector (f, v)
+  cell = num2cell(v);
+  result = f(cell{:});
 end
