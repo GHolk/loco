@@ -84,3 +84,7 @@ Host atom-bkr
 HostName 10.42.0.14
 Port 2222
 User rant
+
+Host github-anafeed
+Hostname github.com
+IdentityFile ~/.ssh/anafeed-daily-update
