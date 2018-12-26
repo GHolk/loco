@@ -1,5 +1,12 @@
 #!/bin/sh
 
+cat <<FSB
+sometimes bluetooth stop working after suspend,
+this script fix this problem.
+bug and script url:
+https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1790454
+FSB
+
 echo this script require root permision by sudo
 sudo systemctl stop bluetooth
 
