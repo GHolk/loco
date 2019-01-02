@@ -18,7 +18,7 @@ User bbsu
 Host ptt
 User bbsu
 HostName ptt.cc
-ProxyJump web.ccns
+ProxyJump lab.gholk.ml
 
 # openshift2 in redhat, use random username
 # alias in dash
