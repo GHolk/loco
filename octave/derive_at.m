@@ -14,16 +14,16 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## -*- texinfo -*- 
-## @deftypefn {Function File} {@var{dfdx} =} derive (@var{f})
-## @deftypefnx {Function File} {@var{dfdx} =} derive (@var{f}, @var{dx})
-##   compute the derive by (f(x+dx) - f(x-dx)) / 2 ,
-##   return a high order function.
+## @deftypefn {Function File} {@var{dydx} =} derive_at (@var{f}, @var{x})
+## @deftypefnx {Function File} {@var{dydx} =} derive_at (@var{f}, @var{x}, @var{dx})
+##   compute the derive by (f(x+dx) - f(x-dx)) / 2 at x .
+##   return a slope of f at x .
 ##   default interval is 0.005 .
 ## @end deftypefn
 
 ## Author: gold holk <gholk@dt13>
 ## Created: 2018-10-15
 
-function dfdx = derive (f, dx = 0.005)
-  dfdx = @(x) derive_at(f, x, dx);
+function dydx = derive_at (f, x, dx = 0.005)
+  dydx = ( f(x.+dx) .- f(x.-dx) ) / (dx*2);
 end

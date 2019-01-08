@@ -18,7 +18,7 @@ User bbsu
 Host ptt
 User bbsu
 HostName ptt.cc
-ProxyJump web.ccns
+ProxyJump lab.gholk.ml
 
 # openshift2 in redhat, use random username
 # alias in dash
@@ -78,3 +78,20 @@ Host hackmd.ccns
 HostName hackmd.ccns.ncku.edu.tw
 Port 1926
 User gholk
+
+# Atom bkr
+Host atom-bkr
+HostName 10.42.0.14
+Port 2222
+User rant
+
+Host github-anafeed
+Hostname github.com
+IdentityFile ~/.ssh/anafeed-daily-update
+
+Host sdf
+HostName sdf.lonestar.org
+
+Host lab
+HostName lab.gholk.ml
+ForwardX11 yes

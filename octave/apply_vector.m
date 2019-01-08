@@ -14,16 +14,14 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## -*- texinfo -*- 
-## @deftypefn {Function File} {@var{dfdx} =} derive (@var{f})
-## @deftypefnx {Function File} {@var{dfdx} =} derive (@var{f}, @var{dx})
-##   compute the derive by (f(x+dx) - f(x-dx)) / 2 ,
-##   return a high order function.
-##   default interval is 0.005 .
+## @deftypefn {Function File} {@var{result} =} apply_vector (@var{f}, @var{v})
+##   apply each element of vector @var{v} as argument to function @var{f} .
 ## @end deftypefn
 
 ## Author: gold holk <gholk@dt13>
 ## Created: 2018-10-15
 
-function dfdx = derive (f, dx = 0.005)
-  dfdx = @(x) derive_at(f, x, dx);
+function result = apply_vector (f, v)
+  cell = num2cell(v);
+  result = f(cell{:});
 end
