@@ -52,6 +52,9 @@ supcj-cn.%: supcj.%
 $(HOME)/.local/share/anacron/anacrontab: anacrontab
 	ln -s `realpath $<` $@
 
+/etc/sysctl.d/local.conf: local-sysctl.conf
+	ln -s `realpath $<` $@
+
 cron: crontab
 	crontab < $<
 
