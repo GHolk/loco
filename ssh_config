@@ -88,3 +88,10 @@ User rant
 Host github-anafeed
 Hostname github.com
 IdentityFile ~/.ssh/anafeed-daily-update
+
+Host sdf
+HostName sdf.lonestar.org
+
+Host lab
+HostName lab.gholk.ml
+ForwardX11 yes
