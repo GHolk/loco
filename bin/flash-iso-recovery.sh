@@ -18,9 +18,6 @@ then
     cat <<USAGE
 usage
         $0 cdrom.img /dev/sdz backup.img
-
-recover
-        dd if=backup.img of=/dev/sdz
 USAGE
     exit 22
 fi
@@ -41,7 +38,7 @@ then
    exit 28
 fi
 
-environment_or_assign dd_block_size 5242880 # 5M
+environment_or_assign dd_block_size 4194304 # 4M
 environment_or_assign dd_count $(expr $cdrom_size / $dd_block_size + 1)
 
 echo backup size is $(expr $dd_block_size \* $dd_count)
@@ -52,4 +49,4 @@ dd if="$disk" of="$backup" bs=$dd_block_size count=$dd_count
 echo write "$cdrom" to "$disk"
 dd if="$cdrom" of="$disk" bs=$dd_block_size
 
-echo recover disk by "dd if='$backup' of='$disk' bs=5M"
+echo recover disk by "dd if='$backup' of='$disk' bs=4M"
