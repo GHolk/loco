@@ -4,7 +4,7 @@ t = ~/.local/bin
 all: $t/xwall $t/xop $t/chromium-app \
      $t/clipboard $t/selection \
      $t/pactl-mute $t/pactl-unmute \
-     $t/urlencode
+     $t/urlencode $t/flash-iso-recovery
 
 
 $t/clipboard: aclp.sh
