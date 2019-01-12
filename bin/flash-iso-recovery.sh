@@ -2,17 +2,6 @@
 
 set -e # flash disk is dangerous, exit if any errror.
 
-environment_or_assign() {
-    # if variable not defined, set value
-    local name value
-    name=$1
-    value="$2"
-    if eval [ -z "\"\$$name\"" ]
-    then
-        eval "$name='$value'"
-    fi
-}
-
 if [ $# -ne 3 ]
 then
     cat <<USAGE
@@ -22,12 +11,12 @@ USAGE
     exit 22
 fi
 
-environment_or_assign cdrom "$1"
-environment_or_assign disk "$2"
-environment_or_assign backup "$3"
+cdrom="$1"
+disk="$2"
+backup="$3"
 
-environment_or_assign cdrom_size $(wc -c "$cdrom" | cut -d ' ' -f 1)
-environment_or_assign disk_size $(
+cdrom_size=$(wc -c "$cdrom" | cut -d ' ' -f 1)
+disk_size=$(
     fdisk -l "$disk" |
     sed -E '1{s/.* ([[:digit:]]+) bytes.*/\1/; q}'
 )
@@ -38,8 +27,11 @@ then
    exit 28
 fi
 
-environment_or_assign dd_block_size 4194304 # 4M
-environment_or_assign dd_count $(expr $cdrom_size / $dd_block_size + 1)
+if [ -z $dd_block_size ]
+then dd_block_size=4194304 # 4M
+fi
+
+dd_count=$(expr $cdrom_size / $dd_block_size + 1)
 
 echo backup size is $(expr $dd_block_size \* $dd_count)
 echo backup "$disk" to "$backup"
