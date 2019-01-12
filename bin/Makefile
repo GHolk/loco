@@ -31,5 +31,7 @@ $t/urlencode: urlencode.js
 	ln -s `realpath $<` $@
 $t/umount-vg: umount-vg.sh
 	ln -s `realpath $<` $@
+$t/flash-iso-recovery: flash-iso-recovery.sh
+	ln -s `realpath $<` $@
 
 .PHONY: all
