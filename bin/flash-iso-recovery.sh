@@ -16,16 +16,6 @@ disk="$2"
 backup="$3"
 
 cdrom_size=$(wc -c "$cdrom" | cut -d ' ' -f 1)
-disk_size=$(
-    fdisk -l "$disk" |
-    sed -E '1{s/.* ([[:digit:]]+) bytes.*/\1/; q}'
-)
-
-if [ $cdrom_size -gt $disk_size ]
-then
-   echo "cdrom size $cdrom_size greater than disk size $disk_size" >&2
-   exit 28
-fi
 
 if [ -z $dd_block_size ]
 then dd_block_size=4194304 # 4MB
@@ -40,4 +30,4 @@ dd if="$disk" bs=$dd_block_size count=$dd_count | gzip - > "$backup"
 echo write "$cdrom" to "$disk"
 dd if="$cdrom" of="$disk" bs=$dd_block_size
 
-echo recover disk by "dd if='$backup' of='$disk' bs=4M"
+echo recover disk by "zcat '$backup' | dd of='$disk' bs=$dd_block_size"
