@@ -77,14 +77,14 @@ value() {
     case "$1" in
         -q )
             shift
-            eval quiet "$@"
+            quiet "$@"
             ;;
         -Q )
             shift
-            eval quiet -Q "$@"
+            quiet -Q "$@"
             ;;
         * )
-            eval "$@"
+            "$@"
             ;;
     esac
     exit_state=$?
@@ -95,8 +95,8 @@ quiet() {
     if [ "$1" = -Q ]
     then
         shift
-        eval "$@" >/dev/null 2>&1
+        "$@" >/dev/null 2>&1
     else
-        eval "$@" >/dev/null
+        "$@" >/dev/null
     fi
 }
