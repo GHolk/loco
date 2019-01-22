@@ -1,0 +1,66 @@
+## chain command
+mcd() { 
+    mkdir $@
+    cd $1
+}
+
+cls() {
+    cd $1
+    ls
+}
+
+err() {
+    echo "$@" >&2
+}
+
+gvfs() {
+    gvfs-$*
+}
+
+## change and execute command
+big5() {
+    luit -encoding big5 "$@"
+}
+value() {
+    local exit_state
+    case "$1" in
+        -q )
+            shift
+            quiet "$@"
+            ;;
+        -Q )
+            shift
+            quiet -Q "$@"
+            ;;
+        * )
+            "$@"
+            ;;
+    esac
+    exit_state=$?
+    echo $exit_state
+    return $exit_state
+}
+quiet() {
+    if [ "$1" = -Q ]
+    then
+        shift
+        "$@" >/dev/null 2>&1
+    else
+        "$@" >/dev/null
+    fi
+}
+is_true() {
+    return $(($1 == 0))
+}
+set_if_empty() {
+    local name value
+    name=$1
+    value="$2"
+    if eval [ -z \"\$$name\" ]
+    then
+        eval $name='"$value"'
+        return 0
+    else
+        return 1
+    fi
+}
