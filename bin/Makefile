@@ -4,7 +4,8 @@ t = ~/.local/bin
 all: $t/xwall $t/xop $t/chromium-app \
      $t/clipboard $t/selection \
      $t/pactl-mute $t/pactl-unmute \
-     $t/urlencode $t/flash-iso-recovery
+     $t/urlencode $t/flash-iso-recovery \
+     $t/pcre
 
 
 $t/clipboard: aclp.sh
@@ -32,6 +33,9 @@ $t/urlencode: urlencode.js
 $t/umount-vg: umount-vg.sh
 	ln -s `realpath $<` $@
 $t/flash-iso-recovery: flash-iso-recovery.sh
+	ln -s `realpath $<` $@
+
+$t/pcre: pcre.pl
 	ln -s `realpath $<` $@
 
 .PHONY: all
