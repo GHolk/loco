@@ -5,7 +5,8 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/clipboard $t/selection \
      $t/pactl-mute $t/pactl-unmute \
      $t/qemu-windows $t/qemu-android \
-     $t/urlencode $t/flash-iso-recovery
+     $t/urlencode $t/flash-iso-recovery \
+     $t/pcre
 
 
 $t/clipboard: aclp.sh
@@ -40,5 +41,8 @@ $t/qemu-%: qemu-%.sh
 
 /usr/local/sbin/grub-reboot-entry: grub-reboot-entry.sh
 	install $< $@
+
+$t/pcre: pcre.pl
+	ln -s `realpath $<` $@
 
 .PHONY: all
