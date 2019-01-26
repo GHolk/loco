@@ -48,55 +48,6 @@ eval `dircolors`
 
 ncku="ncku.edu.tw"
 
-# function
-## chain command
-mcd() { 
-    mkdir $@
-    cd $1
-}
-
-cls() {
-    cd $1
-    ls
-}
-
-err() {
-    echo "$@" >&2
-}
-
-gvfs() {
-    gvfs-$*
-}
-
-## change and execute command
-big5() {
-    luit -encoding big5 "$@"
-}
-value() {
-    local exit_state
-    case "$1" in
-        -q )
-            shift
-            eval quiet "$@"
-            ;;
-        -Q )
-            shift
-            eval quiet -Q "$@"
-            ;;
-        * )
-            eval "$@"
-            ;;
-    esac
-    exit_state=$?
-    echo $exit_state
-    return $exit_state
-}
-quiet() {
-    if [ "$1" = -Q ]
-    then
-        shift
-        eval "$@" >/dev/null 2>&1
-    else
-        eval "$@" >/dev/null
-    fi
-}
+if [ -e .bash_function ]
+then . ./.bash_function
+fi

@@ -12,7 +12,7 @@ endef
 
 config: bash tmux git manpath_file vim ssh
 
-bash: $(HOME)/.bashrc $(HOME)/.profile
+bash: $(HOME)/.bashrc $(HOME)/.profile $(HOME)/.bash_function
 tmux: $(HOME)/.tmux.conf
 git: $(HOME)/.gitconfig
 manpath_file: $(HOME)/.manpath
