@@ -6,7 +6,7 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/pactl-mute $t/pactl-unmute \
      $t/qemu-windows $t/qemu-android \
      $t/urlencode $t/flash-iso-recovery \
-     $t/pcre
+     $t/pcre $t/landslide-standalone $t/scat
 
 
 $t/clipboard: aclp.sh
@@ -43,6 +43,11 @@ $t/qemu-%: qemu-%.sh
 	install $< $@
 
 $t/pcre: pcre.pl
+	ln -s `realpath $<` $@
+
+$t/landslide-standalone: landslide-standalone.sh
+	ln -s `realpath $<` $@
+$t/scat: scat.sh
 	ln -s `realpath $<` $@
 
 .PHONY: all
