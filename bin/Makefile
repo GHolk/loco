@@ -5,7 +5,7 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/clipboard $t/selection \
      $t/pactl-mute $t/pactl-unmute \
      $t/urlencode $t/flash-iso-recovery \
-     $t/pcre
+     $t/pcre $t/landslide-standalone $t/scat
 
 
 $t/clipboard: aclp.sh
@@ -36,6 +36,11 @@ $t/flash-iso-recovery: flash-iso-recovery.sh
 	ln -s `realpath $<` $@
 
 $t/pcre: pcre.pl
+	ln -s `realpath $<` $@
+
+$t/landslide-standalone: landslide-standalone.sh
+	ln -s `realpath $<` $@
+$t/scat: scat.sh
 	ln -s `realpath $<` $@
 
 .PHONY: all
