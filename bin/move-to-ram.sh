@@ -7,7 +7,8 @@ absolute_path=$(realpath "$disk_path")
 ram_directory=$(mktemp --directory $ram/ram-directory-XXXXXX)
 file_in_ram="$ram_directory/$disk_file"
 
-mv "$disk_path" $ram_directory/
+cp -r "$disk_path" $ram_directory/
+mv "$disk_path" "$disk_path.bak"
 ln -s "$file_in_ram" "$disk_path"
 
 while [ "$quit" != quit ]
@@ -16,7 +17,16 @@ do
     read quit
 done
 
-rm "$disk_path"
-mv "$file_in_ram" "$disk_path"
+if diff -r "$file_in_ram" "$disk_path.bak" >/dev/null
+then
+    # diff exit 0 mean same
+    rm -r "$file_in_ram" "$disk_path"
+    mv "$disk_path.bak" "$disk_path"
+else
+    # diff exit 1 mean different
+    rm -r "$disk_path" "$disk_path.bak"
+    mv "$file_in_ram" "$disk_path"
+fi
+
 rmdir $ram_directory
 
