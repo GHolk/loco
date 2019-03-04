@@ -1,0 +1,17 @@
+[Unit]
+Description=xl2tpd nat edit iptable
+After=network.target auditd.service
+# PartOf=xl2tpd.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/sbin/iptables -t nat -A POSTROUTING \
+                         -s 192.168.100.128/25 \
+                         -j MASQUERADE -o enp0s31f6
+ExecStop=/sbin/iptables -t nat -D POSTROUTING \
+                        -s 192.168.100.128/25 \
+                        -j MASQUERADE -o enp0s31f6
+
+[Install]
+WantedBy=multi-user.target
