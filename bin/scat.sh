@@ -1,10 +1,7 @@
 #!/bin/sh
 
-source="$1"
-target="$2"
-
 print_usage() {
-    program=$(basename $0)
+    local program=$(basename $0)
     cat <<EOF
 usage
         ## pipe to remote file
@@ -25,6 +22,9 @@ escape_single_quote() {
 }
 
 
+source="$1"
+target="$2"
+
 if [ "$source" = "-" ] && [ "$target" = "-" ]
 then
     print_usage >&2
@@ -33,7 +33,7 @@ elif [ "$source" = "-" ]
 then
     set_ssh_variable "$target"
     ssh "$server" "cat > '$(escape_single_quote "$path")'"
-elif [ "$target" = "-" ]
+elif [ "$target" = "-" ] || [ "$#" -eq 1 ]
 then
     set_ssh_variable "$source"
     ssh "$server" "cat '$(escape_single_quote "$path")'"
