@@ -84,7 +84,7 @@ valid_username() {
 }
 
 
-if [ -z "$TMUX" ]
+if ! tmux has-session
 then
     cat <<USAGE
 using this script:
@@ -93,6 +93,9 @@ using this script:
  2. run "ssh bbsu@ptt.cc" to login ptt in window 0
  3. you should run this script in window 1
  4. money=30 sh $0 iXXXXGAY5566 gholk ffaarr
+
+<http://gholk.github.io/tmux-give-p.html>
+
 USAGE
     exit 4
 fi
