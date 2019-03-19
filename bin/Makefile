@@ -4,7 +4,7 @@ t = ~/.local/bin
 all: $t/xwall $t/xop $t/chromium-app \
      $t/clipboard $t/selection \
      $t/pactl-mute $t/pactl-unmute \
-     $t/qemu-windows $t/qemu-android
+     $t/qemu-windows $t/qemu-android \
      $t/urlencode $t/flash-iso-recovery
 
 
@@ -37,5 +37,8 @@ $t/flash-iso-recovery: flash-iso-recovery.sh
 
 $t/qemu-%: qemu-%.sh
 	ln -s `realpath $<` $@
+
+/usr/local/sbin/grub-reboot-entry: grub-reboot-entry.sh
+	install $< $@
 
 .PHONY: all
