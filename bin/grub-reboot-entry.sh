@@ -30,9 +30,9 @@ AT
 
 if [ $next_entry = unset ]
 then
-    grub-editenv - unset gholk_reboot_date
-    grub-editenv - unset gholk_reboot_hour
-    grub-editenv - unset gholk_reboot_entry
+    grub-editenv - unset gholk_reboot_date \
+                         gholk_reboot_hour \
+                         gholk_reboot_entry
 else
     set_date_hour_entry $(date -u +"%e %k") $next_entry
     remove_entry_after_reboot
