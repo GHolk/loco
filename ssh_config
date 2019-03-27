@@ -80,8 +80,7 @@ Port 1926
 User gholk
 
 # Atom bkr
-Host atom-bkr
-HostName 10.42.0.14
+Host atom
 Port 2222
 User rant
 
