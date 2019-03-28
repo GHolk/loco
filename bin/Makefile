@@ -5,7 +5,8 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/clipboard $t/selection \
      $t/pactl-mute $t/pactl-unmute \
      $t/urlencode $t/flash-iso-recovery \
-     $t/pcre $t/landslide-standalone $t/scat
+     $t/pcre $t/landslide-standalone $t/scat \
+     $t/qemu-windows $t/qemu-android
 
 
 $t/clipboard: aclp.sh
@@ -42,5 +43,11 @@ $t/landslide-standalone: landslide-standalone.sh
 	ln -s `realpath $<` $@
 $t/scat: scat.sh
 	ln -s `realpath $<` $@
+
+$t/qemu-%: qemu-%.sh
+	ln -s `realpath $<` $@
+
+/usr/local/sbin/grub-reboot-entry: grub-reboot-entry.sh
+	install $< $@
 
 .PHONY: all
