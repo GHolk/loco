@@ -1,5 +1,37 @@
 #!/bin/sh
 
+grub_reboot_env_script='
+#!/bin/sh
+cat <<EOF
+
+if [ -n "\$gholk_reboot_entry" ]
+then
+    insmod datehook
+    if [ "\$DAY" -eq "\$gholk_reboot_date" -a \
+         "\$HOUR" -eq "\$gholk_reboot_hour" ]
+    then set default=\$gholk_reboot_entry
+    fi
+fi
+
+EOF
+'
+
+if ! [ -f /etc/grub/*_reboot_env_timeout ]
+then
+    cat <<WARN_GRUB
+you should check environment in grub script
+to reboot to specific entry.
+
+for example, put this as /etc/grub.d/42_reboot_env_timeout,
+then run update-grub:
+
+#############################################
+$grub_reboot_env_script
+#############################################
+
+WARN_GRUB
+fi
+
 if [ -n "$1" ]
 then next_entry=$1
 else 
