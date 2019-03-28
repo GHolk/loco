@@ -36,11 +36,10 @@ supcj.gtab: supcj.cin
 	gcin2tab supcj.cin
 
 supcj.scim: supcj.cin
-	ex -S cin2scim.ex supcj.scim
+	sh $@.sh >$@
 
-supcj-cn.%: supcj.%
-	sed -i '/BEGIN_TABLE/,$$d' $@
-	sed -n '/BEGIN_TABLE/,$$p' $< | cconv -f UTF8-TW -t UTF8-CN >>$@ 
+supcj-cn.scim: supcj.scim
+	sh $@.sh >$@
 
 /etc/X11/xorg.conf.d/56evdev-trackpoint-gholk.conf: evdev-trackpoint-gholk.conf
 	ln -s `realpath $<` $@
