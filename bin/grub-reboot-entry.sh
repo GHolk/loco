@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 grub_reboot_env_script='
 #!/bin/sh
 cat <<EOF

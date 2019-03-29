@@ -6,7 +6,7 @@
 export GPG_TTY=$(tty)
 # gpg-connect-agent updatestartuptty /bye >/dev/null
 
-PS1="\[\e[36;1m\]\H\[\e[0m\]:\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
+PS1="\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
 
 # bash history control
 HISTTIMEFORMAT="%F %T "

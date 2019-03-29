@@ -49,7 +49,7 @@ quiet() {
         "$@" >/dev/null
     fi
 }
-is_true() {
+as_return() {
     return $(($1 == 0))
 }
 set_if_empty() {
@@ -63,4 +63,12 @@ set_if_empty() {
     else
         return 1
     fi
+}
+
+cutdf() {
+    delimeter="$1"
+    field="$2"
+    shift
+    shift
+    cut -d "$delimeter" -f "$field" "$@"
 }

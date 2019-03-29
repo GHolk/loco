@@ -80,8 +80,7 @@ Port 1926
 User gholk
 
 # Atom bkr
-Host atom-bkr
-HostName 10.42.0.14
+Host atom
 Port 2222
 User rant
 
@@ -94,4 +93,8 @@ HostName sdf.lonestar.org
 
 Host lab
 HostName lab.gholk.ml
+ForwardX11 yes
+
+Host dwe-lab
+HostName 140.113.136.27
 ForwardX11 yes
