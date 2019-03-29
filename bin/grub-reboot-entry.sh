@@ -16,7 +16,7 @@ fi
 EOF
 '
 
-if ! [ -f /etc/grub/*_reboot_env_timeout ]
+if ! [ -f /etc/grub.d/*_reboot_env_timeout ]
 then
     cat <<WARN_GRUB
 you should check environment in grub script
