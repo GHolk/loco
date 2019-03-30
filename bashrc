@@ -6,7 +6,16 @@
 export GPG_TTY=$(tty)
 # gpg-connect-agent updatestartuptty /bye >/dev/null
 
-PS1="\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
+PS1="\[\e[1;31m\]\$(_alert_exit_status)\[\e[m\]\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
+
+_alert_exit_status() {
+    local status=$?
+    if [ $status -ne 0 ]
+    then
+        echo "&$status "
+    fi
+}
+
 
 # bash history control
 HISTTIMEFORMAT="%F %T "
