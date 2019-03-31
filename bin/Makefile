@@ -47,7 +47,7 @@ $t/scat: scat.sh
 $t/qemu-%: qemu-%.sh
 	ln -s `realpath $<` $@
 
-/usr/local/sbin/grub-reboot-entry: grub-reboot-entry.sh
+/usr/local/sbin/grub-reboot-timeout: grub-reboot-timeout.sh
 	install $< $@
 
 .PHONY: all

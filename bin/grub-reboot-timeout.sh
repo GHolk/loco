@@ -4,21 +4,18 @@ set -e
 
 grub_reboot_env_script='
 #!/bin/sh
-cat <<EOF
-
-if [ -n "\$gholk_reboot_entry" ]
+exec tail -n +3 "$0"
+if [ -n "$gholk_reboot_entry" ]
 then
     insmod datehook
-    if [ "\$DAY" -eq "\$gholk_reboot_date" -a \
-         "\$HOUR" -eq "\$gholk_reboot_hour" ]
-    then set default=\$gholk_reboot_entry
+    if [ "$DAY" -eq "$gholk_reboot_date" -a \
+         "$HOUR" -eq "$gholk_reboot_hour" ]
+    then set default=$gholk_reboot_entry
     fi
 fi
-
-EOF
 '
 
-if ! [ -f /etc/grub/*_reboot_env_timeout ]
+if ! [ -f /etc/grub.d/*_reboot_env_timeout ]
 then
     cat <<WARN_GRUB
 you should check environment in grub script
@@ -50,9 +47,9 @@ set_date_hour_entry() {
     date=$1
     hour=$2
     entry=$3
-    grub-editenv - set gholk_reboot_date=$date
-    grub-editenv - set gholk_reboot_hour=$hour
-    grub-editenv - set gholk_reboot_entry=$next_entry
+    grub-editenv - set gholk_reboot_date=$date \
+                       gholk_reboot_hour=$hour \
+                       gholk_reboot_entry=$next_entry
 }
 
 remove_entry_after_reboot() {
