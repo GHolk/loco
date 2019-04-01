@@ -4,7 +4,11 @@ set -e
 
 grub_reboot_env_script='
 #!/bin/sh
-exec tail -n +3 "$0"
+tail -n +7 "$0"
+exit
+
+## following script will be output to grub.cfg
+
 if [ -n "$gholk_reboot_entry" ]
 then
     insmod datehook
