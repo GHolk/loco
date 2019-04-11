@@ -1,0 +1,3 @@
+## Begin savepath auto-created section, do not edit
+  addpath ([getenv('HOME') '/octave/local'], '-begin');
+## End savepath auto-created section

@@ -1,5 +1,4 @@
-#!/usr/bin/env octave
-## Copyright (C) 2016 c34031328
+## Copyright (C) 2018 gold holk
 ## 
 ## This program is free software; you can redistribute it and/or modify it
 ## under the terms of the GNU General Public License as published by
@@ -15,16 +14,13 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## -*- texinfo -*- 
-## @deftypefn {Function File} {@var{retval} =} smd (@var{input1}, @var{input2})
-##
-## @seealso{}
+## @deftypefnx {Function File} dms2d (@var{DEGREE}, @var{MINUTE}, @var{SECOND})
+##   convert degree minute second to degree in decimal.
 ## @end deftypefn
 
-## Author: c34031328 c34031328@mail.ncku.edu.tw
-## Created: 2016-04-24
+## Author: gold holk <gholk@dt13>
+## Created: 2019-04-11
 
-function [retval] = smd (d,m,s)
-
-retval = (d*60+m)*60+s;
-
-endfunction
+function degree_decimal = dms2d(degree, minute = 0, second = 0)
+  degree_decimal = degree + (minute + second / 60) / 60;
+end
