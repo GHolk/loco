@@ -40,6 +40,7 @@ eval "$(SHELL=/bin/sh lesspipe)"
 
 
 alias rm='gio trash'
+alias gcat='gio cat'
 alias mv="mv -i"
 alias cp="cp -i"
 alias men="man -L en"
