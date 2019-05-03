@@ -1,7 +1,6 @@
 #!/bin/sh
-. $HOME/.bash_function
-
 set -e
+. $HOME/.bash_function
 
 week_day_to_day_count() {
     local week day

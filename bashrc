@@ -6,7 +6,26 @@
 export GPG_TTY=$(tty)
 # gpg-connect-agent updatestartuptty /bye >/dev/null
 
-PS1="\[\e[36;1m\]\H\[\e[0m\]:\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
+PS1="\[\e[1;31m\]\$(_alert_exit_status)\[\e[m\]\[\e[36;1m\]\H\[\e[0m\]\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
+
+## alert if exit value not zero
+## alert only once by check history
+PROMPT_COMMAND=_before_prompt
+_before_prompt() {
+    local last_command=$(history 1)
+    if [ "$last_command" = "$_before_prompt_previous_command" ]
+    then _alert_exit_status_empty_command=t
+    else
+        _alert_exit_status_empty_command=
+        _before_prompt_previous_command="$last_command"
+    fi
+}
+_alert_exit_status() {
+    local status=$?
+    if [ $status -ne 0 ] && [ -z "$_alert_exit_status_empty_command" ]
+    then echo "&$status "
+    fi
+}
 
 # bash history control
 HISTTIMEFORMAT="%F %T "
