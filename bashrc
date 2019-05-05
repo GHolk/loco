@@ -47,6 +47,9 @@ alias men="man -L en"
 alias df="df -h"
 alias ll="ls -la"
 
+alias pgrep='pgrep --list-full --full --ignore-case'
+alias pstree='pstree -p'
+
 alias octave=octave-cli
 alias ec="emacsclient -nw -c"
 alias userctl="systemctl --user"
