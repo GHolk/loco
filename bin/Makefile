@@ -50,5 +50,7 @@ $t/qemu-%: qemu-%.sh
 /usr/local/sbin/grub-reboot-timeout: grub-reboot-timeout.sh
 	install $< $@
 
+/etc/init.d/zram: zram.sh
+	install $< $@
 
 .PHONY: all
