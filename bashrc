@@ -37,6 +37,7 @@ shopt -s globstar  # dobule star ** match attributial depth dir
 
 # friend less
 eval "$(SHELL=/bin/sh lesspipe)"
+# export LESS="--no-init --ignore-case"
 
 
 alias rm='gio trash'

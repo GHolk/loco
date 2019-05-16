@@ -10,5 +10,6 @@
 [core]
 	editor = vi
 	quotepath = off
+	pager = less -SFRX
 [push]
 	default = simple
