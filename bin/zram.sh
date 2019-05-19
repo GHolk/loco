@@ -1,4 +1,14 @@
 #!/bin/sh
+### BEGIN INIT INFO
+# Provides:          zram
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Use compressed RAM as in-memory swap
+# Description:       Use compressed RAM as in-memory swap
+### END INIT INFO
+
 
 # Author: Antonio Galea <antonio.galea@gmail.com>
 #
@@ -6,15 +16,6 @@
 # Distributed under the GPL version 3 or later, see terms at
 # https://gnu.org/licenses/gpl-3.0.txt
 
-### BEGIN INIT INFO
-# Provides:          zram
-# Required-Start:    $local_fs
-# Required-Stop:     $local_fs
-# Default-Start:     S
-# Default-Stop:      0 1 6
-# Short-Description: Use compressed RAM as in-memory swap
-# Description:       Use compressed RAM as in-memory swap
-### END INIT INFO
 
 FRACTION=75
 MEMORY=$(perl -ne '/^MemTotal:\s+(\d+)/ && print $1*1024' < /proc/meminfo)
