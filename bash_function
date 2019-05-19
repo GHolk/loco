@@ -77,30 +77,33 @@ cutdf() {
 
 # fc for script file
 fx() {
-    local command=$1 command_content
+    local command=$1
     history -s fx $command
-    case `type -t $command` in
-        file)
-            local command_path=`type -P $command`
-            # # check file is not binary
-            # if file --mime --dereference $command_path \
-            #     | fgrep --quiet --invert-match charset=binary
-            command_content=$(
-                vipe < $command_path \
-                 | sed -e '1i(' -e '$a)'
-            )
-            ;;
-        "function")
-            command_content=$(declare -f $command | vipe)
-            ;;
-        "alias")
-            command_content=$(alias $command | vipe)
-            ;;
-        *)
-            err not editing support command type
-            return 1
-    esac
-    
+
+    local output_script
+    if [ -f $command ]
+    then
+        output_script="sed -e 1i( -e \$a) $command"
+    else
+        case `type -t $command` in
+            file)
+                # # check file is not binary
+                # if file --mime --dereference $command_path \
+                #     | fgrep --quiet --invert-match charset=binary
+                output_script="sed -e 1i( -e \$a) `type -P $command`"
+                ;;
+            "function")
+                output_script="declare -f $command"
+                ;;
+            "alias")
+                output_script="alias $command"
+                ;;
+            *)
+                err not editing support command type: `type -t $command`
+                return 1
+        esac
+    fi
+    local command_content=$($output_script | vipe)
     history -s "$command_content"
     eval "$command_content"
 }
