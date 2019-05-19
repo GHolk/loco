@@ -53,4 +53,7 @@ $t/qemu-%: qemu-%.sh
 /etc/init.d/zram: zram.sh
 	install $< $@
 
+$t/google-drive-download: google-drive-download.sh
+	install $< $@
+
 .PHONY: all
