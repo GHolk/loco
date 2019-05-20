@@ -37,14 +37,19 @@ shopt -s globstar  # dobule star ** match attributial depth dir
 
 # friend less
 eval "$(SHELL=/bin/sh lesspipe)"
+export LESS="--no-init --ignore-case"
 
 
 alias rm='gio trash'
+alias gcat='gio cat'
 alias mv="mv -i"
 alias cp="cp -i"
 alias men="man -L en"
 alias df="df -h"
 alias ll="ls -la"
+
+alias pgrep='pgrep --list-full --full --ignore-case'
+alias pstree='pstree -p'
 
 alias octave=octave-cli
 alias ec="emacsclient -nw -c"

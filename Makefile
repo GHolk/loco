@@ -51,7 +51,7 @@ supcj-cn.scim: supcj.scim
 $(HOME)/.local/share/anacron/anacrontab: anacrontab
 	ln -s `realpath $<` $@
 
-/etc/sysctl.d/61-local.conf: local-sysctl.conf
+/etc/sysctl.d/local.conf: local-sysctl.conf
 	cp $< $@
 
 cron: crontab
