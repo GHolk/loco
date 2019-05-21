@@ -86692,5 +86692,8 @@ yvbbn 贏
 ,.. ＞
 ,ww ＠
 
+# 神奇的 unicode 刪除線
+\s ̶
+
 %chardef end
 
