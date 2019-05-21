@@ -31,6 +31,7 @@ _alert_exit_status() {
 HISTTIMEFORMAT="%F %T "
 HISTSIZE=1000
 HISTFILESIZE=2000
+shopt -s lithist cmdhist # enable history store multi line
 
 shopt -s checkwinsize
 shopt -s globstar  # dobule star ** match attributial depth dir
