@@ -3,6 +3,9 @@
 # If not running interactively, do not do anything
 [[ $- != *i* ]] && return
 
+[ -f /etc/bashrc ] && . /etc/bashrc # centos
+[ -f /etc/bash.bashrc ] && . /etc/bash.bashrc # ubuntu
+
 export GPG_TTY=$(tty)
 # gpg-connect-agent updatestartuptty /bye >/dev/null
 
