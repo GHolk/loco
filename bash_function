@@ -80,30 +80,29 @@ fx() {
     local command=$1
     history -s fx $command
 
-    local output_script
-    if [ -f $command ]
+    temp_script=$(mktemp /tmp/fx.XXXXXXXX.tmp)
+
+    if [ -f "$command" ]
     then
-        output_script="sed -e 1i( -e \$a) $command"
+        sed -e '1i(' -e '$a)' $command > $temp_script
     else
         case `type -t $command` in
             file)
-                # # check file is not binary
-                # if file --mime --dereference $command_path \
-                #     | fgrep --quiet --invert-match charset=binary
-                output_script="sed -e 1i( -e \$a) `type -P $command`"
+                sed -e '1i(' -e '$a)' `type -P $command` > $temp_script
                 ;;
             "function")
-                output_script="declare -f $command"
+                declare -f $command > $temp_script
                 ;;
             "alias")
-                output_script="alias $command"
+                alias $command > $temp_script
                 ;;
             *)
                 err not editing support command type: `type -t $command`
                 return 1
         esac
     fi
-    local command_content=$($output_script | vipe)
-    history -s "$command_content"
-    eval "$command_content"
+    $EDITOR $temp_script
+    history -s "$(cat $temp_script)"
+    . $temp_script
+    rm $temp_script
 }
