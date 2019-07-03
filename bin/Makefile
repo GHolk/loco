@@ -56,4 +56,7 @@ $t/qemu-%: qemu-%.sh
 $t/google-drive-download: google-drive-download.sh
 	install $< $@
 
+$t/st: st.awk
+	install $< $@
+
 .PHONY: all
