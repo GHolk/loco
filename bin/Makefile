@@ -58,5 +58,7 @@ $t/google-drive-download: google-drive-download.sh
 
 $t/st: st.awk
 	install $< $@
+$t/xmotd: xmotd.sh
+	install $< $@
 
 .PHONY: all
