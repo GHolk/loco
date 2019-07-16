@@ -98,3 +98,9 @@ ForwardX11 yes
 Host dwe-lab
 HostName 140.113.136.27
 ForwardX11 yes
+
+Host alos-ftp
+HostName 116.118.238.176
+Port 62459  
+User p000010
+IdentityFile ~/.ssh/alos-openssh
