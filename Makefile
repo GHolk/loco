@@ -20,10 +20,10 @@ vim: $(HOME)/.vimrc
 ssh: $(HOME)/.ssh/config
 
 $(HOME)/.ssh/config: ssh_config
-	$(call symbol_link,$<,$@)
+	cp $< $@
 
 $(HOME)/.%: %
-	$(call symbol_link,$<,$@)
+	cp $< $@
 
 man: man/Makefile
 	$(MAKE) -C $@
