@@ -95,6 +95,6 @@ Host lab
 HostName lab.gholk.ml
 ForwardX11 yes
 
-Host dwe-lab
-HostName 140.113.136.27
+Host dpwe
+HostName dpwe.gholk.ml
 ForwardX11 yes
