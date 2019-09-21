@@ -4,6 +4,8 @@
 ServerAliveInterval 180
 ServerAliveCountMax 10
 Compression yes
+ControlMaster no
+ControlPath ~/.ssh/control-socket-%u@%h:%p
 
 # login bbs by `ssh bbsu@domain.name`
 Host ptt.cc
