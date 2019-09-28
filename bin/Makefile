@@ -61,4 +61,7 @@ $t/st: st.awk
 $t/xmotd: xmotd.sh
 	install $< $@
 
+$t/pause: pause.sh
+	install $< $@
+
 .PHONY: all

@@ -34,6 +34,7 @@ _alert_exit_status() {
 HISTTIMEFORMAT="%F %T "
 HISTSIZE=1000
 HISTFILESIZE=2000
+HISTCONTROL='ignorespace' # space leading command will not store
 shopt -s lithist cmdhist # enable history store multi line
 
 shopt -s checkwinsize
@@ -54,6 +55,7 @@ alias ll="ls -la"
 
 alias pgrep='pgrep --list-full --full --ignore-case'
 alias pstree='pstree -p'
+alias pwgen='pwgen --secure --symbols --numerals --capitalize'
 
 alias octave=octave-cli
 alias ec="emacsclient -nw -c"

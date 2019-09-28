@@ -86478,5 +86478,8 @@ yvbbn 贏
 # 神奇的 unicode 刪除線
 \s ̶
 
+# 避免頻顏重碼
+ykmhc 顏
+
 %chardef end
 
