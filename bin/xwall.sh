@@ -17,7 +17,7 @@ zenity_wall() {
 }
 
 
-for display in $(w --no-header | awk '$3 ~ /^.*:[[:digit:]]+$/ {print $3}')
+for display in $(w --no-header | awk '$3 ~ /^.*:[0-9]+$/ {print $3}')
 do
     export DISPLAY=$display
     zenity_wall "$*" &
