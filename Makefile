@@ -2,7 +2,7 @@
 .PHONY: all \
 	config man bin \
 	bash tmux git manpath_file vim ssh \
-        cron
+	cron install-gnss
 
 all: config man ime # binary
 
@@ -57,3 +57,9 @@ $(HOME)/.local/share/anacron/anacrontab: anacrontab
 cron: crontab
 	crontab < $<
 
+install-gnss:
+	cd gnss; \
+	for script in *; \
+	do install $$script \
+	$(HOME)/.local/bin/$$(echo $$script | sed -r 's/\..*?$$//'); \
+	done
