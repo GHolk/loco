@@ -12,7 +12,7 @@ do_post() {
     curl --cookie-jar $cookie_jar \
          -F return_email=$email \
          -F process_type=$station \
-         -F nad83_custom=1997-01-01 \
+         -F sysref=ITRF \
          -F official_marker= \
          -F user_otl_file= \
          -F rfile_upload=@$rinex \
@@ -29,6 +29,11 @@ do_login() {
 }
 
 
+do_get_url() {
+    local id=$1
+    echo "http://webapp.geod.nrcan.gc.ca/CSRS-PPP/service/results/file?id=$id&lang=en&fid=000&type=full"
+}
+
 do_get() {
     local id=$1
     curl "http://webapp.geod.nrcan.gc.ca/CSRS-PPP/service/results/file?id=$id&lang=en&fid=000&type=full"
@@ -41,6 +46,10 @@ usage
         $0 post csrs0010.19o my@email.edu Kinematic
         $0 get abcdefghijklmnopqrstuvwxyz_ABCDE-0123456789 > output.zip
 HELP
+}
+
+do_pos_to_lonlath() {
+    awk '{printf "%dd%d\x27%f\" %dd%d\x27%f\" %f\n", $24,$25,$26,$21,$22,$23,$27}' "$@"
 }
 
 set_cookie_jar() {
@@ -57,7 +66,7 @@ set_cookie_jar() {
 action=$1
 shift
 
-case action in
+case $action in
     post)
         set_cookie_jar
         do_post $@
@@ -68,6 +77,12 @@ case action in
         ;;
     get)
         do_get $@
+        ;;
+    get?url)
+        do_get_url "$@"
+        ;;
+    pos_to_lonlath|pos-to-lonlath)
+        do_pos_to_lonlath "$@"
         ;;
     help|*)
         do_help
