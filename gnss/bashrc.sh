@@ -10,3 +10,10 @@ gdcat_to_xyz() {
     awk '/STA.[XYZ]/ { p[substr($2,10,1)] = $4}
          /STA.Z/ { epoch = $3; print p["X"],p["Y"],p["Z"], epoch }' "$@"
 }
+
+rinex_name_3_to_2() {
+    local rinex2=$1
+    local date=20$(expr substr $rinex2 1 6)
+    local suffix=$(expr substr $rinex2 \( length $rinex2 \) 1)
+    date -d $date +"%03j0.%y$suffix"
+}
