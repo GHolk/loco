@@ -55,6 +55,10 @@ do_pos_to_lonlath() {
     awk '{printf "%dd%d\x27%f\" %dd%d\x27%f\" %f\n", $24,$25,$26,$21,$22,$23,$27}' "$@"
 }
 
+do_pos_to_lonlath() {
+    awk '{printf "%dd%d\x27%f\" %dd%d\x27%f\" %f\n", $24,$25,$26,$21,$22,$23,$27}' "$@"
+}
+
 set_cookie_jar() {
     if [ -z "$cookie_jar" ]
     then

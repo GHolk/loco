@@ -25,7 +25,7 @@ _before_prompt() {
 }
 _alert_exit_status() {
     local status=$?
-    if [ $status -ne 0 ] && [ -z "$_alert_exit_status_empty_command" ]
+    if [ $status -ne 0 ] && [ -z $_alert_exit_status_empty_command ]
     then echo "&$status "
     fi
 }

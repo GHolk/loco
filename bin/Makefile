@@ -4,9 +4,9 @@ t = ~/.local/bin
 all: $t/xwall $t/xop $t/chromium-app \
      $t/clipboard $t/selection \
      $t/pactl-mute $t/pactl-unmute \
+     $t/qemu-windows $t/qemu-android \
      $t/urlencode $t/flash-iso-recovery \
-     $t/pcre $t/landslide-standalone $t/scat \
-     $t/qemu-windows $t/qemu-android
+     $t/pcre $t/landslide-standalone $t/scat
 
 
 $t/clipboard: aclp.sh

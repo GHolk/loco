@@ -2,6 +2,7 @@
 	ss = status
 	ck = checkout
 	bh = branch
+	fp = format-patch -k --stdout
 [color]
 	ui = true
 [user]
