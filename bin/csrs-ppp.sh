@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-. ~/.bash_function
+. $HOME/.bash_function
 
 week_day_to_day_count() {
     local week day
@@ -76,7 +76,7 @@ url_list=$(
 
 origin_directory="$PWD"
 
-set_if_empty csrs_root ~/csrs
+set_if_empty csrs_root ~/csrs || true
 
 copy_to_csrs "$rinex"
 file_to_remove=$(basename "$rinex")

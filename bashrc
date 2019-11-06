@@ -33,7 +33,7 @@ _alert_exit_status() {
 # bash history control
 HISTTIMEFORMAT="%F %T "
 HISTSIZE=1000
-HISTFILESIZE=-1
+HISTFILESIZE=2000
 HISTCONTROL='ignorespace' # space leading command will not store
 shopt -s lithist cmdhist # enable history store multi line
 

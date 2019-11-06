@@ -1,5 +1,16 @@
 #!/bin/sh
 
+do_help() {
+    cat <<HELP
+usage
+        $0 login my@email.edu password
+        $0 login my@email.edu @password_file
+        $0 login my@email.edu @- # stdin
+        $0 post csrs0010.19o my@email.edu Kinematic
+        $0 get abcdefghijklmnopqrstuvwxyz_ABCDE-0123456789 > output.zip
+HELP
+}
+
 do_post() {
     local rinex=$1
     local email=$2
@@ -36,16 +47,12 @@ do_get_url() {
 
 do_get() {
     local id=$1
-    curl "http://webapp.geod.nrcan.gc.ca/CSRS-PPP/service/results/file?id=$id&lang=en&fid=000&type=full"
+    shift
+    curl "http://webapp.geod.nrcan.gc.ca/CSRS-PPP/service/results/file?id=$id&lang=en&fid=000&type=full" "$@"
 }
 
-do_help() {
-    cat <<HELP
-usage
-        $0 login my@email.edu
-        $0 post csrs0010.19o my@email.edu Kinematic
-        $0 get abcdefghijklmnopqrstuvwxyz_ABCDE-0123456789 > output.zip
-HELP
+do_pos_to_lonlath() {
+    awk '{printf "%dd%d\x27%f\" %dd%d\x27%f\" %f\n", $24,$25,$26,$21,$22,$23,$27}' "$@"
 }
 
 do_pos_to_lonlath() {
@@ -63,8 +70,11 @@ set_cookie_jar() {
 
 # main
 
-action=$1
-shift
+if [ $# -gt 0 ]
+then
+    action=$1
+    shift
+fi
 
 case $action in
     post)

@@ -100,3 +100,9 @@ ForwardX11 yes
 Host dpwe
 HostName dpwe.gholk.ml
 ForwardX11 yes
+
+Host alos-ftp
+HostName 116.118.238.176
+Port 62459
+User p000010
+IdentityFile ~/.ssh/alos-openssh
