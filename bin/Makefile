@@ -6,7 +6,8 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/pactl-mute $t/pactl-unmute \
      $t/qemu-windows $t/qemu-android \
      $t/urlencode $t/flash-iso-recovery \
-     $t/pcre $t/landslide-standalone $t/scat
+     $t/pcre $t/landslide-standalone $t/scat \
+     $t/ansi-color
 
 
 $t/clipboard: aclp.sh
@@ -62,6 +63,9 @@ $t/xmotd: xmotd.sh
 	install $< $@
 
 $t/pause: pause.sh
+	install $< $@
+
+$t/ansi-color: ansi-color.sh
 	install $< $@
 
 .PHONY: all
