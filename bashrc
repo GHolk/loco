@@ -33,9 +33,13 @@ _alert_exit_status() {
 # bash history control
 HISTTIMEFORMAT="%F %T "
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=1000
 HISTCONTROL='ignorespace' # space leading command will not store
 shopt -s lithist cmdhist # enable history store multi line
+shopt -s histappend
+
+# if histfile broken, fix it.
+sed -i -r '0,/^#[0-9]{10}$/{ /^#[0-9]{10}$/!d }' $HISTFILE
 
 shopt -s checkwinsize
 shopt -s globstar  # dobule star ** match attributial depth dir
