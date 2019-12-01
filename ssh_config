@@ -106,3 +106,12 @@ HostName 116.118.238.176
 Port 62459
 User p000010
 IdentityFile ~/.ssh/alos-openssh
+
+Host ccca
+HostName 140.113.131.41
+User root
+
+Host cgoat
+HostName 140.113.131.41
+Port 2206
+ForwardX11 yes
