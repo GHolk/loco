@@ -61,6 +61,11 @@ set_cookie_jar() {
     then
         cookie_jar=csrs.cookie
         echo use $cookie_jar as cookie jar file
+        if ! [ -f $cookie_jar ]
+        then
+            touch $cookie_jar
+            chmod 600 $cookie_jar
+        fi
     fi
 }
 
