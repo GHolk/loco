@@ -2,7 +2,7 @@
 ps_header=--headers
 for pid in `pgrep "$@"`
 do
-    ps -l $ps_header $pid
+    ps -l $ps_header $pid || continue
     echo "kill? (Y/n/term/kill/stop/...signal)"
     read input
     case "$input" in
