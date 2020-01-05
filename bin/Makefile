@@ -7,7 +7,7 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/qemu-windows $t/qemu-android \
      $t/urlencode $t/flash-iso-recovery \
      $t/pcre $t/landslide-standalone $t/scat \
-     $t/ansi-color $t/xmotd
+     $t/ansi-color $t/xmotd $t/ikill
 
 
 $t/clipboard: aclp.sh
@@ -66,6 +66,9 @@ $t/pause: pause.sh
 	install $< $@
 
 $t/ansi-color: ansi-color.sh
+	install $< $@
+
+$t/ikill: ikill.sh
 	install $< $@
 
 .PHONY: all
