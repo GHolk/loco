@@ -85,3 +85,8 @@ ncku="ncku.edu.tw"
 if [ -e .bash_function ]
 then . ./.bash_function
 fi
+
+if type complete _command fx >/dev/null
+then
+    complete -F _command fx
+fi
