@@ -8,7 +8,7 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/urlencode $t/flash-iso-recovery \
      $t/pcre $t/landslide-standalone $t/scat \
      $t/ansi-color $t/xmotd $t/ikill $t/memory-notify \
-     $t/bluetooth-restart
+     $t/bluetooth-restart $t/ffmpeg-mv
 
 
 $t/clipboard: aclp.sh
@@ -76,6 +76,9 @@ $t/memory-notify: memory-notify.sh
 	install $< $@
 
 $t/bluetooth-restart: bluetooth-restart.sh
+	install $< $@
+
+$t/ffmpeg-mv: ffmpeg-mv.sh
 	install $< $@
 
 .PHONY: all
