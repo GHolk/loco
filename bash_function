@@ -75,6 +75,23 @@ cutdf() {
     cut -d "$delimeter" -f "$field" "$@"
 }
 
+acd() {
+    if ! mount | grep -q avfs
+    then mountavfs
+    fi
+
+    local target="$1"
+    if [ -d "$target#" ]
+    then cd "$target#"
+    else
+        case "$target" in
+            /*) cd "$HOME/.avfs$target#" ;;
+            *) cd "$HOME/.avfs$PWD/$target#" ;;
+        esac
+    fi
+}
+
+
 # fc for script file
 fx() {
     local command=$1
