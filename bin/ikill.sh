@@ -2,7 +2,7 @@
 ps_header=--headers
 for pid in `pgrep --full --ignore-case "$@"`
 do
-    if ps -l $ps_header $pid
+    if ps -ww -l $ps_header $pid
     then
         echo "kill? (Y/n/term/kill/stop/...signal)"
         read input
