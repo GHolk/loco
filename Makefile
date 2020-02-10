@@ -62,4 +62,5 @@ install-gnss:
 	for script in *; \
 	do install $$script \
 	$(HOME)/.local/bin/$$(echo $$script | sed -r 's/\..*?$$//'); \
-	done
+	done; \
+	mv $(HOME)/.local/bin/bashrc $(HOME)/.local/bin/gnss-rc
