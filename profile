@@ -5,12 +5,16 @@ export EDITOR=vi
 export GOPATH=$HOME/.local/share/go
 export PATH="$HOME/.local/bin:$PATH"
 export INFOPATH=/usr/share/info:$HOME/.local/share/info
+export _SOURCE_PROFILE=1
 
-export $(
-    . /etc/X11/Xsession.d/90gpg-agent
-    echo SSH_AUTH_SOCK=$SSH_AUTH_SOCK
-    echo GPG_AGENT_INFO=$GPG_AGENT_INFO
-)
+if tty -s
+then
+    export $(
+        . /etc/X11/Xsession.d/90gpg-agent
+        echo SSH_AUTH_SOCK=$SSH_AUTH_SOCK
+        echo GPG_AGENT_INFO=$GPG_AGENT_INFO
+    )
+fi
 
 # unset SSH_AGENT_PID
 # unset GPG_AGENT
