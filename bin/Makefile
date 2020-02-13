@@ -1,5 +1,6 @@
 
 t = ~/.local/bin
+i = install $< $@
 
 all: $t/xwall $t/xop $t/chromium-app \
      $t/clipboard $t/selection \
@@ -54,6 +55,9 @@ $t/qemu-%: qemu-%.sh
 
 /etc/init.d/zram: zram.sh
 	install $< $@
+
+/etc/cron.daily/ccca-wiki-backup: ccca-wiki-backup.sh
+	$i
 
 $t/google-drive-download: google-drive-download.sh
 	install $< $@
