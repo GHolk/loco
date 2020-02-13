@@ -60,7 +60,7 @@ log tempdir=$tempdir
 cd $tempdir
 log enter $tempdir
 
-if ( [ -n "$rinex" ] && [ -f "$rinex" ] )
+if [ -n "$rinex" ] && [ -f "$rinex" ]
 then
     ln "$rinex" ./ || ( log "can not link $rinex" && exit 2 )
     rinex="$(basename "$rinex")"
@@ -90,7 +90,7 @@ then
         | cs2cs -f %.10f +proj=cart +to +proj=lonlat \
         | awk '{print $2}'
     )
-    rec_type_latitude_option="-recTypeLatitude $rec_type $latitude"
+    rec_type_latitude_option="-recTypeLatitude $receiver_type $latitude"
 fi
 
 docker exec -iu `id -u`:`id -g` $docker_name sh >&2 <<GIPSYX
