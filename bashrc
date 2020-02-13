@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # If not running interactively, do not do anything
+[ -z $_SOURCE_PROFILE ] && . $HOME/.profile
 [[ $- != *i* ]] && return
 
 [ -f /etc/bashrc ] && . /etc/bashrc # centos
