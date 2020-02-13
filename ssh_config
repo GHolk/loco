@@ -116,3 +116,9 @@ Host ccca
 # Port 2206
 HostName ccca.tw
 ForwardX11 yes
+
+Host lab-ublox
+Port 5565
+HostName lab.gholk.ml
+User pi
+ForwardX11 yes
