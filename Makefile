@@ -4,6 +4,9 @@
 	bash tmux git manpath_file vim ssh \
 	cron install-gnss
 
+c = cp --backup $< $@
+i = install --backup $< $@
+
 all: config man # binary
 
 config: bash tmux git manpath_file vim ssh
