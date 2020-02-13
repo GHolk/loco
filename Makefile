@@ -4,11 +4,7 @@
 	bash tmux git manpath_file vim ssh \
 	cron install-gnss
 
-all: config man ime # binary
-
-define symbol_link  # (source name, destination path)
-	ln -s "$(PWD)/$(1)" "$(2)"
-endef
+all: config man # binary
 
 config: bash tmux git manpath_file vim ssh
 
