@@ -14,7 +14,8 @@ PS1_hostname="\[\e[36;1m\]\H\[\e[0m\]"
 PS1_alert_exit_status="\[\e[1;31m\]\$(_alert_exit_status)\[\e[0m\]"
 PS1="\
 $PS1_alert_exit_status\
-$PS1_hostname:\
+$PS1_hostname\
+\[\e[90m\]:\[\e[0m\]\
 \[\e[32m\]\w \[\e[33;1m\]\$ \[\e[0m\]"
 
 ## alert if exit value not zero
