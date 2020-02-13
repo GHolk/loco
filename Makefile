@@ -60,6 +60,10 @@ cron: crontab
 install-gnss:
 	cd gnss; \
 	for script in *; \
-	do install $$script \
-	$(HOME)/.local/bin/$$(echo $$script | sed -r 's/\..*?$$//'); \
+	do \
+	case $$script in \
+	bashrc.sh) cp $$script $(HOME)/.local/bin/gnss-rc ;; \
+	*) install $$script \
+	$(HOME)/.local/bin/$$(echo $$script | sed -r 's/\..*?$$//') ;; \
+	esac; \
 	done
