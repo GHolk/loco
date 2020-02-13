@@ -8,7 +8,7 @@ usage
         $0 login my@email.edu @- # stdin
         $0 post csrs0010.19o my@email.edu Kinematic
         $0 get abcdefghijklmnopqrstuvwxyz_ABCDE-0123456789 > output.zip
-        $0 pos-to-lonlat csrs0010.pos > csrs0010.lonlath
+        $0 pos-to-lonlath csrs0010.pos > csrs0010.lonlath
 HELP
 }
 
@@ -53,7 +53,13 @@ do_get() {
 }
 
 do_pos_to_lonlath() {
-    awk '{printf "%dd%d\x27%f\" %dd%d\x27%f\" %f\n", $24,$25,$26,$21,$22,$23,$27}' "$@"
+    awk '
+        {printf "%dd%d\x27%f\" %dd%d\x27%f\" %f %sT%s+00\n",
+                $24,$25,$26,
+                $21,$22,$23,
+                $27,
+                $5,$6
+        }' "$@"
 }
 
 set_cookie_jar() {
