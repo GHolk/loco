@@ -106,3 +106,19 @@ HostName 116.118.238.176
 Port 62459
 User p000010
 IdentityFile ~/.ssh/alos-openssh
+
+Host ccca-proxmox
+HostName 140.113.131.41
+User root
+
+Host ccca
+# HostName 140.113.131.54
+# Port 2206
+HostName ccca.tw
+ForwardX11 yes
+
+Host lab-ublox
+Port 5565
+HostName lab.gholk.ml
+User pi
+ForwardX11 yes

@@ -10,7 +10,12 @@
 export GPG_TTY=$(tty)
 # gpg-connect-agent updatestartuptty /bye >/dev/null
 
-PS1="\[\e[1;31m\]\$(_alert_exit_status)\[\e[m\]\[\e[36;1m\]\H\[\e[0m\]\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
+PS1_hostname="\[\e[36;1m\]\H\[\e[0m\]"
+PS1_alert_exit_status="\[\e[1;31m\]\$(_alert_exit_status)\[\e[0m\]"
+PS1="\
+$PS1_alert_exit_status\
+$PS1_hostname:\
+\[\e[32m\]\w \[\e[33;1m\]\$ \[\e[0m\]"
 
 ## alert if exit value not zero
 ## alert only once by check history
@@ -34,9 +39,13 @@ _alert_exit_status() {
 # bash history control
 HISTTIMEFORMAT="%F %T "
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=1000
 HISTCONTROL='ignorespace' # space leading command will not store
 shopt -s lithist cmdhist # enable history store multi line
+shopt -s histappend
+
+# if histfile broken, fix it.
+sed -i -r '0,/^#[0-9]{10}$/{ /^#[0-9]{10}$/!d }' $HISTFILE
 
 shopt -s checkwinsize
 shopt -s globstar  # dobule star ** match attributial depth dir
@@ -81,4 +90,9 @@ ncku="ncku.edu.tw"
 
 if [ -e .bash_function ]
 then . ./.bash_function
+fi
+
+if type complete _command fx >/dev/null
+then
+    complete -F _command fx
 fi

@@ -17,3 +17,7 @@ rinex_name_3_to_2() {
     local suffix=$(expr substr $rinex2 \( length $rinex2 \) 1)
     date -d $date +"%03j0.%y$suffix"
 }
+
+rtklib2llh() {
+    awk '{print $4,$3,$5,$1 "T" $2}' "$@"
+}
