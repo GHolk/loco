@@ -9,7 +9,11 @@
 export GPG_TTY=$(tty)
 # gpg-connect-agent updatestartuptty /bye >/dev/null
 
-PS1="\[\e[1;31m\]\$(_alert_exit_status)\[\e[m\]\[\e[32m\]\w:\[\e[33;1m\]\$ \[\e[0m\]"
+PS1_hostname="\[\e[36;1m\]\H\[\e[0m\]"
+PS1_alert_exit_status="\[\e[1;31m\]\$(_alert_exit_status)\[\e[0m\]"
+PS1="\
+$PS1_alert_exit_status\
+\[\e[32m\]\w \[\e[33;1m\]\$ \[\e[0m\]"
 
 ## alert if exit value not zero
 ## alert only once by check history
