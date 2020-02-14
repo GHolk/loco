@@ -3,4 +3,5 @@ Description=SSH port forwarding to server with public IP
 
 [Service]
 ExecStart=/bin/sh -l -c 'ssh -NR 35760:localhost:22 web.ccns'
+RestartSec=10
 Restart=always

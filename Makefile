@@ -4,6 +4,9 @@
 	bash tmux git manpath_file vim ssh \
 	cron install-gnss
 
+c = cp --backup $< $@
+i = install --backup $< $@
+
 all: config man # binary
 
 config: bash tmux git manpath_file vim ssh
@@ -56,7 +59,10 @@ cron: crontab
 install-gnss:
 	cd gnss; \
 	for script in *; \
-	do install $$script \
-	$(HOME)/.local/bin/$$(echo $$script | sed -r 's/\..*?$$//'); \
-	done; \
-	mv $(HOME)/.local/bin/bashrc $(HOME)/.local/bin/gnss-rc
+	do \
+	case $$script in \
+	bashrc.sh) cp $$script $(HOME)/.local/bin/gnss-rc ;; \
+	*) install $$script \
+	$(HOME)/.local/bin/$$(echo $$script | sed -r 's/\..*?$$//') ;; \
+	esac; \
+	done

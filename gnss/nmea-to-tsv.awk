@@ -1,10 +1,18 @@
 #!/usr/bin/awk -f
 BEGIN {
     FS = ","
+    second_prev = 0
+    second_base = 0
 }
 
 ($1 ~ /^\$G.GGA$/) {
     second_of_day = compute_second($2)
+    if (second_of_day < second_prev) {
+        second_base += 86400
+    }
+    second_prev = second_of_day
+    second_of_day += second_base
+
     latitude = decimal_degree($3)
     if ($4 == "S") latitude *= -1
     longitude = decimal_degree($5)
@@ -12,7 +20,7 @@ BEGIN {
 
     ellipsoid_height = $10 + $12
 
-    printf("%d %.10f %.10f %.5f\n",
+    printf("%.2f %.10f %.10f %.5f\n",
            second_of_day, longitude, latitude, ellipsoid_height)
     # print second_of_day, longitude, latitude, ellipsoid_height
 }
@@ -20,7 +28,7 @@ BEGIN {
 function compute_second(time_string) {
     hour = substr(time_string, 1, 2)
     minute = substr(time_string, 3, 2)
-    second = substr(time_string, 5, 2)
+    second = substr(time_string, 5)
     return (hour * 60 + minute) * 60 + second
 }
 
