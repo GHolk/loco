@@ -5,6 +5,7 @@
 	cron install-gnss
 
 c = cp --backup $< $@
+cf = cp $< $@
 i = install --backup $< $@
 
 all: config man # binary
@@ -40,8 +41,8 @@ supcj.scim: supcj.cin
 supcj-cn.scim: supcj.scim
 	sh $@.sh >$@
 
-/etc/X11/xorg.conf.d/56evdev-trackpoint-gholk.conf: evdev-trackpoint-gholk.conf
-	ln -s `realpath $<` $@
+/etc/X11/xorg.conf.d/56-evdev-trackpoint-gholk.conf: evdev-trackpoint-gholk.conf
+	$(cf)
 
 /etc/sudoers.d/gholk-csa-sudo-conf: gholk-csa-sudo-conf
 	cp $< $@
@@ -52,6 +53,9 @@ $(HOME)/.local/share/anacron/anacrontab: anacrontab
 
 /etc/sysctl.d/local.conf: local-sysctl.conf
 	cp $< $@
+
+/etc/X11/xorg.conf.d/20-intel-tearfree.conf: intel-tearfree.conf
+	$(cf)
 
 cron: crontab
 	crontab < $<
