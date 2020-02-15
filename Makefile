@@ -2,22 +2,33 @@
 .PHONY: all \
 	config man bin \
 	bash tmux git manpath_file vim ssh \
-	cron install-gnss
+	cron install-gnss \
+	octave test
 
-c = cp --backup $< $@
+c = cp $(BACKUP) $< $@
 cf = cp $< $@
-i = install --backup $< $@
+i = install $(BACKUP) $< $@
+BACKUP = --backup
 
-all: config man # binary
+XDG_CONFIG_HOME ?= $(HOME)/.config
 
-config: bash tmux git manpath_file vim ssh
+all: config bin # man
+
+config: bash tmux git vim ssh
 
 bash: $(HOME)/.bashrc $(HOME)/.profile $(HOME)/.bash_function $(HOME)/.inputrc
 tmux: $(HOME)/.tmux.conf
-git: $(HOME)/.gitconfig
-manpath_file: $(HOME)/.manpath
+git: $(HOME)/.gitconfig $(XDG_CONFIG_HOME)/git/ignore
 vim: $(HOME)/.vimrc
 ssh: $(HOME)/.ssh/config
+octave: $(HOME)/.octaverc
+
+$(XDG_CONFIG_HOME)/git/ignore: gitignore
+	mkdir -p $(dirname $@)
+	$c
+
+$(HOME)/.octaverc: octave/octaverc
+	$c
 
 $(HOME)/.ssh/config: ssh_config
 	cp $< $@
@@ -25,7 +36,7 @@ $(HOME)/.ssh/config: ssh_config
 $(HOME)/.%: %
 	cp $< $@
 
-man: man/Makefile
+man: man/Makefile $(HOME)/.manpath
 	$(MAKE) -C $@
 
 bin:
