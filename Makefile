@@ -3,7 +3,8 @@
 	config man bin \
 	bash tmux git manpath_file vim ssh \
 	cron install-gnss \
-	octave test
+	octave test \
+	install-man
 
 c = cp $(BACKUP) $< $@
 cf = cp $< $@
@@ -81,3 +82,6 @@ install-gnss:
 	$(HOME)/.local/bin/$$(echo $$script | sed -r 's/\..*?$$//') ;; \
 	esac; \
 	done
+
+install-man:
+	$(MAKE) -C man install
