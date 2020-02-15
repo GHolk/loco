@@ -24,7 +24,7 @@ ssh: $(HOME)/.ssh/config
 octave: $(HOME)/.octaverc
 
 $(XDG_CONFIG_HOME)/git/ignore: gitignore
-	mkdir -p $(dirname $@)
+	mkdir -p `dirname $@`
 	$c
 
 $(HOME)/.octaverc: octave/octaverc
