@@ -14,6 +14,8 @@ PS1_hostname="\[\e[36;1m\]\H\[\e[0m\]"
 PS1_alert_exit_status="\[\e[1;31m\]\$(PS1_alert_exit_status)\[\e[0m\]"
 PS1="\
 $PS1_alert_exit_status\
+$PS1_hostname\
+\[\e[90m\]:\[\e[0m\]\
 \[\e[32m\]\w \[\e[33;1m\]\$ \[\e[0m\]"
 
 ## alert if exit value not zero
@@ -54,15 +56,15 @@ eval "$(SHELL=/bin/sh lesspipe)"
 export LESS="--no-init --ignore-case"
 
 
-alias rm='gio trash'
-alias gcat='gio cat'
+alias rm='gvfs-trash'
+alias gcat='gvfs-cat'
 alias mv="mv -i"
 alias cp="cp -i"
 alias men="man -L en"
 alias df="df -h"
 alias ll="ls -la"
 
-alias pgrep='pgrep --list-full --full --ignore-case'
+alias pgrep='pgrep -lf' # search and list result in all column
 alias pstree='pstree -p'
 alias pwgen='pwgen --secure --symbols --numerals --capitalize'
 
