@@ -2,18 +2,34 @@
 .PHONY: all \
 	config man bin \
 	bash tmux git manpath_file vim ssh \
-	cron install-gnss
+	cron install-gnss \
+	octave test \
+	install-man
 
-all: config man # binary
+c = cp $(BACKUP) $< $@
+cf = cp $< $@
+i = install $(BACKUP) $< $@
+BACKUP = --backup
 
-config: bash tmux git manpath_file vim ssh
+XDG_CONFIG_HOME ?= $(HOME)/.config
+
+all: config bin # man
+
+config: bash tmux git vim ssh
 
 bash: $(HOME)/.bashrc $(HOME)/.profile $(HOME)/.bash_function $(HOME)/.inputrc
 tmux: $(HOME)/.tmux.conf
-git: $(HOME)/.gitconfig
-manpath_file: $(HOME)/.manpath
+git: $(HOME)/.gitconfig $(XDG_CONFIG_HOME)/git/ignore
 vim: $(HOME)/.vimrc
 ssh: $(HOME)/.ssh/config
+octave: $(HOME)/.octaverc
+
+$(XDG_CONFIG_HOME)/git/ignore: gitignore
+	mkdir -p `dirname $@`
+	$c
+
+$(HOME)/.octaverc: octave/octaverc
+	$c
 
 $(HOME)/.ssh/config: ssh_config
 	cp $< $@
@@ -21,7 +37,7 @@ $(HOME)/.ssh/config: ssh_config
 $(HOME)/.%: %
 	cp $< $@
 
-man: man/Makefile
+man: man/Makefile $(HOME)/.manpath
 	$(MAKE) -C $@
 
 bin:
@@ -37,8 +53,8 @@ supcj.scim: supcj.cin
 supcj-cn.scim: supcj.scim
 	sh $@.sh >$@
 
-/etc/X11/xorg.conf.d/56evdev-trackpoint-gholk.conf: evdev-trackpoint-gholk.conf
-	ln -s `realpath $<` $@
+/etc/X11/xorg.conf.d/56-evdev-trackpoint-gholk.conf: evdev-trackpoint-gholk.conf
+	$(cf)
 
 /etc/sudoers.d/gholk-csa-sudo-conf: gholk-csa-sudo-conf
 	cp $< $@
@@ -49,6 +65,9 @@ $(HOME)/.local/share/anacron/anacrontab: anacrontab
 
 /etc/sysctl.d/local.conf: local-sysctl.conf
 	cp $< $@
+
+/etc/X11/xorg.conf.d/20-intel-tearfree.conf: intel-tearfree.conf
+	$(cf)
 
 cron: crontab
 	crontab < $<
@@ -63,3 +82,6 @@ install-gnss:
 	$(HOME)/.local/bin/$$(echo $$script | sed -r 's/\..*?$$//') ;; \
 	esac; \
 	done
+
+install-man:
+	$(MAKE) -C man install
