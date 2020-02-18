@@ -106,7 +106,7 @@ acd() {
         then cd "$(expr substr "$PWD" \( $length + 1 \) \( length "$PWD" \))"
         else cd "$base$PWD"
         fi
-    elif [ -d "$target" ] # go to target path in avfs
+    elif [ -d "$target" ] && [ $# -eq 1 ] # go to target path in avfs
     then
         if [ $target_path_absolute -eq 1 ]
         then cd "$base$target"
