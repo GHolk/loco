@@ -1,7 +1,27 @@
 [Unit]
+Requires=network.target
+After=network.target
 Description=SSH port forwarding to server with public IP
 
 [Service]
-ExecStart=/bin/sh -l -c 'ssh -NR 35760:localhost:22 web.ccns'
+ExecStart=ssh -o ExitOnForwardFailure=yes -o ServerAliveInterval=10 -o ServerAliveCountMax=1 -o UserKnownHostsFile=/home/pi/.ssh/known_hosts -i /home/pi/.ssh/id_rsa -N -R 5565:localhost:22 gholk@lab.gholk.ml
+
 RestartSec=10
 Restart=always
+
+[Install]
+WantedBy=network.target
+
+# :.,$!sed 's/^\#//' | sh
+# 
+# port_local=22
+# port_remote=5565
+# remote=gholk@lab.gholk.ml
+# 
+# echo ssh -o ExitOnForwardFailure=yes \
+#     -o ServerAliveInterval=10 \
+#     -o ServerAliveCountMax=1 \
+#     -o UserKnownHostsFile=/home/pi/.ssh/known_hosts \
+#     -i /home/pi/.ssh/id_rsa \
+#     -N -R $port_remote:localhost:$port_local $remote
+# 
