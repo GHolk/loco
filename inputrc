@@ -13,5 +13,6 @@ set completion-ignore-case On
 set completion-map-case On
 set blink-matching-paren On
 
-Control-u: universal-argument
-
+Control-o: exchange-point-and-mark # memic vim C-o
+"\C-xf": edit-and-execute-command # memic emacs C-x f
+"\en": operate-and-get-next # M-n, just like C-n (or use C-j?)
