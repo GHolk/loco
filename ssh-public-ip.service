@@ -12,6 +12,19 @@ Restart=always
 [Install]
 WantedBy=network.target
 
+# ## best practice
+# * remote ssh server could enable GatewayPorts yes
+#   ```
+#   Match Group port-forward
+#       GatewayPorts yes
+#   ```
+#
+# * remote host need to be in `.ssh/known_hosts` or use option specify,
+#   or ssh will prompt confirm because of **man in the middle**.
+#
+# * service should use its own key, and specify `command="nologin"`
+#   in `.ssh/authorized_keys` for security reason.
+
 # :.,$!sed 's/^\#//' | sh
 # 
 # port_local=22
