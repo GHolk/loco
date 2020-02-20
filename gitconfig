@@ -5,7 +5,10 @@
 	fp = format-patch -k --stdout
 	tree = log --graph --name-only
 	ref = reflog
-	cached = diff --cached
+	unstage = reset HEAD
+	dstaged = diff --staged
+	mergen = merge --no-ff --no-commit
+	mergei = "!function_merge_interactive() { git mergen \"$1\"; git unstage .; git commit --interactive; }; function_merge_interactive"
 [color]
 	ui = true
 [user]

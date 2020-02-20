@@ -32,10 +32,10 @@ $(HOME)/.octaverc: octave/octaverc
 	$c
 
 $(HOME)/.ssh/config: ssh_config
-	cp $< $@
+	$c
 
 $(HOME)/.%: %
-	cp $< $@
+	$c
 
 man: man/Makefile $(HOME)/.manpath
 	$(MAKE) -C $@
@@ -61,10 +61,10 @@ supcj-cn.scim: supcj.scim
 	chmod 0440 $@
 
 $(HOME)/.local/share/anacron/anacrontab: anacrontab
-	ln -s `realpath $<` $@
+	$c
 
 /etc/sysctl.d/local.conf: local-sysctl.conf
-	cp $< $@
+	$c
 
 /etc/X11/xorg.conf.d/20-intel-tearfree.conf: intel-tearfree.conf
 	$(cf)
