@@ -76,18 +76,49 @@ cutdf() {
 }
 
 acd() {
-    if ! mount | grep -q avfs
-    then mountavfs
+    # acd - cd to avfs directory
+    # usage
+    # acd # switch bewteen $HOME/.avfs$PWD and $PWD
+    # acd directory # go to $HOME/.avfs/../directory
+    # acd archive.tar.gz # go to $HOME/.avfs/../archive.tar.gz#
+    # acd archive.rar urar # go to $HOME/.avfs/../archive.rar#urar
+
+    if ! [ $acd_avfs_mount ]
+    then
+        if mount | grep -q avfs
+        then acd_avfs_mount=t
+        else mountavfs && acd_avfs_mount=t
+        fi
     fi
 
+    local base="$HOME/.avfs"
+    local length=`expr length "$base"`
+
     local target="$1"
-    if [ -d "$target#" ]
-    then cd "$target#"
-    else
-        case "$target" in
-            /*) cd "$HOME/.avfs$target#" ;;
-            *) cd "$HOME/.avfs$PWD/$target#" ;;
-        esac
+    local parameter="$2"
+
+    local in_avfs=$(expr substr "$PWD" 1 \( $length + 1 \) = "$base/" )
+    local target_path_absolute=$(expr substr "$target" 1 1 = /)
+
+    if [ $# -eq 0 ] # switch between avfs and normal
+    then
+        if [ $in_avfs -eq 1 ]
+        then cd "$(expr substr "$PWD" \( $length + 1 \) \( length "$PWD" \))"
+        else cd "$base$PWD"
+        fi
+    elif [ -d "$target" ] && [ $# -eq 1 ] # go to target path in avfs
+    then
+        if [ $target_path_absolute -eq 1 ]
+        then cd "$base$target"
+        else cd "$base$PWD/$target"
+        fi
+    elif [ -d "$target#$parameter" ] # if target already exist as avfs, just go
+    then cd "$target#$parameter"
+    else # target is file
+        if [ $target_path_absolute -eq 1 ]
+        then cd "$base$target#$parameter"
+        else cd "$base$PWD/$target#$parameter"
+        fi
     fi
 }
 

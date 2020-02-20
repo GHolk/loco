@@ -3,8 +3,9 @@
 	ck = checkout
 	bh = branch
 	fp = format-patch -k --stdout
-	tree = log --graph
+	tree = log --graph --name-only
 	ref = reflog
+	cached = diff --cached
 [color]
 	ui = true
 [user]
