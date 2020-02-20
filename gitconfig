@@ -3,7 +3,7 @@
 	ck = checkout
 	bh = branch
 	fp = format-patch -k --stdout
-	tree = log --graph
+	tree = log --graph --name-only
 	ref = reflog
 [color]
 	ui = true
