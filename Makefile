@@ -19,12 +19,12 @@ config: bash tmux git vim ssh
 
 bash: $(HOME)/.bashrc $(HOME)/.profile $(HOME)/.bash_function $(HOME)/.inputrc
 tmux: $(HOME)/.tmux.conf
-git: $(HOME)/.gitconfig $(XDG_CONFIG_HOME)/git/ignore
+git: $(XDG_CONFIG_HOME)/git/config $(XDG_CONFIG_HOME)/git/ignore
 vim: $(HOME)/.vimrc
 ssh: $(HOME)/.ssh/config
 octave: $(HOME)/.octaverc
 
-$(XDG_CONFIG_HOME)/git/ignore: gitignore
+$(XDG_CONFIG_HOME)/git/%: git%
 	mkdir -p `dirname $@`
 	$c
 
