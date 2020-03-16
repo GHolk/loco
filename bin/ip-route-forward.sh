@@ -4,9 +4,15 @@ local_net_device=$2
 local_net_ip=$3
 inter_net_device=$4
 
+ssed() {
+    local string="$1"
+    shift
+    echo "$string" | sed "$@"
+}
+
 # allow host access guest
 ip address add $local_net_ip dev $local_net_device
-ip route add $local_net_range via $local_net_ip
+ip route add $local_net_range via $(ssed $local_net_ip s#/[[:digit:]]*##)
 
 # allow guest access internet
 sysctl net.ipv4.conf.$local_net_device.forwarding=1

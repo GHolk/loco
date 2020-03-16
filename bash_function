@@ -68,11 +68,17 @@ set_if_empty() {
 }
 
 cutdf() {
-    delimeter="$1"
-    field="$2"
+    local delimeter="$1"
+    local field="$2"
     shift
     shift
     cut -d "$delimeter" -f "$field" "$@"
+}
+
+ssed() {
+    local string="$1"
+    shift
+    echo "$string" | sed "$@"
 }
 
 acd() {
