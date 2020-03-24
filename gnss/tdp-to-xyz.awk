@@ -21,5 +21,5 @@ function format_xyz() {
 }
 
 function print_record() {
-    print gps_second, format_xyz()
+    print format_xyz(), gps_second
 }
