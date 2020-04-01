@@ -1,0 +1,32 @@
+/*設定變數，可調整*/
+:root{
+  --hide-tabbar-top:-70px;
+  --hide-tabbar-open: 0s;
+  --hide-tabbar-close: 0.5s;
+  --hide-tabbar-dur: 0.1s;
+}
+/*全畫面上移*/
+/*#navigator-toolbox {
+  margin-top: calc(var(--hide-tabbar-top) - 1px);
+}*/
+/*影片全螢幕時不上移*/
+/*#main-window[inFullscreen] #navigator-toolbox {
+  margin-top: 0px !important;
+}*/
+/*分頁列底色設定*/
+/* toolbar#TabsToolbar
+{
+  -moz-appearance: none !important;
+  background-color: #000000 !important;
+}*/
+#navigator-toolbox {
+  margin-top: calc(var(--hide-tabbar-top) + 4px);
+  /*transform: translate(0, var(--hide-tabbar-top));*/
+  transition: all var(--hide-tabbar-dur) ease-in var(--hide-tabbar-close);
+}
+#navigator-toolbox:hover,
+#navigator-toolbox:focus-within {
+  margin-top: 0;
+  /*transform: translate(0, 0);*/
+  transition: all var(--hide-tabbar-dur) ease-out var(--hide-tabbar-open);
+}
