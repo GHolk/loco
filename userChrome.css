@@ -1,32 +1,36 @@
+
+/* gholk modify from ptt browser */
+
 /*設定變數，可調整*/
 :root{
-  --hide-tabbar-top:-70px;
-  --hide-tabbar-open: 0s;
-  --hide-tabbar-close: 0.5s;
-  --hide-tabbar-dur: 0.1s;
+  --ptt-hide-toolbar-height: -80px;
+  --ptt-hide-toolbar-open-delay: 0s;
+  --ptt-hide-toolbar-close-delay: 0.3s;
+  --ptt-hide-toolbar-animation-duration: 0.1s;
 }
 /*全畫面上移*/
-/*#navigator-toolbox {
-  margin-top: calc(var(--hide-tabbar-top) - 1px);
-}*/
-/*影片全螢幕時不上移*/
-/*#main-window[inFullscreen] #navigator-toolbox {
-  margin-top: 0px !important;
-}*/
-/*分頁列底色設定*/
-/* toolbar#TabsToolbar
-{
-  -moz-appearance: none !important;
-  background-color: #000000 !important;
-}*/
-#navigator-toolbox {
-  margin-top: calc(var(--hide-tabbar-top) + 4px);
-  /*transform: translate(0, var(--hide-tabbar-top));*/
-  transition: all var(--hide-tabbar-dur) ease-in var(--hide-tabbar-close);
+#content-deck {
+  margin-top: var(--ptt-hide-toolbar-height);
 }
-#navigator-toolbox:hover,
-#navigator-toolbox:focus-within {
-  margin-top: 0;
-  /*transform: translate(0, 0);*/
-  transition: all var(--hide-tabbar-dur) ease-out var(--hide-tabbar-open);
+/*影片全螢幕時不上移*/
+#main-window[inFullscreen] #content-deck{
+        margin-top: 0px !important;
+}
+/*分頁列底色設定*/
+#navigator-toolbox {
+  padding-top: 0;
+  background: -moz-dialog !important;
+  transform: translate(0, var(--ptt-hide-toolbar-height));
+  transition: all var(--ptt-hide-toolbar-animation-duration)
+              ease-in var(--ptt-hide-toolbar-close-delay);
+}
+#navigator-toolbox:hover, #navigator-toolbox:focus-within {
+  transform: translate(0, 0);
+  transition: all var(--ptt-hide-toolbar-animation-duration)
+              ease-out var(--ptt-hide-toolbar-open-delay);
+}
+#navigator-toolbox:hover #PersonalToolbar{
+  transform: translate(0, 0) !important ;
+  transition: all calc(var(--ptt-hide-toolbar-animation-duration) - 0.1s)
+              ease-out var(--ptt-hide-toolbar-open-delay) !important;
 }
