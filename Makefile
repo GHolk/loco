@@ -44,6 +44,8 @@ bin:
 	$(MAKE) -C $@
 
 ime: supcj.scim supcj-cn.scim
+	cp $^ $(HOME)/.scim/user-tables
+
 supcj.gtab: supcj.cin
 	gcin2tab supcj.cin
 
