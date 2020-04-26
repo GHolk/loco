@@ -158,5 +158,5 @@ fx() {
     $EDITOR $temp_script
     history -s "$(cat $temp_script)"
     . $temp_script
-    rm $temp_script
+    rm $temp_script || command rm $temp_script
 }
