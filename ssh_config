@@ -116,6 +116,7 @@ Host ccca
 # Port 2206
 HostName ccca.tw
 ForwardX11 yes
+PreferredAuthentications password
 
 Host lab-ublox
 Port 5565
