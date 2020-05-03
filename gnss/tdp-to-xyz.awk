@@ -5,11 +5,9 @@
     cart[direction] = $3
 }
 
-{
-    if (gps_second != $1) {
-        if (gps_second) print_record()
-        gps_second = $1
-    }
+(gipsy_second != $1) {
+    if (gipsy_second) print_record()
+    gipsy_second = $1
 }
 
 END {
@@ -21,5 +19,6 @@ function format_xyz() {
 }
 
 function print_record() {
-    print format_xyz(), gps_second
+    unix_second = gipsy_second + 946728000
+    print format_xyz(), unix_second
 }
