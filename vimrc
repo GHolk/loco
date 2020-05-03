@@ -4,7 +4,7 @@
 ":colorscheme desert
 
 :set nocp
-:set nu
+":set number
 
 :nmap Y y$
 :nmap cc c^

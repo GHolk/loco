@@ -1,0 +1,36 @@
+
+/* gholk modify from ptt browser */
+
+/*設定變數，可調整*/
+:root{
+  --ptt-hide-toolbar-height: -80px;
+  --ptt-hide-toolbar-open-delay: 0s;
+  --ptt-hide-toolbar-close-delay: 0.3s;
+  --ptt-hide-toolbar-animation-duration: 0.1s;
+}
+/*全畫面上移*/
+#content-deck {
+  margin-top: var(--ptt-hide-toolbar-height);
+}
+/*影片全螢幕時不上移*/
+#main-window[inFullscreen] #content-deck{
+        margin-top: 0px !important;
+}
+/*分頁列底色設定*/
+#navigator-toolbox {
+  padding-top: 0;
+  background: -moz-dialog !important;
+  transform: translate(0, var(--ptt-hide-toolbar-height));
+  transition: all var(--ptt-hide-toolbar-animation-duration)
+              ease-in var(--ptt-hide-toolbar-close-delay);
+}
+#navigator-toolbox:hover, #navigator-toolbox:focus-within {
+  transform: translate(0, 0);
+  transition: all var(--ptt-hide-toolbar-animation-duration)
+              ease-out var(--ptt-hide-toolbar-open-delay);
+}
+#navigator-toolbox:hover #PersonalToolbar{
+  transform: translate(0, 0) !important ;
+  transition: all calc(var(--ptt-hide-toolbar-animation-duration) - 0.1s)
+              ease-out var(--ptt-hide-toolbar-open-delay) !important;
+}

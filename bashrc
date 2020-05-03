@@ -71,6 +71,7 @@ alias pwgen='pwgen --secure --symbols --numerals --capitalize'
 alias octave=octave-cli
 alias ec="emacsclient -nw -c"
 alias userctl="systemctl --user"
+alias ehost='getent ahosts'
 
 alias xm=xmms2
 alias ap=apropos

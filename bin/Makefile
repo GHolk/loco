@@ -1,5 +1,6 @@
 
 t = ~/.local/bin
+s = /usr/local/bin
 i = install $(BACKUP) $< $@
 c = cp $(BACKUP) $< $@
 BACKUP ?= --backup
@@ -11,7 +12,8 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/urlencode $t/flash-iso-recovery \
      $t/pcre $t/landslide-standalone $t/scat \
      $t/ansi-color $t/xmotd $t/ikill $t/memory-notify \
-     $t/bluetooth-restart $t/ffmpeg-mv $t/utc-to-wn-dow
+     $t/bluetooth-restart $t/ffmpeg-mv $t/utc-to-wn-dow \
+     $t/udisksctld
 
 $t/utc-to-wn-dow: utc-to-wn-dow.sh
 	$i
@@ -91,5 +93,8 @@ $t/ffmpeg-mv: ffmpeg-mv.sh
 
 /usr/local/lib/regular-poweron.sh: regular-poweron.sh
 	$c
+
+$t/udisksctld: udisksctld.sh
+	$i
 
 .PHONY: all

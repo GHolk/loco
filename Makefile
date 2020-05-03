@@ -19,12 +19,12 @@ config: bash tmux git vim ssh
 
 bash: $(HOME)/.bashrc $(HOME)/.profile $(HOME)/.bash_function $(HOME)/.inputrc
 tmux: $(HOME)/.tmux.conf
-git: $(HOME)/.gitconfig $(XDG_CONFIG_HOME)/git/ignore
+git: $(XDG_CONFIG_HOME)/git/config $(XDG_CONFIG_HOME)/git/ignore
 vim: $(HOME)/.vimrc
 ssh: $(HOME)/.ssh/config
 octave: $(HOME)/.octaverc
 
-$(XDG_CONFIG_HOME)/git/ignore: gitignore
+$(XDG_CONFIG_HOME)/git/%: git%
 	mkdir -p `dirname $@`
 	$c
 
@@ -32,10 +32,10 @@ $(HOME)/.octaverc: octave/octaverc
 	$c
 
 $(HOME)/.ssh/config: ssh_config
-	cp $< $@
+	$c
 
 $(HOME)/.%: %
-	cp $< $@
+	$c
 
 man: man/Makefile $(HOME)/.manpath
 	$(MAKE) -C $@
@@ -44,6 +44,8 @@ bin:
 	$(MAKE) -C $@
 
 ime: supcj.scim supcj-cn.scim
+	cp $^ $(HOME)/.scim/user-tables
+
 supcj.gtab: supcj.cin
 	gcin2tab supcj.cin
 
@@ -61,10 +63,10 @@ supcj-cn.scim: supcj.scim
 	chmod 0440 $@
 
 $(HOME)/.local/share/anacron/anacrontab: anacrontab
-	ln -s `realpath $<` $@
+	$c
 
 /etc/sysctl.d/local.conf: local-sysctl.conf
-	cp $< $@
+	$c
 
 /etc/X11/xorg.conf.d/20-intel-tearfree.conf: intel-tearfree.conf
 	$(cf)

@@ -20,8 +20,8 @@ BEGIN {
 
     ellipsoid_height = $10 + $12
 
-    printf("%.2f %.10f %.10f %.5f\n",
-           second_of_day, longitude, latitude, ellipsoid_height)
+    printf("%.10f %.10f %.5f %.2f\n",
+           longitude, latitude, ellipsoid_height, second_of_day)
     # print second_of_day, longitude, latitude, ellipsoid_height
 }
 
