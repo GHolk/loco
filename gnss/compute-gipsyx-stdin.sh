@@ -1,5 +1,15 @@
 #!/bin/sh
 
+distinct_path() {
+    local name=$1
+    local path
+    if [ -e ../$name ]
+    then path=../$name
+    else path=$name
+    fi
+    echo $path
+}
+
 parse_option() {
     while [ $# -gt 0 ]
     do
@@ -7,11 +17,11 @@ parse_option() {
         shift
         case "$argument" in
         --tree|-t)
-            tree_option="-treeSequenceDir $1"
+            tree_option="-treeSequenceDir $(distinct_path $1)"
             shift
             ;;
         --gde-tree|-g)
-            gde_option="-gdeTree $1"
+            gde_option="-gdeTree $(distinct_path $1)"
             shift
             ;;
         --rec-type|--receiver-type|-r)
