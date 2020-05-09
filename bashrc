@@ -44,7 +44,9 @@ shopt -s lithist cmdhist # enable history store multi line
 shopt -s histappend
 
 # if histfile broken, fix it.
-sed -i -r '0,/^#[0-9]{10}$/{ /^#[0-9]{10}$/!d }' $HISTFILE
+if [ "$(head -c 1 $HISTFILE)" != '#' ]
+then sed -i -r '0,/^#[0-9]{10}$/{ /^#[0-9]{10}$/!d }' $HISTFILE
+fi
 
 shopt -s checkwinsize
 shopt -s globstar  # dobule star ** match attributial depth dir
