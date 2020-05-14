@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Wi-Fi hotspot restart
+Comment=restart wifi hotspot use nmcli
+Exec=/home/gholk/.local/bin/nmcli-restart-hotspot
+Icon=network-wireless
+Terminal=true
