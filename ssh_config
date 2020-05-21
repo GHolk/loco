@@ -128,3 +128,11 @@ Host ccca-office
 Port 2545
 HostName ccca.tw
 ForwardX11 yes
+
+Host *.onion
+Host ccca-office.onion
+HostName 74e6xiqgokm4hcng.onion
+Host lab.onion
+HostName dystf7d7ud624pbc.onion
+Host gholk.onion
+HostName u7bpl4qtv2oa52qjlrgmq7schtlwp2edwmfiofkq4dk7abym3skcl6qd.onion

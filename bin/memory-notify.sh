@@ -50,6 +50,7 @@ BEGIN {
     icon["swap"] = "dialog-error"
     gate["zram"] = 0.7
     gate["swap"] = 0
+    history["swap"] = 0
 }
 (debug) { print }
 
@@ -62,7 +63,10 @@ BEGIN {
 }
 /swapon end/ {
     if (use["swap"] > gate["swap"]) {
-        print_zenity_message(icon["swap"], "swap", use["swap"], total["swap"])
+        if (use["swap"] > history["swap"]) {
+            print_zenity_message(icon["swap"], "swap", use["swap"], total["swap"])
+        }
+        history["swap"] = use["swap"]
     }
     else if (use["zram"] / total["zram"] > gate["zram"]) {
         print_zenity_message(icon["zram"], "zram", use["zram"], total["zram"])
