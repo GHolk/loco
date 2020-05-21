@@ -20,8 +20,12 @@ parse_option() {
             tree_option="-treeSequenceDir $(distinct_path $1)"
             shift
             ;;
+        --gde-option)
+            gde_option="$1"
+            shift
+            ;;
         --gde-tree|-g)
-            gde_option="-gdeTree $(distinct_path $1)"
+            gde_tree_option="-gdeTree $(distinct_path $1)"
             shift
             ;;
         --rec-type|--receiver-type|-r)
@@ -85,8 +89,8 @@ if [ -d Trees ] && [ -z "$tree_option" ]
 then tree_option='-treeSequenceDir Trees'
 fi
 
-if [ -f gde.tree ] && [ -z "$gde_option" ]
-then gde_option='-gdeTree gde.tree'
+if [ -f gde.tree ] && [ -z "$gde_tree_option" ]
+then gde_tree_option='-gdeTree gde.tree'
 fi
 
 if [ -z $docker_name ]
@@ -110,7 +114,8 @@ if [ -x runAgain ]
 then ./runAgain
 else
     rinex2StaDb.py -o local.sta_db $rinex
-    rnxEditGde.py -d $rinex -o dataRecordFile.gz \
+    rnxEditGde.py -d $rinex -o dataRecordFile.gz \\
+                  $gde_tree_option \\
                   $gde_option $rec_type_latitude_option
     gd2e.py -runType PPP -drEditedFile dataRecordFile.gz \\
             -staDb local.sta_db \\
