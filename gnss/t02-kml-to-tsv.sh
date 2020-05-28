@@ -1,6 +1,11 @@
-xmlstarlet select -N kml=http://www.opengis.net/kml/2.2 -T -t -v //kml:description - \
-| w3m -T text/html -dump \
-| awk '
-    ($1 == "UTC" && "Hgt" in r) {print r["Lon"], r["Lat"], r["Hgt"], r["UTC"]}
-    {r[$1] = substr($2,1,length($2)-1)}
-'
+#!/bin/sh
+sed 's/<kml.*>/<kml>/' \
+| xmlstarlet select -t -e xml \
+    -m "/kml/Document/Folder[name='Points']/Placemark" \
+    -e p -v description -e c -v Point/coordinates \
+| xmlstarlet unesc \
+| sed 's/&nbsp;/ /g' \
+| xmlstarlet select -t -m /xml/p \
+    -v 'normalize-space(c)' -o , \
+    -v 'table/tr/td[.="UTC"]/following-sibling::td' --nl \
+| sed 's/,/ /g'
