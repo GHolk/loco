@@ -54,7 +54,7 @@ do_get() {
 
 do_pos_to_lonlath() {
     awk '
-        {printf "%dd%d\x27%f\" %dd%d\x27%f\" %f %sT%s+00\n",
+        ($1 ~ ".WD") {printf "%dd%d\x27%f\" %dd%d\x27%f\" %f %sT%s+00\n",
                 $24,$25,$26,
                 $21,$22,$23,
                 $27,
@@ -99,7 +99,7 @@ case $action in
     get?url)
         do_get_url "$@"
         ;;
-    pos_to_lonlath|pos-to-lonlath)
+    pos_to_lonlath|pos-to-lonlath|pos-to-lonlat)
         do_pos_to_lonlath "$@"
         ;;
     help|*)

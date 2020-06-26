@@ -18,6 +18,12 @@ rinex_name_3_to_2() {
     date -d $date +"%03j0.%y$suffix"
 }
 
-rtklib2llh() {
-    awk '{print $4,$3,$5,$1 "T" $2}' "$@"
+rtklib2llh () {
+    awk '!/^ *%/ {
+        gsub(/\//, " ", $1)
+        gsub(/:/, " ", $2)
+        $2 = substr($2, 1, 8)
+        time = mktime($1 " " $2)
+        print $4,$3,$5, strftime("%s", time), $6,$7,$8,$9,$10,$11,$12,$13,$14
+    }' "$@"
 }
