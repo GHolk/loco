@@ -3,6 +3,12 @@
 # license under GPLv3
 
 # render giant format spatial temporal baseline data to svg
+# format: "%02d %d%02d%02d %4d%02d%02d %.4f"
+# line-number year month date year month date distance
+
+line_end_to_semicolon() {
+    echo "$1" | tr '\n' ';'
+}
 
 awk '
 {
