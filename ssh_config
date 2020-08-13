@@ -123,15 +123,20 @@ HostName lab.gholk.ml
 User pi
 ForwardX11 yes
 
-Host ccca-office
-Port 2545
-HostName ccca.tw
+Host ublox-rpi
+User pi
 ForwardX11 yes
 
-Host *.onion
+Host ccca-office
+HostName 140.113.215.249 
+ForwardX11 yes
+
 Host ccca-office.onion
 HostName 74e6xiqgokm4hcng.onion
 Host lab.onion
 HostName dystf7d7ud624pbc.onion
 Host gholk.onion
 HostName u7bpl4qtv2oa52qjlrgmq7schtlwp2edwmfiofkq4dk7abym3skcl6qd.onion
+Host ublox-rpi.onion
+HostName zkibhw6qbcjg7vxi.onion
+User pi
