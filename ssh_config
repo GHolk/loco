@@ -128,7 +128,7 @@ User pi
 ForwardX11 yes
 
 Host ccca-office
-HostName 140.113.215.249 
+HostName 140.113.215.249
 ForwardX11 yes
 
 Host ccca-office.onion
