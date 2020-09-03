@@ -72,6 +72,7 @@ alias octave=octave-cli
 alias ec="emacsclient -nw -c"
 alias userctl="systemctl --user"
 alias ehost='getent ahosts'
+alias qrutf8='qrencode --type=UTF8'
 
 alias xm=xmms2
 alias ap=apropos
