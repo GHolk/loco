@@ -7,6 +7,12 @@ Compression yes
 ControlMaster no
 ControlPath ~/.ssh/control-socket-%u@%h:%p
 
+# disable host checking as forward keyword
+Host forward
+HostName localhost
+StrictHostKeyChecking no
+UserKnownHostsFile /dev/null
+
 # login bbs by `ssh bbsu@domain.name`
 Host ptt.cc
 User bbsu
