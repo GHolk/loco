@@ -13,7 +13,7 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/pcre $t/landslide-standalone $t/scat \
      $t/ansi-color $t/xmotd $t/ikill $t/memory-notify \
      $t/bluetooth-restart $t/ffmpeg-mv $t/utc-to-wn-dow \
-     $t/udisksctld
+     $t/udisksctld $t/gkill
 
 $t/utc-to-wn-dow: utc-to-wn-dow.sh
 	$i
@@ -95,6 +95,9 @@ $t/ffmpeg-mv: ffmpeg-mv.sh
 	$c
 
 $t/udisksctld: udisksctld.sh
+	$i
+
+$t/gkill: gkill.sh
 	$i
 
 .PHONY: all

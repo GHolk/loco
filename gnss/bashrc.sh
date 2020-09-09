@@ -27,3 +27,15 @@ rtklib2llh () {
         print $4,$3,$5, strftime("%s", time), $6,$7,$8,$9,$10,$11,$12,$13,$14
     }' "$@"
 }
+
+curl_ntrip() {
+    case $1 in
+        igs)
+            curl --user-agent 'NTRIP curl' "$2" | tail -n +3 # ICY 200 \r\n\r\n
+            ;;
+        rtklib)
+            curl --http1.0 "$2" | tail -n +2 # ICY 200\r\n
+            ;;
+    esac
+}
+

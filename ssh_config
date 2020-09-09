@@ -7,6 +7,12 @@ Compression yes
 ControlMaster no
 ControlPath ~/.ssh/control-socket-%u@%h:%p
 
+# disable host checking as forward keyword
+Host forward
+HostName localhost
+StrictHostKeyChecking no
+UserKnownHostsFile /dev/null
+
 # login bbs by `ssh bbsu@domain.name`
 Host ptt.cc
 User bbsu
@@ -91,10 +97,15 @@ Hostname github.com
 IdentityFile ~/.ssh/anafeed-daily-update
 
 Host sdf
-HostName sdf.lonestar.org
+HostName sdf.org
 
 Host lab
 HostName lab.gholk.ml
+ForwardX11 yes
+
+Host lab-outside
+HostName lab.gholk.ml
+ProxyJump ccca-office
 ForwardX11 yes
 
 Host dpwe
@@ -124,15 +135,22 @@ HostName lab.gholk.ml
 User pi
 ForwardX11 yes
 
-Host ccca-office
-Port 2545
-HostName ccca.tw
+Host ublox-rpi
+User pi
 ForwardX11 yes
 
-Host *.onion
+Host ccca-office
+HostName 140.113.215.249
+ForwardX11 yes
+
 Host ccca-office.onion
 HostName 74e6xiqgokm4hcng.onion
 Host lab.onion
 HostName dystf7d7ud624pbc.onion
 Host gholk.onion
 HostName u7bpl4qtv2oa52qjlrgmq7schtlwp2edwmfiofkq4dk7abym3skcl6qd.onion
+Host ublox-rpi.onion
+HostName zkibhw6qbcjg7vxi.onion
+User pi
+Host atom.onion
+HostName iol4zgqq74pbt3s6b72cawk4cafg6q64ft4zmszf4k5gxs2vu6bdrjqd.onion
