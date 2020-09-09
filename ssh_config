@@ -97,10 +97,15 @@ Hostname github.com
 IdentityFile ~/.ssh/anafeed-daily-update
 
 Host sdf
-HostName sdf.lonestar.org
+HostName sdf.org
 
 Host lab
 HostName lab.gholk.ml
+ForwardX11 yes
+
+Host lab-outside
+HostName lab.gholk.ml
+ProxyJump ccca-office
 ForwardX11 yes
 
 Host dpwe
