@@ -76,6 +76,7 @@ alias qrutf8='qrencode --type=UTF8'
 
 # not check ssh public key. f is `-f` meaning force and no ask.
 alias sshf='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+alias sshpw='ssh -o PreferedAuthentications=password'
 alias sshp='ssh -p'
 alias sftpp='sftp -P'
 

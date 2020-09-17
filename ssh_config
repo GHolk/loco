@@ -6,6 +6,7 @@ ServerAliveCountMax 10
 Compression yes
 ControlMaster no
 ControlPath ~/.ssh/control-socket-%u@%h:%p
+VerifyHostKeyDNS yes
 
 # disable host checking as forward keyword
 Host forward
@@ -73,6 +74,15 @@ User root
 Host radio.ccns
 User ccns
 
+Host wireguard.ccns wg.ccns
+HostName wireguard.ccns.io
+User ccns
+Port 2222
+
+Host quiz-chatbot-discord.ccns quiz-chatbot-discord
+HostName 172.24.0.21
+ForwardX11 yes
+
 # meich wifi router
 # prompt setting command after login,
 # type `sh` command to get shell
@@ -105,7 +115,7 @@ ForwardX11 yes
 
 Host lab-outside
 HostName lab.gholk.ml
-ProxyJump ccca-office
+ProxyJump office.ccca
 ForwardX11 yes
 
 Host dpwe
@@ -138,11 +148,11 @@ Host ublox-rpi
 User pi
 ForwardX11 yes
 
-Host ccca-office
-HostName 140.113.215.249
+Host office.ccca
+HostName office.ccca.tw
 ForwardX11 yes
 
-Host ccca-office.onion
+Host office.ccca.onion
 HostName 74e6xiqgokm4hcng.onion
 Host lab.onion
 HostName dystf7d7ud624pbc.onion
