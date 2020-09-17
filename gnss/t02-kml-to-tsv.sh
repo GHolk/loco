@@ -15,7 +15,15 @@ sed 's/<kml.*>/<kml>/' \
     -v 'tr/td[.="UTC"]/following-sibling::td' -o , \
     -v 'tr/td[.="Used"]/following-sibling::td' -o , \
     -v 'tr/td[.="PDOP"]/following-sibling::td' -o , \
+    -v 'tr/td[.="Velocity"]/following-sibling::td' -o , \
     -m 'tr[contains(td, "Sigma")]/following-sibling::tr[position() <= 3]' \
         -v 'td[2]' --if 'position() < 3' -o , --break --break \
     --break --nl \
-| sed 's/m//g; s/,/ /g'
+| awk -F , 'BEGIN { OFS = " " }
+{
+   sub("km/h", "", $7)
+   $7 = $7 * 1000 / 3600
+
+   gsub("m", "")
+   print
+}'

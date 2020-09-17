@@ -1,7 +1,12 @@
 #!/bin/sh
-field=$1
-[ -z "$field" ] && field=4
-shift
+if [ -n "$1" ]
+then
+    field=$1
+    shift
+else
+    field=4
+fi
+
 awk -v field=$field '{
     string = $(field)
     gsub(/[-\/:T]/, " ", string)
