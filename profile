@@ -3,7 +3,7 @@
 export LANGUAGE="zh_TW:zh_CN:en"
 export EDITOR=vi
 export GOPATH=$HOME/.local/share/go
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export INFOPATH=/usr/share/info:$HOME/.local/share/info
 export _SOURCE_PROFILE=1
 
@@ -29,3 +29,4 @@ fi
 if [ -n "$PS1" ] && [ -n "$BASH_VERSION" ]
 then . $HOME/.bashrc
 fi
+
