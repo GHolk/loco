@@ -25,8 +25,11 @@ adb_connect_interactive() {
 
 adb_retry() {
     adb_connect_interactive
-    exec "$0" "$@"
+    exec "$0" "$@" >&3
 }
+
+exec 3>&1 # backup stdout to 3
+exec 1>&2 # make default to stderr
 
 if [ $# -gt 0 ]
 then
@@ -39,6 +42,6 @@ then
 else 
     if ! output=$(adb shell am broadcast -n $app_name/.ReadReceiver)
     then adb_retry "$@"
-    else echo "$output" | sed '1d; s/^[^"]*"//; s/"$//'
+    else echo "$output" | sed '1d; s/^[^"]*"//; s/"$//' >&3
     fi
 fi
