@@ -9,11 +9,15 @@
 :nmap Y y$
 :nmap cc c^
 
+":map <C-c> <Esc>
+
 :map! <C-B> <Left>
 :map! <C-F> <Right>
 :map! <C-e> <End>
 :map! <C-a> <Home>
-
+:map! <C-d> <Del>
+:map! <Esc>b <S-Left>
+:map! <Esc>f <S-Right>
 
 " use space instead tab
 :set tabstop=4
@@ -31,6 +35,7 @@
 :map "* :r !xsel -ob<CR>
 
 :set autoindent
+:set backspace=indent,eol,start
 :set tabstop=4
 :set shiftwidth=4
 
