@@ -65,18 +65,18 @@ alias df="df -h"
 alias ll="ls -la"
 
 alias pgrep='pgrep --list-full --full --ignore-case'
-alias pstree='pstree -p'
+alias pstree='pstree --show-pids'
 alias pwgen='pwgen --secure --symbols --numerals --capitalize'
 
 alias octave=octave-cli
-alias ec="emacsclient -nw -c"
+alias ec="emacsclient --tty --create-frame"
 alias userctl="systemctl --user"
 alias ehost='getent ahosts'
 alias qrutf8='qrencode --type=UTF8'
 
 # not check ssh public key. f is `-f` meaning force and no ask.
 alias sshf='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
-alias sshpw='ssh -o PreferedAuthentications=password'
+alias sshpw='ssh -o PreferredAuthentications=password'
 alias sshp='ssh -p'
 alias sftpp='sftp -P'
 

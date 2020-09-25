@@ -31,7 +31,7 @@ $(XDG_CONFIG_HOME)/git/%: git%
 $(HOME)/.octaverc: octave/octaverc
 	$c
 
-$(HOME)/.ssh/config: ssh_config
+$(HOME)/.ssh/config: ssh/config
 	$c
 
 $(HOME)/.%: %

@@ -130,7 +130,6 @@ IdentityFile ~/.ssh/alos-openssh
 
 Host ccca-proxmox
 HostName 140.113.131.41
-User root
 
 Host ccca
 # HostName 140.113.131.54
