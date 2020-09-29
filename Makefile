@@ -23,6 +23,12 @@ git: $(XDG_CONFIG_HOME)/git/config $(XDG_CONFIG_HOME)/git/ignore
 vim: $(HOME)/.vimrc
 ssh: $(HOME)/.ssh/config
 octave: $(HOME)/.octaverc
+link: $(HOME)/gvfs $(HOME)/media
+
+$(HOME)/gvfs:
+	ln -s /run/user/`id -u`/gvfs $@
+$(HOME)/media:
+	ln -s /media/$(USER) $@
 
 $(XDG_CONFIG_HOME)/git/%: git%
 	mkdir -p `dirname $@`
