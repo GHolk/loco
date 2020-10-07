@@ -80,6 +80,8 @@ alias sshpw='ssh -o PreferredAuthentications=password'
 alias sshp='ssh -p'
 alias sftpp='sftp -P'
 
+alias vin='vi -n'
+
 alias xm=xmms2
 alias ap=apropos
 alias ..="cd .. ; "
