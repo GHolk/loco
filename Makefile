@@ -86,6 +86,7 @@ install-gnss:
 	do \
 	case $$script in \
 	bashrc.sh) cp $$script $(HOME)/.local/bin/gnss-rc ;; \
+	*~) true ;; \
 	*) install $$script \
 	$(HOME)/.local/bin/$$(echo $$script | sed -r 's/\..*?$$//') ;; \
 	esac; \
