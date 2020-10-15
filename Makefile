@@ -30,9 +30,10 @@ $(HOME)/gvfs:
 $(HOME)/media:
 	ln -s /media/$(USER) $@
 
-$(XDG_CONFIG_HOME)/git/%: git%
-	mkdir -p `dirname $@`
+$(XDG_CONFIG_HOME)/git/%: git/% $(XDG_CONFIG_HOME)/git
 	$c
+$(XDG_CONFIG_HOME)/git:
+	mkdir -p $@
 
 $(HOME)/.octaverc: octave/octaverc
 	$c
