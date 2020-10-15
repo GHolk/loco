@@ -19,7 +19,7 @@ rinex_name_3_to_2() {
 }
 
 rtklib2llh () {
-    awk '!/^ *%/ {
+    env TZ=UTC awk '!/^ *%/ {
         gsub(/\//, " ", $1)
         gsub(/:/, " ", $2)
         $2 = substr($2, 1, 8)
