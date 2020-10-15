@@ -54,11 +54,12 @@ do_get() {
 
 do_pos_to_lonlath() {
     awk '
-        ($1 ~ ".WD") {printf "%dd%d\x27%f\" %dd%d\x27%f\" %f %sT%s+00\n",
+        ($1 ~ ".WD") {printf "%dd%d\x27%f\" %dd%d\x27%f\" %f %sT%s+00 ",
                 $24,$25,$26,
                 $21,$22,$23,
                 $27,
                 $5,$6
+                print $7,$8,$16/2,$17/2,$18/2
         }' "$@"
 }
 
