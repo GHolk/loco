@@ -78,6 +78,8 @@ alias qrutf8='qrencode --type=UTF8'
 alias sshf='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias sshpw='ssh -o PreferredAuthentications=password'
 alias sshp='ssh -p'
+alias sshfw='ssh -N \
+    -o ExitOnForwardFailure=yes -o ServerAliveInterval=5 -o GatewayPorts=yes'
 alias sftpp='sftp -P'
 
 alias vin='vi -n'
