@@ -129,11 +129,9 @@ User p000010
 IdentityFile ~/.ssh/alos-openssh
 
 Host ccca-proxmox
-HostName 140.113.131.41
+HostName 140.113.131.52
 
 Host ccca
-# HostName 140.113.131.54
-# Port 2206
 HostName ccca.tw
 ForwardX11 yes
 
