@@ -3,7 +3,7 @@
 	ck = checkout
 	bh = branch
 	fp = format-patch -k --stdout
-	tree = log --graph --name-only
+	tree = log --graph --stat
 	ref = reflog
 	unstage = reset HEAD
 	dstaged = diff --staged
