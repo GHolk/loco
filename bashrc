@@ -66,6 +66,7 @@ alias ll="ls -la"
 
 alias pgrep='pgrep --list-full --full --ignore-case'
 alias pstree='pstree --show-pids'
+alias tcat='tar --to-stdout --extract --file'
 alias pwgen='pwgen --secure --symbols --numerals --capitalize'
 
 alias octave=octave-cli
@@ -109,3 +110,4 @@ if type complete _command fx >/dev/null 2>&1
 then
     complete -F _command fx
 fi
+
