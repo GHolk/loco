@@ -6,8 +6,17 @@
 	octave test \
 	install-man
 
-c = cp $(BACKUP) $< $@
-cf = cp $< $@
+# use make diff=1 to show diff
+ifdef diff
+c = diff $< $@ || true
+endif
+
+ifdef touch
+c = touch $@
+endif
+
+c ?= cp $(BACKUP) $< $@
+cf ?= cp $< $@
 i = install $(BACKUP) $< $@
 BACKUP = --backup
 
