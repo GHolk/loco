@@ -135,45 +135,61 @@ fx() {
     shift
     history -s fx $command
 
-    temp_script=$(mktemp /tmp/fx.XXXXXXXX.tmp)
-
-    if [ -f "$command" ]
+    if (echo -n >&3) 2>/dev/null
     then
-        {
+        err file handle 3 is used
+        return 77
+    fi
+
+    local temp_script
+    if [ -t 1 ]
+    then
+        temp_script=$(mktemp /tmp/fx.XXXXXXXX.tmp)
+        exec 3>$temp_script
+    else exec 3>&1
+    fi
+    
+    {
+        if [ -f "$command" ]
+        then
             echo \(
             echo "set -- $*"
             cat "$command"
             echo \)
-        } > $temp_script
-    else
-        case `type -t $command` in
-            file)
-                {
-                    echo \(
-                    echo "set -- $*"
-                    cat `type -P $command`
-                    echo \)
-                } > $temp_script
-                ;;
-            "function")
-                declare -f $command > $temp_script
-                if [ $# -gt 0 ]
-                then echo $command $* >> $temp_script
-                fi
-                ;;
-            "alias")
-                alias $command > $temp_script
-                if [ $# -gt 0 ]
-                then echo $command $* >> $temp_script
-                fi
-                ;;
-            *)
-                err not editing support command type: `type -t $command`
-                return 1
-        esac
+        else
+            case `type -t $command` in
+                file)
+                    {
+                        echo \(
+                        echo "set -- $*"
+                        cat `type -P $command`
+                        echo \)
+                    } > $temp_script
+                    ;;
+                "function")
+                    declare -f $command
+                    if [ $# -gt 0 ]
+                    then echo $command $*
+                    fi
+                    ;;
+                "alias")
+                    alias $command
+                    if [ $# -gt 0 ]
+                    then echo $command $*
+                    fi
+                    ;;
+                *)
+                    err not editing support command type: `type -t $command`
+                    return 1
+            esac
+        fi
+    } >&3
+    if [ -t 1 ]
+    then
+        $EDITOR $temp_script
+        history -s "$(cat $temp_script)"
+        . $temp_script
+        rm $temp_script || command rm $temp_script
     fi
-    $EDITOR $temp_script
-    history -s "$(cat $temp_script)"
-    . $temp_script
-    rm $temp_script || command rm $temp_script
+    exec 3>&-
 }
