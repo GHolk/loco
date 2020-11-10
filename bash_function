@@ -128,6 +128,24 @@ acd() {
     fi
 }
 
+fd_is_open() {
+    local fd=$1
+    ( true >&$fd ) 2>/dev/null
+}
+
+fd_first_free() {
+    local fd
+    if [ $# -gt 0 ]
+    then fd=$1
+    else fd=0
+    fi
+
+    while fd_is_open $fd
+    do fd=$((fd+1))
+    done
+
+    echo $fd
+}
 
 # fc for script file
 fx() {
@@ -135,18 +153,14 @@ fx() {
     shift
     history -s fx $command
 
-    if (echo -n >&3) 2>/dev/null
-    then
-        err file handle 3 is used
-        return 77
-    fi
-
+    # find a empty file descriptor
+    local fd=$(fd_first_free)
     local temp_script
     if [ -t 1 ]
     then
         temp_script=$(mktemp /tmp/fx.XXXXXXXX.tmp)
-        exec 3>$temp_script
-    else exec 3>&1
+        eval "exec $fd>$temp_script"
+    else eval "exec $fd>&1"
     fi
     
     {
@@ -159,12 +173,10 @@ fx() {
         else
             case `type -t $command` in
                 file)
-                    {
-                        echo \(
-                        echo "set -- $*"
-                        cat `type -P $command`
-                        echo \)
-                    } > $temp_script
+                    echo \(
+                    echo "set -- $*"
+                    cat `type -P $command`
+                    echo \)
                     ;;
                 "function")
                     declare -f $command
@@ -178,18 +190,24 @@ fx() {
                     then echo $command $*
                     fi
                     ;;
+                "")
+                    err command not found: $command
+                    return 3
+                    ;;
                 *)
                     err not editing support command type: `type -t $command`
-                    return 1
+                    return 38
+                    ;;
             esac
         fi
-    } >&3
+    } >&$fd
     if [ -t 1 ]
     then
         $EDITOR $temp_script
         history -s "$(cat $temp_script)"
+        cat $temp_script >&2
         . $temp_script
         rm $temp_script || command rm $temp_script
     fi
-    exec 3>&-
+    eval "exec $fd>&-"
 }
