@@ -153,17 +153,16 @@ fx() {
     shift
     history -s fx $command
 
-    # find a empty file descriptor
-    local fd=$(fd_first_free)
     local temp_script
     if [ -t 1 ]
-    then
-        temp_script=$(mktemp /tmp/fx.XXXXXXXX.tmp)
-        eval "exec $fd>$temp_script"
-    else eval "exec $fd>&1"
+    then temp_script=$(mktemp /tmp/fx.XXXXXXXX.tmp)
     fi
-    
-    {
+
+    (
+        if [ -n "$temp_script" ]
+        then exec >$temp_script
+        fi
+
         if [ -f "$command" ]
         then
             echo \(
@@ -200,14 +199,18 @@ fx() {
                     ;;
             esac
         fi
-    } >&$fd
-    if [ -t 1 ]
+    )
+    local exit_code=$?
+    if [ -n "$temp_script" ]
     then
-        $EDITOR $temp_script
-        history -s "$(cat $temp_script)"
-        cat $temp_script >&2
-        . $temp_script
+        if [ $exit_code -eq 0 ]
+        then
+            $EDITOR $temp_script
+            history -s "$(cat $temp_script)"
+            cat $temp_script >&2
+            . $temp_script
+        fi
         rm $temp_script || command rm $temp_script
     fi
-    eval "exec $fd>&-"
+    return $exit_code
 }
