@@ -66,7 +66,6 @@ alias ll="ls -la"
 
 alias pgrep='pgrep --list-full --full --ignore-case'
 alias pstree='pstree --show-pids'
-alias tcat='tar --to-stdout --extract --file'
 alias pwgen='pwgen --secure --symbols --numerals --capitalize'
 
 alias octave=octave-cli

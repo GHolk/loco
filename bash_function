@@ -81,6 +81,15 @@ ssed() {
     echo "$string" | sed "$@"
 }
 
+tcat() {
+    local option
+    if [ $# -eq 1 ]
+    then option=tf
+    else option=xOf
+    fi
+    tar -$option "$@"
+}
+
 acd() {
     # acd - cd to avfs directory
     # usage
