@@ -90,6 +90,36 @@ tcat() {
     tar -$option "$@"
 }
 
+errwhy() {
+    local status=$? signal
+    if [ $# -eq 1 ]
+    then status=$1
+    fi
+    errno $status
+    case $status in
+        126) echo $status file is not executable ;;
+        127) echo $status command not found ;;
+        '')
+            echo no exit code provide
+            return 5
+            ;;
+        *)
+            if [ $status -gt 127 ]
+            then
+                signal=$(kill -l $((127 & $status)))
+                # echo $signal
+                # echo 'look up by `man signal.7`' /SIG$signal
+                man --prompt="SIG$signal $((127 & status)) exit $status" \
+                    --pager="less -p SIG$signal -p Standard.signals" signal.7
+            elif ! [ $status -lt 126 ]
+            then
+                echo exit code should between 0-255
+                return 22
+            fi
+            ;;
+    esac
+}
+
 acd() {
     # acd - cd to avfs directory
     # usage
