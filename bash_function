@@ -95,10 +95,9 @@ errwhy() {
     if [ $# -eq 1 ]
     then status=$1
     fi
-    errno $status
     case $status in
-        126) echo $status file is not executable ;;
-        127) echo $status command not found ;;
+        126) echo BASH $status file is not executable ;;
+        127) echo BASH $status command not found ;;
         '')
             echo no exit code provide
             return 5
@@ -109,15 +108,19 @@ errwhy() {
                 signal=$(kill -l $((127 & $status)))
                 # echo $signal
                 # echo 'look up by `man signal.7`' /SIG$signal
-                man --prompt="SIG$signal $((127 & status)) exit $status" \
-                    --pager="less -p SIG$signal -p Standard.signals" signal.7
-            elif ! [ $status -lt 126 ]
+                local message="SIG$signal $((127 & status)) cause exit $status" 
+                man --prompt="$message" \
+                    --pager="less -j 4 -p SIG$signal -p Standard.signals" \
+                    signal.7
+                echo $message
+            elif ! [ $status -lt 127 ]
             then
-                echo exit code should between 0-255
+                err exit code should between 0-255
                 return 22
             fi
             ;;
     esac
+    errno $status
 }
 
 acd() {
