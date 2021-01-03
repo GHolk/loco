@@ -90,6 +90,17 @@ tcat() {
     tar -$option "$@"
 }
 
+psparent() {
+    local pid=$1
+    [ -z "$pid" ] && pid=$$
+    echo $pid
+    while [ $pid -gt 1 ]
+    do
+        pid=$(ps -o ppid:1 --no-headers $pid)
+        echo $pid
+    done
+}
+
 errwhy() {
     local status=$? signal
     if [ $# -eq 1 ]
@@ -98,6 +109,7 @@ errwhy() {
     case $status in
         126) echo BASH $status file is not executable ;;
         127) echo BASH $status command not found ;;
+        0) echo SIGEXIT $status nothing wrong ;;
         '')
             echo no exit code provide
             return 5
