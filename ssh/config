@@ -149,6 +149,11 @@ Host office.ccca
 HostName office.ccca.tw
 ForwardX11 yes
 
+Host home11
+HostName home11.gholk.ml
+Host nextcloud
+HostName nextcloud.gholk.ml
+
 Host office.ccca.onion
 HostName 74e6xiqgokm4hcng.onion
 Host lab.onion
@@ -162,4 +167,6 @@ Host atom.onion
 HostName iol4zgqq74pbt3s6b72cawk4cafg6q64ft4zmszf4k5gxs2vu6bdrjqd.onion
 Host pmg0.onion
 HostName 6pielmkugewk4fbu.onion
+Host home11.onion
+HostName ljgffablh3xzbsvbbgvy756kqmiwohwki2apoqfbq5v24htvkzqoicyd.onion
 
