@@ -99,8 +99,8 @@ User gholk
 
 # Atom bkr
 Host atom
+HostName atom.local
 Port 2222
-User rant
 
 Host github-anafeed
 Hostname github.com
@@ -165,6 +165,7 @@ HostName zkibhw6qbcjg7vxi.onion
 User pi
 Host atom.onion
 HostName iol4zgqq74pbt3s6b72cawk4cafg6q64ft4zmszf4k5gxs2vu6bdrjqd.onion
+Port 2222
 Host pmg0.onion
 HostName 6pielmkugewk4fbu.onion
 Host home11.onion
