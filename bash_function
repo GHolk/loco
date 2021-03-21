@@ -223,6 +223,9 @@ fx() {
             echo "set -- $*"
             cat "$command"
             echo \)
+        elif [ -z "$command" ]
+        then
+             clipboard
         else
             case `type -t $command` in
                 file)
