@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ffmpeg_karaokay_size=640:480
-ffmpeg_karaokay_audio_scale=1
+ffmpeg_karaokay_audio_scale=1.5
 ffmpeg_karaokay_lyric_ss_second=1.5
 ffmpeg_karaokay_lyric_font_size=24
 ffmpeg_karaokay_lyric_mojim_format=*.lrc
@@ -22,11 +22,18 @@ ffmpeg_padding() {
     ffmpeg -i $input -vf "pad=width=640:height=480:x=0:y=120:color=black" $output
 }
 
-ffmpeg_all() {
+ffmpeg_all_lyric() {
     local input="$1" lyric=$2 output=$3
     ffmpeg -i "$input" -i "$input" \
-           -ss 1 -vf scale=560:-1,subtitles="f=$lyric:force_style='FontSize=24'",pad="640:480:-1:-1" \
+           -vf scale=560:-1,subtitles="f=$lyric:force_style='FontSize=24'",pad="640:480:-1:-1" \
            -af volume=$ffmpeg_karaokay_audio_scale \
+           -map 0:a -map 1:v $output
+}
+
+ffmpeg_all_mv() {
+    local input="$1" output=$2
+    ffmpeg -i "$input" -ss 1 -i "$input" \
+           -vf scale=560:-1,pad="640:480:-1:-1" \
            -map 0:a -map 1:v $output
 }
 
