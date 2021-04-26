@@ -74,6 +74,7 @@ alias userctl="systemctl --user"
 alias ehost='getent ahosts'
 alias qrutf8='qrencode --type=UTF8'
 alias cj='grep ~/loco/supcj.cin -e'
+alias xml=xmlstarlet
 
 # not check ssh public key. f is `-f` meaning force and no ask.
 alias sshf='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
