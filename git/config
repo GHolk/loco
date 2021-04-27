@@ -12,6 +12,7 @@
 	mergei = "!function_merge_interactive() { git mergen \"$1\"; git unstage .; git commit --interactive; }; function_merge_interactive"
 	alias = "!\nfunction_alias() {\n    local argument\n    local alias_name\n    local alias_content\n    local i\n    for i in `seq $#`\n    do\n        argument=\"$1\"\n        shift\n        case \"$argument\" in\n        -*)\n            set -- \"$@\" \"$argument\"\n            ;;\n        *)\n            if [ -z \"$alias_name\" ]\n            then alias_name=\"$argument\"\n            else alias_content=\"$argument\"\n            fi\n            ;;\n        esac\n    done\n    if [ -n \"$alias_content\" ]\n    then git config \"$@\" alias.$alias_name \"$alias_content\"\n    else git config \"$@\" alias.$alias_name\n    fi\n}\nfunction_alias"
 	amend = commit --amend
+	logp = log -p
 [color]
 	ui = true
 [user]
