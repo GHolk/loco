@@ -57,6 +57,7 @@ export LESS="--no-init --ignore-case"
 
 
 alias rm='gio trash'
+alias rrm='command rm -r'
 alias gcat='gio cat'
 alias mv="mv -i"
 alias cp="cp -i"
