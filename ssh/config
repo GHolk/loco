@@ -74,11 +74,6 @@ User root
 Host radio.ccns
 User ccns
 
-Host wireguard.ccns wg.ccns
-HostName wireguard.ccns.io
-User ccns
-Port 2222
-
 Host quiz-chatbot-discord.ccns quiz-chatbot-discord
 HostName 172.24.0.21
 ForwardX11 yes
@@ -100,6 +95,10 @@ User gholk
 # Atom bkr
 Host atom
 HostName atom.local
+Port 2222
+
+Host gj4
+HostName galaxy_j4+.local
 Port 2222
 
 Host github-anafeed
@@ -172,3 +171,16 @@ Host home11.onion
 HostName ljgffablh3xzbsvbbgvy756kqmiwohwki2apoqfbq5v24htvkzqoicyd.onion
 Host gj4.briar
 HostName acpk533zu3ztavh4codszh37skrdbvl4jnxfb2aayndowvh2rc6cm
+
+Host nginx.ccns
+HostName reverse-proxy.ccns.internal
+User ccns
+Host matrix.ccns
+HostName matrix.ccns.internal
+User root
+Host dns.ccns
+HostName dns-master.ccns.internal
+User ccns
+Host hole.ccns wireguard.ccns wg.ccns
+HostName wireguard.ccns.internal
+User ccns
