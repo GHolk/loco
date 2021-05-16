@@ -105,6 +105,10 @@ Host github-anafeed
 Hostname github.com
 IdentityFile ~/.ssh/anafeed-daily-update
 
+Host github
+HostName github.com
+User git
+
 Host sdf
 HostName sdf.org
 
