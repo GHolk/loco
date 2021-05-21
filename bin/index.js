@@ -29,7 +29,7 @@ const map = {}
 SuffixMap.prototype.suffixMap = map
 
 map.png = map.jpg = map.gif = map.svg = 'image'
-map.pdf = map.html = 'iframe'
+map.pdf = map.html = 'anchor'
 map.md = 'markdown'
 map[undefined] = 'anchor'
 
@@ -72,17 +72,23 @@ ${html}
 module.exports = SuffixMap
 
 function htmlWrap(html) {
-    const head = `
-<!DOCTYPE html>
+    const head = `<!DOCTYPE html>
 <html>
+<head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 img { 
   max-width: 100%;
 }
+body {
+  white-space: pre-wrap;
+}
 </style>
+</head>
+<body>
 `
-    const foot = '</html>'
+    const foot = '</body></html>'
     return head + html + foot
 }
 const list = fs.readdirSync('.')
