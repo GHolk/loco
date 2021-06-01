@@ -135,6 +135,23 @@ errwhy() {
     errno $status
 }
 
+encfsr() { 
+    # convert relative path to absolute path for encfs
+    i=0
+    local new_arg
+    while [ $i -lt $# ]
+    do
+        if [ -d "$1" ]
+        then new_arg="$(realpath "$1")"
+        else new_arg="$1"
+        fi
+        shift
+        set -- "$@" "$new_arg"
+        i=$((i+1))
+    done
+    encfs "$@"
+}
+
 acd() {
     # acd - cd to avfs directory
     # usage
@@ -267,7 +284,7 @@ fx() {
             cat $temp_script >&2
             . $temp_script
         fi
-        rm $temp_script || command rm $temp_script
+        command rm $temp_script
     fi
     return $exit_code
 }
