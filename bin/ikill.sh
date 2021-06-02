@@ -10,7 +10,7 @@ fi
 
 for pid in `pgrep --full --ignore-case "$@"`
 do
-    if [ $pid -ne $$ ] && ps -ww -l $ps_header $pid
+    if [ $pid -ne $$ ] && ps -ww -f $ps_header $pid
     then
         echo "kill? (Y/n/term/kill/stop/...signal)"
         read input

@@ -72,7 +72,6 @@ alias pwgen='pwgen --secure --symbols --numerals --capitalize'
 alias octave=octave-cli
 alias ec="emacsclient --tty --create-frame"
 alias userctl="systemctl --user"
-alias ehost='getent ahosts'
 alias qrutf8='qrencode --type=UTF8'
 alias cj='grep ~/loco/supcj.cin -e'
 alias xml=xmlstarlet

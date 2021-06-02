@@ -90,6 +90,18 @@ tcat() {
     tar -$option "$@"
 }
 
+ehost() {
+    {
+        getent ahosts "$@"
+    } || {
+        err getent ahost not found, try host
+        host "$@"
+    } || {
+        err host not found, try ssh/config
+        grep -A 1 "$@" $HOME/.ssh/config
+    }
+}
+
 psparent() {
     local pid=$1
     [ -z "$pid" ] && pid=$$
