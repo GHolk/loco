@@ -13,7 +13,11 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/pcre $t/landslide-standalone $t/scat \
      $t/ansi-color $t/xmotd $t/ikill $t/memory-notify \
      $t/bluetooth-restart $t/ffmpeg-mv $t/utc-to-wn-dow \
+     $t/nfdo \
      $t/udisksctld $t/gkill $t/adb-clipboard $t/proton-auto
+
+$t/nfdo: nfdo.sh
+	$i
 
 $t/utc-to-wn-dow: utc-to-wn-dow.sh
 	$i
