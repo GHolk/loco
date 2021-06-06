@@ -65,6 +65,7 @@ alias men="man -L en"
 alias df="df -h"
 alias ll="ls -la"
 
+alias ps='ps -Fww'
 alias pgrep='pgrep --list-full --full --ignore-case'
 alias pstree='pstree --show-pids'
 alias pwgen='pwgen --secure --symbols --numerals --capitalize'
