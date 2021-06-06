@@ -109,7 +109,9 @@ then . ./.bash_function
 fi
 
 if type complete _command fx >/dev/null 2>&1
-then
-    complete -F _command fx
+then complete -F _command fx
+fi
+if type complete sudo nfdo >/dev/null 2>&1
+then complete -F _sudo nfdo
 fi
 
