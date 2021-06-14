@@ -108,7 +108,7 @@ psparent() {
     echo $pid
     while [ $pid -gt 1 ]
     do
-        pid=$(ps -o ppid:1 --no-headers $pid)
+        pid=$(command ps -o ppid:1 --no-headers $pid)
         echo $pid
     done
 }
@@ -299,4 +299,37 @@ fx() {
         command rm $temp_script
     fi
     return $exit_code
+}
+
+alias cd=cd_gholk
+cd_gholk() {
+    if [ $# = 0 ]
+    then
+        pushd ~ >/dev/null
+        return
+    fi
+    case x$1 in
+        x-) pushd ;;
+        x-c) dirs -c ;;
+        x-l) dirs ;;
+        x-*)
+            if [ 0 -gt $1 ] > /dev/null 2>&1
+            then
+                local positive=$(($1 * -1))
+                pushd "$(dirs -l +$positive)" > /dev/null
+                popd +$((positive+1))
+            else
+                echo err unknown option "$@"
+            fi
+        ;;
+        *) pushd "$@" ;;
+    esac
+}
+
+source_function_file() {
+    # usage: alias fx='source_function_file $HOME/.local/share/loco/fx.sh'
+    # or alias $name="source_function_file $name"
+    local function_file=$1
+    shift
+    . $HOME/.local/lib/function-file/$function_file.sh
 }

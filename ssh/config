@@ -181,7 +181,6 @@ HostName reverse-proxy.ccns.internal
 User ccns
 Host matrix.ccns
 HostName matrix.ccns.internal
-User root
 Host dns.ccns
 HostName dns-master.ccns.internal
 User ccns
