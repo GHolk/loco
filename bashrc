@@ -69,6 +69,7 @@ alias ps='ps -Fww'
 alias pgrep='pgrep --list-full --full --ignore-case'
 alias pstree='pstree --show-pids'
 alias pwgen='pwgen --secure --symbols --numerals --capitalize'
+alias nfe='numfmt --to iec-i'
 
 alias octave=octave-cli
 alias ec="emacsclient --tty --create-frame"
