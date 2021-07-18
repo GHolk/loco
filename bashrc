@@ -69,6 +69,7 @@ alias ps='ps -Fww'
 alias pgrep='pgrep --list-full --full --ignore-case'
 alias pstree='pstree --show-pids'
 alias pwgen='pwgen --secure --symbols --numerals --capitalize'
+alias diff='diff --color --unified'
 alias nfe='numfmt --to iec-i'
 
 alias octave=octave-cli
