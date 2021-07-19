@@ -250,6 +250,7 @@ fx() {
         then
             echo \(
             echo "set -- $*"
+            echo "unalias -a"
             cat "$command"
             echo \)
         elif [ -z "$command" ]
@@ -260,6 +261,7 @@ fx() {
                 file)
                     echo \(
                     echo "set -- $*"
+                    echo "unalias -a"
                     cat `type -P $command`
                     echo \)
                     ;;
