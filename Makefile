@@ -65,6 +65,10 @@ ime: supcj.scim supcj-cn.scim
 supcj.gtab: supcj.cin
 	gcin2tab supcj.cin
 
+supcj-cn.gtab: supcj.cin
+	cconv -f UTF8 -t UTF8-CN -o supcj-cn.cin supcj.cin
+	gcin2tab supcj-cn.cin
+
 supcj.scim: supcj.cin
 	sh $@.sh >$@
 
