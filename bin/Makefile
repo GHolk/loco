@@ -13,8 +13,11 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/pcre $t/landslide-standalone $t/scat \
      $t/ansi-color $t/xmotd $t/ikill $t/memory-notify \
      $t/bluetooth-restart $t/ffmpeg-mv $t/utc-to-wn-dow \
-     $t/nfdo $t/jc $t/grepe \
+     $t/nfdo $t/jc $t/grepe $t/uniq \
      $t/udisksctld $t/gkill $t/adb-clipboard $t/proton-auto
+
+$t/uniq: uniq.sh
+	$i
 
 $t/grepe: grepe.sh
 	$i
