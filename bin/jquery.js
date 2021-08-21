@@ -5,7 +5,7 @@
  */
 'use strict'
 
-const cheerio = require('cheerio')
+const cheerio = require('cheerio').default
 const process = require('process')
 const fs = require('fs/promises')
 
@@ -67,13 +67,13 @@ function cheerioLoadHtml(html) {
     return cheerio.load(html)
 }
 function cheerioStringify(node) {
-    return cheerio.html(node, {keepNonAscii: true})
+    return cheerio.html(node)
 }
 
 if (require.main == module) {
     new Promise(async () => {
         for await (const result of main(process.argv.slice(2))) {
-            if (result instanceof cheerio) {
+            if (result.cheerio == '[cheerio object]') {
                 console.log(cheerioStringify(result))
             }
             else console.log(result)
