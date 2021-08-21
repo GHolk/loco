@@ -1,8 +1,16 @@
 #!/usr/bin/env node
-/* usage:
- * jquery [-q] selector [file ...] [[-q selector file ...] ...]
- * jquery -e javascript [file ...] [[-e javascript file ...] ...]
- */
+const helpText =
+`usage:
+    jquery [-q] SELECTOR [FILE ...] [[-q SELECTOR FILE ...] ...]
+    jquery -e JAVASCRIPT [FILE ...] [[-e JAVASCRIPT FILE ...] ...]
+    -q, --query, --jquery: jquery selector
+    -e, --eval, --evaluate: javascript code
+    -h, --help: print this help
+    -t, --text: output html node text content
+    -a, --all: match all selector
+    -: if file is \`-\` or no file specified, read from stdin
+`
+
 'use strict'
 
 const cheerio = require('cheerio').default
@@ -30,34 +38,73 @@ async function loadFileSmart(path) {
     if (path == '-') return await loadStream(process.stdin)
     else return await loadFile(path)
 }
-async function *main(argv) {
-    let mode = 'query'
-    let firstLoop = true
+async function *main(argv, option = {}) {
+    if (argv.length == 0) {
+        console.log(helpText)
+        return
+    }
+
+    option.mode = 'query'
+    option.firstLoop = true
     do {
-        if (argv[0] == '-q') {
-            argv.shift()
-            mode = 'query'
+        let argument = argv.shift()
+        switch (argument) {
+        case '-q':
+        case '--query':
+        case '--jquery':
+            option.mode = 'query'
+            option.command = argv.shift()
+            continue
+        case '-e':
+        case '--eval':
+        case '--evaluate':
+            option.mode = 'script'
+            option.command = argv.shift()
+            continue
+        case '-a':
+        case '--all':
+            option.selectorMatchAll = true
+            continue
+        case '-t':
+        case '--text':
+            option.textOutput = true
+            continue
+        case '-h':
+        case '--help':
+            console.log(helpText)
+            return
+        default:
+            if (/^-[a-z]{2,}/.test(argument)) {
+                let argumentFirst = argument.slice(0,2)
+                let argumentOther = argument.slice(2)
+                argv.unshift(argumentFirst, `-${argumentOther}`)
+                continue
+            }
+            if (option.firstLoop && option.mode == 'query' && !option.command) {
+                option.command = argument
+                continue
+            }
+            argv.unshift(argument)
         }
-        if (argv[0] == '-e') {
-            mode = 'script'
-            argv.shift()
-        }
-        let command = argv[0]
-        argv.shift()
 
         // no file provide then imply input from stdin
-        if (firstLoop && argv.length == 0) {
-            argv.push('-')
-            firstLoop = false
+        if (option.firstLoop) {
+            if (argv.length == 0) argv.push('-')
+            option.firstLoop = false
         }
 
         while (argv.length > 0 && !/^-./.test(argv[0])) {
-            const path = argv[0]
-            argv.shift()
+            const path = argv.shift()
             const html = await loadFileSmart(path)
             const $ = cheerioLoadHtml(html)
-            if (mode == 'query') yield querySelector($, command)
-            else yield evaluateSelectScript($, command)
+            if (option.mode == 'query') {
+                const result = querySelector($, option.command)
+                if (option.selectorMatchAll) {
+                    yield* result.get().map(e => $(e))
+                }
+                else yield result.first()
+            }
+            else yield evaluateSelectScript($, option.command)
         }
     }
     while (argv.length > 0)
@@ -66,15 +113,17 @@ async function *main(argv) {
 function cheerioLoadHtml(html) {
     return cheerio.load(html)
 }
-function cheerioStringify(node) {
-    return cheerio.html(node)
+function cheerioStringify(node, option = {}) {
+    if (option.textOutput) return cheerio.text(node)
+    else return cheerio.html(node)
 }
 
 if (require.main == module) {
     new Promise(async () => {
-        for await (const result of main(process.argv.slice(2))) {
-            if (result.cheerio == '[cheerio object]') {
-                console.log(cheerioStringify(result))
+        const option = {}
+        for await (const result of main(process.argv.slice(2), option)) {
+            if (result?.cheerio == '[cheerio object]') {
+                console.log(cheerioStringify(result, option))
             }
             else console.log(result)
         }
