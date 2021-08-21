@@ -8,6 +8,7 @@ const helpText =
     -h, --help: print this help
     -t, --text: output html node text content
     -a, --all: match all selector
+    -x, --xml: output xml
     -: if file is \`-\` or no file specified, read from stdin
 `
 
@@ -47,7 +48,7 @@ async function *main(argv, option = {}) {
     option.mode = 'query'
     option.firstLoop = true
     do {
-        let argument = argv.shift()
+        const argument = argv.shift()
         switch (argument) {
         case '-q':
         case '--query':
@@ -73,18 +74,21 @@ async function *main(argv, option = {}) {
         case '--help':
             console.log(helpText)
             return
+        case '-x':
+        case '--xml':
+            option.xml = true
+            continue
         default:
             if (/^-[a-z]{2,}/.test(argument)) {
-                let argumentFirst = argument.slice(0,2)
-                let argumentOther = argument.slice(2)
+                const argumentFirst = argument.slice(0,2)
+                const argumentOther = argument.slice(2)
                 argv.unshift(argumentFirst, `-${argumentOther}`)
                 continue
             }
             if (option.firstLoop && option.mode == 'query' && !option.command) {
                 option.command = argument
-                continue
             }
-            argv.unshift(argument)
+            else argv.unshift(argument)
         }
 
         // no file provide then imply input from stdin
@@ -115,6 +119,7 @@ function cheerioLoadHtml(html) {
 }
 function cheerioStringify(node, option = {}) {
     if (option.textOutput) return cheerio.text(node)
+    else if (option.xml) return cheerio.xml(node)
     else return cheerio.html(node)
 }
 
