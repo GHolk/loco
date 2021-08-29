@@ -48,7 +48,10 @@ async function *main(argv, option = {}) {
     option.mode = 'query'
     option.firstLoop = true
     do {
-        const argument = argv.shift()
+        let argument
+        if (argv.length > 0) argument = argv.shift()
+        else argument = null
+
         switch (argument) {
         case '-q':
         case '--query':
@@ -78,6 +81,9 @@ async function *main(argv, option = {}) {
         case '--xml':
             option.xml = true
             continue
+        case null:
+            if (option.firstLoop) argv.push('-')
+            break
         default:
             if (/^-[a-z]{2,}/.test(argument)) {
                 const argumentFirst = argument.slice(0,2)
@@ -87,15 +93,13 @@ async function *main(argv, option = {}) {
             }
             if (option.firstLoop && option.mode == 'query' && !option.command) {
                 option.command = argument
+                continue
             }
             else argv.unshift(argument)
         }
 
         // no file provide then imply input from stdin
-        if (option.firstLoop) {
-            if (argv.length == 0) argv.push('-')
-            option.firstLoop = false
-        }
+        if (option.firstLoop) option.firstLoop = false
 
         while (argv.length > 0 && !/^-./.test(argv[0])) {
             const path = argv.shift()
@@ -111,7 +115,7 @@ async function *main(argv, option = {}) {
             else yield evaluateSelectScript($, option.command)
         }
     }
-    while (argv.length > 0)
+    while (argv.length > 0 || option.firstLoop)
 }
 
 function cheerioLoadHtml(html) {
