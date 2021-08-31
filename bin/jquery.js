@@ -80,6 +80,7 @@ async function *main(argv, option = {}) {
         case '-x':
         case '--xml':
             option.xml = true
+            option.xmlMode = true
             continue
         case null:
             if (option.firstLoop) argv.push('-')
@@ -104,7 +105,7 @@ async function *main(argv, option = {}) {
         while (argv.length > 0 && !/^-./.test(argv[0])) {
             const path = argv.shift()
             const html = await loadFileSmart(path)
-            const $ = cheerioLoadHtml(html)
+            const $ = cheerioLoadHtml(html, option)
             if (option.mode == 'query') {
                 const result = querySelector($, option.command)
                 if (option.selectorMatchAll) {
@@ -118,8 +119,8 @@ async function *main(argv, option = {}) {
     while (argv.length > 0 || option.firstLoop)
 }
 
-function cheerioLoadHtml(html) {
-    return cheerio.load(html)
+function cheerioLoadHtml(html, option) {
+    return cheerio.load(html, option)
 }
 function cheerioStringify(node, option = {}) {
     if (option.textOutput) return cheerio.text(node)
