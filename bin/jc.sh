@@ -1,12 +1,18 @@
 #!/bin/sh
-#
-# usage:
-# jc "type:1,shell:'$SHELL',n:null,t:true"
-# jc "'m.room.join_rule':'public', 'white space':true, under_score:1"
-# jc type:1 n:null t:true shell:\"$SHELL\"
-# jc [ 1 2 \"string\" null "{type:'object'}" ]
-# jc [ "{type:1,shell:'$SHELL'}" "{type:2, message: 'hello world'}" ]
-# jc [ "{type:1,shell:'$SHELL'}, {type:2, message: 'hello world'}" ]
+
+if [ $# -eq 0 ] || [ x$1 = x-h ]
+then
+    cat <<USAGE
+usage:
+    jc "type:1,shell:'$SHELL',n:null,t:true"
+    jc "'m.room.join_rule':'public', 'white space':true, under_score:1"
+    jc type:1 n:null t:true shell:\"$SHELL\"
+    jc [ 1 2 \"string\" null "{type:'object'}" ]
+    jc [ "{type:1,shell:'$SHELL'}" "{type:2, message: 'hello world'}" ]
+    jc [ "{type:1,shell:'$SHELL'}, {type:2, message: 'hello world'}" ]
+USAGE
+    exit 0
+fi
 
 node -p '
     const argv = process.argv.slice(1)
