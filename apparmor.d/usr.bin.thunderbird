@@ -302,6 +302,13 @@ profile thunderbird /usr/lib/thunderbird/thunderbird{,-bin} {
   owner @{HOME}/.cache/thunderbird/ rw,
   owner @{HOME}/.cache/thunderbird/** rw,
 
+  owner @{HOME}/archive/workspace/mail/dot-thunderbird/ rw,
+  owner @{HOME}/archive/workspace/mail/dot-thunderbird/** rw,
+  owner @{HOME}/archive/workspace/mail/dot-thunderbird/**/storage.sdb k,
+  owner @{HOME}/archive/workspace/mail/dot-thunderbird/**/*.{db,parentlock,sqlite}* k,
+  owner @{HOME}/archive/workspace/mail/dot-thunderbird/plugins/** rm,
+  owner @{HOME}/archive/workspace/mail/dot-thunderbird/**/plugins/** rm,
+
   # system emails
   owner /var/mail/* rwlk,
 
