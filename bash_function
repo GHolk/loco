@@ -23,6 +23,10 @@ gvfs() {
 big5() {
     luit -encoding big5 "$@"
 }
+jp() {
+    luit -encoding SJIS "$@"
+}
+
 value() {
     local exit_state
     case "$1" in

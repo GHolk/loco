@@ -14,8 +14,11 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/ansi-color $t/xmotd $t/ikill $t/memory-notify \
      $t/bluetooth-restart $t/ffmpeg-mv $t/utc-to-wn-dow \
      $t/nfdo $t/jc $t/grepe $t/uniq $t/jquery \
+     $t/conv-unzip \
      $t/udisksctld $t/gkill $t/adb-clipboard $t/proton-auto
 
+$t/conv-unzip: conv-unzip.sh
+	$i
 $t/jquery: jquery.js
 	$i
 $t/uniq: uniq.sh
