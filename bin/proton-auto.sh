@@ -11,14 +11,18 @@ fi
 
 if [ $# -eq 2 ]
 then
-    compat_data="$1"
+    if expr match "$1" "/.*" > /dev/null
+    then compat_data="$1"
+    else compat_data="$(realpath "$1")"
+    fi
     shift
 else
     compat_data=proton-compat-data
     [ -d $compat_data ] || mkdir $compat_data
 fi
 
-export STEAM_COMPAT_DATA_PATH="$PWD/$compat_data"
+export STEAM_COMPAT_CLIENT_INSTALL_PATH="$HOME/.steam/steam"
+export STEAM_COMPAT_DATA_PATH="$compat_data"
 
 game="$1"
 shift
