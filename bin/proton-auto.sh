@@ -19,6 +19,7 @@ then
 else
     compat_data=proton-compat-data
     [ -d $compat_data ] || mkdir $compat_data
+    compat_data="$PWD/proton-compat-data"
 fi
 
 export STEAM_COMPAT_CLIENT_INSTALL_PATH="$HOME/.steam/steam"
