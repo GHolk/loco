@@ -21,11 +21,15 @@ gvfs() {
 
 ## change and execute command
 big5() {
-    luit -encoding big5 "$@"
+    iconv -f big5 "$@"
 }
 jp() {
-    luit -encoding SJIS "$@"
+    iconv -f CP932 "$@"
 }
+cn() {
+    iconv -f GB2312 "$@"
+}
+
 
 value() {
     local exit_state
@@ -115,6 +119,11 @@ psparent() {
         pid=$(command ps -o ppid:1 --no-headers $pid)
         echo $pid
     done
+}
+fin() {
+    local name="$1"
+    shift
+    find "$@" -iname "*$name*"
 }
 
 errwhy() {
