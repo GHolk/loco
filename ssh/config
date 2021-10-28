@@ -95,7 +95,9 @@ User gholk
 # Atom bkr
 Host atom
 HostName atom.local
+HostKeyAlias atom.local # make ssh no log ip in known_hosts
 Port 2222
+CheckHostIP no
 
 Host gj4
 HostName galaxy_j4+.local

@@ -86,6 +86,8 @@ alias sshp='ssh -p'
 alias sshfw='ssh -N \
     -o ExitOnForwardFailure=yes -o ServerAliveInterval=5 -o GatewayPorts=yes'
 alias sftpp='sftp -P'
+alias ssh-key-lookup='ssh-keygen -F'
+alias ssh-key-remove='ssh-keygen -R'
 
 alias ccns-pass='env PASSWORD_STORE_DIR=$HOME/.password-store/ccns pass'
 
