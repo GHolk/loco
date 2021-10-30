@@ -6,10 +6,9 @@ if [ "$1" = "-v" ]
 then
     version=$2
     shift 2
-else version=5.13
 fi
 
-if [ $# -eq 2 ]
+if [ -d "$1" ]
 then
     if expr match "$1" "/.*" > /dev/null
     then compat_data="$1"
@@ -22,9 +21,18 @@ else
     compat_data="$PWD/proton-compat-data"
 fi
 
+if [ -z "$version" ]
+then
+    version=$(sed 's/-.*$//' "$compat_data/version") || {
+        echo please specify version
+        exit 1
+    }
+fi
+
 export STEAM_COMPAT_CLIENT_INSTALL_PATH="$HOME/.steam/steam"
 export STEAM_COMPAT_DATA_PATH="$compat_data"
 
 game="$1"
 shift
-exec "$HOME/.steam/steam/steamapps/common/Proton $version/proton" run "$game"
+"$HOME/.steam/steam/steamapps/common/Proton $version/proton" \
+     run "$game" "$@"
