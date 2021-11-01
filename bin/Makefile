@@ -14,8 +14,11 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/ansi-color $t/xmotd $t/ikill $t/memory-notify \
      $t/bluetooth-restart $t/ffmpeg-mv $t/utc-to-wn-dow \
      $t/nfdo $t/jc $t/grepe $t/uniq $t/jquery \
-     $t/conv-unzip $t/rename-date \
+     $t/conv-unzip $t/rename-date $t/atom-clipboard \
      $t/udisksctld $t/gkill $t/adb-clipboard $t/proton-auto
+
+$t/atom-clipboard: atom-clipboard.sh
+	$i
 
 $t/rename-date: rename-date.sh
 	$i
