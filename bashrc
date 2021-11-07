@@ -121,3 +121,17 @@ if type complete sudo nfdo >/dev/null 2>&1
 then complete -F _sudo nfdo
 fi
 
+# short cut for fx
+__gholk_call_fx() {
+    fx $READLINE_LINE
+    READLINE_LINE=''
+}
+bind -x '"\C-xE": __gholk_call_fx'
+
+# expand glob and bash variable
+__gholk_expand_all() {
+    READLINE_LINE="$(eval printf '"%q \\\\\\n"' $READLINE_LINE | sed '$s/\\$//')"
+    READLINE_POINT=${#READLINE_LINE}
+}
+bind -x '"\C-xg": __gholk_expand_all'
+
