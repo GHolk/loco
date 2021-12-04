@@ -1,21 +1,32 @@
 
 t = ~/.local/bin
 s = /usr/local/bin
+l = ~/.local/lib/gholk
 i = install $(BACKUP) $< $@
 c = cp $(BACKUP) $< $@
 BACKUP ?= --backup
 
 all: $t/xwall $t/xop $t/chromium-app \
      $t/clipboard $t/selection \
-     $t/pactl-mute $t/pactl-unmute \
+     $t/pactl-mute $t/pactl-unmute $t/pactl-mute-sink-input \
      $t/qemu-windows $t/qemu-android \
-     $t/urlencode $t/flash-iso-recovery \
+     $t/urlencode $t/flash-iso-recovery $t/xmodmap-map-space \
      $t/pcre $t/landslide-standalone $t/scat \
      $t/ansi-color $t/xmotd $t/ikill $t/memory-notify \
      $t/bluetooth-restart $t/ffmpeg-mv $t/utc-to-wn-dow \
      $t/nfdo $t/jc $t/grepe $t/uniq $t/jquery \
      $t/conv-unzip $t/rename-date $t/atom-clipboard \
+     $l/xfce4-session-clean-before-logout \
      $t/udisksctld $t/gkill $t/adb-clipboard $t/proton-auto
+
+$t/xmodmap-map-space: xmodmap-map-space.sh
+	$i
+
+$l/xfce4-session-clean-before-logout: xfce4-session-clean-before-logout.sh
+	$i
+
+$t/pactl-mute-sink-input: pactl-mute-sink-input.sh
+	$i
 
 $t/atom-clipboard: atom-clipboard.sh
 	$i
