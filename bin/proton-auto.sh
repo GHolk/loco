@@ -6,6 +6,10 @@ if [ "$1" = "-v" ]
 then
     version=$2
     shift 2
+elif [ "$1" = -t ]
+then
+    echo "$1" | sed 's#\\#/#g; s#^#proton-compat-data/pfx#'
+    exit 0
 fi
 
 if [ -d "$1" ]
