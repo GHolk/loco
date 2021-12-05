@@ -135,3 +135,24 @@ __gholk_expand_all() {
 }
 bind -x '"\C-xg": __gholk_expand_all'
 
+__gholk_eval_readline() {
+    READLINE_LINE="$(eval $READLINE_LINE | sed 's/$/ \\/; $s/ \\$//')"
+    READLINE_POINT=${#READLINE_LINE}
+}
+bind -x '"\C-xr": __gholk_eval_readline'
+__gholk_eval_readline_prev() {
+    local current_line current_point result_length
+    current_line="$READLINE_LINE"
+    current_point=$READLINE_POINT
+    READLINE_LINE="$(HISTTIMEFORMAT='' history 1 | cut -c 8-)"
+    __gholk_eval_readline
+    result_length=${#READLINE_LINE}
+    READLINE_LINE="${current_line:0:${current_point}}${READLINE_LINE}${current_line:${current_point}}"
+    READLINE_POINT=$((${current_point} + ${result_length}))
+}
+bind -x '"\C-x\C-p": __gholk_eval_readline_prev'
+
+__gholk_open_cwd() {
+    xdg-open $PWD
+}
+bind -x '"\C-xo": __gholk_open_cwd'
