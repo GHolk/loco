@@ -13,4 +13,6 @@ LOGNAME=gholk
 # @monthly	15	cron.monthly	run-parts --report /etc/cron.monthly
 @monthly      15      backup-firefox cp --verbose --archive ~gholk/.mozilla/firefox/*.default/places.sqlite ~gholk/web/browser/history/places/$(date -I).sqlite
 1              3      update-feed    /home/gholk/web/feed/script/update-feed.sh
+7      15      backup-data    echo backup workspace and android phone to mobile-archive
+
 
