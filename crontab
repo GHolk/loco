@@ -22,3 +22,4 @@
 # m h  dom mon dow   command
  11,31,51 * * *  *    /home/gholk/.local/bin/xwall "二十分鐘，眼睛該休息囉！"
  22 *   *   *   *    /usr/sbin/anacron -t /home/gholk/.local/share/anacron/anacrontab -S /home/gholk/.local/share/anacron
+ 57 20 * * * /home/gholk/.local/bin/xwall "go harry potter club"
