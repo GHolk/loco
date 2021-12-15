@@ -156,3 +156,8 @@ __gholk_open_cwd() {
     xdg-open $PWD
 }
 bind -x '"\C-xo": __gholk_open_cwd'
+
+__gholk_copy_readline() {
+    clipboard "$READLINE_LINE"
+}
+bind -x '"\C-xc": __gholk_copy_readline'

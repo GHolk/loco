@@ -7,7 +7,7 @@ c = cp $(BACKUP) $< $@
 BACKUP ?= --backup
 
 all: $t/xwall $t/xop $t/chromium-app \
-     $t/clipboard $t/selection \
+     $t/clipboard $t/selection $t/gamer-batch-download.sh \
      $t/pactl-mute $t/pactl-unmute $t/pactl-mute-sink-input \
      $t/qemu-windows $t/qemu-android \
      $t/urlencode $t/flash-iso-recovery $t/xmodmap-map-space \
@@ -18,6 +18,9 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/conv-unzip $t/rename-date $t/atom-clipboard \
      $l/xfce4-session-clean-before-logout \
      $t/udisksctld $t/gkill $t/adb-clipboard $t/proton-auto
+
+$t/gamer-batch-download.sh: gamer-batch-download.sh
+	$i
 
 $t/xmodmap-map-space: xmodmap-map-space.sh
 	$i
