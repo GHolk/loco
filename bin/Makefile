@@ -10,7 +10,8 @@ all: $t/xwall $t/xop $t/chromium-app \
      $t/clipboard $t/selection $t/gamer-batch-download.sh \
      $t/pactl-mute $t/pactl-unmute $t/pactl-mute-sink-input \
      $t/qemu-windows $t/qemu-android \
-     $t/urlencode $t/flash-iso-recovery $t/xmodmap-map-space \
+     $t/urlencode $t/flash-iso-recovery \
+     $t/xmodmap-map-space $t/xmodmap-map-esdf \
      $t/pcre $t/landslide-standalone $t/scat \
      $t/ansi-color $t/xmotd $t/ikill $t/memory-notify \
      $t/bluetooth-restart $t/ffmpeg-mv $t/utc-to-wn-dow \
@@ -22,6 +23,8 @@ all: $t/xwall $t/xop $t/chromium-app \
 $t/gamer-batch-download.sh: gamer-batch-download.sh
 	$i
 
+$t/xmodmap-map-esdf: xmodmap-map-esdf.sh
+	$i
 $t/xmodmap-map-space: xmodmap-map-space.sh
 	$i
 

@@ -11,4 +11,4 @@ read wait
 xmodmap -e "keycode 53 = x" \
         -e "keycode 54 = c" \
         -e "keycode 58 = m" \
-        -e "keycode 59 = comma"
+        -e "keycode 59 = comma less"
