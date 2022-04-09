@@ -62150,7 +62150,7 @@ sye 𡰵
 sygb 𦐘
 syggu 𦒏
 syggu 𦒒
-syha 𦐚
+# syha 𦐚
 syhbt 𦐷
 syher 𦐦
 syhkb 𦒓
@@ -86452,6 +86452,8 @@ sydhe 翍
 syea 䎓
 syhaf 翵
 syha 習
+# move after 習
+syha 𦐚
 syhqo 翐
 syhqu 毣
 syibi 䎔
@@ -86962,6 +86964,7 @@ x.yi ド
 x.yp よ
 x.yp ょ
 x.y ト
+x.m ー
 
 %chardef end
 
