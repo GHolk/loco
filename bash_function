@@ -74,6 +74,11 @@ set_if_empty() {
         return 1
     fi
 }
+nth() {
+    local n=$1
+    shift $((n+1))
+    echo "$1"
+}
 
 cutdf() {
     local delimeter="$1"

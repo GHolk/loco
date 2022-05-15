@@ -153,7 +153,19 @@ __gholk_eval_readline_prev() {
 bind -x '"\C-x\C-p": __gholk_eval_readline_prev'
 
 __gholk_open_cwd() {
-    xdg-open $PWD
+    local file
+
+    if [ -z "$READLINE_LINE" ]
+    then xdg-open $PWD
+    else
+        eval set -- $READLINE_LINE
+        shift $(($# - 1))
+        file="$1"
+        if [ -e "$file" ]
+        then thunar "$file"
+        else xdg-open $PWD
+        fi
+    fi
 }
 bind -x '"\C-xo": __gholk_open_cwd'
 
