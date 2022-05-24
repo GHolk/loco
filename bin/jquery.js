@@ -1,8 +1,13 @@
 #!/usr/bin/env node
+'use strict'
+
 const helpText =
 `usage:
-    jquery [-q] SELECTOR [FILE ...] [[-q SELECTOR FILE ...] ...]
+    jquery [-p JAVASCRIPT] [-q] SELECTOR [FILE ...] [[-q SELECTOR FILE ...] ...]
     jquery -e JAVASCRIPT [FILE ...] [[-e JAVASCRIPT FILE ...] ...]
+    jquery -s JAVASCRIPT [FILE ...] [[-s JAVASCRIPT FILE ...] ...]
+    -p, --preload, script execute at begin
+    -s, --edit, execute script once and output the html
     -q, --query, --jquery: jquery selector
     -e, --eval, --evaluate: javascript code
     -h, --help: print this help
@@ -12,13 +17,15 @@ const helpText =
     -: if file is \`-\` or no file specified, read from stdin
 `
 
-'use strict'
-
 const cheerio = require('cheerio').default
 const process = require('process')
 const fs = require('fs/promises')
 
-function evaluateSelectScript($, script) {
+function sleep(second) {
+    return new Promise(wake => setTimeout(wake, second*1000))
+}
+function evaluateSelectScript($, script, option, context) {
+    const ctx = context
     return eval(script)
 }
 function querySelector($, selector) {
@@ -47,6 +54,8 @@ async function *main(argv, option = {}) {
 
     option.mode = 'query'
     option.firstLoop = true
+    let context = {}
+    let ctx = context
     do {
         let argument
         if (argv.length > 0) argument = argv.shift()
@@ -63,6 +72,15 @@ async function *main(argv, option = {}) {
         case '--eval':
         case '--evaluate':
             option.mode = 'script'
+            option.command = argv.shift()
+            continue
+        case '-p':
+        case '--preload':
+            eval(argv.shift())
+            continue
+        case '-s':
+        case '--edit':
+            option.mode = 'edit'
             option.command = argv.shift()
             continue
         case '-a':
@@ -104,6 +122,7 @@ async function *main(argv, option = {}) {
 
         while (argv.length > 0 && !/^-./.test(argv[0])) {
             const path = argv.shift()
+            option.path = path
             const html = await loadFileSmart(path)
             const $ = cheerioLoadHtml(html, option)
             if (option.mode == 'query') {
@@ -113,7 +132,13 @@ async function *main(argv, option = {}) {
                 }
                 else yield result.first()
             }
-            else yield evaluateSelectScript($, option.command)
+            else if (option.mode == 'edit') {
+                const wrap = new Function('$', 'option', option.command)
+                const result = wrap($, option)
+                if (result != undefined) yield result
+                else yield $.html()
+            }
+            else yield evaluateSelectScript($, option.command, option, context)
         }
     }
     while (argv.length > 0 || option.firstLoop)
@@ -138,4 +163,8 @@ if (require.main == module) {
             else console.log(result)
         }
     })
+}
+else {
+    exports.main = main
+    exports.cheerioStringify = cheerioStringify
 }
