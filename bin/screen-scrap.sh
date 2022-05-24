@@ -5,10 +5,10 @@ screen_shot_n() {
     sleep 1
     for i in `seq $n`
     do
-        xfce4-screenshooter --clipboard --window
-        xclip -o -t image/jpeg -sel clipboard > $i.jpg
+        import -window root -crop 626x951+137+124 $i.jpg
+        xdotool mousemove 350 350 click 5 mousemove restore
         xdotool click 5
-        sleep 0.2
+        sleep 0.5
     done
 }
 
