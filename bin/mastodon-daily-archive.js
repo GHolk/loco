@@ -21,57 +21,79 @@ class MastodonArchiver {
     static main() {
         const config = require('./config.json')
         const object = new this()
-        object.run({
+        object.setOption({
             accessToken: config['access-token'],
             ...config
         })
+        object.run()
     }
-    async run({path, limit, uid, accessToken}) {
-        process.chdir(path)
+    setOption(option) {
+        this.apiUrl = 'https://g0v.social/api/v1'
+        Object.assign(this, option)
+        process.chdir(this.path)
+    }
+    async run() {
         this.init = false
-        if (!this.statusDirectoryExistOrCreate()) {
+        if (!this.directoryExistOrCreate('status')) {
             this.init = true
             console.log('initiating')
         }
-        const base = 'https://g0v.social/api/v1'
+        await this.backup(`accounts/${this.uid}/statuses`, 'status')
+
+        if (!this.directoryExistOrCreate('favourite')) {
+            this.init = true
+            console.log('initiating favourite')
+        }
+        else this.init = false
+        await this.backup('favourites', 'favourite')
+    }
+    async backup(apiPath, subDir) {
+        const base = this.apiUrl
+        let limit = this.limit
         let json = ''
         let list
+        let firstStatus
         do {
-            json = await this.fetch(`${base}/accounts/${uid}/statuses?limit=${limit}`, {
+            json = await this.fetch(`${base}/${apiPath}?limit=${limit}`, {
                 headers: {
-                    Authorization: `Bearer ${accessToken}`
+                    Authorization: `Bearer ${this.accessToken}`
                 }
             })
             list = JSON.parse(json)
-            if (this.init) break
-            if (this.statusExist(list[list.length-1].id)) break
-            else limit += 10
+            const firstStatusCurrent = list[list.length-1]
+            if (this.init) {
+                if (firstStatus == firstStatusCurrent.id) break
+                else firstStatus = firstStatusCurrent.id
+            }
+            else if (this.statusExist(firstStatusCurrent.id, subDir)) break
+            limit += 10
             console.log(`limit ${limit}`)
         }
         while (true)
+        console.log(`fetch first ${limit} ${subDir}`)
 
         for (const status of list) {
-            if (this.statusExist(status.id)) return
-            else this.statusSave(status)
+            if (this.statusExist(status.id, subDir)) break
+            else this.statusSave(status, subDir)
         }
     }
-    statusDirectoryExistOrCreate() {
+    directoryExistOrCreate(name) {
         let exist = true
         try {
-            fs.accessSync('status')
+            fs.accessSync(name)
         }
         catch (accessError) {
             exist = false
         }
         if (exist) return true
         else {
-            fs.mkdirSync('status')
+            fs.mkdirSync(name)
             return false
         }
     }
-    statusSave(status) {
+    statusSave(status, dir) {
         fs.writeFileSync(
-            `status/${status.id}.json`, JSON.stringify(status), 'utf8'
+            `${dir}/${status.id}.json`, JSON.stringify(status), 'utf8'
         )
         const attachment = status['media_attachments']
         if (attachment && attachment.length > 0) {
@@ -81,7 +103,12 @@ class MastodonArchiver {
     attachmentSave(status) {
         const attachments = status.media_attachments
         const post = status.id
-        fs.mkdirSync(`attachment/${post}`)
+        try {
+            fs.mkdirSync(`attachment/${post}`)
+        }
+        catch (error) {
+            console.log(error)
+        }
         for (const item of attachments) {
             const scan = item.url.match(/.\w+$/)
             let suffix = ''
@@ -91,9 +118,9 @@ class MastodonArchiver {
             const result = child_process.execSync(curl)
         }
     }
-    statusExist(id) {
+    statusExist(id, dir) {
         try {
-            fs.accessSync(`status/${id}.json`)
+            fs.accessSync(`${dir}/${id}.json`)
         }
         catch (accessError) {
             return false
