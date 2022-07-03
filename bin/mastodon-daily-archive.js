@@ -13,7 +13,7 @@ class MastodonArchiver {
                 const result = []
                 res.setEncoding('utf8')
                 res.on('data', chunk => result.push(String(chunk)))
-                res.on('end', () => ok(result.join('')))
+                res.on('end', () => ok({response: res, body: result.join('')}))
             })
             request.end()
         })
@@ -21,14 +21,10 @@ class MastodonArchiver {
     static main() {
         const config = require('./config.json')
         const object = new this()
-        object.setOption({
-            accessToken: config['access-token'],
-            ...config
-        })
+        object.setOption(config)
         object.run()
     }
     setOption(option) {
-        this.apiUrl = 'https://g0v.social/api/v1'
         Object.assign(this, option)
         process.chdir(this.path)
     }
@@ -47,34 +43,49 @@ class MastodonArchiver {
         else this.init = false
         await this.backup('favourites', 'favourite')
     }
+    parseLink(text) {
+        const regexp = /<([^>]+)>; *rel="([^"]*)"(, *| *$)/y
+        const link = {}
+        while (true) {
+            const scan = regexp.exec(text)
+            if (!scan) break
+            const [, url, rel] = scan
+            link[rel] = url
+        }
+        return link
+    }
     async backup(apiPath, subDir) {
-        const base = this.apiUrl
+        console.log(`save into ${subDir}`)
+        const base = this['api-url']
         let limit = this.limit
         let json = ''
-        let list
+        let list = []
         let firstStatus
+        let url = `${base}/${apiPath}?limit=${limit}`
         do {
-            json = await this.fetch(`${base}/${apiPath}?limit=${limit}`, {
+            console.log(`fetch ${url}`)
+            const {response, body} = await this.fetch(url, {
                 headers: {
-                    Authorization: `Bearer ${this.accessToken}`
+                    Authorization: `Bearer ${this['access-token']}`
                 }
             })
-            list = JSON.parse(json)
+            list = list.concat(JSON.parse(body))
             const firstStatusCurrent = list[list.length-1]
             if (this.init) {
                 if (firstStatus == firstStatusCurrent.id) break
                 else firstStatus = firstStatusCurrent.id
             }
             else if (this.statusExist(firstStatusCurrent.id, subDir)) break
-            limit += 10
-            console.log(`limit ${limit}`)
+
+            const link = this.parseLink(response.headers.link)
+            url = link['next']
         }
         while (true)
-        console.log(`fetch first ${limit} ${subDir}`)
 
-        for (const status of list) {
-            if (this.statusExist(status.id, subDir)) break
-            else this.statusSave(status, subDir)
+        for (const status of list.slice().reverse()) {
+            if (!this.statusExist(status.id, subDir)) {
+                this.statusSave(status, subDir)
+            }
         }
     }
     directoryExistOrCreate(name) {
@@ -110,12 +121,14 @@ class MastodonArchiver {
             console.log(error)
         }
         for (const item of attachments) {
-            const scan = item.url.match(/.\w+$/)
+            const url = item.remote_url || item.url
+            const scan = item.url.match(/\.\w+$/)
             let suffix = ''
             if (scan) suffix = scan[0]
             const file = item.id + suffix
-            const curl = `wget -O attachment/${post}/${file} ${item.url}`
-            const result = child_process.execSync(curl)
+            const wget = 'wget --no-verbose ' +
+                  `-O attachment/${post}/${file} ${item.url}`
+            const result = child_process.execSync(wget)
         }
     }
     statusExist(id, dir) {
