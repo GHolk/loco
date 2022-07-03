@@ -1,5 +1,9 @@
 # global setting
 
+Host 192.168.* 10.*
+StrictHostKeyChecking no
+UserKnownHostsFile /dev/null
+
 # keep connection 30m
 ServerAliveInterval 180
 ServerAliveCountMax 10
@@ -95,7 +99,8 @@ User gholk
 # Atom bkr
 Host atom
 HostName atom.local
-HostKeyAlias atom.local # make ssh no log ip in known_hosts
+# make ssh no log ip in known_hosts
+HostKeyAlias atom.local
 Port 2222
 CheckHostIP no
 
