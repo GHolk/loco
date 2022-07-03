@@ -26,8 +26,15 @@ gamer_image_list() {
     jquery -e '$(".MSG-list8C img").map((i, e) => $(e).attr("data-src")).get().join("\n")'
 }
 
+gamer_image_list_2021() { 
+    jquery -e '$("img.gallery-image").map((i, e) => $(e).attr("src")).get().join("\n")'
+}
+
 gamer_page_list() {
     jquery -e '$("h1 .TS1").map((i,e) => "# " + $(e).text() + "\n" + "https://home.gamer.com.tw/" + $(e).attr("href") + "\n").get().join("\n")'
+}
+gamer_page_list_2021() { 
+    jquery -e '$("a.HOME-mainbox2a").map((i,e) => "# " + $(e).text() + "\n" + "https://home.gamer.com.tw/" + $(e).attr("href") + "\n").get().join("\n")'
 }
 
 gamer_page_search() {
