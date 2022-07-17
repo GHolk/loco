@@ -29,12 +29,14 @@ rename_number() {
 rename_date() {
     local suffix
     local file
-    file="$1"
-    suffix=$(echo "$file" | sed 's/^.*\.//')
-    if [ -n "$prefix" ]
-    then mv -v "$1" "$(date -r "$1" +%Y-%m-%d-%H-%M-%S)-$1"
-    else mv -v "$1" "$(date -r "$1" +%Y-%m-%d-%H-%M-%S)".$suffix
-    fi
+    for file in "$@"
+    do
+        suffix=$(echo "$file" | sed 's/^.*\.//')
+        if [ -n "$prefix" ]
+        then mv -v "$file" "$(date -r "$file" +%Y-%m-%d-%H-%M-%S)-$file"
+        else mv -v "$file" "$(date -r "$file" +%Y-%m-%d-%H-%M-%S)".$suffix
+        fi
+    done
 }
 
 parse_option_loop() {
@@ -99,9 +101,9 @@ parse_option_loop() {
 }
 
 main() {
-    if [ -n $number ]
+    if [ -n "$number" ]
     then rename_number "$@"
-    elif [ -n $swap ]
+    elif [ -n "$swap" ]
     then rename_swap "$@"
     else rename_date "$@"
     fi
