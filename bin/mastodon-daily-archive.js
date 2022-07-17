@@ -25,8 +25,8 @@ class MastodonArchiver {
         object.run()
     }
     setOption(option) {
-        Object.assign(this, option)
-        process.chdir(this.path)
+        this.config = Object.assign({}, option)
+        process.chdir(this.config.path)
     }
     async run() {
         this.init = false
@@ -34,7 +34,7 @@ class MastodonArchiver {
             this.init = true
             console.log('initiating')
         }
-        await this.backup(`accounts/${this.uid}/statuses`, 'status')
+        await this.backup(`accounts/${this.config.uid}/statuses`, 'status')
 
         if (!this.directoryExistOrCreate('favourite')) {
             this.init = true
@@ -44,7 +44,8 @@ class MastodonArchiver {
         await this.backup('favourites', 'favourite')
     }
     parseLink(text) {
-        const regexp = /<([^>]+)>; *rel="([^"]*)"(, *| *$)/y
+        text = text.trim()
+        const regexp = /<(.+?)>; *rel="(.*?)"(, *| *$)/y
         const link = {}
         while (true) {
             const scan = regexp.exec(text)
@@ -56,8 +57,8 @@ class MastodonArchiver {
     }
     async backup(apiPath, subDir) {
         console.log(`save into ${subDir}`)
-        const base = this['api-url']
-        let limit = this.limit
+        const base = this.config['api-url']
+        let limit = this.config.limit
         let json = ''
         let list = []
         let firstStatus
@@ -66,7 +67,7 @@ class MastodonArchiver {
             console.log(`fetch ${url}`)
             const {response, body} = await this.fetch(url, {
                 headers: {
-                    Authorization: `Bearer ${this['access-token']}`
+                    Authorization: `Bearer ${this.config['access-token']}`
                 }
             })
             list = list.concat(JSON.parse(body))
