@@ -28,6 +28,8 @@ fi
 if [ -z "$version" ]
 then
     version=$(sed 's/-.*$//' "$compat_data/version") || {
+        version=6.3
+    } || {
         echo please specify version
         exit 1
     }

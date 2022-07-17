@@ -14,6 +14,7 @@
 	amend = commit --amend
 	logp = log -p
 	rb = rebase
+	cm = commit
 [color]
 	ui = true
 [user]
